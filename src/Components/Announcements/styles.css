@@ -1,0 +1,37 @@
+.announcements-container{
+    display: flex;
+    flex-direction: column;
+    width: 382px;
+    height: 682px;
+    gap: 24px;
+}
+.announcements-container h1{
+    font-size: 31px;
+    font-weight: 500;
+    color: #000000;
+}
+.scroll-bar{
+    display: flex;
+    flex-direction: column;
+    width: 382px;
+    height: 616px;
+    gap: 4px;
+    overflow-y: scroll;
+}
+.scroll-bar::-webkit-scrollbar{
+    width: 8px;
+    height: 616px;
+}
+.scroll-bar::-webkit-scrollbar-track{
+    background-color: #ECF3FF;
+}
+.scroll-bar::-webkit-scrollbar-thumb{
+    height: 368px;
+    background: #00000061;
+    border: 1px solid #ECF3FF ;
+}
+/* @supports (scrollbar-color: #00000061 #ECF3FF){ */
+    /* *{
+        scrollbar-color: #00000061 #ECF3FF;
+    }
+} */

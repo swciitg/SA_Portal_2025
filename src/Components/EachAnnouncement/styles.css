@@ -1,0 +1,23 @@
+.each-bg{
+    display: flex;
+    background-color: #F0F1F7;
+    width: 368px;
+    height: 143px;
+    padding: 16px 20px;
+}
+
+.each-bg h2{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.each-bg p{
+    color: #00000061;
+    font-size: 13px;
+}
+
+.img-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
