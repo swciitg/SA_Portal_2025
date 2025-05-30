@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Announcements from "../Components/Announcements";
+import AchievementCard from "../Components/AchievementCard";
 
 const achievements = [
     {
@@ -42,20 +44,6 @@ const achievements = [
 ];
 const CARD_WIDTH = 400; // Approx width of each card including gap
 const SCROLL_CARDS = 3;
-
-const announcements = [
-    { date: "2025-04-21", text: "Notice regarding Railway Concession" },
-    { date: "2025-03-19", text: "Notice-10/2025 regarding Students’ Gymkhana Election (2025-26)" },
-    { date: "2025-03-11", text: "[Notice-09/2025]: IWAB 2024-25 Scholarship Notice" },
-    { date: "2025-02-03", text: "[Circular-04/2025]: Circular regarding Students’ Gymkhana Council 2025-26" },
-    { date: "2025-01-30", text: "[Notice-03/2025]: IWAB 2024-25 Scholarship Notice" },
-    { date: "2025-03-19", text: "Notice-10/2025 regarding Students’ Gymkhana Election (2025-26)" },
-    { date: "2025-03-19", text: "Notice-10/2025 regarding Students’ Gymkhana Election (2025-26)" },
-    { date: "2025-03-19", text: "Notice-10/2025 regarding Students’ Gymkhana Election (2025-26)" },
-    { date: "2025-03-19", text: "Notice-10/2025 regarding Students’ Gymkhana Election (2025-26)" },
-    { date: "2025-03-19", text: "Notice-10/2025 regarding Students’ Gymkhana Election (2025-26)" },
-
-];
 
 const ITEMS_PER_SLIDE = 3;
 
@@ -106,30 +94,9 @@ export default function StudentAffairsPage() {
                             </p>
                         </div>
 
-                        {/* Achievements */}
                     </div>
 
-                    {/* Announcements */}
-                    <div className="py-5">
-                        <h2 className="text-xl font-semibold mb-4">Announcements</h2>
-                        <div className="h-[450px] overflow-y-auto">
-                            <div className="space-y-4">
-                                {announcements.map((notice, idx) => (
-                                    <div
-                                        key={idx}
-                                        className="bg-gray-50 px-5 py-4 shadow-sm hover:shadow-md transition border cursor-pointer flex justify-between items-center"
-                                        style={{ backgroundColor: 'rgb(240,241,241)' }}
-                                    >
-                                        <div>
-                                            <div className="text-xs text-gray-500 mb-1">{notice.date}</div>
-                                            <div className="text-sm text-gray-800">{notice.text}</div>
-                                        </div>
-                                        <div className="text-xl text-gray-400">&rsaquo;</div> {/* right arrow › */}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
+                    <Announcements />
 
 
                 </div>
@@ -150,27 +117,7 @@ export default function StudentAffairsPage() {
                         style={{ transform: `translateX(-${offset}px)` }}
                     >
                         {achievements.map((item, idx) => (
-                            <div
-                                key={idx}
-                                className="flex-shrink-0 w-[400px] h-[240px] border border-gray-400"
-                            >
-                                <div className="flex h-full">
-                                    <div className="w-1/2 h-full">
-                                        <img
-                                            src={item.image || "/default-image.jpg"}
-                                            alt="Achievement"
-                                            className="w-full h-full object-cover"
-                                        />
-                                    </div>
-                                    <div className="w-1/2 flex flex-col justify-between h-full text-sm">
-                                        <div className="h-full flex flex-col justify-center px-2">
-                                            <h3 className="font-semibold mb-2 text-base">{item.title}</h3>
-                                            <p className="text-justify">{item.content}</p>
-                                        </div>
-                                        <a href="#" className="text-blue-600 text-xs px-2 pb-2">Learn more</a>
-                                    </div>
-                                </div>
-                            </div>
+                            <AchievementCard key={idx} item={item}></AchievementCard>
                         ))}
                     </div>
                 </div>
