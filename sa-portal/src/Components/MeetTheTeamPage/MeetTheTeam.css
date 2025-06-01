@@ -1,8 +1,22 @@
 .meet-the-team-page{
     width:100%;
-    height: fit-content;
+    height: 100vh;
+    overflow: hidden;
     margin: 0;
+    position: relative;
     box-sizing: border-box;
+    padding-bottom: 20vh;
+}
+
+.mtt-body{
+    height:100%;
+    width:100%;
+    overflow-y: scroll;
+    position: relative;
+}
+.mtt-body::-webkit-scrollbar{
+    width:0;
+    height:0;
 }
 
 .mtt-banner{
@@ -34,6 +48,8 @@
 }
 
 .category-selector{
+    position: sticky;
+    top:0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,6 +69,7 @@
     height : 100%;
     color: #00000099;
     padding-bottom: 10px;
+    cursor: pointer;
 }
 
 .category-active{
@@ -66,6 +83,7 @@
     background-color: #C3D9FE;
     color: #08267C;
     padding-bottom: 10px;
+    cursor: pointer;
 }
 
 .category img{
@@ -83,4 +101,58 @@
 
 .category-icon{
     color: blue;
+}
+
+.team-section{
+    margin-top: 80px;
+    width:100%;
+    border-top: 1px solid #e0e2ee;
+    padding-left: 15%;
+}
+
+.team-heading{
+    height:90px;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 31px;
+    padding: 19px;
+    border-top: 3px #0E45E1 solid;
+}
+
+.team-cards-scroll{
+    width:100%;
+    overflow-x: scroll;
+}
+
+.team-cards{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: fit-content;
+    gap: 24px;
+}
+.team-cards-scroll::-webkit-scrollbar{
+    width:0;
+    height:0;
+}
+
+.display-none{
+    display: none;
+}
+.category-selector-scrolled{
+    height:fit-content;
+}
+.category-selector-scrolled p{
+    display: inline-block;
+    font-size: 15px;
+    padding: 15px 0 16px 0;
+    font-weight: 400;
+}
+.category-selector-scrolled .category,.category-active{
+    width: fit-content;
+    padding: 0 20px;
+}
+.category-selector-scrolled .category-active{
+    color: #0E45E1;
+    background-color: #ECF3FF;
 }

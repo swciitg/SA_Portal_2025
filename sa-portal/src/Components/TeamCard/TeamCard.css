@@ -1,7 +1,7 @@
 .prof-card {
   display: flex;
-  width: 40vw;
-  max-height: 20vw;
+  width: 588px;
+  height: 268px;
   border: 2px solid #F0F1F7;
   border-radius: 6px;
   overflow: hidden;
@@ -11,6 +11,7 @@
 
 .prof-img {
   height: 100%;
+  aspect-ratio: 1/1;
   border-radius: 4px;
   object-fit: cover;
   margin: 0;
@@ -19,28 +20,28 @@
 .prof-right {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: #fff;
-  padding: 60px 35px ;
+  padding: 15px 35px ;
 }
 
 .prof-name {
   font-size: 20px;
-  margin: 0 0 8px;
+  margin: 0 ;
 }
 
 .prof-title {
   font-size: 16px;
   color: #00000061;
-  margin: 0 0 16px;
+  margin: 0 ;
 }
 
 .prof-contact {
-  font-size: 14px;
-  color: #333;
+  font-size: 15px;
+  color: #00000061;
   margin: 6px 0;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 
 .prof-contact img {
