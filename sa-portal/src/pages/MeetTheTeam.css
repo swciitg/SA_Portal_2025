@@ -41,6 +41,7 @@
     height:fit-content;
     font-weight: 900;
     color:#ffffff;
+    z-index: 1;
 }
 
 .mtt-banner div span{
@@ -56,7 +57,6 @@
     width: 100%;
     height: 100px;
     background-color: #ECF3FF;
-    padding-top: 3px;
 }
 
 .category{
@@ -74,34 +74,29 @@
 
 .category-active{
     text-align: center;
-    width: 180px;
     font-size: 13px;
+    width: 180px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height : 100%;
-    background-color: #C3D9FE;
-    color: #08267C;
+    color: #00000099;
     padding-bottom: 10px;
     cursor: pointer;
-}
-
-.category img{
-    max-width: 48px;
-    max-height: 48px;
-    margin:auto;
-}
-
-.category-active img{
-    margin:auto;
-    max-width: 48px;
-    max-height: 48px;
-    /* filter: invert(14%) sepia(300%) saturate(7492%) hue-rotate(200deg) brightness(100%) contrast(170%); */
+    color: #0D3FCD;
+    background-color: #C3D9FE;
 }
 
 .category-icon{
-    color: blue;
+    max-width: 48px;
+    max-height: 48px;
+    margin:auto;
 }
+
+.category-active .category-icon img{
+    filter: invert(0.5) sepia(1) saturate(100) hue-rotate(200deg) contrast(10);
+}
+
 
 .team-section{
     margin-top: 80px;
@@ -148,11 +143,17 @@
     padding: 15px 0 16px 0;
     font-weight: 400;
 }
-.category-selector-scrolled .category,.category-active{
+.category-selector-scrolled .category{
     width: fit-content;
     padding: 0 20px;
 }
 .category-selector-scrolled .category-active{
+    width: fit-content;
+    padding: 0 20px;
     color: #0E45E1;
     background-color: #ECF3FF;
+}
+
+.teams-container{
+    padding-bottom: 20px;
 }

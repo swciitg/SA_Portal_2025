@@ -4,7 +4,7 @@ import './styles.css';
 const Ann = (props) =>{
     const {text,date}  = props;
     return (
-        <div className='each-bg'>
+        <div className='each-announcement'>
             <div>
                 <p>{date}</p>
                 <h2>{text}</h2>

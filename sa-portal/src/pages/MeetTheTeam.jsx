@@ -1,15 +1,15 @@
-import Navbar from '../Navbar'
+import Navbar from '../Components/Navbar'
 import { useState } from 'react'
-import MeetTheTeamBanner from '../../assets/Images/mtt-banner.png'
-import AchievementsCard from '../AchievementsCard'
-import TeamCard from '../TeamCard'
+import MeetTheTeamBanner from '../assets/Images/mtt-banner.png'
+import AchievementsCard from '../Components/AchievementsCard'
+import TeamCard from '../Components/TeamCard'
 import './MeetTheTeam.css'
-import saf from '../../assets/icons/Student-Affairs-Functionaries.svg'
-import hab from '../../assets/icons/Hostel-Affairs-Board.svg'
-import sg from '../../assets/icons/Students-Gymkhana.svg'
-import cc from '../../assets/icons/Counselling-Cell.svg'
-import go from '../../assets/icons/Gymkhana-Office.svg'
-import ns from '../../assets/icons/New-Sac.svg'
+import saf from '../assets/icons/Student-Affairs-Functionaries.svg'
+import hab from '../assets/icons/Hostel-Affairs-Board.svg'
+import sg from '../assets/icons/Students-Gymkhana.svg'
+import go from '../assets/icons/Gymkhana-Office.svg'
+import ns from '../assets/icons/New-Sac.svg'
+import cc from '../assets/icons/Counselling-Cell.svg'
 
 const MeetTheTeam = () =>{
     const [category, setCategory] = useState('Student Affairs Functionaries');
@@ -86,17 +86,21 @@ const MeetTheTeam = () =>{
             <div className='mtt-banner'>
                 <div>
                     <h1>Meet<br/> the <span>Team</span>.</h1>
+                    
                 </div>
                 <img src={MeetTheTeamBanner} alt='banner'/>
             </div>
             <ul className='category-selector'>
                 {groups.map((group, index) => (
                     <li key={index} className={ group===category ? "category-active" : "category"} onClick={() => setCategory(group)}>
-                        <img src={images[index]} className='category-icon' alt={group} />
+                        <div className='category-icon'>
+                            <img src={images[index]} alt={group} />
+                        </div>
                         <p>{group}</p>
                     </li>
                 ))}
             </ul>
+            <div className='teams-container'>
                 {teams.map((team, index) => (
                 <div key={index} className='team-section'>
                     <h1 className='team-heading'>{team.heading}</h1>
@@ -117,6 +121,7 @@ const MeetTheTeam = () =>{
                     </div>
                 </div>
                 ))}
+            </div>
             </div>
         </div>
     )

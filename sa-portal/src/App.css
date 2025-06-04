@@ -7,9 +7,12 @@
 }
 
 .body{
+  margin: 6% 10%;
+}
+
+.body-top{
   display: flex;
-  width: 1200px;
-  height: 752px;
-  gap: 131px;
-  margin: 68px auto;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }

@@ -1,25 +1,11 @@
 import React from "react";
-import Carousel from "./Components/Carousel";
-import Navbar from "./Components/Navbar";
-import Announcements from "./Components/Announcements";
-import Achievements from "./Components/Achievements";
-import About from "./Components/About";
-import MeetTheTeamPage from "./Components/MeetTheTeamPage";
+import MeetTheTeamPage from "./pages/MeetTheTeam";
+import HomePage from "./pages/HomePage";
 import "./App.css";
 const App = () => {
- 
-
   return (
-    <>
-      <Navbar />
-      <Carousel />
-      <div className='body'>
-        <About/>
-        <Announcements/>
-      </div>
-      <Achievements />
-    </>
-    // <MeetTheTeamPage />
+    // <HomePage />
+    <MeetTheTeamPage />
   );
 };
 
