@@ -2,19 +2,19 @@ import React from "react";
 import Carousel from "./Components/Carousel";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
-import ServicesAccordian from "./Components/ServicesAccordian";
-import SWCTeamCard from "./Components/SWCTeamCard";
+import HomePage from "./pages/HomePage";
+import ScholarshipPage from "./pages/ScholarshipPage";
+import SACMinutes from "./pages/SACMinutes";
+import ServicesPage from "./pages/ServicesPage";
+import SWCPage from "./pages/SWCPage";
 const App = () => {
   return (
     <>
       <Navbar />
-      {/* <Carousel /> */}
-      <ServicesAccordian />
-      {/* <div className="flex flex-wrap gap-5 px-10">
-        <SWCTeamCard />
-        <SWCTeamCard />
-        <SWCTeamCard />
-      </div> */}
+      {/* <Carousel />
+      <SACMinutes /> */}
+      {/* <ServicesPage /> */}
+      <SWCPage />
       <Footer />
     </>
   );

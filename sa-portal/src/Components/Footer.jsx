@@ -1,9 +1,17 @@
 import React from 'react';
+<<<<<<< HEAD
 import iitg_logo from '../assets/images/iitg_logo.png';
 import LinkedIn_logo from '../assets/images/LinkedIn.png';
 import X_logo from '../assets/images/X.png';
 import email_icon from '../assets/images/email_icon.png'
 import phone_icon from '../assets/images/phone_icon.png'
+=======
+import iitg_logo from '../assets/Images/iitg_logo.png';
+import LinkedIn_logo from '../assets/Images/LinkedIn.png';
+import X_logo from '../assets/Images/X.png';
+import email_icon from '../assets/Images/email_icon.png'
+import phone_icon from '../assets/Images/phone_icon.png'
+>>>>>>> master
 
 const Footer = () => {
   return (
