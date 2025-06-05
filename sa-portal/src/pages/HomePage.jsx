@@ -2,7 +2,7 @@ import Carousel from "../Components/Carousel";
 import Announcements from "../Components/Announcements";
 import Achievements from "../Components/Achievements";
 import About from "../Components/About";
-import './MeetTheTeam.css'; // Assuming you have a CSS file for styling
+import './HomePage.css'
 
 const HomePage = () => {
   return (

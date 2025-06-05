@@ -5,7 +5,7 @@
     margin: 0;
     position: relative;
     box-sizing: border-box;
-    padding-bottom: 20vh;
+    padding-bottom: 18vh;
 }
 
 .mtt-body {
@@ -47,6 +47,25 @@
 
 .mtt-banner div span {
     color: #5E82EB;
+}
+
+.mtt-banner div .mtt-banner-links {
+    font-size: 20px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mtt-banner div .mtt-banner-links a {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.mtt-banner div .mtt-banner-links img {
+    height: 24px;
+    width: 24px;
+    position: relative;
 }
 
 .category-selector {
@@ -95,7 +114,9 @@
 }
 
 .category-active .category-icon img {
+    fill: #08267C;
     filter: invert(0.5) sepia(1) saturate(100) hue-rotate(200deg) contrast(10);
+    /* filter: invert(15%) sepia(83%) saturate(2422%) hue-rotate(212deg) brightness(80%) contrast(99%); */
 }
 
 
