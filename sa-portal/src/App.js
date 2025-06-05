@@ -5,14 +5,16 @@ import Footer from "./Components/Footer";
 import HomePage from "./pages/HomePage";
 import ScholarshipPage from "./pages/ScholarshipPage";
 import SACMinutes from "./pages/SACMinutes";
+import ServicesPage from "./pages/ServicesPage";
+import SWCPage from "./pages/SWCPage";
 const App = () => {
-
-
   return (
     <>
       <Navbar />
-      <Carousel />
-      <SACMinutes/>
+      {/* <Carousel />
+      <SACMinutes /> */}
+      {/* <ServicesPage /> */}
+      <SWCPage />
       <Footer />
     </>
   );
