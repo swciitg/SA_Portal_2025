@@ -39,6 +39,7 @@ const SACMinutes = () => {
 
         {/* Simple Pagination */}
         <div className="flex items-center space-x-1 select-none">
+          {/* Previous Button */}
           <button
             className="px-3 py-1 bg-gray-200 disabled:opacity-50"
             onClick={() => setPage(p => Math.max(p - 1, 1))}
@@ -48,33 +49,42 @@ const SACMinutes = () => {
             &lt;
           </button>
 
-          {prevPage && (
-            <button
-              className="border border-gray-300 text-gray-500 px-3 py-1 hover:bg-gray-300"
-              onClick={() => setPage(prevPage)}
-              aria-label={`Go to page ${prevPage}`}
-            >
-              {prevPage}
-            </button>
-          )}
-
           <button
-            className="px-3 py-1 customCOlor text-white cursor-default"
+            className="border border-gray-300 text-gray-500 px-3 py-1 cursor-default"
             disabled
-            aria-current="page"
           >
-            {page}
+            ...
           </button>
 
-          {nextPage && (
-            <button
-              className="border border-gray-300 text-gray-500 px-3 py-1 hover:bg-gray-300"
-              onClick={() => setPage(nextPage)}
-              aria-label={`Go to page ${nextPage}`}
-            >
-              {nextPage}
-            </button>
-          )}
+          <button
+            className={`px-3 py-1 ${page > 1 ? 'border border-gray-300 text-gray-500 hover:bg-gray-300' : 'customCOlor text-white cursor-default'}`}
+            onClick={() => setPage(Math.max(page - 1, 1))}
+          >
+            {Math.max(page - 1, 1)}
+          </button>
+
+          <button
+            // className="px-3 py-1 customCOlor text-white cursor-default"
+            className={`px-3 py-1 ${page > 1 && page < totalPages ? 'customCOlor text-white cursor-default' : 'border border-gray-300 text-gray-500 hover:bg-gray-300'}`}
+            onClick={() => setPage(Math.max(Math.min(page, totalPages - 1), 2))}
+            aria-current="page"
+          >
+            {Math.max(page, 2)}
+          </button>
+
+          <button
+            className={`px-3 py-1 ${page < totalPages ? 'border border-gray-300 text-gray-500 hover:bg-gray-300' : 'customCOlor text-white cursor-default'}`}
+            onClick={() => setPage(Math.min(page + 1, totalPages))}
+          >
+            {Math.max(page + 1, 3)}
+          </button>
+
+          <button
+            className="border border-gray-300 text-gray-500 px-3 py-1 cursor-default"
+            disabled
+          >
+            ...
+          </button>
 
           <button
             className="px-3 py-1 bg-gray-200 disabled:opacity-50"
