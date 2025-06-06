@@ -1,7 +1,12 @@
 .prof-card {
   display: flex;
+<<<<<<< HEAD
   width: 588px;
   height: 268px;
+=======
+  width: 40vw;
+  max-height: 20vw;
+>>>>>>> 3eaaedd77868df6ac3110d581f3c5651e22ad288
   border: 2px solid #F0F1F7;
   border-radius: 6px;
   overflow: hidden;
@@ -11,7 +16,10 @@
 
 .prof-img {
   height: 100%;
+<<<<<<< HEAD
   aspect-ratio: 1/1;
+=======
+>>>>>>> 3eaaedd77868df6ac3110d581f3c5651e22ad288
   border-radius: 4px;
   object-fit: cover;
   margin: 0;
@@ -20,19 +28,30 @@
 .prof-right {
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   justify-content: space-around;
   background-color: #fff;
   padding: 15px 35px ;
+=======
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 60px 35px;
+>>>>>>> 3eaaedd77868df6ac3110d581f3c5651e22ad288
 }
 
 .prof-name {
   font-size: 20px;
+<<<<<<< HEAD
   margin: 0 ;
+=======
+  margin: 0 0 8px;
+>>>>>>> 3eaaedd77868df6ac3110d581f3c5651e22ad288
 }
 
 .prof-title {
   font-size: 16px;
   color: #00000061;
+<<<<<<< HEAD
   margin: 0 ;
 }
 
@@ -42,10 +61,44 @@
   margin: 6px 0;
   display: flex;
   align-items: center;
+=======
+  margin: 0 0 16px;
+}
+
+.prof-contact {
+  font-size: 14px;
+  color: #333;
+  margin: 6px 0;
+  display: flex;
+  align-items: flex-end;
+>>>>>>> 3eaaedd77868df6ac3110d581f3c5651e22ad288
 }
 
 .prof-contact img {
   margin-right: 8px;
+<<<<<<< HEAD
   height:18px;
   width:18px;
 }
+=======
+  height: 18px;
+  width: 18px;
+}
+
+.hoverCustom:hover {
+  background-color: rgb(8, 38, 124);
+  color: white;
+}
+
+.customBgNew {
+  background-color: rgb(236 243 255);
+}
+
+.hoveredBg:hover {
+  background-color: rgb(197 217 254)
+}
+
+.customCOlor {
+  background-color: rgb(8, 38, 124);
+}
+>>>>>>> 3eaaedd77868df6ac3110d581f3c5651e22ad288

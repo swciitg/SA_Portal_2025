@@ -4,6 +4,10 @@
     width: 100%;
     height: fit-content;
     padding: 16px 20px;
+<<<<<<< HEAD
+=======
+    justify-content: space-between;
+>>>>>>> 3eaaedd77868df6ac3110d581f3c5651e22ad288
 }
 
 .each-announcement h2{
