@@ -20,7 +20,7 @@ const FitCountCalculator = ({ links }) => {
         else if (windowWidth >= 900 && windowWidth < 1100) count = 6;
         else if (windowWidth >= 1100 && windowWidth < 1250) count = 7;
         else if (windowWidth >= 1250 && windowWidth < 1425) count = 8;
-        else if (windowWidth >= 1425 && windowWidth < 1550) count = 9;
+        else if (windowWidth >= 1425 && windowWidth < 1520) count = 9;
         else count = links.length; // fallback, e.g. smaller than 750 show all or adjust as you want
 
         setFitCount(count);
