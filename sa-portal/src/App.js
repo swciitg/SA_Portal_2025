@@ -10,8 +10,8 @@ const App = () => {
 
 
   return (
-    // <HomePage/>
-    <MeetTheTeam/>
+    <HomePage/>
+    // <MeetTheTeam/>
   );
 };
 

@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     width: 35%;
-    height: 682px;
+    max-height: 682px;
     gap: 24px;
 }
 .announcements-container h1{
@@ -35,3 +35,17 @@
         scrollbar-color: #00000061 #ECF3FF;
     }
 } */
+ @media only screen and (max-width: 700px){
+    .announcements-container{
+        width: 100%;
+        padding: 0 20px;
+        margin-top: 30px;
+    }
+    .announcements-container h1{
+        font-size: 24px;
+        width: 100%;
+    }
+    .scroll-bar{
+        height: 100%;
+    }
+ }
