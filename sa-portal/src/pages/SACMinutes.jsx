@@ -39,6 +39,10 @@ const SACMinutes = () => {
 
         {/* Simple Pagination */}
         <div className="flex items-center space-x-1 select-none">
+<<<<<<< HEAD
+=======
+          {/* Previous Button */}
+>>>>>>> 991a471c167f1affea4670c0ea18e989301f24d3
           <button
             className="px-3 py-1 bg-gray-200 disabled:opacity-50"
             onClick={() => setPage(p => Math.max(p - 1, 1))}
@@ -48,6 +52,7 @@ const SACMinutes = () => {
             &lt;
           </button>
 
+<<<<<<< HEAD
           {prevPage && (
             <button
               className="border border-gray-300 text-gray-500 px-3 py-1 hover:bg-gray-300"
@@ -75,6 +80,44 @@ const SACMinutes = () => {
               {nextPage}
             </button>
           )}
+=======
+          <button
+            className="border border-gray-300 text-gray-500 px-3 py-1 cursor-default"
+            disabled
+          >
+            ...
+          </button>
+
+          <button
+            className={`px-3 py-1 ${page > 1 ? 'border border-gray-300 text-gray-500 hover:bg-gray-300' : 'customCOlor text-white cursor-default'}`}
+            onClick={() => setPage(Math.max(page - 1, 1))}
+          >
+            {Math.max(page - 1, 1)}
+          </button>
+
+          <button
+            // className="px-3 py-1 customCOlor text-white cursor-default"
+            className={`px-3 py-1 ${page > 1 && page < totalPages ? 'customCOlor text-white cursor-default' : 'border border-gray-300 text-gray-500 hover:bg-gray-300'}`}
+            onClick={() => setPage(Math.max(Math.min(page, totalPages - 1), 2))}
+            aria-current="page"
+          >
+            {Math.max(page, 2)}
+          </button>
+
+          <button
+            className={`px-3 py-1 ${page < totalPages ? 'border border-gray-300 text-gray-500 hover:bg-gray-300' : 'customCOlor text-white cursor-default'}`}
+            onClick={() => setPage(Math.min(page + 1, totalPages))}
+          >
+            {Math.max(page + 1, 3)}
+          </button>
+
+          <button
+            className="border border-gray-300 text-gray-500 px-3 py-1 cursor-default"
+            disabled
+          >
+            ...
+          </button>
+>>>>>>> 991a471c167f1affea4670c0ea18e989301f24d3
 
           <button
             className="px-3 py-1 bg-gray-200 disabled:opacity-50"

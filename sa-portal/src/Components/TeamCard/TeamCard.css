@@ -1,7 +1,12 @@
 .prof-card {
   display: flex;
+<<<<<<< HEAD
   width: 40vw;
   max-height: 20vw;
+=======
+  width: 588px;
+  height: 268px;
+>>>>>>> 991a471c167f1affea4670c0ea18e989301f24d3
   border: 2px solid #F0F1F7;
   border-radius: 6px;
   overflow: hidden;
@@ -11,6 +16,10 @@
 
 .prof-img {
   height: 100%;
+<<<<<<< HEAD
+=======
+  aspect-ratio: 1/1;
+>>>>>>> 991a471c167f1affea4670c0ea18e989301f24d3
   border-radius: 4px;
   object-fit: cover;
   margin: 0;
@@ -19,19 +28,30 @@
 .prof-right {
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   justify-content: space-between;
   background-color: #fff;
   padding: 60px 35px;
+=======
+  justify-content: space-around;
+  background-color: #fff;
+  padding: 15px 35px ;
+>>>>>>> 991a471c167f1affea4670c0ea18e989301f24d3
 }
 
 .prof-name {
   font-size: 20px;
+<<<<<<< HEAD
   margin: 0 0 8px;
+=======
+  margin: 0 ;
+>>>>>>> 991a471c167f1affea4670c0ea18e989301f24d3
 }
 
 .prof-title {
   font-size: 16px;
   color: #00000061;
+<<<<<<< HEAD
   margin: 0 0 16px;
 }
 
@@ -41,10 +61,22 @@
   margin: 6px 0;
   display: flex;
   align-items: flex-end;
+=======
+  margin: 0 ;
+}
+
+.prof-contact {
+  font-size: 15px;
+  color: #00000061;
+  margin: 6px 0;
+  display: flex;
+  align-items: center;
+>>>>>>> 991a471c167f1affea4670c0ea18e989301f24d3
 }
 
 .prof-contact img {
   margin-right: 8px;
+<<<<<<< HEAD
   height: 18px;
   width: 18px;
 }
@@ -65,3 +97,8 @@
 .customCOlor {
   background-color: rgb(8, 38, 124);
 }
+=======
+  height:18px;
+  width:18px;
+}
+>>>>>>> 991a471c167f1affea4670c0ea18e989301f24d3
