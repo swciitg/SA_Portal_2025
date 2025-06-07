@@ -5,11 +5,11 @@
   box-sizing: border-box;
   font-family: "Satoshi", sans-serif;
 }
-
-.body {
+/* 
+.body{
   display: flex;
   width: 1201px;
   height: 752px;
   gap: 131px;
   margin: 68px auto;
-}
+} */

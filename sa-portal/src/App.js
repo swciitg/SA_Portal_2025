@@ -3,20 +3,15 @@ import Carousel from "./Components/Carousel";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import HomePage from "./pages/HomePage";
+import MeetTheTeam from "./pages/MeetTheTeam";
 import ScholarshipPage from "./pages/ScholarshipPage";
 import SACMinutes from "./pages/SACMinutes";
 import ServicesPage from "./pages/ServicesPage";
 import SWCPage from "./pages/SWCPage";
 const App = () => {
   return (
-    <>
-      <Navbar />
-      {/* <Carousel />
-      <SACMinutes /> */}
-      {/* <ServicesPage /> */}
-      <SWCPage />
-      <Footer />
-    </>
+    <HomePage/>
+    // <MeetTheTeam/>
   );
 };
 

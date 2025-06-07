@@ -1,17 +1,25 @@
-.each-bg{
+<<<<<<< HEAD
+.each-announcement{
+=======
+/* .each-announcement{
+>>>>>>> 991a471c167f1affea4670c0ea18e989301f24d3
     display: flex;
     background-color: #F0F1F7;
-    width: 368px;
-    height: 143px;
+    width: 100%;
+    height: fit-content;
     padding: 16px 20px;
+<<<<<<< HEAD
+    justify-content: space-between;
+=======
+>>>>>>> 991a471c167f1affea4670c0ea18e989301f24d3
 }
 
-.each-bg h2{
+.each-announcement h2{
     font-size: 20px;
     font-weight: 400;
 }
 
-.each-bg p{
+.each-announcement p{
     color: #00000061;
     font-size: 13px;
 }
@@ -20,4 +28,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 25px;
+}
+.img-container img{
+    width: 25px;
+    height: 24px;
+<<<<<<< HEAD
+=======
+} */
+
+/* Scrollbar styling to match original */
+.custom-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+    background-color: #ECF3FF;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+    background: #00000061;
+    border: 1px solid #ECF3FF;
+>>>>>>> 991a471c167f1affea4670c0ea18e989301f24d3
 }
