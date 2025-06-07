@@ -6,9 +6,9 @@ import HomePage from "./pages/HomePage";
 import MeetTheTeam from "./pages/MeetTheTeam";
 import ScholarshipPage from "./pages/ScholarshipPage";
 import SACMinutes from "./pages/SACMinutes";
+import ServicesPage from "./pages/ServicesPage";
+import SWCPage from "./pages/SWCPage";
 const App = () => {
-
-
   return (
     <HomePage/>
     // <MeetTheTeam/>
