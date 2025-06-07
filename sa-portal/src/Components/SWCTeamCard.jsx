@@ -1,29 +1,5 @@
 import React from "react";
 
-<<<<<<< HEAD
-function SWCTeamCard() {
-  // sample data -> has to be from props
-  const data = {
-    name: "John Doe",
-    position: "Overall Coordinator",
-    email: "johndoe99@outlook.com",
-    phone: "1234567890",
-    image: "agriculture-bg.jpg",
-    program: "B.Tech in Chemical Engineering",
-  };
-
-  return (
-    <div className="flex items-center space-x-10 px-4 py-6 border-2 border-blue-50">
-      <img src={data.image} alt={data.name} className="size-60 rounded-full" />
-      <div className="h-full flex flex-col justify-around">
-        <div>
-          <h2 className="font-semibold text-3xl mb-4 text-black/85">
-            {data.name}
-          </h2>
-          <hr className="border-b" />
-          <div className="w-1/2 border-b-2 border-blue-500"></div>
-          <p className="mt-4 text-black/85">{data.position}</p>
-=======
 function SWCTeamCard({ name, position, email, phone, image, program }) {
   // sample data -> has to be from props
   // const data = {
@@ -44,7 +20,6 @@ function SWCTeamCard({ name, position, email, phone, image, program }) {
           <hr className="border-b" />
           <div className="w-1/2 border-b-2 border-blue-500"></div>
           <p className="mt-4 text-black/85">{position}</p>
->>>>>>> master
         </div>
 
         <div className="flex flex-col space-y-2">
@@ -59,15 +34,6 @@ function SWCTeamCard({ name, position, email, phone, image, program }) {
               <path
                 d="M8.29794 8.76607C8.9871 10.2014 9.92656 11.5467 11.1163 12.7365C12.3061 13.9263 13.6514 14.8657 15.0868 15.5549C15.2102 15.6142 15.272 15.6438 15.3501 15.6666C15.6277 15.7475 15.9686 15.6894 16.2037 15.521C16.2698 15.4737 16.3264 15.4171 16.4396 15.3039C16.7858 14.9577 16.9589 14.7846 17.1329 14.6715C17.7893 14.2447 18.6355 14.2447 19.2918 14.6715C19.4659 14.7846 19.639 14.9577 19.9851 15.3039L20.1781 15.4968C20.7043 16.0231 20.9674 16.2862 21.1104 16.5688C21.3946 17.1307 21.3946 17.7944 21.1104 18.3564C20.9674 18.639 20.7043 18.9021 20.1781 19.4283L20.022 19.5844C19.4976 20.1088 19.2354 20.371 18.8789 20.5713C18.4833 20.7935 17.8689 20.9533 17.4152 20.9519C17.0063 20.9507 16.7269 20.8714 16.168 20.7128C13.1644 19.8602 10.3301 18.2517 7.96562 15.8872C5.60111 13.5227 3.99259 10.6885 3.14008 7.68488C2.98145 7.12598 2.90213 6.84653 2.90092 6.43764C2.89957 5.98392 3.05934 5.36953 3.28156 4.97395C3.48182 4.61745 3.74403 4.35525 4.26845 3.83083L4.42453 3.67474C4.95075 3.14852 5.21386 2.88541 5.49644 2.74248C6.05843 2.45823 6.7221 2.45823 7.28409 2.74248C7.56666 2.88541 7.82977 3.14852 8.356 3.67474L8.54895 3.86769C8.89512 4.21387 9.06821 4.38695 9.18137 4.561C9.60813 5.21738 9.60813 6.06356 9.18137 6.71994C9.06821 6.89399 8.89512 7.06707 8.54895 7.41325C8.43576 7.52643 8.37917 7.58303 8.3318 7.64918C8.16346 7.88428 8.10533 8.22516 8.18625 8.50276C8.20902 8.58087 8.23866 8.6426 8.29794 8.76607Z"
                 stroke="#0E45E1"
-<<<<<<< HEAD
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-
-            <span className="text-black/60">{data.phone}</span>
-=======
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -75,7 +41,6 @@ function SWCTeamCard({ name, position, email, phone, image, program }) {
             </svg>
 
             <span className="text-black/60">{phone}</span>
->>>>>>> master
           </div>
           <div className="flex items-center space-x-1">
             <svg
@@ -88,16 +53,6 @@ function SWCTeamCard({ name, position, email, phone, image, program }) {
               <path
                 d="M17 15.2632V12.2577C17 12.0782 17 11.9885 16.9727 11.9092C16.9485 11.8392 16.9091 11.7754 16.8572 11.7224C16.7986 11.6625 16.7183 11.6224 16.5578 11.5421L12 9.26325M4 10.2632V17.0699C4 17.4418 4 17.6277 4.05802 17.7905C4.10931 17.9345 4.1929 18.0648 4.30238 18.1714C4.42622 18.2919 4.59527 18.3694 4.93335 18.5244L11.3334 21.4577C11.5786 21.5701 11.7012 21.6263 11.8289 21.6485C11.9421 21.6681 12.0579 21.6681 12.1711 21.6485C12.2988 21.6263 12.4214 21.5701 12.6666 21.4577L19.0666 18.5244C19.4047 18.3694 19.5738 18.2919 19.6976 18.1714C19.8071 18.0648 19.8907 17.9345 19.942 17.7905C20 17.6277 20 17.4418 20 17.0699V10.2632M2 9.26325L11.6422 4.44213C11.7734 4.37654 11.839 4.34375 11.9078 4.33084C11.9687 4.31941 12.0313 4.31941 12.0922 4.33084C12.161 4.34375 12.2266 4.37654 12.3578 4.44213L22 9.26325L12.3578 14.0844C12.2266 14.15 12.161 14.1828 12.0922 14.1957C12.0313 14.2071 11.9687 14.2071 11.9078 14.1957C11.839 14.1828 11.7734 14.15 11.6422 14.0844L2 9.26325Z"
                 stroke="#0E45E1"
-<<<<<<< HEAD
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-
-            <a href={"mailto:" + data.email}>
-              <span className="text-black/60">{data.program}</span>
-=======
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -106,7 +61,6 @@ function SWCTeamCard({ name, position, email, phone, image, program }) {
 
             <a href={"mailto:" + email}>
               <span className="text-black/60">{program}</span>
->>>>>>> master
             </a>
           </div>
         </div>

@@ -11,10 +11,10 @@ const App = () => {
   return (
     <>
       <Navbar />
-      {/* <Carousel />
-      <SACMinutes /> */}
-      {/* <ServicesPage /> */}
-      <SWCPage />
+      <Carousel />
+      <HomePage />
+      <ServicesPage />
+      {/* <SWCPage /> */}
       <Footer />
     </>
   );
