@@ -12,6 +12,8 @@ import SACourses from "./pages/SACourses";
 const App = () => {
   return (
     <>
+    <HomePage/>
+    <Footer/>
     </>
   );
 };

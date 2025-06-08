@@ -194,7 +194,7 @@ export default function SWCPage() {
   };
 
   return (
-    <div className="my-10">
+    <div className="mb-10">
       <BannerTop
         heading={
           <div className="flex flex-col space-y-3">

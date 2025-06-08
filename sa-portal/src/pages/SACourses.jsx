@@ -28,8 +28,17 @@ const SACourses = () => {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Banner */}
-            <div> 
-                <BannerTop heading='SA Courses' route={route} />
+            <div>
+                <BannerTop
+                    heading={
+                        <div className="flex flex-row space-x-3">
+                            <p>SA</p>
+                            <p className="text-blue-400">Courses</p>
+                        </div>
+                    }
+                    route={["Student Affairs Board", "SA Courses"]}
+                />
+                {/* <BannerTop heading='SA Courses' route={route} /> */}
             </div>
 
             {/* Content section */}
