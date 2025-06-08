@@ -1,10 +1,18 @@
 import React from "react";
-import MeetTheTeamPage from "./pages/MeetTheTeam";
+import Carousel from "./Components/Carousel";
+import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
 import HomePage from "./pages/HomePage";
-import "./App.css";
+import MeetTheTeam from "./pages/MeetTheTeam";
+import ScholarshipPage from "./pages/ScholarshipPage";
+import SACMinutes from "./pages/SACMinutes";
+import ServicesPage from "./pages/ServicesPage";
+import SWCPage from "./pages/SWCPage";
+import SACourses from "./pages/SACourses";
 const App = () => {
   return (
-    <HomePage/>
+    <>
+    </>
   );
 };
 
