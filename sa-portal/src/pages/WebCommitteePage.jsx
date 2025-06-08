@@ -9,7 +9,7 @@ const SCROLL_CARDS = 3;
 
 const ITEMS_PER_SLIDE = 3;
 
-export default function SWCPage() {
+export default function WebCommitteePage() {
   const announcements = [
     {
       title: "Notice regarding railway concession",

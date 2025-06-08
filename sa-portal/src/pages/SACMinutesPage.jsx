@@ -1,23 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import MinuteCard from '../Components/MinuteCard';
+import React, { useState, useEffect } from "react";
+import MinuteCard from "../Components/MinuteCard";
 
-const SACMinutesData = Array(210).fill({ title: 'SAC Meeting Minutes - January 2024' });
+const SACMinutesData = Array(210).fill({
+  title: "SAC Meeting Minutes - January 2024",
+});
 
 const SMALL_SCREEN_CARDS = 20;
 const LARGE_SCREEN_CARDS = 40;
 
-const SACMinutes = () => {
+const SACMinutesPage = () => {
   const [page, setPage] = useState(1);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setIsLargeScreen(window.innerWidth >= 768);
     handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const CARDS_PER_PAGE = isLargeScreen ? LARGE_SCREEN_CARDS : SMALL_SCREEN_CARDS;
+  const CARDS_PER_PAGE = isLargeScreen
+    ? LARGE_SCREEN_CARDS
+    : SMALL_SCREEN_CARDS;
   const totalPages = Math.ceil(SACMinutesData.length / CARDS_PER_PAGE);
 
   // Calculate prev and next pages if they exist
@@ -28,8 +32,12 @@ const SACMinutes = () => {
   const pageCards = SACMinutesData.slice(startIdx, startIdx + CARDS_PER_PAGE);
 
   // Split for large screens
-  const leftColumnCards = isLargeScreen ? pageCards.slice(0, SMALL_SCREEN_CARDS) : pageCards;
-  const rightColumnCards = isLargeScreen ? pageCards.slice(SMALL_SCREEN_CARDS) : [];
+  const leftColumnCards = isLargeScreen
+    ? pageCards.slice(0, SMALL_SCREEN_CARDS)
+    : pageCards;
+  const rightColumnCards = isLargeScreen
+    ? pageCards.slice(SMALL_SCREEN_CARDS)
+    : [];
 
   return (
     <div className="min-h-screen bg-gray-50 px-6 md:px-16 py-6">
@@ -39,48 +47,16 @@ const SACMinutes = () => {
 
         {/* Simple Pagination */}
         <div className="flex items-center space-x-1 select-none">
-<<<<<<< HEAD
-=======
           {/* Previous Button */}
->>>>>>> 991a471c167f1affea4670c0ea18e989301f24d3
           <button
             className="px-3 py-1 bg-gray-200 disabled:opacity-50"
-            onClick={() => setPage(p => Math.max(p - 1, 1))}
+            onClick={() => setPage((p) => Math.max(p - 1, 1))}
             disabled={page === 1}
             aria-label="Previous page"
           >
             &lt;
           </button>
 
-<<<<<<< HEAD
-          {prevPage && (
-            <button
-              className="border border-gray-300 text-gray-500 px-3 py-1 hover:bg-gray-300"
-              onClick={() => setPage(prevPage)}
-              aria-label={`Go to page ${prevPage}`}
-            >
-              {prevPage}
-            </button>
-          )}
-
-          <button
-            className="px-3 py-1 customCOlor text-white cursor-default"
-            disabled
-            aria-current="page"
-          >
-            {page}
-          </button>
-
-          {nextPage && (
-            <button
-              className="border border-gray-300 text-gray-500 px-3 py-1 hover:bg-gray-300"
-              onClick={() => setPage(nextPage)}
-              aria-label={`Go to page ${nextPage}`}
-            >
-              {nextPage}
-            </button>
-          )}
-=======
           <button
             className="border border-gray-300 text-gray-500 px-3 py-1 cursor-default"
             disabled
@@ -89,7 +65,11 @@ const SACMinutes = () => {
           </button>
 
           <button
-            className={`px-3 py-1 ${page > 1 ? 'border border-gray-300 text-gray-500 hover:bg-gray-300' : 'customCOlor text-white cursor-default'}`}
+            className={`px-3 py-1 ${
+              page > 1
+                ? "border border-gray-300 text-gray-500 hover:bg-gray-300"
+                : "customCOlor text-white cursor-default"
+            }`}
             onClick={() => setPage(Math.max(page - 1, 1))}
           >
             {Math.max(page - 1, 1)}
@@ -97,7 +77,11 @@ const SACMinutes = () => {
 
           <button
             // className="px-3 py-1 customCOlor text-white cursor-default"
-            className={`px-3 py-1 ${page > 1 && page < totalPages ? 'customCOlor text-white cursor-default' : 'border border-gray-300 text-gray-500 hover:bg-gray-300'}`}
+            className={`px-3 py-1 ${
+              page > 1 && page < totalPages
+                ? "customCOlor text-white cursor-default"
+                : "border border-gray-300 text-gray-500 hover:bg-gray-300"
+            }`}
             onClick={() => setPage(Math.max(Math.min(page, totalPages - 1), 2))}
             aria-current="page"
           >
@@ -105,7 +89,11 @@ const SACMinutes = () => {
           </button>
 
           <button
-            className={`px-3 py-1 ${page < totalPages ? 'border border-gray-300 text-gray-500 hover:bg-gray-300' : 'customCOlor text-white cursor-default'}`}
+            className={`px-3 py-1 ${
+              page < totalPages
+                ? "border border-gray-300 text-gray-500 hover:bg-gray-300"
+                : "customCOlor text-white cursor-default"
+            }`}
             onClick={() => setPage(Math.min(page + 1, totalPages))}
           >
             {Math.max(page + 1, 3)}
@@ -117,11 +105,10 @@ const SACMinutes = () => {
           >
             ...
           </button>
->>>>>>> 991a471c167f1affea4670c0ea18e989301f24d3
 
           <button
             className="px-3 py-1 bg-gray-200 disabled:opacity-50"
-            onClick={() => setPage(p => Math.min(p + 1, totalPages))}
+            onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
             disabled={page === totalPages}
             aria-label="Next page"
           >
@@ -170,4 +157,4 @@ const SACMinutes = () => {
   );
 };
 
-export default SACMinutes;
+export default SACMinutesPage;

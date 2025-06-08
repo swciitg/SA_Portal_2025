@@ -41,21 +41,12 @@ function ServicesAccordian() {
   ];
 
   return (
-<<<<<<< HEAD
-    <div className="w-full px-20">
-      <h1 className="font-semibold text-4xl my-10">All Services</h1>
-      {/* Services */}
-      <div className="mb-20">
-        {data.map(({ header, services }) => (
-          <AccordianItem header={header} services={services} />
-=======
     <div className="w-full px-20 my-20">
       <h1 className="font-semibold text-4xl my-10">All Services</h1>
       {/* Services */}
       <div className="mb-20">
         {data.map(({ header, services }, idx) => (
           <AccordianItem key={idx} header={header} services={services} />
->>>>>>> master
         ))}
       </div>
     </div>
@@ -87,29 +78,18 @@ function AccordianItem({ header, services }) {
           <path
             d="M1 1L9.5 9L18 1"
             stroke={isOpen ? "#E7ECFC" : "#10121B"}
-<<<<<<< HEAD
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-=======
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
->>>>>>> master
           />
         </svg>
       </div>
       {/* Content with links */}
       <div className="mb-1">
         {services.length > 0 ? (
-<<<<<<< HEAD
-          services.map(({ title, link }) => (
-            <div
-=======
           services.map(({ title, link }, idx) => (
             <div
               key={idx}
->>>>>>> master
               className={`w-full px-5 py-5 flex items-center justify-between cursor-pointer ${
                 isOpen ? "block" : "hidden"
               } bg-blue-50`}
@@ -127,15 +107,9 @@ function AccordianItem({ header, services }) {
                 <path
                   d="M1.41663 9.00033H16.5833M16.5833 9.00033L8.99996 1.41699M16.5833 9.00033L8.99996 16.5837"
                   stroke="#08267C"
-<<<<<<< HEAD
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-=======
                   strokeWidth="1.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
->>>>>>> master
                 />
               </svg>
             </div>

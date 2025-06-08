@@ -98,7 +98,6 @@
 
 //                     <Announcements />
 
-
 //                 </div>
 //             </div>
 //             {/* Achievements Section */}
@@ -125,8 +124,7 @@
 
 //         </div>
 //     );
-// }  
-
+// }
 
 import Carousel from "../Components/Carousel";
 import Navbar from "../Components/Navbar";
@@ -134,23 +132,23 @@ import Announcements from "../Components/Announcements";
 import Achievements from "../Components/Achievements";
 import About from "../Components/About";
 import Footer from "../Components/Footer";
-import './HomePage.css'
+import "./HomePage.css";
 
 const HomePage = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Carousel />
-      <div className='body'>
-        <div className='body-top'>
-          <About/>
-          <Announcements/>
+      <div className="body">
+        <div className="body-top">
+          <About />
+          <Announcements />
         </div>
         <Achievements />
       </div>
-      <Footer/>
+      {/* <Footer/> */}
     </>
   );
-} 
+};
 
 export default HomePage;
