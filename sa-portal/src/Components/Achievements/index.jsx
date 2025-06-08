@@ -59,7 +59,7 @@ const Achievements = () => {
     }
     useEffect(() => {
         const list = document.querySelector('.achievements-cards');
-        list.style.transform = `translateX(calc(${current-1} * 500px * -1))`;
+        list.style.transform = `translateX(calc(${current-1} * 510px * -1))`;
     })
 
     return (
