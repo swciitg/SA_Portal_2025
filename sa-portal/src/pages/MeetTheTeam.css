@@ -176,3 +176,19 @@
 .teams-container{
     padding-bottom: 20px;
 }
+.hoverCustom:hover {
+    background-color: rgb(8, 38, 124);
+    color: white;
+}
+
+.customBgNew {
+    background-color: rgb(236 243 255);
+}
+
+.hoveredBg:hover {
+    background-color: rgb(197 217 254)
+}
+
+.customCOlor {
+    background-color: rgb(8, 38, 124);
+}

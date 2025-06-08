@@ -7,6 +7,24 @@
 }
 /* 
 .body{
+  margin: 6% 10%;
+}
+
+.body-top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  
+}@import url('https://fonts.cdnfonts.com/css/satoshi');
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Satoshi', sans-serif;
+}
+/* 
+.body{
   display: flex;
   width: 1201px;
   height: 752px;

@@ -2,11 +2,7 @@
     display: flex;
     flex-direction: column;
     width: 35%;
-<<<<<<< HEAD
-    max-height: 682px;
-=======
     height: 682px;
->>>>>>> 991a471c167f1affea4670c0ea18e989301f24d3
     gap: 24px;
 }
 .announcements-container h1{
@@ -38,22 +34,4 @@
     /* *{
         scrollbar-color: #00000061 #ECF3FF;
     }
-<<<<<<< HEAD
 } */
- @media only screen and (max-width: 700px){
-    .announcements-container{
-        width: 100%;
-        padding: 0 20px;
-        margin-top: 30px;
-    }
-    .announcements-container h1{
-        font-size: 24px;
-        width: 100%;
-    }
-    .scroll-bar{
-        height: 100%;
-    }
- }
-=======
-} */
->>>>>>> 991a471c167f1affea4670c0ea18e989301f24d3
