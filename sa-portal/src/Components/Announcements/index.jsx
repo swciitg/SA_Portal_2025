@@ -1,8 +1,8 @@
 import { useState } from "react";
 import EachAnnouncement from "../EachAnnouncement/index";
 
-const Announcements = () => {
-  const [announcements, setAnnouncements] = useState([
+const Announcements = ({ann}) => {
+  const [announcements, setAnnouncements] = useState(ann || [
     { text: "Notice regarding Railway Concession", date: "2025-03-19" },
     {
       text: "Notice-10/2025: Students' Gymkhana Election (2025-26)",
