@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MinuteCard from "../Components/MinuteCard";
+import BannerTop from "../Components/BannerTop";
 
 const SACMinutesData = Array(210).fill({
   title: "SAC Meeting Minutes - January 2024",
@@ -40,89 +41,118 @@ const SACMinutesPage = () => {
     : [];
 
   return (
-    <div className="min-h-screen bg-gray-50 px-6 md:px-16 py-6">
-      {/* Header and Pagination */}
-      <div className="flex justify-between items-center mb-6 px-3">
-        <h1 className="text-2xl font-semibold">SAC Minutes</h1>
+    <>
+      <BannerTop
+        heading={"SAC Minutes"}
+        route={["Student Affairs Council", "SAC Minutes"]}
+      />
+      <div className="min-h-screen bg-gray-50 px-6 md:px-16 py-6">
+        {/* Header and Pagination */}
+        <div className="flex justify-between items-center mb-6 px-3">
+          <h1 className="text-2xl font-semibold">SAC Minutes</h1>
 
-        {/* Simple Pagination */}
-        <div className="flex items-center space-x-1 select-none">
-          {/* Previous Button */}
-          <button
-            className="px-3 py-1 bg-gray-200 disabled:opacity-50"
-            onClick={() => setPage((p) => Math.max(p - 1, 1))}
-            disabled={page === 1}
-            aria-label="Previous page"
-          >
-            &lt;
-          </button>
+          {/* Simple Pagination */}
+          <div className="flex items-center space-x-1 select-none">
+            {/* Previous Button */}
+            <button
+              className="px-3 py-1 bg-gray-200 disabled:opacity-50"
+              onClick={() => setPage((p) => Math.max(p - 1, 1))}
+              disabled={page === 1}
+              aria-label="Previous page"
+            >
+              &lt;
+            </button>
 
-          <button
-            className="border border-gray-300 text-gray-500 px-3 py-1 cursor-default"
-            disabled
-          >
-            ...
-          </button>
+            <button
+              className="border border-gray-300 text-gray-500 px-3 py-1 cursor-default"
+              disabled
+            >
+              ...
+            </button>
 
-          <button
-            className={`px-3 py-1 ${
-              page > 1
-                ? "border border-gray-300 text-gray-500 hover:bg-gray-300"
-                : "customCOlor text-white cursor-default"
-            }`}
-            onClick={() => setPage(Math.max(page - 1, 1))}
-          >
-            {Math.max(page - 1, 1)}
-          </button>
+            <button
+              className={`px-3 py-1 ${
+                page > 1
+                  ? "border border-gray-300 text-gray-500 hover:bg-gray-300"
+                  : "customCOlor text-white cursor-default"
+              }`}
+              onClick={() => setPage(Math.max(page - 1, 1))}
+            >
+              {Math.max(page - 1, 1)}
+            </button>
 
-          <button
-            // className="px-3 py-1 customCOlor text-white cursor-default"
-            className={`px-3 py-1 ${
-              page > 1 && page < totalPages
-                ? "customCOlor text-white cursor-default"
-                : "border border-gray-300 text-gray-500 hover:bg-gray-300"
-            }`}
-            onClick={() => setPage(Math.max(Math.min(page, totalPages - 1), 2))}
-            aria-current="page"
-          >
-            {Math.max(page, 2)}
-          </button>
+            <button
+              // className="px-3 py-1 customCOlor text-white cursor-default"
+              className={`px-3 py-1 ${
+                page > 1 && page < totalPages
+                  ? "customCOlor text-white cursor-default"
+                  : "border border-gray-300 text-gray-500 hover:bg-gray-300"
+              }`}
+              onClick={() =>
+                setPage(Math.max(Math.min(page, totalPages - 1), 2))
+              }
+              aria-current="page"
+            >
+              {Math.max(page, 2)}
+            </button>
 
-          <button
-            className={`px-3 py-1 ${
-              page < totalPages
-                ? "border border-gray-300 text-gray-500 hover:bg-gray-300"
-                : "customCOlor text-white cursor-default"
-            }`}
-            onClick={() => setPage(Math.min(page + 1, totalPages))}
-          >
-            {Math.max(page + 1, 3)}
-          </button>
+            <button
+              className={`px-3 py-1 ${
+                page < totalPages
+                  ? "border border-gray-300 text-gray-500 hover:bg-gray-300"
+                  : "customCOlor text-white cursor-default"
+              }`}
+              onClick={() => setPage(Math.min(page + 1, totalPages))}
+            >
+              {Math.max(page + 1, 3)}
+            </button>
 
-          <button
-            className="border border-gray-300 text-gray-500 px-3 py-1 cursor-default"
-            disabled
-          >
-            ...
-          </button>
+            <button
+              className="border border-gray-300 text-gray-500 px-3 py-1 cursor-default"
+              disabled
+            >
+              ...
+            </button>
 
-          <button
-            className="px-3 py-1 bg-gray-200 disabled:opacity-50"
-            onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
-            disabled={page === totalPages}
-            aria-label="Next page"
-          >
-            &gt;
-          </button>
+            <button
+              className="px-3 py-1 bg-gray-200 disabled:opacity-50"
+              onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
+              disabled={page === totalPages}
+              aria-label="Next page"
+            >
+              &gt;
+            </button>
+          </div>
         </div>
-      </div>
 
-      {/* Cards Layout */}
-      {isLargeScreen ? (
-        <div className="flex gap-4">
-          {/* Left column */}
-          <div className="flex flex-col w-1/2 space-y-4">
-            {leftColumnCards.map((item, idx) => (
+        {/* Cards Layout */}
+        {isLargeScreen ? (
+          <div className="flex gap-4">
+            {/* Left column */}
+            <div className="flex flex-col w-1/2 space-y-4">
+              {leftColumnCards.map((item, idx) => (
+                <MinuteCard
+                  key={startIdx + idx}
+                  idx={startIdx + idx + 1}
+                  title={item.title}
+                />
+              ))}
+            </div>
+
+            {/* Right column */}
+            <div className="flex flex-col w-1/2 space-y-4">
+              {rightColumnCards.map((item, idx) => (
+                <MinuteCard
+                  key={startIdx + SMALL_SCREEN_CARDS + idx}
+                  idx={startIdx + SMALL_SCREEN_CARDS + idx + 1}
+                  title={item.title}
+                />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="flex flex-col space-y-4">
+            {pageCards.map((item, idx) => (
               <MinuteCard
                 key={startIdx + idx}
                 idx={startIdx + idx + 1}
@@ -130,30 +160,9 @@ const SACMinutesPage = () => {
               />
             ))}
           </div>
-
-          {/* Right column */}
-          <div className="flex flex-col w-1/2 space-y-4">
-            {rightColumnCards.map((item, idx) => (
-              <MinuteCard
-                key={startIdx + SMALL_SCREEN_CARDS + idx}
-                idx={startIdx + SMALL_SCREEN_CARDS + idx + 1}
-                title={item.title}
-              />
-            ))}
-          </div>
-        </div>
-      ) : (
-        <div className="flex flex-col space-y-4">
-          {pageCards.map((item, idx) => (
-            <MinuteCard
-              key={startIdx + idx}
-              idx={startIdx + idx + 1}
-              title={item.title}
-            />
-          ))}
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 

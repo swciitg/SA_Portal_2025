@@ -1,6 +1,7 @@
 import React from "react";
 import ScholarshipCard from "../Components/ScholarshipCard";
 import { useSearchParams } from "react-router-dom";
+import BannerTop from "../Components/BannerTop";
 
 const scholarshipData = [
   { title: "Gates Millenium Scholarship" },
@@ -25,28 +26,34 @@ const ScholarshipPage = () => {
    */
   return (
     //new bg: 236 243 255
-    <div className="min-h-screen bg-gray-50">
-      {/* Navigation Bar */}
-      <div className="customBgNew w-full px-12 flex justify-between">
-        {/* Each section takes about 30% of total width */}
-        <div className="hoveredBg w-1/3 flex justify-center py-4 hover:cursor-pointer">
-          <button className="text-lg font-medium">School Scholarships</button>
+    <>
+      <BannerTop
+        heading={"Scholarships"}
+        route={["Scholarships & Sponsorships", "Scholarships"]}
+      />
+      <div className="min-h-screen bg-gray-50">
+        {/* Navigation Bar */}
+        <div className="customBgNew w-full px-12 flex justify-between">
+          {/* Each section takes about 30% of total width */}
+          <div className="hoveredBg w-1/3 flex justify-center py-4 hover:cursor-pointer">
+            <button className="text-lg font-medium">School Scholarships</button>
+          </div>
+          <div className="hoveredBg w-1/3 flex justify-center py-4 hover:cursor-pointer">
+            <button className="text-lg font-medium">Government</button>
+          </div>
+          <div className="hoveredBg w-1/3 flex justify-center py-4 hover:cursor-pointer">
+            <button className="text-lg font-medium">Others</button>
+          </div>
         </div>
-        <div className="hoveredBg w-1/3 flex justify-center py-4 hover:cursor-pointer">
-          <button className="text-lg font-medium">Government</button>
-        </div>
-        <div className="hoveredBg w-1/3 flex justify-center py-4 hover:cursor-pointer">
-          <button className="text-lg font-medium">Others</button>
-        </div>
-      </div>
 
-      {/* Scholarship List */}
-      <div className="flex flex-col items-center py-10 px-4">
-        {scholarshipData.map((item, idx) => (
-          <ScholarshipCard key={idx} idx={idx + 1} title={item.title} />
-        ))}
+        {/* Scholarship List */}
+        <div className="flex flex-col items-center py-10 px-4">
+          {scholarshipData.map((item, idx) => (
+            <ScholarshipCard key={idx} idx={idx + 1} title={item.title} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
