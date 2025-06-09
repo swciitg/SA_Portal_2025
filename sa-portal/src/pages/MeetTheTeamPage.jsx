@@ -84,8 +84,10 @@ const MeetTheTeam = () => {
   const scrolled = (e) => {
     const categorySelector = document.querySelector(".category-selector");
     const categoryIcon = document.querySelectorAll(".category-icon");
-    const h = document.querySelector(".inner").getBoundingClientRect().height;
+    const h = document.querySelector(".inner").getBoundingClientRect().bottom;
     const categorySelectorHeight = categorySelector.getBoundingClientRect().top;
+    console.log("height: ",h);
+    console.log("mtt height: ",categorySelectorHeight);
     if (categorySelectorHeight - 10 <= h) {
       categoryIcon.forEach((each) => each.classList.add("display-none"));
       categorySelector.classList.add("category-selector-scrolled");
@@ -121,7 +123,14 @@ const MeetTheTeam = () => {
             <li
               key={index}
               className={group === category ? "category-active" : "category"}
-              onClick={() => setCategory(group)}
+              onClick={() => {
+                setCategory(group);
+                window.history.pushState(
+                  {},
+                  "",
+                  `/meet-the-team?team=${group.toLowerCase().replace(/\s+/g, '-')}`
+                );
+              }}
             >
               <div className="category-icon">
                 <img src={images[index]} alt={group} />
@@ -130,29 +139,28 @@ const MeetTheTeam = () => {
             </li>
           ))}
         </ul>
-        <div className="teams-container">
-          {teams.map((team, index) => (
-            <div key={index} className="team-section">
-              <h1 className="team-heading">{team.heading}</h1>
-              <div className="team-cards-scroll">
-                <div className="team-cards">
-                  {team.members.map((member, idx) => (
+      <div className='teams-container'>
+        {teams.map((team, index) => (
+        <div key={index} className='team-section'>
+            <h1 className='team-heading'>{team.heading}</h1>
+            <div className='team-cards-scroll'>
+            <div className='team-cards'>
+                {team.members.map((member, idx) => (
                     <TeamCard
-                      key={idx}
-                      name={member.name}
-                      title={member.title}
-                      mail={member.mail}
-                      phone={member.phone}
-                      imageUrl={member.imageUrl}
-                      description={member.description}
+                        key={idx}
+                        name={member.name}
+                        title={member.title}
+                        mail={member.mail}
+                        phone={member.phone}
+                        imageUrl={member.imageUrl}
+                        description={member.description}
                     />
                   ))}
-                </div>
               </div>
-            </div>
+              </div>
+          </div>
           ))}
         </div>
-        <Footer />
       </div>
     </div>
   );

@@ -1,0 +1,128 @@
+.boards-about{
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 10vw;
+}
+
+.boards-about .boards-about-text {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.boards-about .boards-about-text h1 {
+    font-size: 31px;
+    font-weight: 500;
+}
+.boards-about .boards-about-text p {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: justify;
+}
+.boards-announcements{
+    padding: 0 10vw;
+    padding-bottom: 50px;
+    border-top: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.boards-announcements div h1 {
+    border-top: 3px solid rgb(56, 78, 151);
+    padding: 20px;
+    width: fit-content;
+}
+
+.boards-events{
+    padding: 0 10vw;
+    margin-bottom: 50px;
+    border-top: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.boards-events .achievements-container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.boards-events .achievements-header h1 {
+    border-top: 3px solid rgb(56, 78, 151);
+    padding: 20px;
+    width: fit-content;
+}
+
+.boards-clubs{
+    padding: 0 10vw;
+    padding-bottom: 50px;
+    border-top: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.boards-clubs h1{
+    border-top: 3px solid rgb(56, 78, 151);
+    padding: 20px;
+    width: fit-content;
+    font-size: 31px;
+    font-weight: 500;
+}
+
+.clubs-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+}
+
+.boards-team{
+    padding: 0 10vw;
+    padding-bottom: 50px;
+    border-top: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.boards-team h1{
+    border-top: 3px solid rgb(56, 78, 151);
+    padding: 20px;
+    width: fit-content;
+    font-size: 31px;
+    font-weight: 500;
+}
+
+.boards-team .team-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 24px;
+}
+.boards-team .team-section{
+    margin-top: 0;
+    margin-bottom: 7%;
+    padding-left: 0;
+}
+
+.boards-team .team-cards.team-cards-hab{
+    flex-wrap: nowrap;
+    width: fit-content;
+}
+.boards-team .team-cards{
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+
+@media screen and (max-width: 768px) {
+    .boards-about {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 5vw;
+    }
+
+    .boards-announcements{
+        padding: 20px 5vw;
+    }
+    .boards-events{
+        padding: 20px 5vw;
+    }
+
+    .boards-about .boards-about-text {
+        width: 100%;
+        text-align: center;
+    }
+    
+}
