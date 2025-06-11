@@ -19,7 +19,6 @@ import SportsBoardPage from "./pages/SportsBoardPage";
 import TechnicalBoardPage from "./pages/TechnicalBoardPage";
 import WelfareBoardPage from "./pages/WelfareBoardPage";
 import WebCommitteePage from "./pages/WebCommitteePage";
-import StudentsCampusWellbeingPage from "./pages/StudentsCampusWellbeingPage";
 
 const App = () => {
   return (
@@ -52,10 +51,6 @@ const App = () => {
               <Route path="web-committee" element={<WebCommitteePage />} />
             </Route>
 
-            <Route
-              path="/students-campus-wellbeing"
-              element={<StudentsCampusWellbeingPage />}
-            />
             {/* <Route path="" element={}/> */}
           </Routes>
         </Layout>

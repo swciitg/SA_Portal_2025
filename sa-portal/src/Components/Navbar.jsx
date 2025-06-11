@@ -6,14 +6,9 @@ const Navbar = () => {
 
   const navData = [
     {
-      title: "Students' Affair",
+      title: "Students' Affairs",
       hasDropdown: true,
       dropdownItems: [
-        {
-          title: "About Us",
-          href: "#",
-          type: "page",
-        },
         {
           title: "Students' Affairs Team",
           href: "/meet-the-team?team=student-affairs-functionaries",
@@ -206,11 +201,6 @@ const Navbar = () => {
           type: "page",
         },
         {
-          title: "About Students' Affairs Board",
-          href: "/sab",
-          type: "page",
-        },
-        {
           title: "Cultural Board",
           href: "/sab/cultural-board",
           type: "page",
@@ -241,12 +231,6 @@ const Navbar = () => {
           type: "page",
         },
       ],
-    },
-    {
-      title: "Students' Campus Wellbeing",
-      hasDropdown: false,
-      type: "page",
-      href: "/students-campus-wellbeing",
     },
     {
       title: "Important Links",
@@ -316,7 +300,7 @@ const Navbar = () => {
           </a>
           <Link to={"/"} className="min-w-0">
             <h1 className="text-xl md:text-3xl font-semibold text-gray-900 leading-tight">
-              Students' Affair
+              Students' Affairs
             </h1>
             <p className="text-xs md:text-sm text-gray-500 leading-tight">
               Indian Institute of Technology, Guwahati
@@ -474,9 +458,34 @@ function NavLinkDropdown({ title, dropdownItems }) {
               key={idx}
               to={item.href}
               target={item.type === "link" ? "_blank" : "_self"}
-              className="block px-4 py-1.5 bg-white hover:bg-[#E9EAEC] transition duration-75"
+              className="px-4 py-1.5 flex justify-between bg-white hover:bg-[#E9EAEC] transition duration-75"
             >
-              {item.title}
+              <span>{item.title}</span>
+              {item.type === "link" && (
+                <svg
+                  className="shrink-0 scale-75"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7 17L17 7"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M7 7H17V17"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              )}
             </Link>
           ))}
         </div>
