@@ -12,12 +12,15 @@ const HomePage = () => {
 
   useEffect(() => {
     const fun = async () => {
-      const response = await axios.get('http://localhost:1337/api/swc-teams?populate=*')
-      console.log(response.data.data)
-      console.log(response.data.data[0].imgurl.url);
+      try {
+        const response = await axios.get('http://localhost:1337/api/swc-teams?populate=*')
+        console.log(response.data.data)
+        console.log(response.data.data[0].imgurl.url);
+      } catch (error) {
+      }
     }
     fun();
-    
+
   }, [])
   return (
     <>
