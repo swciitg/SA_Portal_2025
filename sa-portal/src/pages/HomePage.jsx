@@ -5,8 +5,20 @@ import Achievements from "../Components/Achievements";
 import About from "../Components/About";
 import Footer from "../Components/Footer";
 import "./HomePage.css";
+import { useEffect } from "react";
+import axios from "axios";
 
 const HomePage = () => {
+
+  useEffect(() => {
+    const fun = async () => {
+      const response = await axios.get('http://localhost:1337/api/swc-teams?populate=*')
+      console.log(response.data.data)
+      console.log(response.data.data[0].imgurl.url);
+    }
+    fun();
+    
+  }, [])
   return (
     <>
       <Carousel />

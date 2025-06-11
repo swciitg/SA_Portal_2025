@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "swc_teams",
+  "info": {
+    "singularName": "swc-team",
+    "pluralName": "swc-teams",
+    "displayName": "swcTeam"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "POR": {
+      "type": "string"
+    },
+    "imgurl": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "email": {
+      "type": "email"
+    },
+    "contact": {
+      "type": "biginteger"
+    }
+  }
+}
