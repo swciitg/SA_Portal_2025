@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "new_fields",
+  "info": {
+    "singularName": "new-field",
+    "pluralName": "new-fields",
+    "displayName": "newField"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "imageurl": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

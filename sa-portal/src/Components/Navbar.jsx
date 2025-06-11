@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import NavLink from "./NavLink";
+import NavLinkDropdown from "./NavLinkDropdown";
+import Hamburger from "./Hamburger.jsx";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -365,8 +368,8 @@ const Navbar = () => {
       {/* Navigation links */}
       <nav className="relative md:sticky md:top-0 z-50 md:px-12 border-b shadow-sm bg-white font-Satoshi">
         {/* >=md */}
-        <div className="hidden md:flex flex-wrap gap-x-6 md:mx-6 text-base text-gray-700">
-          {navData.map((item, idx) =>
+        <div className="hidden md:flex flex-wrap md:mx-6 text-base text-gray-700">
+          {/* {navData.map((item, idx) =>
             item.hasDropdown ? (
               <NavLinkDropdown
                 key={idx}
@@ -381,7 +384,8 @@ const Navbar = () => {
                 type={item.type}
               />
             )
-          )}
+          )} */}
+          <Hamburger navData={navData} />
         </div>
         {/* Mobile */}
         {mobileMenuOpen && (
@@ -411,85 +415,60 @@ const Navbar = () => {
 
 export default Navbar;
 
-function NavLink({ title, href, type }) {
-  return (
-    <Link
-      to={href || "#"}
-      target={type === "link" ? "_blank" : "_self"}
-      className="py-2 md:py-4 hover:text-blue-600 cursor-pointer"
-    >
-      {title}
-    </Link>
-  );
-}
+// function NavLink({ title, href, type }) {
+//   return (
+//     <Link
+//       to={href || "#"}
+//       target={type === "link" ? "_blank" : "_self"}
+//       className="py-2 md:py-4 hover:text-blue-600 cursor-pointer"
+//     >
+//       {title}
+//     </Link>
+//   );
+// }
 
-function NavLinkDropdown({ title, dropdownItems }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef(null);
+// function NavLinkDropdown({ title, dropdownItems }) {
+//   const [isOpen, setIsOpen] = useState(false);
+//   const dropdownRef = useRef(null);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
+//   useEffect(() => {
+//     const handleClickOutside = (event) => {
+//       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+//         setIsOpen(false);
+//       }
+//     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+//     document.addEventListener("mousedown", handleClickOutside);
+//     return () => document.removeEventListener("mousedown", handleClickOutside);
+//   }, []);
 
-  return (
-    <div className="relative inline-block" ref={dropdownRef}>
-      <div
-        className="py-2 md:py-4 relative hover:text-blue-600 cursor-pointer"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {title}
-        <span className="ml-1">▾</span>
-        {isOpen && (
-          <hr className="absolute w-full border-2 bottom-0 border-blue-700" />
-        )}
-      </div>
+//   return (
+//     <div className="relative inline-block" ref={dropdownRef}>
+//       <div
+//         className="py-2 md:py-4 relative hover:text-blue-600 cursor-pointer"
+//         onClick={() => setIsOpen(!isOpen)}
+//       >
+//         {title}
+//         <span className="ml-1">▾</span>
+//         {isOpen && (
+//           <hr className="absolute w-full border-2 bottom-0 border-blue-700" />
+//         )}
+//       </div>
 
-      {isOpen && (
-        <div className="absolute top-[102%] min-w-64 md:min-w-72 z-10 border divide-y-[1px]">
-          {dropdownItems.map((item, idx) => (
-            <Link
-              key={idx}
-              to={item.href}
-              target={item.type === "link" ? "_blank" : "_self"}
-              className="px-4 py-1.5 flex justify-between bg-white hover:bg-[#E9EAEC] transition duration-75"
-            >
-              <span>{item.title}</span>
-              {item.type === "link" && (
-                <svg
-                  className="shrink-0 scale-75"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M7 17L17 7"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M7 7H17V17"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              )}
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
+//       {isOpen && (
+//         <div className="absolute top-[102%] min-w-64 md:min-w-72 z-10 border divide-y-[1px]">
+//           {dropdownItems.map((item, idx) => (
+//             <Link
+//               key={idx}
+//               to={item.href}
+//               target={item.type === "link" ? "_blank" : "_self"}
+//               className="block px-4 py-1.5 bg-white hover:bg-[#E9EAEC] transition duration-75"
+//             >
+//               {item.title}
+//             </Link>
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
