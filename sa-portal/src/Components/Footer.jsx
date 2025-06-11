@@ -17,7 +17,7 @@ const Footer = () => {
             <img src={iitg_logo} alt="Logo" className="w-12 h-12 mr-3" />
             <div>
               <h1 className="text-2xl font-semibold md:text-3xl">
-                Student’s Affair
+                Students' Affairs
               </h1>
               <p className="text-xs font-Satoshi font-thin">
                 Indian Institute of Technology, Guwahati
