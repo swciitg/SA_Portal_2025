@@ -9,7 +9,7 @@ const SCROLL_CARDS = 3;
 
 const ITEMS_PER_SLIDE = 3;
 
-export default function SWCPage() {
+export default function WebCommitteePage() {
   const announcements = [
     {
       title: "Notice regarding railway concession",
@@ -194,7 +194,7 @@ export default function SWCPage() {
   };
 
   return (
-    <div className="my-10">
+    <>
       <BannerTop
         heading={
           <div className="flex flex-col space-y-3">
@@ -205,7 +205,7 @@ export default function SWCPage() {
         route={["Student Affairs Board", "Student's Web Committee"]}
       />
       {/* Intro and Carousel */}
-      <div className="flex items-center justify-around my-20 mx-20">
+      <div className="flex items-center justify-around my-8 mx-8 sm:my-12 sm:mx-12 md:my-20 md:mx-20">
         <div className="flex flex-col w-1/2 space-y-2">
           <p className="font-semibold text-3xl">
             Welcome to <br /> Student's Web Committee
@@ -276,8 +276,8 @@ export default function SWCPage() {
       <Section
         heading={"Our Services"}
         children={
-          <div className="flex items-start justify-between space-x-">
-            <div className="text-black/60 w-80 flex-shrink-0">
+          <div className="flex flex-col md:flex-row items-start justify-between space-x-">
+            <div className="text-black/60 w-full md:w-80 flex-shrink-0">
               We create products, and strive to continually improve them. Our
               team has the zeal to make a product or service better, and
               continually adopt to changing tech, delivering quality products.
@@ -317,7 +317,7 @@ export default function SWCPage() {
           </div>
         }
       />
-    </div>
+    </>
   );
 }
 

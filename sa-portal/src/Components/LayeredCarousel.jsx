@@ -41,7 +41,7 @@ const LayeredCarousel = () => {
   const visibleImages = getVisibleImages();
 
   return (
-    <div className="mr-20">
+    <div className="mx-10">
       <div className="h-[350px] w-[383px] flex items-center overflow-hidden relative">
         <img
           src={visibleImages.back}

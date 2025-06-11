@@ -1,0 +1,83 @@
+import React from "react";
+import './Boards.css';
+import BannerTop from "../Components/BannerTop";
+import LayeredCarousel from "../Components/LayeredCarousel";
+import TeamCard from "../Components/TeamCard";
+
+function SACPage() {
+  const route = ["Students' Affairs Boards", "About SAC"];
+  const members = [
+        {
+          name: "Dr. Sayan Chakrabarti",
+          title: "Chairperson-1, Welfare Board",
+          mail: "chrwb@iitg.ac.in",
+          phone: "+9 -361 2583568",
+          imageUrl: "",
+          description: "Chairperson, Students' Welfare Board, Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
+        },
+        {
+          name: "Dr. Bidisha Som",
+          title: "Chairperson-2, Welfare Board",
+          mail: "chrwb@iitg.ac.in",
+          phone: "+9 -361 2583568",
+          imageUrl: "",
+          description: "Chairperson, Students' Welfare Board, Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
+        },
+        {
+          name: "Dr. Sayan Chakrabarti",
+          title: "Chairperson-1, Welfare Board",
+          mail: "chrwb@iitg.ac.in",
+          phone: "+9 -361 2583568",
+          imageUrl: "",
+        },
+        {
+          name: "Dr. Bidisha Som",
+          title: "Chairperson-2, Welfare Board",
+          mail: "chrwb@iitg.ac.in",
+          phone: "+9 -361 2583568",
+          imageUrl: "",
+          description: "Chairperson, Students' Welfare Board, Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
+        },
+      ]
+
+  return (
+  <>
+    <BannerTop heading="About SAC" blueText="Board" route={route}/>
+    <div className="boards-about">
+      <div className="boards-about-text">
+        <h1>
+          Welcome to <br/>Technical Board
+        </h1>
+        <p>
+          It comprises of Chairman, Technical Board and elected student representatives. Its main function is to coordinate and execute all activities of technical clubs and to coordinate and execute all activities related to the annual technical festival ‘Techniche’.
+        </p>
+      </div>
+      <LayeredCarousel />
+    </div>
+    <div className="boards-team">
+        <h1>Members</h1>
+        <div className="teams-container">
+            <div className="team-section">
+              <div className="team-cards-scroll">
+                <div className="team-cards">
+                  {members.map((member, index) => (
+                    <TeamCard
+                      key={index}
+                      name={member.name}
+                      title={member.title}
+                      mail={member.mail}
+                      phone={member.phone}
+                      imageUrl={member.imageUrl}
+                      description={member.description}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+  </>
+  );
+}
+
+export default SACPage;
