@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "scholarships",
+  "info": {
+    "singularName": "scholarship",
+    "pluralName": "scholarships",
+    "displayName": "scholarship"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

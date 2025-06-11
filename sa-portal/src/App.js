@@ -6,7 +6,7 @@ import HomePage from "./pages/HomePage";
 import MeetTheTeam from "./pages/MeetTheTeamPage";
 import ServicesPage from "./pages/ServicesPage";
 import ScholarshipPage from "./pages/ScholarshipPage";
-import SACoursesPage from "./pages/SACoursesPage";
+import SACoursesPage from "./pages/SACoursePage";
 import NoticesOnRulesPage from "./pages/NoticesOnRulesPage";
 import FormsPage from "./pages/FormsPage";
 import SACPage from "./pages/SACPage";

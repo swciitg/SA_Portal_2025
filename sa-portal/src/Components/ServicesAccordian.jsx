@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 function ServicesAccordian() {
   // sample data
@@ -41,7 +41,7 @@ function ServicesAccordian() {
   ];
 
   return (
-    <div className="w-full px-20 my-20">
+    <div className="w-full px-4 my-8 sm:px-12 sm:my-12 md:px-20 md:my-20">
       <h1 className="font-semibold text-4xl my-10">All Services</h1>
       {/* Services */}
       <div className="mb-20">
@@ -57,6 +57,7 @@ export default ServicesAccordian;
 
 function AccordianItem({ header, services }) {
   const [isOpen, setIsOpen] = useState(false);
+  const contentRef = useRef(null);
 
   return (
     <div className={`w-full`}>
@@ -84,15 +85,20 @@ function AccordianItem({ header, services }) {
           />
         </svg>
       </div>
-      {/* Content with links */}
-      <div className="mb-1">
+
+      {/* Animated Content */}
+      <div
+        ref={contentRef}
+        className="overflow-hidden transition-all duration-300 ease-in-out mb-1"
+        style={{
+          maxHeight: isOpen ? `${contentRef.current?.scrollHeight}px` : "0px",
+        }}
+      >
         {services.length > 0 ? (
           services.map(({ title, link }, idx) => (
             <div
               key={idx}
-              className={`w-full px-5 py-5 flex items-center justify-between cursor-pointer ${
-                isOpen ? "block" : "hidden"
-              } bg-blue-50`}
+              className="w-full px-5 py-5 flex items-center justify-between bg-blue-50"
             >
               <a href={link} target="_blank">
                 {title}
@@ -115,11 +121,7 @@ function AccordianItem({ header, services }) {
             </div>
           ))
         ) : (
-          <div
-            className={`w-full px-5 py-5 flex items-center justify-between cursor-pointer ${
-              isOpen ? "block" : "hidden"
-            } bg-blue-50`}
-          >
+          <div className="w-full px-5 py-5 flex items-center justify-between bg-blue-50">
             Nothing to show here.
           </div>
         )}
