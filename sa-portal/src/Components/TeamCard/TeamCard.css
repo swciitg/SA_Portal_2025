@@ -49,3 +49,41 @@
   height: 18px;
   width: 18px;
 }
+
+@media screen and (max-width: 768px) {
+  .prof-card {
+    width: 440px;
+    height: 200px;
+  }
+
+  .prof-name {
+    font-size: 18px;
+  }
+
+  .prof-title,
+  .prof-contact {
+    font-size: 14px;
+  }
+  
+}
+
+@media screen and (max-width: 480px) {
+  .prof-card {
+    width: 360px;
+    height: 164px;
+  }
+
+  .prof-right {
+    padding: 15px;
+  }
+
+  .prof-name {
+    font-size: 15px;
+  }
+
+  .prof-title,
+  .prof-contact {
+    font-size: 12px;
+  }
+  
+}

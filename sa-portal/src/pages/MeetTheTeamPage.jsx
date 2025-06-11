@@ -86,8 +86,6 @@ const MeetTheTeam = () => {
     const categoryIcon = document.querySelectorAll(".category-icon");
     const h = document.querySelector(".inner").getBoundingClientRect().bottom;
     const categorySelectorHeight = categorySelector.getBoundingClientRect().top;
-    console.log("height: ",h);
-    console.log("mtt height: ",categorySelectorHeight);
     if (categorySelectorHeight - 10 <= h) {
       categoryIcon.forEach((each) => each.classList.add("display-none"));
       categorySelector.classList.add("category-selector-scrolled");
