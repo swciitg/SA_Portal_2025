@@ -5,10 +5,42 @@ import NCCcourse from '../assets/Images/NCC-course.png';
 import NSOcourse from '../assets/Images/NSO-course.png';
 import BoardsEvents from "../Components/BoardsEvents";
 import SportsClubCard from "../Components/SportsClubCard";
+import SWCTeamCard from "../Components/SWCTeamCard";
+import MinuteCard from "../Components/MinuteCard";
 import LayeredCarousel from "../Components/LayeredCarousel";
+import BoardsFacilities from "../Components/BoardsFacilities";
 
 function SportsBoardPage() {
   const routes = [ "Student Affairs Board","Sports Board"]
+  const rules = [ {
+    title: "Badminton Rules",
+    link: "https://example.com/badminton-rules"
+  }, {
+    title: "Basketball Rules",
+    link: "https://example.com/basketball-rules"
+  }, {
+    title: "Football Rules",
+    link: "https://example.com/football-rules"
+  }, {
+    title: "Tennis Rules",
+    link: "https://example.com/tennis-rules"
+  }, {
+    title: "Swimming Pool Rules",
+    link: "https://example.com/swimming-pool-rules"
+  }, {
+    title: "Central Gym Rules",
+    link: "https://example.com/gymnasium-rules"
+  } ]
+  const forms = [ {
+    title: "Good Issue",
+    link: "https://example.com/badminton-rules"
+  }, {
+    title: "Guest Access Form",
+    link: "https://example.com/basketball-rules"
+  }, {
+    title: "Booking",
+    link: "https://example.com/football-rules"
+  } ]
   const eventDetails = [
     {
       imageUrl: "",
@@ -39,6 +71,15 @@ function SportsBoardPage() {
     { clubName: '', imageUrl: '', description: ''},
     { clubName: '', imageUrl: '', description: ''},
     { clubName: '', imageUrl: '', description: ''},
+  ]
+  const team = [
+    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
+    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
+    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
+    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
+    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
+    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
+    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
   ]
 
   return (
@@ -87,6 +128,13 @@ function SportsBoardPage() {
           </div>
         </div>
       </div>
+      <div className="boards-facilities">
+        <h1>Our Facilities</h1>
+        <div className="flex md:flex-col lg:flex-row items-center">
+          <p className="lg:w-[40%] lg:w-full mb-3 mr-3 text-justify text-[20px] text-[#00000099]">With expansive indoor and outdoor facilities, extended hours, and dedicated coaches to guide you, there’s something here for everyone, whether you're a seasoned athlete or just getting started. No matter your skill level, you’ll find the space, support, and community to grow, compete, and thrive.</p>
+          <BoardsFacilities />
+        </div>
+      </div>
       <div className="boards-events"><BoardsEvents eventDetails={eventDetails}/></div>
       <div className="boards-clubs">
         <h1>Clubs - Under Technical Board</h1>
@@ -94,6 +142,64 @@ function SportsBoardPage() {
           {
             clubs.map(each=>(
               <SportsClubCard clubName={each.clubName} imageUrl={each.imageUrl} description={each.description} />
+            ))
+          }
+        </div>
+      </div>
+      <div className="boards-team">
+        <h1>Meet The Team</h1>
+        <div className="team-container">
+          {
+            team.map(each=>(
+              <SWCTeamCard name={each.name} position={each.position} email={each.email} phone={each.phone} image={each.image} program={each.program} />
+            ))
+          }
+        </div>
+      </div>
+      <div className="boards-team">
+        <h1>Rules</h1>
+        <div>
+          {
+            rules.map((each, idx) => (
+              <div className='flex flex-row items-center mb-3 w-full'>
+                  <div className='flex-none border border-gray-300 bg-white text-center text-sm font-semibold flex items-center justify-center lg:h-[60px] lg:w-[60px] sm:h-[40px] sm:w-[40px] mr-3'>
+                      {idx+1}
+                  </div>
+                  <div className='border border-gray-300 flex flex-row justify-between items-center lg:h-[60px] sm:h-[40px] flex-grow px-4 overflow-hidden'>
+                      <span className='lg:text-[18px] sm:text-[15px] truncate pr-4' style={{ maxWidth: '70%' }}>
+                          {each.title}
+                      </span>
+                      <div className='flex space-x-2 shrink-0'>
+                          <button className='hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm'>
+                              PDF
+                          </button>
+                      </div>
+                  </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div className="boards-team">
+        <h1>Forms and Booking</h1>
+        <div>
+          {
+            forms.map((each, idx) => (
+              <div className='flex flex-row items-center mb-3 w-full'>
+                  <div className='flex-none border border-gray-300 bg-white text-center text-sm font-semibold flex items-center justify-center lg:h-[60px] lg:w-[60px] sm:h-[40px] sm:w-[40px] mr-3'>
+                      {idx+1}
+                  </div>
+                  <div className='border border-gray-300 flex flex-row justify-between items-center lg:h-[60px] sm:h-[40px] flex-grow px-4 overflow-hidden'>
+                      <span className='lg:text-[18px] sm:text-[15px] truncate pr-4' style={{ maxWidth: '70%' }}>
+                          {each.title}
+                      </span>
+                      <div className='flex space-x-2 shrink-0'>
+                          <button className='hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm'>
+                              PDF
+                          </button>
+                      </div>
+                  </div>
+              </div>
             ))
           }
         </div>

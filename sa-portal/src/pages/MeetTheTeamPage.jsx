@@ -1,8 +1,7 @@
 import { useState } from "react";
-import Navbar from "../Components/Navbar";
+import down from "../assets/Images/chevron-down.png";
 import MeetTheTeamBanner from "../assets/Images/mtt-banner.png";
 import TeamCard from "../Components/TeamCard";
-import Footer from "../Components/Footer";
 import doubleArrow from "../assets/Images/chevron-right-double.png";
 import downArrow from "../assets/Images/chevron-down.png";
 import saf from "../assets/icons/Student-Affairs-Functionaries.svg";
@@ -23,8 +22,8 @@ const MeetTheTeam = () => {
     eg. for Student Affairs Functionaries -> student-affairs-functionaries
    */
   const [category, setCategory] = useState("Student Affairs Functionaries");
-  const [teams, setTeams] = useState([
-    {
+  const [teams, setTeams] = useState({
+    "Student Affairs Functionaries": [{
       heading: "Dean",
       members: [
         {
@@ -34,12 +33,11 @@ const MeetTheTeam = () => {
           phone: "+91-361-258 2083",
           imageUrl:
             "https://res.cloudinary.com/dgyo6ph3j/image/upload/v1748584974/dean_e9gohp.png",
-          description: "",
+          responsibility: "",
         },
       ],
-    },
-    {
-      heading: "Associate Deans",
+    },{
+      heading: "Associate Dean",
       members: [
         {
           name: "Prof. Perumal Alagarsamy",
@@ -48,7 +46,7 @@ const MeetTheTeam = () => {
           phone: "+91-361-258 2083",
           imageUrl:
             "https://res.cloudinary.com/dgyo6ph3j/image/upload/v1748584974/dean_e9gohp.png",
-          description: "",
+          responsibility: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         },
         {
           name: "Prof. Perumal Alagarsamy",
@@ -57,7 +55,7 @@ const MeetTheTeam = () => {
           phone: "+91-361-258 2083",
           imageUrl:
             "https://res.cloudinary.com/dgyo6ph3j/image/upload/v1748584974/dean_e9gohp.png",
-          description: "",
+          responsibility: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         },
         {
           name: "Prof. Perumal Alagarsamy",
@@ -66,11 +64,108 @@ const MeetTheTeam = () => {
           phone: "+91-361-258 2083",
           imageUrl:
             "https://res.cloudinary.com/dgyo6ph3j/image/upload/v1748584974/dean_e9gohp.png",
-          description: "",
+          responsibility: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         },
       ],
+    }],
+    "Hostel Affairs Board": [{
+      heading: "Dean",
+      members: [
+        {
+          name: "Prof. Perumal Alagarsamy",
+          title: "Dean of Students’ Affairs",
+          mail: "dos@iitg.ac.in",
+          phone: "+91-361-258 2083",
+          imageUrl: "",
+          responsibility: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        },
+      ]
     },
-  ]);
+    {
+      heading: "Associate Dean",
+      members: [
+        {
+          name: "Prof. Perumal Alagarsamy",
+          title: "Dean of Students’ Affairs",
+          mail: "dos@iitg.ac.in",
+          phone: "+91-361-258 2083",
+          imageUrl: "",
+          responsibility: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        },
+      ],
+    }],
+    "Students Gymkhana": [{
+      heading: "General Secretary",
+      members: [
+        {
+          name: "Prof. Alagarsamy",
+          title: "Dean of Students’ Affairs",
+          mail: "dos@iitg.ac.in",
+          phone: "+91-361-258 2083",
+          imageUrl: "",
+          responsibility: "",
+          year: "2023",
+        },
+        {
+          name: "Prof. Perumal",
+          title: "Dean of Students’ Affairs",
+          mail: "dos@iitg.ac.in",
+          phone: "+91-361-258 2083",
+          imageUrl: "",
+          responsibility: "",
+          year: "2022",
+        },
+        {
+          name: "Prof. Perumal Alagarsamy",
+          title: "Dean of Students’ Affairs",
+          mail: "dos@iitg.ac.in",
+          phone: "+91-361-258 2083",
+          imageUrl: "",
+          responsibility: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          year: "2021",
+        },
+      ],
+    }],
+    "Gymkhana Office": [{
+      heading: "General Secretary",
+      members: [
+        {
+          name: "Prof. Perumal Alagarsamy",
+          title: "Dean of Students’ Affairs",
+          mail: "dos@iitg.ac.in",
+          phone: "+91-361-258 2083",
+          imageUrl: "",
+          responsibility: "",
+        },
+      ],
+    }],
+    "Counselling Cell": [{
+      heading: "Counselling Cell Coordinator",
+      members: [
+        {
+          name: "Prof. Perumal Alagarsamy",
+          title: "Dean of Students’ Affairs",
+          mail: "dos@iitg.ac.in",
+          phone: "+91-361-258 2083",
+          imageUrl: "",
+          responsibility: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        },
+      ],
+    }],
+    "New SAC": [{
+      heading: "Secretary",
+      members: [
+        {
+          name: "Prof. Perumal Alagarsamy",
+          title: "Dean of Students’ Affairs",
+          mail: "dos@iitg.ac.in",
+          phone: "+91-361-258 2083",
+          imageUrl: "",
+          responsibility: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        },
+      ],
+    }],
+  });
 
   const groups = [
     "Student Affairs Functionaries",
@@ -80,25 +175,46 @@ const MeetTheTeam = () => {
     "Counselling Cell",
     "New SAC",
   ];
+  const [year, setYear] = useState("2023");
+  const years = ["2023", "2022", "2021"];
   const images = [saf, hab, sg, go, cc, ns];
-  const scrolled = (e) => {
+  const scrolled = () => {
     const categorySelector = document.querySelector(".category-selector");
     const categoryIcon = document.querySelectorAll(".category-icon");
-    const h = document.querySelector(".inner").getBoundingClientRect().bottom;
-    const categorySelectorHeight = categorySelector.getBoundingClientRect().top;
-    if (categorySelectorHeight - 10 <= h) {
+    const h = document.querySelector(".mtt-banner").getBoundingClientRect().bottom;
+    if ( h <= 55) {
       categoryIcon.forEach((each) => each.classList.add("display-none"));
       categorySelector.classList.add("category-selector-scrolled");
-    } else {
+    } else if( h >= 90){
       categoryIcon.forEach((each) => each.classList.remove("display-none"));
       categorySelector.classList.remove("category-selector-scrolled");
     }
   };
+  const selectedYear = (each) => () => {
+    const yearList = document.querySelector('.teams-container ul');
+    const selectYear = document.querySelector('#select-year');
+    yearList.style.display = "none";
+    selectYear.innerText = each;
+    setYear(each);
+  }
+  const showYearList = () => {
+    const yearList = document.querySelector('.teams-container ul');
+    const selectYear = document.querySelector('#select-year');
+    if (yearList.style.display === "block") {
+      yearList.style.display = "none";
+      selectYear.innerText = year;
+    } else {
+      yearList.style.display = "block";
+      selectYear.innerText = "Select Year";
+    }
+  }
+  window.addEventListener("scroll", scrolled);
+
 
   return (
     <div className="meet-the-team-page">
       <div className="inner">{/* <Navbar /> */}</div>
-      <div onScroll={scrolled} className="mtt-body">
+      <div className="mtt-body">
         <div className="mtt-banner">
           <div>
             <h1>
@@ -138,12 +254,33 @@ const MeetTheTeam = () => {
           ))}
         </ul>
       <div className='teams-container'>
-        {teams.map((team, index) => (
+        {
+          category === "Students Gymkhana" && (
+            <>
+              <div className="lg:ml-[15vw] sm:ml-[10vw] mt-[60px] w-[273px] h-[60px] flex justify-between border-solid border-[2px] border-[rgba(0,0,0,0.2)]">
+                <p id='select-year' className="my-auto ml-[20px] text-[rgba(0,0,0,0.6)]">Select Year</p>
+                <button onClick={showYearList} className="h-100 w-[58px] bg-[#0A31A0]" type='button'>
+                  <img className="w-[30px] h-[30px] m-auto" src={down} alt='down'/>
+                </button>
+              </div>
+              <ul className="lg:ml-[15vw] sm:ml-[10vw] hidden absolute h-[300px] overflow-y-scroll w-[273px] [&::-webkit-scrollbar]:w-[10px] [&::-webkit-scrollbar-track]:bg-[#D0D3E6] [&::-webkit-scrollbar-thumb]:bg-[rgba(0,0,0,0.38)] [&::-webkit-scrollbar]:h-[0px]">{
+                  years.map((each, index) => (
+                      <li onClick={selectedYear(each)} className="text-[20px] bg-[#E7ECFC] h-[58px] w-[273px] text-[#00000099] pl-[20px] flex items-center border border-solid border-[rgba(0,0,0,0.2)] cursor-pointer hover:underline"
+                       key={index} value={each}>{each}</li>
+                    ))
+                  }</ul>
+                </>
+                )
+        }
+        {teams[category].map((team, index) => (
         <div key={index} className='team-section'>
             <h1 className='team-heading'>{team.heading}</h1>
             <div className='team-cards-scroll'>
             <div className='team-cards'>
                 {team.members.map((member, idx) => (
+                  (category !== "Students Gymkhana"
+                    || member.year === year
+                  ) && (
                     <TeamCard
                         key={idx}
                         name={member.name}
@@ -151,8 +288,9 @@ const MeetTheTeam = () => {
                         mail={member.mail}
                         phone={member.phone}
                         imageUrl={member.imageUrl}
-                        description={member.description}
+                        responsibility={member.responsibility}
                     />
+                  )
                   ))}
               </div>
               </div>

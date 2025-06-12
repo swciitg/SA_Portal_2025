@@ -106,6 +106,19 @@
     width: 100%;
 }
 
+.boards-facilities{
+    padding: 0 10vw;
+    padding-bottom: 50px;
+    background: #F0F1F7;
+    border-top: 2px solid rgba(0, 0, 0, 0.2);
+}
+.boards-facilities h1{
+    border-top: 3px solid rgb(56, 78, 151);
+    padding: 20px;
+    width: fit-content;
+    font-size: 31px;
+    font-weight: 500;
+}
 
 @media screen and (max-width: 850px) {
 
