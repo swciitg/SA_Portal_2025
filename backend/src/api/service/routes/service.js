@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * new-field router
+ * service router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::new-field.new-field');
+module.exports = createCoreRouter('api::service.service');

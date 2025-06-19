@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sac_minutes",
+  "info": {
+    "singularName": "sac-minute",
+    "pluralName": "sac-minutes",
+    "displayName": "SAC Minute"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "file": {
+      "type": "string"
+    }
+  }
+}
