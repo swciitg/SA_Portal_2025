@@ -96,11 +96,10 @@ function PaginationMenu({ forms, limitOnPage, currPage, setCurrPage }) {
         <div
           key={page}
           onClick={() => goToPage(page)}
-          className={`size-8 sm:size-10 flex items-center justify-center hover:border-none hover:bg-blue-700 hover:text-white cursor-pointer ${
-            page === currPage
+          className={`size-8 sm:size-10 flex items-center justify-center hover:border-none hover:bg-blue-700 hover:text-white cursor-pointer ${page === currPage
               ? "border-none bg-blue-700 text-white font-medium"
               : "border-2 border-neutral-100 text-neutral-500"
-          }`}
+            }`}
         >
           <span>{page}</span>
         </div>

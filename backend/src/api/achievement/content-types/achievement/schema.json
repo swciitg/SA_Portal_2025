@@ -1,17 +1,23 @@
 {
   "kind": "collectionType",
-  "collectionName": "new_fields",
+  "collectionName": "achievements",
   "info": {
-    "singularName": "new-field",
-    "pluralName": "new-fields",
-    "displayName": "newField"
+    "singularName": "achievement",
+    "pluralName": "achievements",
+    "displayName": "Achievement"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "imageurl": {
+    "title": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "imageUrl": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [

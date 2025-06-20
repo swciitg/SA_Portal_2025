@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "swc_teams",
+  "collectionName": "student_affairs_teams",
   "info": {
-    "singularName": "swc-team",
-    "pluralName": "swc-teams",
-    "displayName": "SWC team"
+    "singularName": "student-affairs-team",
+    "pluralName": "student-affairs-teams",
+    "displayName": "Student Affairs Team"
   },
   "options": {
     "draftAndPublish": true
@@ -14,19 +14,13 @@
     "name": {
       "type": "string"
     },
-    "Position": {
+    "title": {
       "type": "string"
     },
-    "contact_number": {
-      "type": "string"
+    "mail": {
+      "type": "email"
     },
-    "email": {
-      "type": "string"
-    },
-    "branch": {
-      "type": "string"
-    },
-    "img": {
+    "imageUrl": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
@@ -35,6 +29,12 @@
         "videos",
         "audios"
       ]
+    },
+    "description": {
+      "type": "text"
+    },
+    "phone": {
+      "type": "biginteger"
     }
   }
 }
