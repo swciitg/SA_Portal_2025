@@ -9,19 +9,6 @@ import { useEffect } from "react";
 import axios from "axios";
 
 const HomePage = () => {
-
-  useEffect(() => {
-    const fun = async () => {
-      try {
-        const response = await axios.get('http://localhost:1337/api/swc-teams?populate=*')
-        console.log(response.data.data)
-        console.log(response.data.data[0].imgurl.url);
-      } catch (error) {
-      }
-    }
-    fun();
-
-  }, [])
   return (
     <>
       <Carousel />

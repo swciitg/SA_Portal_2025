@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "student_affairs_teams",
+  "collectionName": "welfare_board_teams",
   "info": {
-    "singularName": "student-affairs-team",
-    "pluralName": "student-affairs-teams",
-    "displayName": "Student_Affairs _Team"
+    "singularName": "welfare-board-team",
+    "pluralName": "welfare-board-teams",
+    "displayName": "WelfareBoard_Team"
   },
   "options": {
     "draftAndPublish": true
@@ -16,7 +16,7 @@
     },
     "members": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::team-member.team-member"
     }
   }

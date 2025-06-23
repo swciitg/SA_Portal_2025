@@ -1,20 +1,20 @@
 {
   "kind": "collectionType",
-  "collectionName": "sac_minutes",
+  "collectionName": "clubs",
   "info": {
-    "singularName": "sac-minute",
-    "pluralName": "sac-minutes",
-    "displayName": "SAC Minute"
+    "singularName": "club",
+    "pluralName": "clubs",
+    "displayName": "Club"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "clubName": {
       "type": "string"
     },
-    "pdfUrl": {
+    "imageUrl": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
@@ -23,6 +23,9 @@
         "videos",
         "audios"
       ]
+    },
+    "link": {
+      "type": "string"
     }
   }
 }

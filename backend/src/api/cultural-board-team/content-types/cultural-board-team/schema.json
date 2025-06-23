@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cultural_board_teams",
+  "info": {
+    "singularName": "cultural-board-team",
+    "pluralName": "cultural-board-teams",
+    "displayName": "Cultural-Board-Team"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "biginteger"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "program": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}

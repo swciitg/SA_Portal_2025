@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hmc_members",
+  "info": {
+    "singularName": "hmc-member",
+    "pluralName": "hmc-members",
+    "displayName": "HMC_Member"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "biginteger"
+    },
+    "program": {
+      "type": "text"
+    },
+    "hostel": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

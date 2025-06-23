@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "student_affairs_teams",
+  "collectionName": "hostel_affairs_teams",
   "info": {
-    "singularName": "student-affairs-team",
-    "pluralName": "student-affairs-teams",
-    "displayName": "Student_Affairs _Team"
+    "singularName": "hostel-affairs-team",
+    "pluralName": "hostel-affairs-teams",
+    "displayName": "Hostel_Affairs_Team"
   },
   "options": {
     "draftAndPublish": true
