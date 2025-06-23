@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import MeetTheTeamBanner from "../assets/Images/mtt-banner.png";
 import TeamCard from "../Components/TeamCard";
@@ -13,6 +13,7 @@ import ns from "../assets/icons/New-Sac.svg";
 import cc from "../assets/icons/Counselling-Cell.svg";
 import "./MeetTheTeam.css";
 import { useSearchParams } from "react-router-dom";
+import sendApiRequest from "../services/apiService";
 
 const MeetTheTeam = () => {
   const [searchParams] = useSearchParams();
@@ -22,6 +23,24 @@ const MeetTheTeam = () => {
     can maintain a mapping between categories and team names
     eg. for Student Affairs Functionaries -> student-affairs-functionaries
    */
+  const [saTeam, setSaTeam] = useState([]);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const saTeamRes = await sendApiRequest("/sa-team", "GET");
+  
+          console.log({ saTeamRes });
+  
+          setSaTeam(saTeamRes?.data);
+        } catch (error) {
+          console.error("Error in fetching data:", error);
+        }
+      };
+  
+      fetchData();
+    }, []);
+
   const [category, setCategory] = useState("Student Affairs Functionaries");
   const [teams, setTeams] = useState([
     {

@@ -92,7 +92,9 @@ function WelfareBoardPage() {
             The Students’ Welfare Board is the body that addresses, co-ordinates and executes all activities related to the overall welfare and well-being of the students of the institute.
           </p>
         </div>
-        <LayeredCarousel />
+        <div className="size-60 sm:size-80 md:size-96 mt-10 shrink-0">
+          <LayeredCarousel />
+        </div>
       </div>
       <div className="boards-announcements"><Announcements /></div>
       <div className="boards-events"><BoardsEvents /></div>

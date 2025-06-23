@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BannerTop from "../Components/BannerTop";
 import LayeredCarousel from "../Components/LayeredCarousel";
 import SWCAnnouncementCard from "../Components/SWCAnnouncementCard";
 import SWCTeamCard from "../Components/SWCTeamCard";
+import sendApiRequest from "../services/apiService";
 
 const CARD_WIDTH = 400;
 const SCROLL_CARDS = 3;
@@ -10,6 +11,24 @@ const SCROLL_CARDS = 3;
 const ITEMS_PER_SLIDE = 3;
 
 export default function WebCommitteePage() {
+  const [swcTeam, setSwcTeam] = useState([]);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const swcTeamRes = await sendApiRequest("/swc-team", "GET");
+  
+          console.log({ swcTeamRes });
+  
+          setSwcTeam(swcTeamRes?.data);
+        } catch (error) {
+          console.error("Error in fetching data:", error);
+        }
+      };
+  
+      fetchData();
+    }, []);
+
   const announcements = [
     {
       title: "Notice regarding railway concession",
@@ -57,7 +76,7 @@ export default function WebCommitteePage() {
       url: "https://iitg.ac.in",
     },
   ];
-  const swcTeam = [
+  const dummySwcTeam = [
     {
       name: "John Doe",
       position: "Overall Coordinator",
@@ -305,7 +324,7 @@ export default function WebCommitteePage() {
         heading={"Meet The Team"}
         children={
           <div className="my-10 flex flex-wrap justify-around items-start gap-6">
-            {swcTeam.map((member, idx) => (
+            {dummySwcTeam.map((member, idx) => (
               <SWCTeamCard
                 key={idx}
                 name={member.name}
