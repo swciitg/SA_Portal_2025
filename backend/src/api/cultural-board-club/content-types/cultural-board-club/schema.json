@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cultural_board_clubs",
+  "info": {
+    "singularName": "cultural-board-club",
+    "pluralName": "cultural-board-clubs",
+    "displayName": "Cultural_Board_Club"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "clubs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::club.club"
+    }
+  }
+}

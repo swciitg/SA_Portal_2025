@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "home_page_announcements",
+  "info": {
+    "singularName": "home-page-announcement",
+    "pluralName": "home-page-announcements",
+    "displayName": "HomePage_Announcement"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text": {
+      "type": "text"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

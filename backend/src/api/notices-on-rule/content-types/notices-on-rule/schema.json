@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notices_on_rules",
+  "info": {
+    "singularName": "notices-on-rule",
+    "pluralName": "notices-on-rules",
+    "displayName": "Notices_On_Rule"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "date": {
+      "type": "date"
+    },
+    "pdfUrl": {
+      "type": "string"
+    },
+    "title": {
+      "type": "text"
+    },
+    "wordUrl": {
+      "type": "string"
+    }
+  }
+}
