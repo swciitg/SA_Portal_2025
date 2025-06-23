@@ -43,7 +43,9 @@ function TechnicalBoardPage() {
             It comprises of Chairman, Technical Board and elected student representatives. Its main function is to coordinate and execute all activities of technical clubs and to coordinate and execute all activities related to the annual technical festival ‘Techniche’.
           </p>
         </div>
-        <LayeredCarousel />
+         <div className="size-60 sm:size-80 md:size-96 mt-10 shrink-0">
+          <LayeredCarousel />
+        </div>
       </div>
       <div className="boards-announcements"><Announcements /></div>
       <div className="boards-events"><BoardsEvents /></div>

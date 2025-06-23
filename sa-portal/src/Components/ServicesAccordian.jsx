@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-function ServicesAccordian() {
+function ServicesAccordian({ services }) {
   // sample data
   const data = [
     {

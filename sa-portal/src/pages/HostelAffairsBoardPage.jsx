@@ -202,7 +202,9 @@ function HostelAffairsBoardPage() {
             The Hostels' Affairs Board is the body that will coordinate and execute all activities related to the residential stay, boarding and lodging of students in the hostels on the campus.<br/>It comprises of Chairman, Hostels' Affairs Board, Wardens and Associate Wardens of all hostels and concerned student representatives. Their main function is to coordinate and execute all activities related to hostels and Hostel Management Committees of hostels.
           </p>
         </div>
-        <LayeredCarousel />
+        <div className="size-60 sm:size-80 md:size-96 mt-10 shrink-0">
+          <LayeredCarousel />
+        </div>
       </div>
       <div className="boards-announcements"><Announcements /></div>
       <div className="boards-events"><BoardsEvents /></div>

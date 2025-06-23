@@ -1,14 +1,35 @@
 import Carousel from "../Components/Carousel";
-import Navbar from "../Components/Navbar";
 import Announcements from "../Components/Announcements";
 import Achievements from "../Components/Achievements";
 import About from "../Components/About";
-import Footer from "../Components/Footer";
 import "./HomePage.css";
-import { useEffect } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
+import sendApiRequest from "../services/apiService";
 
 const HomePage = () => {
+  const [announcements, setAnnouncements] = useState([]);
+  const [achievements, setAchievements] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [announcementsRes, achievementsRes] = await Promise.all([
+          sendApiRequest("/announcements", "GET"),
+          sendApiRequest("/achievements?populate=*", "GET"),
+        ]);
+
+        console.log({ announcementsRes, achievementsRes });
+
+        setAnnouncements(announcementsRes?.data);
+        setAchievements(achievementsRes?.data);
+      } catch (error) {
+        console.error("Error in fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <Carousel />
@@ -16,26 +37,15 @@ const HomePage = () => {
         <div className="w-full">
           <div className="mx-auto grid md:grid-cols-3 gap-10">
             <About />
-            <Announcements />
+            <Announcements announcements={announcements} />
           </div>
         </div>
 
         <div className="mt-16 w-full">
           <div className="overflow-hidden w-full">
-            <Achievements />
+            <Achievements achievements={achievements} />
           </div>
         </div>
-
-        {/* <Navbar />
-          <Carousel />
-          <div className='body'>
-            <div className='body-top'>
-              <About />
-              <Announcements />
-            </div>
-            <Achievements />
-          </div>
-          <Footer /> */}
       </div>
     </>
   );

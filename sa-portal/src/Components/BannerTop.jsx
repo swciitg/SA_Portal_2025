@@ -9,16 +9,16 @@ import downArrow from "../assets/Images/chevron-down.png";
 */
 function BannerTop({ heading, route }) {
   return (
-    <div className="relative bg-[#08267C] h-40 sm:h-64 md:h-72 lg:h-[430px] flex justify-start items-end pl-4 sm:pl-6 md:pl-12 lg:pl-[120px] pb-4 sm:pb-10 md:pb-20 text-white overflow-hidden">
+    <div className="relative bg-[#08267C] h-40 sm:h-64 md:h-72 lg:h-[430px] flex justify-start items-end px-4 sm:px-10 md:px-16 lg:px-20 pb-4 sm:pb-10 md:pb-20 text-white overflow-hidden">
       <div
         className="z-10 max-w-[900px]"
         style={{ fontWeight: 900, lineHeight: 1 }}
       >
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[76px] font-extrabold leading-tight">
+        <h1 className="text-2xl sm:text-5xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
           {heading}
         </h1>
 
-        <div className="mt-2 sm:mt-4 flex flex-wrap items-center gap-2 sm:gap-3 text-base sm:text-lg font-normal">
+        <div className="mt-1 sm:mt-4 flex flex-wrap items-center sm:gap-3 text-sm sm:text-lg font-normal">
           {route.map((text, idx) => {
             const isLast = idx === route.length - 1;
             return (
@@ -56,7 +56,7 @@ function BannerTop({ heading, route }) {
       <img
         src={MeetTheTeamBanner}
         alt="banner"
-        className="hidden md:block absolute top-0 right-0 h-full object-cover pointer-events-none select-none"
+        className="hidden lg:block absolute top-0 right-0 h-full object-cover pointer-events-none select-none"
       />
     </div>
   );

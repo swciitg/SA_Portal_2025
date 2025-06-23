@@ -41,32 +41,30 @@ const LayeredCarousel = () => {
   const visibleImages = getVisibleImages();
 
   return (
-    <div className="mx-10">
-      <div className="h-[350px] w-[383px] flex items-center overflow-hidden relative">
-        <img
-          src={visibleImages.back}
-          alt=""
-          className={`w-[280px] h-2/3 absolute left-32 transition-opacity duration-[2000ms] ease-in-out ${
-            isTransitioning ? "opacity-0" : "opacity-100"
-          }`}
-        />
+    <div className="size-full shrink-0 flex items-center overflow-hidden relative">
+      <img
+        src={visibleImages.back}
+        alt=""
+        className={`w-3/4 h-2/3 absolute right-0 transition-opacity duration-[2000ms] ease-in-out ${
+          isTransitioning ? "opacity-0" : "opacity-100"
+        }`}
+      />
 
-        <img
-          src={visibleImages.middle}
-          alt=""
-          className={`w-[280px] h-5/6 absolute z-5 left-16 transition-opacity duration-[2500ms] ease-in-out ${
-            isTransitioning ? "opacity-0" : "opacity-100"
-          }`}
-        />
+      <img
+        src={visibleImages.middle}
+        alt=""
+        className={`w-3/4 h-5/6 absolute z-5 right-[12.5%] transition-opacity duration-[2500ms] ease-in-out ${
+          isTransitioning ? "opacity-0" : "opacity-100"
+        }`}
+      />
 
-        <img
-          src={visibleImages.front}
-          alt=""
-          className={`w-[280px] h-full z-10 absolute left-0 transition-opacity duration-[3000ms] ease-in-out ${
-            isTransitioning ? "opacity-0" : "opacity-100"
-          }`}
-        />
-      </div>
+      <img
+        src={visibleImages.front}
+        alt=""
+        className={`w-3/4 h-full z-10 absolute left-0 transition-opacity duration-[3000ms] ease-in-out ${
+          isTransitioning ? "opacity-0" : "opacity-100"
+        }`}
+      />
     </div>
   );
 };

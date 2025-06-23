@@ -1,12 +1,13 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import BannerTop from "../Components/BannerTop";
+import sendApiRequest from "../services/apiService";
 
 function FormsPage() {
   const [currPage, setCurrPage] = useState(1);
   const limitOnPage = 5; // limit per page
   // sample forms
-  const forms = Array.from({ length: 20 }, (_, index) => ({
+  const dummyForms = Array.from({ length: 20 }, (_, index) => ({
     date: "2025-02-11",
     title: `Notice for vacating hostel rooms ${index + 1}`,
     pdfUrl: "https://example.com/demo.pdf",
@@ -14,10 +15,28 @@ function FormsPage() {
   }));
 
   // paginated forms to render
-  const paginatedForms = forms.slice(
+  const paginatedForms = dummyForms.slice(
     (currPage - 1) * limitOnPage,
     currPage * limitOnPage
   );
+
+  const [forms, setForms] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const formsRes = await sendApiRequest("/forms", "GET");
+
+        console.log({ formsRes });
+
+        setForms(formsRes?.data);
+      } catch (error) {
+        console.error("Error in fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -96,10 +115,11 @@ function PaginationMenu({ forms, limitOnPage, currPage, setCurrPage }) {
         <div
           key={page}
           onClick={() => goToPage(page)}
-          className={`size-8 sm:size-10 flex items-center justify-center hover:border-none hover:bg-blue-700 hover:text-white cursor-pointer ${page === currPage
+          className={`size-8 sm:size-10 flex items-center justify-center hover:border-none hover:bg-blue-700 hover:text-white cursor-pointer ${
+            page === currPage
               ? "border-none bg-blue-700 text-white font-medium"
               : "border-2 border-neutral-100 text-neutral-500"
-            }`}
+          }`}
         >
           <span>{page}</span>
         </div>
