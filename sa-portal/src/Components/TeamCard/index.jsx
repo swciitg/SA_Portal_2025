@@ -5,7 +5,7 @@ import phoneIcon from "../../assets/icons/phone.png";
 import mailIcon from "../../assets/icons/mail.png";
 
 const ProfileCard = (props) => {
-  const { name, phone, mail, title, imageUrl } = props;
+  const { name, phone, mail, responsibility, title, imageUrl } = props;
   console.log(imageUrl);
   const imgurl = imageUrl || EmptyImage;
   return (
@@ -15,6 +15,7 @@ const ProfileCard = (props) => {
         <div>
           <p className="prof-name">{name}</p>
           <p className="prof-title">{title}</p>
+          <p className="prof-responsibility">{responsibility || ''}</p>
         </div>
         <div>
           <div className="prof-contact">

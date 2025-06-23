@@ -20,9 +20,9 @@
 .prof-right {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   background-color: #fff;
-  padding: 15px 35px;
+  padding: 0px 5%;
 }
 
 .prof-name {
@@ -34,6 +34,13 @@
   font-size: 16px;
   color: #00000061;
   margin: 0;
+}
+
+.prof-responsibility {
+  font-size: 15px;
+  color: #00000061;
+  margin: 8px 0;
+  /* max-height: 50%; */
 }
 
 .prof-contact {
@@ -48,4 +55,42 @@
   margin-right: 8px;
   height: 18px;
   width: 18px;
+}
+
+@media screen and (max-width: 768px) {
+  .prof-card {
+    width: 440px;
+    height: 200px;
+  }
+
+  .prof-name {
+    font-size: 18px;
+  }
+
+  .prof-title,
+  .prof-contact {
+    font-size: 14px;
+  }
+  
+}
+
+@media screen and (max-width: 480px) {
+  .prof-card {
+    width: 360px;
+    height: 164px;
+  }
+
+  .prof-right {
+    padding: 15px;
+  }
+
+  .prof-name {
+    font-size: 15px;
+  }
+
+  .prof-title,
+  .prof-contact {
+    font-size: 12px;
+  }
+  
 }

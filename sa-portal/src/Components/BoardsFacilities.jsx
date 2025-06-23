@@ -4,38 +4,38 @@ import emptyImage from "../assets/Images/empty.png";
 import next from "../assets/Images/next.png";
 import { useState, useEffect, useRef } from "react";
 
-const BoardsEvents = ({eventDetails}) => {
+const BoardsFacilities = ({facilityDetails}) => {
   const [current, setCurrent] = useState(1);
   const listRef = useRef(null);
 
-  const events = eventDetails || [
+  const facilities = facilityDetails || [
     {
       imageUrl: "",
-      name: "Event 1",
+      name: "Facility 1",
     },
     {
       imageUrl: "",
-      name: "Event 2",
+      name: "Facility 2",
     },
     {
       imageUrl: "",
-      name: "Event 3",
+      name: "Facility 3",
     },
     {
       imageUrl: "",
-      name: "Event 4",
+      name: "Facility 4",
     },
     {
       imageUrl: "",
-      name: "Event 5",
+      name: "Facility 5",
     },
 
   ];
 
-  const eventsLength = events.length;
+  const facilitiesLength = facilities.length;
 
   const nextButton = () => {
-    if (current !== eventsLength) {
+    if (current !== facilitiesLength) {
       setCurrent(current + 1);
     }
   };
@@ -47,7 +47,7 @@ const BoardsEvents = ({eventDetails}) => {
   };
 
   let c = current;
-  if (current === eventsLength) {
+  if (current === facilitiesLength) {
     c = current - 2;
   } else if (current === 1) {
     c = current;
@@ -59,15 +59,14 @@ const BoardsEvents = ({eventDetails}) => {
     const list = listRef.current;
     if (list) {
       list.style.transition = "transform 0.4s ease-in-out";
-      list.style.transform = `translateX(calc(${current - 1} * -500px))`;
+      list.style.transform = `translateX(calc(${current - 1} * -400px))`;
     }
   }, [current]);
 
   return (
     <div className="achievements-container">
       <div className="achievements-header">
-        <h1>Events</h1>
-        <div className="achievements-indexes">
+        <div className="achievements-indexes ml-auto">
           <button
             type="button"
             onClick={previousButton}
@@ -78,11 +77,6 @@ const BoardsEvents = ({eventDetails}) => {
           <button type="button" className="achievements-index">
             ...
           </button>
-
-          {/* <button type='button' id='but1' className={c === current ? 'achievements-index active-index' : 'achievements-index'}>{c}</button>
-          <button type='button' id='but2' className={c + 1 === current ? 'achievements-index active-index' : 'achievements-index'}>{c + 1}</button>
-          <button type='button' id='but3' className={c + 2 === current ? 'achievements-index active-index' : 'achievements-index'}>{c + 2}</button> */}
-          {/* Button 1 (Math.max(current - 1, 1)) */}
           <button
             type="button"
             id="but1"
@@ -95,37 +89,33 @@ const BoardsEvents = ({eventDetails}) => {
           >
             {Math.max(current - 1, 1)}
           </button>
-
-          {/* Button 2 (Math.max(Math.min(current, total - 1), 2)) */}
           <button
             type="button"
             id="but2"
             className={
-              current === Math.max(Math.min(current, eventsLength - 1), 2)
+              current === Math.max(Math.min(current, facilitiesLength - 1), 2)
                 ? "achievements-index active-index"
                 : "achievements-index"
             }
             onClick={() =>
-              setCurrent(Math.max(Math.min(current, eventsLength - 1), 2))
+              setCurrent(Math.max(Math.min(current, facilitiesLength - 1), 2))
             }
           >
-            {Math.max(Math.min(current, eventsLength - 1), 2)}
+            {Math.max(Math.min(current, facilitiesLength - 1), 2)}
           </button>
-
-          {/* Button 3 (Math.min(current + 1, total)) */}
           <button
             type="button"
             id="but3"
             className={
-              current === Math.min(current + 1, eventsLength)
+              current === Math.min(current + 1, facilitiesLength)
                 ? "achievements-index active-index"
                 : "achievements-index"
             }
             onClick={() =>
-              setCurrent(Math.min(current + 1, eventsLength))
+              setCurrent(Math.min(current + 1, facilitiesLength))
             }
           >
-            {Math.min(current + 1, eventsLength)}
+            {Math.min(current + 1, facilitiesLength)}
           </button>
 
           <button type="button" className="achievements-index">
@@ -141,16 +131,12 @@ const BoardsEvents = ({eventDetails}) => {
         </div>
       </div>
 
-      {/* Wrapper for overflow hidden */}
       <div className="achievements-cards-wrapper">
-        <div className="achievements-cards" ref={listRef}>
-          {events.map((event,index) => (
-            <div className="event-card" key={index}>
-              <img src={event.imageUrl || emptyImage} alt={event.name} />
-              <div className="event-card-content">
-                <p>{event.name}</p>
-                <a>Know More</a>
-              </div>
+        <div className="flex w-fit" ref={listRef}>
+          {facilities.map((each,index) => (
+            <div className="p-5 flex flex-col justify-between bg-[#FFFFFFDE] h-[335px] w-[384px] border border-[#E0E2EE] border-solid ml-4" key={index}>
+              <h2 className="text-[25px] font-medium">{each.name}</h2>
+              <img className="w-[328px] h-[215px]" src={each.imageUrl || emptyImage} alt={each.name} />
             </div>
           ))}
         </div>
@@ -159,4 +145,4 @@ const BoardsEvents = ({eventDetails}) => {
   );
 };
 
-export default BoardsEvents;
+export default BoardsFacilities;
