@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MinuteCard from "../Components/MinuteCard";
 import BannerTop from "../Components/BannerTop";
+import sendApiRequest from "../services/apiService";
 
 const SACMinutesData = Array(210).fill({
   title: "SAC Meeting Minutes - January 2024",
@@ -39,6 +40,24 @@ const SACMinutesPage = () => {
   const rightColumnCards = isLargeScreen
     ? pageCards.slice(SMALL_SCREEN_CARDS)
     : [];
+
+  const [minutes, setMinutes] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const minutesRes = await sendApiRequest("/sac-minutes", "GET");
+
+        console.log({ minutesRes });
+
+        setMinutes(minutesRes?.data);
+      } catch (error) {
+        console.error("Error in fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>

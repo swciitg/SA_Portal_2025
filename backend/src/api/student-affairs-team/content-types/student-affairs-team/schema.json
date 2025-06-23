@@ -4,37 +4,20 @@
   "info": {
     "singularName": "student-affairs-team",
     "pluralName": "student-affairs-teams",
-    "displayName": "Student Affairs Team"
+    "displayName": "Student_Affairs _Team"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "heading": {
       "type": "string"
     },
-    "title": {
-      "type": "string"
-    },
-    "mail": {
-      "type": "email"
-    },
-    "imageUrl": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "description": {
-      "type": "text"
-    },
-    "phone": {
-      "type": "biginteger"
+    "members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team-member.team-member"
     }
   }
 }

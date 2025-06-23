@@ -4,11 +4,11 @@ import emptyImage from "../assets/Images/empty.png";
 import next from "../assets/Images/next.png";
 import { useState, useEffect, useRef } from "react";
 
-const BoardsEvents = () => {
+const BoardsEvents = ({eventDetails}) => {
   const [current, setCurrent] = useState(1);
   const listRef = useRef(null);
 
-  const events = [
+  const events = eventDetails || [
     {
       imageUrl: "",
       name: "Event 1",

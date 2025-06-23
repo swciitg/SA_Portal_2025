@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ScholarshipCard from "../Components/ScholarshipCard";
 import { useSearchParams } from "react-router-dom";
 import BannerTop from "../Components/BannerTop";
+import sendApiRequest from "../services/apiService";
 
 const scholarshipData = [
   { title: "Gates Millenium Scholarship" },
@@ -24,6 +25,25 @@ const ScholarshipPage = () => {
     Government Scholarships List -> government
     External Scholarships List -> external
    */
+
+  const [scholarships, setScholarships] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const scholarshipsRes = await sendApiRequest("/scholarships", "GET");
+
+        console.log({ scholarshipsRes });
+
+        setScholarships(scholarshipsRes?.data);
+      } catch (error) {
+        console.error("Error in fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     //new bg: 236 243 255
     <>

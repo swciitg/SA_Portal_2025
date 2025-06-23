@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './Boards.css'
 import BannerTop from "../Components/BannerTop";
 import Announcements from "../Components/Announcements";
@@ -29,6 +29,9 @@ function CulturalBoardPage() {
     {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
     {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
   ]
+
+  const [announcements,setAnnouncements] = useState([]);
+
   
   return (
     <>
@@ -43,9 +46,11 @@ function CulturalBoardPage() {
             <br/> Its main function is to coordinate and execute all cultural activities through the various clubs and to coordinate and execute all activities related to the annual cultural festival ‘Alcheringa’.
           </p>
         </div>
-        <LayeredCarousel />
+         <div className="size-60 sm:size-80 md:size-96 mt-10 shrink-0">
+          <LayeredCarousel />
+        </div>
       </div>
-      <div className="boards-announcements"><Announcements /></div>
+      <div className="boards-announcements"><Announcements announcements={announcements}/></div>
       <div className="boards-events"><BoardsEvents /></div>
       <div className="boards-clubs">
         <h1>Clubs - Under Cultural Board</h1>

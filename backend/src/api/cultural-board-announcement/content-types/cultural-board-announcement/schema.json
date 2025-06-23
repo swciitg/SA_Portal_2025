@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cultural_board_announcements",
+  "info": {
+    "singularName": "cultural-board-announcement",
+    "pluralName": "cultural-board-announcements",
+    "displayName": "Cultural_Board_Announcement"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text": {
+      "type": "text"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

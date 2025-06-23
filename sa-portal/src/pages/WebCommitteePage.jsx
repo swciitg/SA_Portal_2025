@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BannerTop from "../Components/BannerTop";
 import LayeredCarousel from "../Components/LayeredCarousel";
 import SWCAnnouncementCard from "../Components/SWCAnnouncementCard";
 import SWCTeamCard from "../Components/SWCTeamCard";
+import sendApiRequest from "../services/apiService";
 
 const CARD_WIDTH = 400;
 const SCROLL_CARDS = 3;
@@ -10,6 +11,24 @@ const SCROLL_CARDS = 3;
 const ITEMS_PER_SLIDE = 3;
 
 export default function WebCommitteePage() {
+  const [swcTeam, setSwcTeam] = useState([]);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const swcTeamRes = await sendApiRequest("/swc-team", "GET");
+  
+          console.log({ swcTeamRes });
+  
+          setSwcTeam(swcTeamRes?.data);
+        } catch (error) {
+          console.error("Error in fetching data:", error);
+        }
+      };
+  
+      fetchData();
+    }, []);
+
   const announcements = [
     {
       title: "Notice regarding railway concession",
@@ -57,7 +76,7 @@ export default function WebCommitteePage() {
       url: "https://iitg.ac.in",
     },
   ];
-  const swcTeam = [
+  const dummySwcTeam = [
     {
       name: "John Doe",
       position: "Overall Coordinator",
@@ -197,18 +216,18 @@ export default function WebCommitteePage() {
     <>
       <BannerTop
         heading={
-          <div className="flex flex-col space-y-3">
-            <p>Student's Web</p>
+          <div className="flex flex-col sm:space-y-2 md:space-y-3">
+            <p>Students' Web</p>
             <p className="text-blue-400">Committee</p>
           </div>
         }
         route={["Student Affairs Board", "Student's Web Committee"]}
       />
       {/* Intro and Carousel */}
-      <div className="flex items-center justify-around my-8 mx-8 sm:my-12 sm:mx-12 md:my-20 md:mx-20">
-        <div className="flex flex-col w-1/2 space-y-2">
+      <div className="w-full flex flex-col lg:flex-row md:space-x-10 items-center justify-around px-10 sm:px-10 md:px-32 py-10 md:py-16 lg:py-20 mt-10">
+        <div className="flex flex-col w-full lg:w-1/2 space-y-2">
           <p className="font-semibold text-3xl">
-            Welcome to <br /> Student's Web Committee
+            Welcome to <br /> Students' Web Committee
           </p>
           <p className="text-black/60">
             We are group of Product Developers, Product Designers, and Product
@@ -218,7 +237,9 @@ export default function WebCommitteePage() {
             websites launching soon this summer.
           </p>
         </div>
-        <LayeredCarousel />
+        <div className="size-60 sm:size-80 md:size-96 mt-10 shrink-0">
+          <LayeredCarousel />
+        </div>
       </div>
       {/* Announcements Section */}
       <Section
@@ -276,14 +297,14 @@ export default function WebCommitteePage() {
       <Section
         heading={"Our Services"}
         children={
-          <div className="flex flex-col md:flex-row items-start justify-between space-x-">
+          <div className="flex flex-col md:flex-row items-start justify-between flex-wrap">
             <div className="text-black/60 w-full md:w-80 flex-shrink-0">
               We create products, and strive to continually improve them. Our
               team has the zeal to make a product or service better, and
               continually adopt to changing tech, delivering quality products.
             </div>
             <div
-              className="flex gap-6 overflow-clip transition-transform duration-500 ease-in-out"
+              className="mt-6 flex gap-3 sm:gap-6 overflow-clip flex-wrap items-center transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${offset}px)` }}
             >
               {services.map((service, idx) => (
@@ -303,7 +324,7 @@ export default function WebCommitteePage() {
         heading={"Meet The Team"}
         children={
           <div className="my-10 flex flex-wrap justify-around items-start gap-6">
-            {swcTeam.map((member, idx) => (
+            {dummySwcTeam.map((member, idx) => (
               <SWCTeamCard
                 key={idx}
                 name={member.name}
@@ -323,7 +344,7 @@ export default function WebCommitteePage() {
 
 function Section({ heading, children }) {
   return (
-    <div className="border-t-2 px-32 my-20">
+    <div className="border-t-2 px-6 sm:px-20 md:px-32 my-8 sm:my-10 md:my-20">
       <h2 className="font-semibold text-3xl mb-10 pt-6 border-t-4 border-blue-500 inline-block px-4 text-center">
         {heading}
       </h2>
@@ -334,12 +355,8 @@ function Section({ heading, children }) {
 
 function EventCard({ title, url, image }) {
   return (
-    <div className="overflow-hidden border-2 flex-shrink-0">
-      <img
-        src={image}
-        alt={title}
-        className="w-[485px] h-[280px] overflow-hidden"
-      />
+    <div className="size-60 sm:size-72 flex flex-col justify-between overflow-hidden border-2 flex-shrink-0">
+      <img src={image} alt={title} className="w-full h-1/2 overflow-hidden" />
       <div className="flex items-center justify-between p-3">
         <div>{title}</div>
         <a href={url} className="flex space-x-0.5">
@@ -367,9 +384,9 @@ function EventCard({ title, url, image }) {
 
 function ServiceCard({ title, image, url }) {
   return (
-    <div className="border-2 px-6 py-8">
+    <div className="size-60 sm:size-72 flex flex-col justify-between border-2 mx-auto px-2 py-4 md:px-6 md:py-8">
       <p className="text-3xl font-normal mb-4">{title}</p>
-      <img src={image} alt={title} className="w-80 h-52 mb-2" />
+      <img src={image} alt={title} className="w-full h-2/3 mb-2" />
       <a href={url} className="text-xs text-blue-500">
         Learn more
       </a>

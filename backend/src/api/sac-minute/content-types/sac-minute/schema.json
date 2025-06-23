@@ -14,8 +14,15 @@
     "title": {
       "type": "string"
     },
-    "file": {
-      "type": "string"
+    "pdfUrl": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

@@ -1,11 +1,12 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import sendApiRequest from "../services/apiService";
 
 function FormsPage() {
   const [currPage, setCurrPage] = useState(1);
   const limitOnPage = 5; // limit per page
   // sample notices
-  const notices = Array.from({ length: 20 }, (_, index) => ({
+  const dummyNotices = Array.from({ length: 20 }, (_, index) => ({
     date: "2025-02-11",
     title: `Notice for vacating hostel rooms ${index + 1}`,
     pdfUrl: "https://example.com/demo.pdf",
@@ -13,10 +14,28 @@ function FormsPage() {
   }));
 
   // paginated forms to render
-  const paginatedNotices = notices.slice(
+  const paginatedNotices = dummyNotices.slice(
     (currPage - 1) * limitOnPage,
     currPage * limitOnPage
   );
+
+  const [notices, setNotices] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const noticesRes = await sendApiRequest("/notices-on-rules", "GET");
+
+        console.log({ noticesRes });
+
+        setNotices(noticesRes?.data);
+      } catch (error) {
+        console.error("Error in fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>

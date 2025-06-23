@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "technical_board_clubs",
+  "info": {
+    "singularName": "technical-board-club",
+    "pluralName": "technical-board-clubs",
+    "displayName": "Technical_Board_Club"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "clubs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::club.club"
+    }
+  }
+}

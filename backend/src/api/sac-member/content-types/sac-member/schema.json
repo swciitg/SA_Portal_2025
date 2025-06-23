@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sac_members",
+  "info": {
+    "singularName": "sac-member",
+    "pluralName": "sac-members",
+    "displayName": "SAC_Member"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team-member.team-member"
+    }
+  }
+}

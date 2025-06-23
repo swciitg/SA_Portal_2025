@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "boards_events",
+  "info": {
+    "singularName": "boards-event",
+    "pluralName": "boards-events",
+    "displayName": "Boards_Event"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "text"
+    },
+    "imageUrl": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

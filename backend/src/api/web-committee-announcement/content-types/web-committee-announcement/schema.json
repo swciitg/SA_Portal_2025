@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "web_committee_announcements",
+  "info": {
+    "singularName": "web-committee-announcement",
+    "pluralName": "web-committee-announcements",
+    "displayName": "WebCommittee_Announcement"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}
