@@ -3,33 +3,17 @@ import BannerTop from "../Components/BannerTop";
 import LayeredCarousel from "../Components/LayeredCarousel";
 import SAcard from "../Components/SAcard";
 import sendApiRequest from "../services/apiService";
+import ROUTES from "../constants/apiRoutes";
 
 const SACourses = () => {
   const route = ["Students Affair Board", "SA Courses"];
-  // const courses = [
-  //     { code: 'ATH101', title: 'Athletics' },
-  //     { code: 'FB201', title: 'Football' },
-  //     { code: 'BB301', title: 'Basketball' },
-  //     { code: 'BD401', title: 'Badminton' },
-  //     { code: 'YG501', title: 'Yoga' },
-  //     { code: 'SW601', title: 'Swimming' },
-  //     { code: 'CR701', title: 'Cricket' },
-  //     { code: 'TN801', title: 'Tennis' },
-  //     { code: 'VB901', title: 'Volleyball' },
-  //     { code: 'MT1001', title: 'Mountaineering' },
-  //     { code: 'RK1101', title: 'Rock Climbing' },
-  //     { code: 'CP1201', title: 'Camping' },
-  //     { code: 'RC1301', title: 'River Crossing' },
-  //     { code: 'SK1401', title: 'Skiing' },
-  //     { code: 'PK1501', title: 'Paragliding' },
-  // ]
 
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const coursesRes = await sendApiRequest("/sa-courses", "GET");
+        const coursesRes = await sendApiRequest(ROUTES.SA_COURSES);
 
         console.log({ coursesRes });
 

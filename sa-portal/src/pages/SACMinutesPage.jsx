@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import MinuteCard from "../Components/MinuteCard";
 import BannerTop from "../Components/BannerTop";
 import sendApiRequest from "../services/apiService";
-
-const SACMinutesData = Array(210).fill({
-  title: "SAC Meeting Minutes - January 2024",
-});
+import ROUTES from "../constants/apiRoutes";
 
 const SMALL_SCREEN_CARDS = 20;
 const LARGE_SCREEN_CARDS = 40;
@@ -13,6 +10,8 @@ const LARGE_SCREEN_CARDS = 40;
 const SACMinutesPage = () => {
   const [page, setPage] = useState(1);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+    const [minutes, setMinutes] = useState([]);
 
   useEffect(() => {
     const handleResize = () => setIsLargeScreen(window.innerWidth >= 768);
@@ -24,14 +23,14 @@ const SACMinutesPage = () => {
   const CARDS_PER_PAGE = isLargeScreen
     ? LARGE_SCREEN_CARDS
     : SMALL_SCREEN_CARDS;
-  const totalPages = Math.ceil(SACMinutesData.length / CARDS_PER_PAGE);
+  const totalPages = Math.ceil(minutes.length / CARDS_PER_PAGE);
 
   // Calculate prev and next pages if they exist
   const prevPage = page > 1 ? page - 1 : null;
   const nextPage = page < totalPages ? page + 1 : null;
 
   const startIdx = (page - 1) * CARDS_PER_PAGE;
-  const pageCards = SACMinutesData.slice(startIdx, startIdx + CARDS_PER_PAGE);
+  const pageCards = minutes.slice(startIdx, startIdx + CARDS_PER_PAGE);
 
   // Split for large screens
   const leftColumnCards = isLargeScreen
@@ -41,12 +40,10 @@ const SACMinutesPage = () => {
     ? pageCards.slice(SMALL_SCREEN_CARDS)
     : [];
 
-  const [minutes, setMinutes] = useState([]);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const minutesRes = await sendApiRequest("/sac-minutes", "GET");
+        const minutesRes = await sendApiRequest(ROUTES.SAC_MINUTES);
 
         console.log({ minutesRes });
 
@@ -154,6 +151,7 @@ const SACMinutesPage = () => {
                   key={startIdx + idx}
                   idx={startIdx + idx + 1}
                   title={item.title}
+                  pdfUrl={process.env.REACT_APP_API_BASE_URL+item.pdfUrl?.url}
                 />
               ))}
             </div>
@@ -165,6 +163,7 @@ const SACMinutesPage = () => {
                   key={startIdx + SMALL_SCREEN_CARDS + idx}
                   idx={startIdx + SMALL_SCREEN_CARDS + idx + 1}
                   title={item.title}
+                   pdfUrl={process.env.REACT_APP_API_BASE_URL+item.pdfUrl?.url}
                 />
               ))}
             </div>
@@ -176,6 +175,7 @@ const SACMinutesPage = () => {
                 key={startIdx + idx}
                 idx={startIdx + idx + 1}
                 title={item.title}
+                 pdfUrl={process.env.REACT_APP_API_BASE_URL+item.pdfUrl?.url}
               />
             ))}
           </div>

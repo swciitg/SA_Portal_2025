@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './Boards.css'
 import BannerTop from "../Components/BannerTop";
 import Announcements from "../Components/Announcements";
@@ -6,30 +6,40 @@ import BoardsEvents from "../Components/BoardsEvents";
 import LayeredCarousel from "../Components/LayeredCarousel";
 import ClubCard from "../Components/ClubCard";
 import SWCTeamCard from "../Components/SWCTeamCard";
+import sendApiRequest from "../services/apiService";
+import ROUTES from "../constants/apiRoutes";
 
 function TechnicalBoardPage() {
   const route = ["Students' Affairs Boards", "Technical Board"];
-  const clubs = [
-    { clubName: '', imageUrl: '', link: ''},
-    { clubName: '', imageUrl: '', link: ''},
-    { clubName: '', imageUrl: '', link: ''},
-    { clubName: '', imageUrl: '', link: ''},
-    { clubName: '', imageUrl: '', link: ''},
-    { clubName: '', imageUrl: '', link: ''},
-    { clubName: '', imageUrl: '', link: ''},
-    { clubName: '', imageUrl: '', link: ''},
-    { clubName: '', imageUrl: '', link: ''},
-    { clubName: '', imageUrl: '', link: ''},
-    { clubName: '', imageUrl: '', link: ''},
-  ]
-  const team = [
-    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
-    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
-    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
-    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
-    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
-    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
-  ]
+
+  const [announcements,setAnnouncements] = useState([]);
+  const [events, setEvents] = useState([])
+  const [clubs, setClubs] = useState([])
+  const [team, setTeam] = useState([])
+ 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [announcementsRes,eventsRes,clubsRes,teamRes] = await Promise.all([
+          sendApiRequest(ROUTES.TECHNICAL_BOARD_ANNOUNCEMENTS),
+          sendApiRequest(ROUTES.TECHNICAL_BOARD_EVENTS),
+          sendApiRequest(ROUTES.TECHNICAL_BOARD_CLUBS),
+          sendApiRequest(ROUTES.TECHNICAL_BOARD_TEAM),
+        ])
+
+        console.log({ announcementsRes,eventsRes,clubsRes,teamRes });
+
+        setAnnouncements(announcementsRes?.data)
+        setEvents(eventsRes?.data)
+        setClubs(clubsRes?.data)
+        setTeam(teamRes?.data)
+      } catch (error) {
+        console.error("Error in fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   
   return (
     <>
@@ -47,14 +57,14 @@ function TechnicalBoardPage() {
           <LayeredCarousel />
         </div>
       </div>
-      <div className="boards-announcements"><Announcements /></div>
-      <div className="boards-events"><BoardsEvents /></div>
+      <div className="boards-announcements"><Announcements announcements={announcements}/></div>
+      <div className="boards-events"><BoardsEvents eventDetails={events}/></div>
       <div className="boards-clubs">
         <h1>Clubs - Under Technical Board</h1>
         <div className="clubs-container">
           {
             clubs.map(each=>(
-              <ClubCard clubName={each.clubName} imageUrl={each.imageUrl} link={each.link} />
+              <ClubCard clubName={each.clubName} imageUrl={process.env.REACT_APP_API_BASE_URL+each.imageUrl?.url} link={each.link} />
             ))
           }
         </div>
@@ -64,7 +74,7 @@ function TechnicalBoardPage() {
         <div className="team-container">
           {
             team.map(each=>(
-              <SWCTeamCard name={each.name} position={each.position} email={each.email} phone={each.phone} image={each.image} program={each.program} />
+              <SWCTeamCard name={each.name} position={each.position} email={each.email} phone={each.phone} image={process.env.REACT_APP_API_BASE_URL+each.imageUrl?.url} program={each.program} />
             ))
           }
         </div>
@@ -74,3 +84,25 @@ function TechnicalBoardPage() {
 }
 
 export default TechnicalBoardPage;
+
+// const clubs = [
+//     { clubName: '', imageUrl: '', link: ''},
+//     { clubName: '', imageUrl: '', link: ''},
+//     { clubName: '', imageUrl: '', link: ''},
+//     { clubName: '', imageUrl: '', link: ''},
+//     { clubName: '', imageUrl: '', link: ''},
+//     { clubName: '', imageUrl: '', link: ''},
+//     { clubName: '', imageUrl: '', link: ''},
+//     { clubName: '', imageUrl: '', link: ''},
+//     { clubName: '', imageUrl: '', link: ''},
+//     { clubName: '', imageUrl: '', link: ''},
+//     { clubName: '', imageUrl: '', link: ''},
+//   ]
+//   const team = [
+//     {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
+//     {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
+//     {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
+//     {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
+//     {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
+//     {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program'},
+//   ]

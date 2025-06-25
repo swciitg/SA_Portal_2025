@@ -7,39 +7,6 @@ const Achievements = ({ achievements }) => {
   const [current, setCurrent] = useState(1);
   const listRef = useRef(null);
 
-  // const achievements = [
-  //   {
-  //     imageUrl: "",
-  //     title: "Aquatics",
-  //     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-  //   },
-  //   {
-  //     imageUrl: "",
-  //     title: "Athletics",
-  //     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-  //   },
-  //   {
-  //     imageUrl: "",
-  //     title: "Kabaddi",
-  //     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-  //   },
-  //   {
-  //     imageUrl: "",
-  //     title: "Basketball",
-  //     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-  //   },
-  //   {
-  //     imageUrl: "",
-  //     title: "Volleyball",
-  //     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-  //   },
-  //   {
-  //     imageUrl: "",
-  //     title: "Cricket",
-  //     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-  //   },
-  // ];
-
   const achievementsLength = achievements.length;
 
   const nextButton = () => {
@@ -160,7 +127,7 @@ const Achievements = ({ achievements }) => {
               <AchievementsCard
                 key={index}
                 imageUrl={
-                  process.env.REACT_APP_API_BASE_URL + achievement.imageUrl.url
+                  process.env.REACT_APP_API_BASE_URL + achievement.imageUrl?.url
                 }
                 title={achievement.title}
                 description={achievement.description}

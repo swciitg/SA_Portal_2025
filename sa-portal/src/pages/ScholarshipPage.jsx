@@ -1,37 +1,25 @@
 import React, { useEffect, useState } from "react";
 import ScholarshipCard from "../Components/ScholarshipCard";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import BannerTop from "../Components/BannerTop";
 import sendApiRequest from "../services/apiService";
-
-const scholarshipData = [
-  { title: "Gates Millenium Scholarship" },
-  { title: "Gates Scholarship" },
-  { title: "Chevening Scholarship" },
-  { title: "Gates Millenium Scholarship program" },
-  { title: "Rhodes Scholarship" },
-  { title: "Fulbright Scholarship" },
-  { title: "Commonwealth Scholarship" },
-  { title: "DAAD Scholarship" },
-];
+import ROUTES from "../constants/apiRoutes";
 
 const ScholarshipPage = () => {
   const [searchParams] = useSearchParams();
   const type = searchParams.get("type");
-  /* Render the items according to the type variable,
-   also update the url when type changes,
-    can maintain a mapping between categories and type
-    eg. for Scholarship Beneficiary List ->beneficiary-list
-    Government Scholarships List -> government
-    External Scholarships List -> external
-   */
+  const navigate = useNavigate();
 
   const [scholarships, setScholarships] = useState([]);
+
+  const filteredScholarships = scholarships.filter(
+    (scholarship) => scholarship.type?.toLowerCase() == type?.toLowerCase()
+  );
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const scholarshipsRes = await sendApiRequest("/scholarships", "GET");
+        const scholarshipsRes = await sendApiRequest(ROUTES.SCHOLARSHIPS);
 
         console.log({ scholarshipsRes });
 
@@ -55,21 +43,34 @@ const ScholarshipPage = () => {
         {/* Navigation Bar */}
         <div className="customBgNew w-full px-12 flex justify-between">
           {/* Each section takes about 30% of total width */}
-          <div className="hoveredBg w-1/3 flex justify-center py-4 hover:cursor-pointer">
+          <div
+            className="hoveredBg w-1/3 flex justify-center py-4 hover:cursor-pointer"
+            style={type === "school" ? { backgroundColor: "#c5d9fe" } : {}}
+            onClick={() => navigate("/scholarships?type=school")}
+          >
             <button className="text-lg font-medium">School Scholarships</button>
           </div>
-          <div className="hoveredBg w-1/3 flex justify-center py-4 hover:cursor-pointer">
+          <div
+            className="hoveredBg w-1/3 flex justify-center py-4 hover:cursor-pointer"
+            style={type === "government" ? { backgroundColor: "#c5d9fe" } : {}}
+            onClick={() => navigate("/scholarships?type=government")}
+          >
             <button className="text-lg font-medium">Government</button>
           </div>
-          <div className="hoveredBg w-1/3 flex justify-center py-4 hover:cursor-pointer">
+          <div
+            className="hoveredBg w-1/3 flex justify-center py-4 hover:cursor-pointer"
+            style={type === "others" ? { backgroundColor: "#c5d9fe" } : {}}
+            onClick={() => navigate("/scholarships?type=others")}
+          >
             <button className="text-lg font-medium">Others</button>
           </div>
         </div>
 
         {/* Scholarship List */}
         <div className="flex flex-col items-center py-10 px-4">
-          {scholarshipData.map((item, idx) => (
-            <ScholarshipCard key={idx} idx={idx + 1} title={item.title} />
+          {filteredScholarships.map((item, idx) => (
+            <ScholarshipCard key={idx} idx={idx + 1} title={item.name} pdfUrl={process.env.REACT_APP_API_BASE_URL+item.pdf_File?.url}
+            wordUrl={process.env.REACT_APP_API_BASE_URL+item.word_File?.url}/>
           ))}
         </div>
       </div>

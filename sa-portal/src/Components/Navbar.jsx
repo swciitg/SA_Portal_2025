@@ -70,7 +70,7 @@ const Navbar = () => {
         },
         {
           title: "External Scholarships List",
-          href: "/scholarships?type=external",
+          href: "/scholarships?type=others",
           type: "page",
         },
       ],

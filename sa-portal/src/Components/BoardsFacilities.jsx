@@ -136,7 +136,7 @@ const BoardsFacilities = ({facilityDetails}) => {
           {facilities.map((each,index) => (
             <div className="p-5 flex flex-col justify-between bg-[#FFFFFFDE] h-[335px] w-[384px] border border-[#E0E2EE] border-solid ml-4" key={index}>
               <h2 className="text-[25px] font-medium">{each.name}</h2>
-              <img className="w-[328px] h-[215px]" src={each.imageUrl || emptyImage} alt={each.name} />
+              <img className="w-[328px] h-[215px]" src={process.env.REACT_APP_API_BASE_URL+each.imageUrl?.url || emptyImage} alt={each.name} />
             </div>
           ))}
         </div>

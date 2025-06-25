@@ -1,30 +1,25 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import sendApiRequest from "../services/apiService";
+import ROUTES from "../constants/apiRoutes";
 
 function FormsPage() {
   const [currPage, setCurrPage] = useState(1);
   const limitOnPage = 5; // limit per page
-  // sample notices
-  const dummyNotices = Array.from({ length: 20 }, (_, index) => ({
-    date: "2025-02-11",
-    title: `Notice for vacating hostel rooms ${index + 1}`,
-    pdfUrl: "https://example.com/demo.pdf",
-    wordUrl: "https://example.com/demo.docx",
-  }));
+
+  const [notices, setNotices] = useState([]);
 
   // paginated forms to render
-  const paginatedNotices = dummyNotices.slice(
+  const paginatedNotices = notices.slice(
     (currPage - 1) * limitOnPage,
     currPage * limitOnPage
   );
 
-  const [notices, setNotices] = useState([]);
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const noticesRes = await sendApiRequest("/notices-on-rules", "GET");
+        const noticesRes = await sendApiRequest(ROUTES.NOTICES_ON_RULES);
 
         console.log({ noticesRes });
 
@@ -60,8 +55,9 @@ function FormsPage() {
               key={idx}
               date={form.date}
               title={form.title}
-              pdfUrl={form.pdfUrl}
-              wordUrl={form.wordUrl}
+              pdfUrl={process.env.REACT_APP_API_BASE_URL+form.pdf_File?.url}
+              wordUrl={process.env.REACT_APP_API_BASE_URL+form.word_File?.url}
+              
             />
           ))}
         </div>

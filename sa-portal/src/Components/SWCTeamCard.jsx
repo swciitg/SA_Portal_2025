@@ -1,6 +1,6 @@
 import React from "react";
 
-function SWCTeamCard({ name, position, email, phone, image, program }) {
+function SWCTeamCard({ name, position, email, phone, image, program="" }) {
   // sample data -> has to be from props
   // const data = {
   //   name: "John Doe",

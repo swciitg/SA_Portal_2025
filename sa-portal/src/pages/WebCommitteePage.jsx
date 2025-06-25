@@ -4,6 +4,7 @@ import LayeredCarousel from "../Components/LayeredCarousel";
 import SWCAnnouncementCard from "../Components/SWCAnnouncementCard";
 import SWCTeamCard from "../Components/SWCTeamCard";
 import sendApiRequest from "../services/apiService";
+import ROUTES from "../constants/apiRoutes";
 
 const CARD_WIDTH = 400;
 const SCROLL_CARDS = 3;
@@ -11,183 +12,34 @@ const SCROLL_CARDS = 3;
 const ITEMS_PER_SLIDE = 3;
 
 export default function WebCommitteePage() {
-  const [swcTeam, setSwcTeam] = useState([]);
-  
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const swcTeamRes = await sendApiRequest("/swc-team", "GET");
-  
-          console.log({ swcTeamRes });
-  
-          setSwcTeam(swcTeamRes?.data);
-        } catch (error) {
-          console.error("Error in fetching data:", error);
-        }
-      };
-  
-      fetchData();
-    }, []);
+  const [announcements,setAnnouncements] = useState([]);
+  const [events, setEvents] = useState([])
+  const [services, setServices] = useState([])
+  const [team, setTeam] = useState([])
+ 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [announcementsRes,eventsRes,servicesRes,teamRes] = await Promise.all([
+          sendApiRequest(ROUTES.WEB_COMMITTEE_ANNOUNCEMENTS),
+          sendApiRequest(ROUTES.WEB_COMMITTEE_EVENTS),
+          sendApiRequest(ROUTES.WEB_COMMITTEE_SERVICES),
+          sendApiRequest(ROUTES.WEB_COMMITTEE_TEAM),
+        ])
 
-  const announcements = [
-    {
-      title: "Notice regarding railway concession",
-      date: "2025-04-21",
-      url: "https://iitg.ac.in",
-    },
-    {
-      title: "Notice regarding railway concession",
-      date: "2025-04-21",
-      url: "https://iitg.ac.in",
-    },
-    {
-      title: "Notice regarding railway concession",
-      date: "2025-04-21",
-      url: "https://iitg.ac.in",
-    },
-    {
-      title: "Notice regarding railway concession",
-      date: "2025-04-21",
-      url: "https://iitg.ac.in",
-    },
-    {
-      title: "Notice regarding railway concession",
-      date: "2025-04-21",
-      url: "https://iitg.ac.in",
-    },
-    {
-      title: "Notice regarding railway concession",
-      date: "2025-04-21",
-      url: "https://iitg.ac.in",
-    },
-    {
-      title: "Notice regarding railway concession",
-      date: "2025-04-21",
-      url: "https://iitg.ac.in",
-    },
-    {
-      title: "Notice regarding railway concession",
-      date: "2025-04-21",
-      url: "https://iitg.ac.in",
-    },
-    {
-      title: "Notice regarding railway concession",
-      date: "2025-04-21",
-      url: "https://iitg.ac.in",
-    },
-  ];
-  const dummySwcTeam = [
-    {
-      name: "John Doe",
-      position: "Overall Coordinator",
-      email: "johndoe99@outlook.com",
-      phone: "1234567890",
-      image: "agriculture-bg.jpg",
-      program: "B.Tech in Chemical Engineering",
-    },
-    {
-      name: "John Doe",
-      position: "Overall Coordinator",
-      email: "johndoe99@outlook.com",
-      phone: "1234567890",
-      image: "agriculture-bg.jpg",
-      program: "B.Tech in Chemical Engineering",
-    },
-    {
-      name: "John Doe",
-      position: "Overall Coordinator",
-      email: "johndoe99@outlook.com",
-      phone: "1234567890",
-      image: "agriculture-bg.jpg",
-      program: "B.Tech in Chemical Engineering",
-    },
-    {
-      name: "John Doe",
-      position: "Overall Coordinator",
-      email: "johndoe99@outlook.com",
-      phone: "1234567890",
-      image: "agriculture-bg.jpg",
-      program: "B.Tech in Chemical Engineering",
-    },
-    {
-      name: "John Doe",
-      position: "Overall Coordinator",
-      email: "johndoe99@outlook.com",
-      phone: "1234567890",
-      image: "agriculture-bg.jpg",
-      program: "B.Tech in Chemical Engineering",
-    },
-    {
-      name: "John Doe",
-      position: "Overall Coordinator",
-      email: "johndoe99@outlook.com",
-      phone: "1234567890",
-      image: "agriculture-bg.jpg",
-      program: "B.Tech in Chemical Engineering",
-    },
-    {
-      name: "John Doe",
-      position: "Overall Coordinator",
-      email: "johndoe99@outlook.com",
-      phone: "1234567890",
-      image: "agriculture-bg.jpg",
-      program: "B.Tech in Chemical Engineering",
-    },
-  ];
-  const events = [
-    {
-      title: "Hacktoberfest",
-      image: "agriculture-bg.jpg",
-      url: "https://swc.iitg.ac.in",
-    },
-    {
-      title: "HackStack",
-      image: "agriculture-bg.jpg",
-      url: "https://swc.iitg.ac.in",
-    },
-    {
-      title: "Something else",
-      image: "agriculture-bg.jpg",
-      url: "https://swc.iitg.ac.in",
-    },
-    {
-      title: "Else else",
-      image: "agriculture-bg.jpg",
-      url: "https://swc.iitg.ac.in",
-    },
-    {
-      title: "Hacktoberfest1",
-      image: "agriculture-bg.jpg",
-      url: "https://swc.iitg.ac.in",
-    },
-    {
-      title: "HackStack1",
-      image: "agriculture-bg.jpg",
-      url: "https://swc.iitg.ac.in",
-    },
-    {
-      title: "Something else2",
-      image: "agriculture-bg.jpg",
-      url: "https://swc.iitg.ac.in",
-    },
-    {
-      title: "Else else3",
-      image: "agriculture-bg.jpg",
-      url: "https://swc.iitg.ac.in",
-    },
-  ];
-  const services = [
-    {
-      title: "One Stop",
-      image: "agriculture-bg.jpg",
-      url: "https://iitg.ac.in",
-    },
-    {
-      title: "Election Portal",
-      image: "agriculture-bg.jpg",
-      url: "https://iitg.ac.in",
-    },
-  ];
+        console.log({ announcementsRes,eventsRes,servicesRes,teamRes });
+
+        setAnnouncements(announcementsRes?.data)
+        setEvents(eventsRes?.data)
+        setServices(servicesRes?.data)
+        setTeam(teamRes?.data)
+      } catch (error) {
+        console.error("Error in fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const [index, setIndex] = useState(0);
   const [offset, setOffset] = useState(0);
@@ -283,7 +135,7 @@ export default function WebCommitteePage() {
                     <EventCard
                       key={idx}
                       title={event.title}
-                      image={event.image}
+                      image={process.env.REACT_APP_API_BASE_URL+event.imageUrl?.url}
                       url={event.url}
                     />
                   ))}
@@ -311,7 +163,7 @@ export default function WebCommitteePage() {
                 <ServiceCard
                   key={idx}
                   title={service.title}
-                  image={service.image}
+                  image={process.env.REACT_APP_API_BASE_URL+service.imageUrl?.url}
                   url={service.url}
                 />
               ))}
@@ -324,14 +176,14 @@ export default function WebCommitteePage() {
         heading={"Meet The Team"}
         children={
           <div className="my-10 flex flex-wrap justify-around items-start gap-6">
-            {dummySwcTeam.map((member, idx) => (
+            {team.map((member, idx) => (
               <SWCTeamCard
                 key={idx}
                 name={member.name}
                 position={member.position}
                 email={member.email}
                 phone={member.phone}
-                image={member.image}
+                image={process.env.REACT_APP_API_BASE_URL+member.imageUrl?.url}
                 program={member.program}
               />
             ))}
@@ -393,3 +245,164 @@ function ServiceCard({ title, image, url }) {
     </div>
   );
 }
+
+ // const announcements = [
+  //   {
+  //     title: "Notice regarding railway concession",
+  //     date: "2025-04-21",
+  //     url: "https://iitg.ac.in",
+  //   },
+  //   {
+  //     title: "Notice regarding railway concession",
+  //     date: "2025-04-21",
+  //     url: "https://iitg.ac.in",
+  //   },
+  //   {
+  //     title: "Notice regarding railway concession",
+  //     date: "2025-04-21",
+  //     url: "https://iitg.ac.in",
+  //   },
+  //   {
+  //     title: "Notice regarding railway concession",
+  //     date: "2025-04-21",
+  //     url: "https://iitg.ac.in",
+  //   },
+  //   {
+  //     title: "Notice regarding railway concession",
+  //     date: "2025-04-21",
+  //     url: "https://iitg.ac.in",
+  //   },
+  //   {
+  //     title: "Notice regarding railway concession",
+  //     date: "2025-04-21",
+  //     url: "https://iitg.ac.in",
+  //   },
+  //   {
+  //     title: "Notice regarding railway concession",
+  //     date: "2025-04-21",
+  //     url: "https://iitg.ac.in",
+  //   },
+  //   {
+  //     title: "Notice regarding railway concession",
+  //     date: "2025-04-21",
+  //     url: "https://iitg.ac.in",
+  //   },
+  //   {
+  //     title: "Notice regarding railway concession",
+  //     date: "2025-04-21",
+  //     url: "https://iitg.ac.in",
+  //   },
+  // ];
+  // const dummySwcTeam = [
+  //   {
+  //     name: "John Doe",
+  //     position: "Overall Coordinator",
+  //     email: "johndoe99@outlook.com",
+  //     phone: "1234567890",
+  //     image: "agriculture-bg.jpg",
+  //     program: "B.Tech in Chemical Engineering",
+  //   },
+  //   {
+  //     name: "John Doe",
+  //     position: "Overall Coordinator",
+  //     email: "johndoe99@outlook.com",
+  //     phone: "1234567890",
+  //     image: "agriculture-bg.jpg",
+  //     program: "B.Tech in Chemical Engineering",
+  //   },
+  //   {
+  //     name: "John Doe",
+  //     position: "Overall Coordinator",
+  //     email: "johndoe99@outlook.com",
+  //     phone: "1234567890",
+  //     image: "agriculture-bg.jpg",
+  //     program: "B.Tech in Chemical Engineering",
+  //   },
+  //   {
+  //     name: "John Doe",
+  //     position: "Overall Coordinator",
+  //     email: "johndoe99@outlook.com",
+  //     phone: "1234567890",
+  //     image: "agriculture-bg.jpg",
+  //     program: "B.Tech in Chemical Engineering",
+  //   },
+  //   {
+  //     name: "John Doe",
+  //     position: "Overall Coordinator",
+  //     email: "johndoe99@outlook.com",
+  //     phone: "1234567890",
+  //     image: "agriculture-bg.jpg",
+  //     program: "B.Tech in Chemical Engineering",
+  //   },
+  //   {
+  //     name: "John Doe",
+  //     position: "Overall Coordinator",
+  //     email: "johndoe99@outlook.com",
+  //     phone: "1234567890",
+  //     image: "agriculture-bg.jpg",
+  //     program: "B.Tech in Chemical Engineering",
+  //   },
+  //   {
+  //     name: "John Doe",
+  //     position: "Overall Coordinator",
+  //     email: "johndoe99@outlook.com",
+  //     phone: "1234567890",
+  //     image: "agriculture-bg.jpg",
+  //     program: "B.Tech in Chemical Engineering",
+  //   },
+  // ];
+  // const events = [
+  //   {
+  //     title: "Hacktoberfest",
+  //     image: "agriculture-bg.jpg",
+  //     url: "https://swc.iitg.ac.in",
+  //   },
+  //   {
+  //     title: "HackStack",
+  //     image: "agriculture-bg.jpg",
+  //     url: "https://swc.iitg.ac.in",
+  //   },
+  //   {
+  //     title: "Something else",
+  //     image: "agriculture-bg.jpg",
+  //     url: "https://swc.iitg.ac.in",
+  //   },
+  //   {
+  //     title: "Else else",
+  //     image: "agriculture-bg.jpg",
+  //     url: "https://swc.iitg.ac.in",
+  //   },
+  //   {
+  //     title: "Hacktoberfest1",
+  //     image: "agriculture-bg.jpg",
+  //     url: "https://swc.iitg.ac.in",
+  //   },
+  //   {
+  //     title: "HackStack1",
+  //     image: "agriculture-bg.jpg",
+  //     url: "https://swc.iitg.ac.in",
+  //   },
+  //   {
+  //     title: "Something else2",
+  //     image: "agriculture-bg.jpg",
+  //     url: "https://swc.iitg.ac.in",
+  //   },
+  //   {
+  //     title: "Else else3",
+  //     image: "agriculture-bg.jpg",
+  //     url: "https://swc.iitg.ac.in",
+  //   },
+  // ];
+  // const services = [
+  //   {
+  //     title: "One Stop",
+  //     image: "agriculture-bg.jpg",
+  //     url: "https://iitg.ac.in",
+  //   },
+  //   {
+  //     title: "Election Portal",
+  //     image: "agriculture-bg.jpg",
+  //     url: "https://iitg.ac.in",
+  //   },
+  // ];
+

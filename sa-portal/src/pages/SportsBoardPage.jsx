@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BannerTop from "../Components/BannerTop";
 import SAcourse from "../assets/Images/SA-course.png";
 import NCCcourse from "../assets/Images/NCC-course.png";
@@ -9,138 +9,51 @@ import SWCTeamCard from "../Components/SWCTeamCard";
 import MinuteCard from "../Components/MinuteCard";
 import LayeredCarousel from "../Components/LayeredCarousel";
 import BoardsFacilities from "../Components/BoardsFacilities";
+import sendApiRequest from "../services/apiService";
+import ROUTES from "../constants/apiRoutes";
+import { Link } from "react-router-dom";
 
 function SportsBoardPage() {
   const routes = ["Student Affairs Board", "Sports Board"];
-  const rules = [
-    {
-      title: "Badminton Rules",
-      link: "https://example.com/badminton-rules",
-    },
-    {
-      title: "Basketball Rules",
-      link: "https://example.com/basketball-rules",
-    },
-    {
-      title: "Football Rules",
-      link: "https://example.com/football-rules",
-    },
-    {
-      title: "Tennis Rules",
-      link: "https://example.com/tennis-rules",
-    },
-    {
-      title: "Swimming Pool Rules",
-      link: "https://example.com/swimming-pool-rules",
-    },
-    {
-      title: "Central Gym Rules",
-      link: "https://example.com/gymnasium-rules",
-    },
-  ];
-  const forms = [
-    {
-      title: "Good Issue",
-      link: "https://example.com/badminton-rules",
-    },
-    {
-      title: "Guest Access Form",
-      link: "https://example.com/basketball-rules",
-    },
-    {
-      title: "Booking",
-      link: "https://example.com/football-rules",
-    },
-  ];
-  const eventDetails = [
-    {
-      imageUrl: "",
-      name: "Inter IIT",
-    },
-    {
-      imageUrl: "",
-      name: "Inter IIT Staff",
-    },
-    {
-      imageUrl: "",
-      name: "Spirit",
-    },
-    {
-      imageUrl: "",
-      name: "Spardha",
-    },
-  ];
-  const clubs = [
-    { clubName: "", imageUrl: "", description: "" },
-    { clubName: "", imageUrl: "", description: "" },
-    { clubName: "", imageUrl: "", description: "" },
-    { clubName: "", imageUrl: "", description: "" },
-    { clubName: "", imageUrl: "", description: "" },
-    { clubName: "", imageUrl: "", description: "" },
-    { clubName: "", imageUrl: "", description: "" },
-    { clubName: "", imageUrl: "", description: "" },
-    { clubName: "", imageUrl: "", description: "" },
-    { clubName: "", imageUrl: "", description: "" },
-    { clubName: "", imageUrl: "", description: "" },
-  ];
-  const team = [
-    {
-      name: "name",
-      position: "Position",
-      email: "Email",
-      phone: "Contact",
-      image: "",
-      program: "Program",
-    },
-    {
-      name: "name",
-      position: "Position",
-      email: "Email",
-      phone: "Contact",
-      image: "",
-      program: "Program",
-    },
-    {
-      name: "name",
-      position: "Position",
-      email: "Email",
-      phone: "Contact",
-      image: "",
-      program: "Program",
-    },
-    {
-      name: "name",
-      position: "Position",
-      email: "Email",
-      phone: "Contact",
-      image: "",
-      program: "Program",
-    },
-    {
-      name: "name",
-      position: "Position",
-      email: "Email",
-      phone: "Contact",
-      image: "",
-      program: "Program",
-    },
-    {
-      name: "name",
-      position: "Position",
-      email: "Email",
-      phone: "Contact",
-      image: "",
-      program: "Program",
-    },
-    {
-      name: "name",
-      position: "Position",
-      email: "Email",
-      phone: "Contact",
-      image: "",
-      program: "Program",
-    },
-  ];
+
+  const [courses,setCourses] = useState([]);
+  const [facilities, setFacilities] = useState([])
+  const [events, setEvents] = useState([])
+  const [clubs, setClubs] = useState([])
+  const [team, setTeam] = useState([])
+  const [rules, setRules] = useState([])
+  const [forms, setForms] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [coursesRes,facilitiesRes,eventsRes,clubsRes,teamRes,rulesRes,formsRes] = await Promise.all([
+          sendApiRequest(ROUTES.SPORTS_BOARD_COURSES),
+          sendApiRequest(ROUTES.SPORTS_BOARD_FACILITIES),
+          sendApiRequest(ROUTES.SPORTS_BOARD_EVENTS),
+          sendApiRequest(ROUTES.SPORTS_BOARD_CLUBS),
+          sendApiRequest(ROUTES.SPORTS_BOARD_TEAM),
+          sendApiRequest(ROUTES.SPORTS_BOARD_RULES),
+          sendApiRequest(ROUTES.SPORTS_BOARD_FORMS),
+          
+        ])
+
+        console.log({ coursesRes,facilitiesRes,eventsRes,clubsRes,teamRes,rulesRes,formsRes });
+
+        setCourses(coursesRes?.data)
+        setFacilities(facilitiesRes?.data)
+        setEvents(eventsRes?.data)
+        setClubs(clubsRes?.data)
+        setTeam(teamRes?.data)
+        setRules(rulesRes?.data)
+        setForms(formsRes?.data)
+      } catch (error) {
+        console.error("Error in fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -163,7 +76,9 @@ function SportsBoardPage() {
             the energy high, and hostel rivalries add to the fun every day.
           </p>
         </div>
-        <LayeredCarousel />
+        <div className="size-60 sm:size-80 md:size-96 mt-10 shrink-0">
+          <LayeredCarousel />
+        </div>
       </div>
       <div className="border-t border-solid border-[rgba(0,0,0,0.2)] lg:mx-[10vw] sm:mx-[5vw] mb-[60px]">
         <h1 className="inline-block p-2 border-t-[2px] border-solid border-[#0E45E1] text-[31px] font-medium ">
@@ -215,18 +130,18 @@ function SportsBoardPage() {
       <div className="boards-facilities">
         <h1>Our Facilities</h1>
         <div className="flex md:flex-col lg:flex-row items-center">
-          <p className="lg:w-[40%] lg:w-full mb-3 mr-3 text-justify text-[20px] text-[#00000099]">
+          <p className="lg:w-[40%] mb-3 mr-3 text-justify text-[20px] text-[#00000099]">
             With expansive indoor and outdoor facilities, extended hours, and
             dedicated coaches to guide you, there’s something here for everyone,
             whether you're a seasoned athlete or just getting started. No matter
             your skill level, you’ll find the space, support, and community to
             grow, compete, and thrive.
           </p>
-          <BoardsFacilities />
+          <BoardsFacilities facilityDetails={facilities}/>
         </div>
       </div>
       <div className="boards-events">
-        <BoardsEvents eventDetails={eventDetails} />
+        <BoardsEvents eventDetails={events} />
       </div>
       <div className="boards-clubs">
         <h1>Clubs - Under Technical Board</h1>
@@ -234,7 +149,7 @@ function SportsBoardPage() {
           {clubs.map((each) => (
             <SportsClubCard
               clubName={each.clubName}
-              imageUrl={each.imageUrl}
+              imageUrl={process.env.REACT_APP_API_BASE_URL+each.imageUrl?.url}
               description={each.description}
             />
           ))}
@@ -249,7 +164,7 @@ function SportsBoardPage() {
               position={each.position}
               email={each.email}
               phone={each.phone}
-              image={each.image}
+              image={process.env.REACT_APP_API_BASE_URL+each.imageUrl?.url}
               program={each.program}
             />
           ))}
@@ -271,9 +186,9 @@ function SportsBoardPage() {
                   {each.title}
                 </span>
                 <div className="flex space-x-2 shrink-0">
-                  <button className="hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm">
+                  <Link to={process.env.REACT_APP_API_BASE_URL+each.pdfUrl?.url} target="_blank" className="hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm">
                     PDF
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -296,9 +211,9 @@ function SportsBoardPage() {
                   {each.title}
                 </span>
                 <div className="flex space-x-2 shrink-0">
-                  <button className="hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm">
+                  <Link to={process.env.REACT_APP_API_BASE_URL+each.pdfUrl?.url} target="_blank" className="hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm">
                     PDF
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -310,3 +225,134 @@ function SportsBoardPage() {
 }
 
 export default SportsBoardPage;
+
+  // const rules = [
+  //   {
+  //     title: "Badminton Rules",
+  //     link: "https://example.com/badminton-rules",
+  //   },
+  //   {
+  //     title: "Basketball Rules",
+  //     link: "https://example.com/basketball-rules",
+  //   },
+  //   {
+  //     title: "Football Rules",
+  //     link: "https://example.com/football-rules",
+  //   },
+  //   {
+  //     title: "Tennis Rules",
+  //     link: "https://example.com/tennis-rules",
+  //   },
+  //   {
+  //     title: "Swimming Pool Rules",
+  //     link: "https://example.com/swimming-pool-rules",
+  //   },
+  //   {
+  //     title: "Central Gym Rules",
+  //     link: "https://example.com/gymnasium-rules",
+  //   },
+  // ];
+  // const forms = [
+  //   {
+  //     title: "Good Issue",
+  //     link: "https://example.com/badminton-rules",
+  //   },
+  //   {
+  //     title: "Guest Access Form",
+  //     link: "https://example.com/basketball-rules",
+  //   },
+  //   {
+  //     title: "Booking",
+  //     link: "https://example.com/football-rules",
+  //   },
+  // ];
+  // const eventDetails = [
+  //   {
+  //     imageUrl: "",
+  //     name: "Inter IIT",
+  //   },
+  //   {
+  //     imageUrl: "",
+  //     name: "Inter IIT Staff",
+  //   },
+  //   {
+  //     imageUrl: "",
+  //     name: "Spirit",
+  //   },
+  //   {
+  //     imageUrl: "",
+  //     name: "Spardha",
+  //   },
+  // ];
+  // const clubs = [
+  //   { clubName: "", imageUrl: "", description: "" },
+  //   { clubName: "", imageUrl: "", description: "" },
+  //   { clubName: "", imageUrl: "", description: "" },
+  //   { clubName: "", imageUrl: "", description: "" },
+  //   { clubName: "", imageUrl: "", description: "" },
+  //   { clubName: "", imageUrl: "", description: "" },
+  //   { clubName: "", imageUrl: "", description: "" },
+  //   { clubName: "", imageUrl: "", description: "" },
+  //   { clubName: "", imageUrl: "", description: "" },
+  //   { clubName: "", imageUrl: "", description: "" },
+  //   { clubName: "", imageUrl: "", description: "" },
+  // ];
+  // const team = [
+  //   {
+  //     name: "name",
+  //     position: "Position",
+  //     email: "Email",
+  //     phone: "Contact",
+  //     image: "",
+  //     program: "Program",
+  //   },
+  //   {
+  //     name: "name",
+  //     position: "Position",
+  //     email: "Email",
+  //     phone: "Contact",
+  //     image: "",
+  //     program: "Program",
+  //   },
+  //   {
+  //     name: "name",
+  //     position: "Position",
+  //     email: "Email",
+  //     phone: "Contact",
+  //     image: "",
+  //     program: "Program",
+  //   },
+  //   {
+  //     name: "name",
+  //     position: "Position",
+  //     email: "Email",
+  //     phone: "Contact",
+  //     image: "",
+  //     program: "Program",
+  //   },
+  //   {
+  //     name: "name",
+  //     position: "Position",
+  //     email: "Email",
+  //     phone: "Contact",
+  //     image: "",
+  //     program: "Program",
+  //   },
+  //   {
+  //     name: "name",
+  //     position: "Position",
+  //     email: "Email",
+  //     phone: "Contact",
+  //     image: "",
+  //     program: "Program",
+  //   },
+  //   {
+  //     name: "name",
+  //     position: "Position",
+  //     email: "Email",
+  //     phone: "Contact",
+  //     image: "",
+  //     program: "Program",
+  //   },
+  // ];
+
