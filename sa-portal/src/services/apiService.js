@@ -1,7 +1,7 @@
 import axios from "axios";
 //is api base url not present then use http://localhost:1337
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:1337/api";
-
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL + "/api" || "http://localhost:1337/api";
 
 export default async function sendApiRequest(
   path,
@@ -9,6 +9,7 @@ export default async function sendApiRequest(
   payload = null
 ) {
   try {
+    console.log(API_BASE_URL + path);
     const response = await axios.request({
       baseURL: API_BASE_URL,
       url: path,

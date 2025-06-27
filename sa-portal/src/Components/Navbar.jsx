@@ -60,17 +60,7 @@ const Navbar = () => {
         },
         {
           title: "Scholarship Beneficiary List",
-          href: "/scholarships?type=beneficiary-list",
-          type: "page",
-        },
-        {
-          title: "Government Scholarships List",
-          href: "/scholarships?type=government",
-          type: "page",
-        },
-        {
-          title: "External Scholarships List",
-          href: "/scholarships?type=external",
+          href: "/scholarships?type=college",
           type: "page",
         },
       ],
@@ -88,11 +78,6 @@ const Navbar = () => {
           title: "Guidelines",
           href: "#",
           type: "link",
-        },
-        {
-          title: "List of Courses",
-          href: "/sa-courses",
-          type: "page",
         },
         {
           title: "Course Forms",

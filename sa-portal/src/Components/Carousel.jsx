@@ -13,7 +13,7 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div className="relative w-full" style={{ height: "calc(72vh - 0px)" }}>
+    <div className="relative w-full" style={{ height: "calc(60vh - 0px)" }}>
       {images.map((img, index) => (
         <img
           key={index}

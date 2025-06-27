@@ -11,9 +11,9 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "members": {
+    "member": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::team-member.team-member"
     }
   }

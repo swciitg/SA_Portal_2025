@@ -633,13 +633,13 @@ export interface ApiFormForm extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::form.form'> &
       Schema.Attribute.Private;
-    pdfUrl: Schema.Attribute.String;
+    pdf_File: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    wordUrl: Schema.Attribute.String;
+    word_File: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
@@ -887,13 +887,13 @@ export interface ApiNoticesOnRuleNoticesOnRule
       'api::notices-on-rule.notices-on-rule'
     > &
       Schema.Attribute.Private;
-    pdfUrl: Schema.Attribute.String;
+    pdf_File: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    wordUrl: Schema.Attribute.String;
+    word_File: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
@@ -946,8 +946,8 @@ export interface ApiSacMemberSacMember extends Struct.CollectionTypeSchema {
       'api::sac-member.sac-member'
     > &
       Schema.Attribute.Private;
-    members: Schema.Attribute.Relation<
-      'oneToMany',
+    member: Schema.Attribute.Relation<
+      'oneToOne',
       'api::team-member.team-member'
     >;
     publishedAt: Schema.Attribute.DateTime;
@@ -977,7 +977,7 @@ export interface ApiSacMinuteSacMinute extends Struct.CollectionTypeSchema {
       'api::sac-minute.sac-minute'
     > &
       Schema.Attribute.Private;
-    pdfUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    pdf_File: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -1403,10 +1403,7 @@ export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
-    imageUrl: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

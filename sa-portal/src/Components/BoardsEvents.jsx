@@ -146,7 +146,7 @@ const BoardsEvents = ({eventDetails}) => {
         <div className="achievements-cards" ref={listRef}>
           {events.map((event,index) => (
             <div className="event-card" key={index}>
-              <img src={event.imageUrl || emptyImage} alt={event.name} />
+              <img src={process.env.REACT_APP_API_BASE_URL+event.imageUrl?.url || emptyImage} alt={event.name} />
               <div className="event-card-content">
                 <p>{event.name}</p>
                 <a>Know More</a>

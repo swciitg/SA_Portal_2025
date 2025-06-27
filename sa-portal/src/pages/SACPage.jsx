@@ -4,52 +4,18 @@ import BannerTop from "../Components/BannerTop";
 import LayeredCarousel from "../Components/LayeredCarousel";
 import TeamCard from "../Components/TeamCard";
 import sendApiRequest from "../services/apiService";
+import ROUTES from "../constants/apiRoutes";
+import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
 function SACPage() {
   const route = ["Students' Affairs Boards", "About SAC"];
-  const members = [
-    {
-      name: "Dr. Sayan Chakrabarti",
-      title: "Chairperson-1, Welfare Board",
-      mail: "chrwb@iitg.ac.in",
-      phone: "+9 -361 2583568",
-      imageUrl: "",
-      description:
-        "Chairperson, Students' Welfare Board, Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
-    },
-    {
-      name: "Dr. Bidisha Som",
-      title: "Chairperson-2, Welfare Board",
-      mail: "chrwb@iitg.ac.in",
-      phone: "+9 -361 2583568",
-      imageUrl: "",
-      description:
-        "Chairperson, Students' Welfare Board, Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
-    },
-    {
-      name: "Dr. Sayan Chakrabarti",
-      title: "Chairperson-1, Welfare Board",
-      mail: "chrwb@iitg.ac.in",
-      phone: "+9 -361 2583568",
-      imageUrl: "",
-    },
-    {
-      name: "Dr. Bidisha Som",
-      title: "Chairperson-2, Welfare Board",
-      mail: "chrwb@iitg.ac.in",
-      phone: "+9 -361 2583568",
-      imageUrl: "",
-      description:
-        "Chairperson, Students' Welfare Board, Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
-    },
-  ];
 
   const [sacMembers, setSacMembers] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const sacMembersRes = await sendApiRequest("/sac-members", "GET");
+        const sacMembersRes = await sendApiRequest(ROUTES.SAC_MEMBERS);
 
         console.log({ sacMembersRes });
 
@@ -67,15 +33,14 @@ function SACPage() {
       <BannerTop heading="About SAC" blueText="Board" route={route} />
       <div className="boards-about">
         <div className="boards-about-text">
-          <h1>
-            Welcome to <br />
-            Technical Board
-          </h1>
+          <h1>About SAC</h1>
           <p>
-            It comprises of Chairman, Technical Board and elected student
-            representatives. Its main function is to coordinate and execute all
-            activities of technical clubs and to coordinate and execute all
-            activities related to the annual technical festival ‘Techniche’.
+            The New SAC (Student Activity Centre) in IIT Guwahati is the central
+            social hub, a retreat for students offering air conditioning and
+            Wi-Fi. It houses club rooms and is a place for students to relax and
+            socialize after their studies. Access to club rooms requires
+            authorization from the respective secretaries, with the general
+            requirement being an expression of interest.
           </p>
         </div>
         <div className="size-60 sm:size-80 md:size-96 mt-10 shrink-0">
@@ -88,14 +53,14 @@ function SACPage() {
           <div className="team-section">
             <div className="team-cards-scroll">
               <div className="team-cards">
-                {members.map((member, index) => (
+                {sacMembers.map(({ member }, index) => (
                   <TeamCard
                     key={index}
                     name={member.name}
                     title={member.title}
                     mail={member.mail}
                     phone={member.phone}
-                    imageUrl={member.imageUrl}
+                    imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
                     description={member.description}
                   />
                 ))}

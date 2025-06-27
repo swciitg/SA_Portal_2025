@@ -1,21 +1,7 @@
 import { useState } from "react";
 import EachAnnouncement from "../EachAnnouncement/index";
 
-const Announcements = ({ announcements=[] }) => {
-  // const [announcements, setAnnouncements] = useState(ann || [
-  //   { text: "Notice regarding Railway Concession", date: "2025-03-19" },
-  //   {
-  //     text: "Notice-10/2025: Students' Gymkhana Election (2025-26)",
-  //     date: "2025-04-21",
-  //   },
-  //   { text: "[Notice-09/2025]: IWAB 2024-25 Scholarship", date: "2025-03-11" },
-  //   {
-  //     text: "[Circular-04/2025]: Gymkhana Council 2025-26",
-  //     date: "2025-02-03",
-  //   },
-  //   { text: "[Notice-03/2025]: IWAB 2024-25 Scholarship", date: "2025-01-20" },
-  // ]);
-
+const Announcements = ({ announcements = [] }) => {
   return (
     <div className="w-full flex flex-col gap-4 max-h-[640px]">
       <h1 className="text-[24px] font-medium text-gray-800">Announcements</h1>

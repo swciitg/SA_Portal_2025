@@ -3,33 +3,15 @@ import BannerTop from "../Components/BannerTop";
 import LayeredCarousel from "../Components/LayeredCarousel";
 import SAcard from "../Components/SAcard";
 import sendApiRequest from "../services/apiService";
+import ROUTES from "../constants/apiRoutes";
 
 const SACourses = () => {
-  const route = ["Students Affair Board", "SA Courses"];
-  // const courses = [
-  //     { code: 'ATH101', title: 'Athletics' },
-  //     { code: 'FB201', title: 'Football' },
-  //     { code: 'BB301', title: 'Basketball' },
-  //     { code: 'BD401', title: 'Badminton' },
-  //     { code: 'YG501', title: 'Yoga' },
-  //     { code: 'SW601', title: 'Swimming' },
-  //     { code: 'CR701', title: 'Cricket' },
-  //     { code: 'TN801', title: 'Tennis' },
-  //     { code: 'VB901', title: 'Volleyball' },
-  //     { code: 'MT1001', title: 'Mountaineering' },
-  //     { code: 'RK1101', title: 'Rock Climbing' },
-  //     { code: 'CP1201', title: 'Camping' },
-  //     { code: 'RC1301', title: 'River Crossing' },
-  //     { code: 'SK1401', title: 'Skiing' },
-  //     { code: 'PK1501', title: 'Paragliding' },
-  // ]
-
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const coursesRes = await sendApiRequest("/sa-courses", "GET");
+        const coursesRes = await sendApiRequest(ROUTES.SA_COURSES);
 
         console.log({ coursesRes });
 
@@ -60,10 +42,9 @@ const SACourses = () => {
 
       {/* Content section */}
       <div className="w-[92.5vw] mx-auto px-4 py-10">
-        <div className="flex flex-col md:flex-row justify-between">
-          {/* Left paragraph */}
-          <div className="md:w-2/3 text-gray-700 text-base leading-relaxed">
-            <p className="text-[20px]">
+        <div className="w-full flex flex-col lg:flex-row md:space-x-10 items-center justify-around px-10 sm:px-10 py-10 md:py-6 mt-10">
+          <div className="flex flex-col w-full lg:w-1/2 space-y-2">
+            <p className="text-black/60 text-lg">
               SA {"(Sports & Adventure)"} courses at IIT Guwahati are an
               integral part of the undergraduate curriculum, aimed at promoting
               physical fitness, teamwork, and a healthy lifestyle among
@@ -75,9 +56,7 @@ const SACourses = () => {
               activity alongside academics.
             </p>
           </div>
-
-          {/* Right carousel */}
-          <div className="lg:w-1/2">
+          <div className="size-60 sm:size-80 md:size-96 mt-10 shrink-0">
             <LayeredCarousel />
           </div>
         </div>
@@ -91,6 +70,15 @@ const SACourses = () => {
 
           {/* Courses container with border */}
           <div className="border-x border-b border-gray-300 flex flex-col">
+            {/* Table Head */}
+            <div className="flex w-full h-12 sm:h-14 text-sm sm:text-base">
+              <div className="w-20 sm:w-28 border-t border-r border-gray-300 bg-white font-bold flex items-center justify-center">
+                Code
+              </div>
+              <div className="flex-grow border-t border-gray-300 font-bold flex items-center pl-4 truncate">
+                Course Title
+              </div>
+            </div>
             {courses &&
               courses.map((course) => (
                 <SAcard

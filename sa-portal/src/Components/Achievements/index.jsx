@@ -2,43 +2,11 @@ import "./Achievements.css";
 import AchievementsCard from "../AchievementsCard";
 import next from "../../assets/Images/next.png";
 import { useState, useEffect, useRef } from "react";
+import getStrapiMediaUrl from "../../utils/strApiMediaUrl";
 
 const Achievements = ({ achievements }) => {
   const [current, setCurrent] = useState(1);
   const listRef = useRef(null);
-
-  // const achievements = [
-  //   {
-  //     imageUrl: "",
-  //     title: "Aquatics",
-  //     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-  //   },
-  //   {
-  //     imageUrl: "",
-  //     title: "Athletics",
-  //     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-  //   },
-  //   {
-  //     imageUrl: "",
-  //     title: "Kabaddi",
-  //     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-  //   },
-  //   {
-  //     imageUrl: "",
-  //     title: "Basketball",
-  //     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-  //   },
-  //   {
-  //     imageUrl: "",
-  //     title: "Volleyball",
-  //     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-  //   },
-  //   {
-  //     imageUrl: "",
-  //     title: "Cricket",
-  //     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-  //   },
-  // ];
 
   const achievementsLength = achievements.length;
 
@@ -153,15 +121,11 @@ const Achievements = ({ achievements }) => {
       <div className="achievements-cards-wrapper">
         <div className="achievements-cards" ref={listRef}>
           {achievements.map((achievement, index) => {
-            // console.log(
-            //   process.env.REACT_APP_API_BASE_URL + achievement.imageUrl.url
-            // );
+            console.log(getStrapiMediaUrl(achievement.imageUrl?.url));
             return (
               <AchievementsCard
                 key={index}
-                imageUrl={
-                  process.env.REACT_APP_API_BASE_URL + achievement.imageUrl.url
-                }
+                imageUrl={getStrapiMediaUrl(achievement.imageUrl?.url)}
                 title={achievement.title}
                 description={achievement.description}
               />

@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import './Boards.css'
 import BannerTop from "../Components/BannerTop";
 import Announcements from "../Components/Announcements";
@@ -8,165 +8,42 @@ import down from "../assets/Images/chevron-down.png";
 import LayeredCarousel from "../Components/LayeredCarousel";
 import TeamCard from "../Components/TeamCard";
 import SWCTeamCard from "../Components/SWCTeamCard";
+import sendApiRequest from "../services/apiService";
+import ROUTES from "../constants/apiRoutes";
 
 function HostelAffairsBoardPage() {
   const [hostel, setHostel] = useState("Barak");
   const hostels = [ "Barak", "Bramhaputra", "Dhansiri", "Dihing", "Disang", "Gaurang", "Kapili", "Kameng", "Lohit", "Manas", "Subansiri", "Umaium" ]
   const route = ["Students' Affairs Boards", "Hostel's Affairs Board"];
-  const teams = [
-    {
-      heading: "Chairperson, HAB",
-      members: [
-        {
-          name: "Dr. Anjan Kumar s.",
-          title: "Chairperson, Hostel Affairs Board",
-          mail: "chr_hab@iitg.ac.in",
-          phone: "+91 361 258 2164",
-          imageUrl: "",
-          description: "",
-        },
-      ],
-    },
-    {
-      heading: "Vice Chairpersons, HAB",
-      members: [
-        {
-          name: "Dr. Romanbabu Oniam",
-          title: "Vice Chairperson, HAB(Services)",
-          mail: "vchr_hab1@iitg.ac.in",
-          phone: "+91 361 258 2164",
-          imageUrl: "",
-          description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
-        },
-        {
-          name: "Dr. Romanbabu Oniam",
-          title: "Vice Chairperson, HAB(Services)",
-          mail: "vchr_hab1@iitg.ac.in",
-          phone: "+91 361 258 2164",
-          imageUrl: "",
-          description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
-        },
-      ],
-    },
-    {
-      heading: "Wardens",
-      members: [
-        {
-          name: "Dr. Romanbabu Oniam",
-          title: "Vice Chairperson, HAB(Services)",
-          mail: "vchr_hab1@iitg.ac.in",
-          phone: "+91 361 258 2164",
-          imageUrl: "",
-          description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
-        },
-        {
-          name: "Dr. Romanbabu Oniam",
-          title: "Vice Chairperson, HAB(Services)",
-          mail: "vchr_hab1@iitg.ac.in",
-          phone: "+91 361 258 2164",
-          imageUrl: "",
-          description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
-        },
-        {
-          name: "Dr. Romanbabu Oniam",
-          title: "Vice Chairperson, HAB(Services)",
-          mail: "vchr_hab1@iitg.ac.in",
-          phone: "+91 361 258 2164",
-          imageUrl: "",
-          description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
-        },
-        {
-          name: "Dr. Romanbabu Oniam",
-          title: "Vice Chairperson, HAB(Services)",
-          mail: "vchr_hab1@iitg.ac.in",
-          phone: "+91 361 258 2164",
-          imageUrl: "",
-          description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
-        },
-        {
-          name: "Dr. Romanbabu Oniam",
-          title: "Vice Chairperson, HAB(Services)",
-          mail: "vchr_hab1@iitg.ac.in",
-          phone: "+91 361 258 2164",
-          imageUrl: "",
-          description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
-        },
-        {
-          name: "Dr. Romanbabu Oniam",
-          title: "Vice Chairperson, HAB(Services)",
-          mail: "vchr_hab1@iitg.ac.in",
-          phone: "+91 361 258 2164",
-          imageUrl: "",
-          description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
-        },
-      ],
-    },
-    {
-      heading: "Associate Wardens",
-      members: [
-        {
-          name: "Dr. Romanbabu Oniam",
-          title: "Vice Chairperson, HAB(Services)",
-          mail: "vchr_hab1@iitg.ac.in",
-          phone: "+91 361 258 2164",
-          imageUrl: "",
-          description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
-        },
-        {
-          name: "Dr. Romanbabu Oniam",
-          title: "Vice Chairperson, HAB(Services)",
-          mail: "vchr_hab1@iitg.ac.in",
-          phone: "+91 361 258 2164",
-          imageUrl: "",
-          description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
-        },
-        {
-          name: "Dr. Romanbabu Oniam",
-          title: "Vice Chairperson, HAB(Services)",
-          mail: "vchr_hab1@iitg.ac.in",
-          phone: "+91 361 258 2164",
-          imageUrl: "",
-          description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
-        },
-        {
-          name: "Dr. Romanbabu Oniam",
-          title: "Vice Chairperson, HAB(Services)",
-          mail: "vchr_hab1@iitg.ac.in",
-          phone: "+91 361 258 2164",
-          imageUrl: "",
-          description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
-        },
-        {
-          name: "Dr. Romanbabu Oniam",
-          title: "Vice Chairperson, HAB(Services)",
-          mail: "vchr_hab1@iitg.ac.in",
-          phone: "+91 361 258 2164",
-          imageUrl: "",
-          description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
-        },
-        {
-          name: "Dr. Romanbabu Oniam",
-          title: "Vice Chairperson, HAB(Services)",
-          mail: "vchr_hab1@iitg.ac.in",
-          phone: "+91 361 258 2164",
-          imageUrl: "",
-          description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
-        },
-      ],
-    },
-  ]
-  const hmcMembers = [
-    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hostel:'Barak'},
-    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hostel:'Barak'},
-    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hostel:'Barak'},
-    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hostel:'Bramhaputra'},
-    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hostel:'Lohit'},
-    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hostel:'Lohit'},
-    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hostel:'Dhansiri'},
-    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hostel:'Dhansiri'},
-    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hostel:'Gaurang'},
-    {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hoste:'Kameng'},
-  ]
+
+  const [announcements,setAnnouncements] = useState([]);
+  const [events,setEvents] = useState([]);
+  const [team,setTeam] = useState([]);
+  const [hmcMembers,setHmcMembers] = useState([]);
+
+   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [announcementsRes,eventsRes,teamRes,hmcMembersRes ] = await Promise.all([
+          sendApiRequest(ROUTES.HOSTEL_AFFAIRS_BOARD_ANNOUNCEMENTS),
+          sendApiRequest(ROUTES.HOSTEL_AFFAIRS_BOARD_EVENTS),
+          sendApiRequest(ROUTES.HOSTEL_AFFAIRS_BOARD_TEAM),
+          sendApiRequest(ROUTES.HMC_MEMBERS),
+        ])
+
+        console.log({ announcementsRes,eventsRes,teamRes, hmcMembersRes });
+
+        setAnnouncements(announcementsRes?.data)
+        setEvents(eventsRes?.data)
+        setTeam(teamRes?.data)
+        setHmcMembers(hmcMembersRes?.data)
+      } catch (error) {
+        console.error("Error in fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const cardMove = (x,index) =>{
     const teamCards = document.querySelectorAll('.team-cards-hab')[index];
@@ -206,12 +83,12 @@ function HostelAffairsBoardPage() {
           <LayeredCarousel />
         </div>
       </div>
-      <div className="boards-announcements"><Announcements /></div>
-      <div className="boards-events"><BoardsEvents /></div>
+      <div className="boards-announcements"><Announcements announcements={announcements}/></div>
+      <div className="boards-events"><BoardsEvents eventDetails={events}/></div>
       <div className="boards-team boards-team-hab">
         <h1>Meet The Team - HAB</h1>
         <div className="teams-container">
-          {teams.map((team, index) => (
+          {team.map((team, index) => (
             <div key={index} className="team-section">
               <div className="flex items-center">
                 <h1 className="team-heading">{team.heading}</h1>
@@ -233,7 +110,7 @@ function HostelAffairsBoardPage() {
                       title={member.title}
                       mail={member.mail}
                       phone={member.phone}
-                      imageUrl={member.imageUrl}
+                      imageUrl={process.env.REACT_APP_API_BASE_URL+member.imageUrl?.url}
                       description={member.description}
                     />
                   ))}
@@ -262,7 +139,7 @@ function HostelAffairsBoardPage() {
             hmcMembers.map(each=>{
               if(each.hostel === hostel) return (
               <div className="grow lg:max-w-[49%] md:max-w-[588px]">
-                <SWCTeamCard name={each.name} position={each.position} email={each.email} phone={each.phone} image={each.image} program={each.program} />
+                <SWCTeamCard name={each.name} position={each.position} email={each.mail} phone={each.phone} image={process.env.REACT_APP_API_BASE_URL+each.imageUrl?.url}/>
               </div>
             )})
           }
@@ -273,3 +150,158 @@ function HostelAffairsBoardPage() {
 }
 
 export default HostelAffairsBoardPage;
+
+  // const teams = [
+  //   {
+  //     heading: "Chairperson, HAB",
+  //     members: [
+  //       {
+  //         name: "Dr. Anjan Kumar s.",
+  //         title: "Chairperson, Hostel Affairs Board",
+  //         mail: "chr_hab@iitg.ac.in",
+  //         phone: "+91 361 258 2164",
+  //         imageUrl: "",
+  //         description: "",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     heading: "Vice Chairpersons, HAB",
+  //     members: [
+  //       {
+  //         name: "Dr. Romanbabu Oniam",
+  //         title: "Vice Chairperson, HAB(Services)",
+  //         mail: "vchr_hab1@iitg.ac.in",
+  //         phone: "+91 361 258 2164",
+  //         imageUrl: "",
+  //         description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
+  //       },
+  //       {
+  //         name: "Dr. Romanbabu Oniam",
+  //         title: "Vice Chairperson, HAB(Services)",
+  //         mail: "vchr_hab1@iitg.ac.in",
+  //         phone: "+91 361 258 2164",
+  //         imageUrl: "",
+  //         description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     heading: "Wardens",
+  //     members: [
+  //       {
+  //         name: "Dr. Romanbabu Oniam",
+  //         title: "Vice Chairperson, HAB(Services)",
+  //         mail: "vchr_hab1@iitg.ac.in",
+  //         phone: "+91 361 258 2164",
+  //         imageUrl: "",
+  //         description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
+  //       },
+  //       {
+  //         name: "Dr. Romanbabu Oniam",
+  //         title: "Vice Chairperson, HAB(Services)",
+  //         mail: "vchr_hab1@iitg.ac.in",
+  //         phone: "+91 361 258 2164",
+  //         imageUrl: "",
+  //         description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
+  //       },
+  //       {
+  //         name: "Dr. Romanbabu Oniam",
+  //         title: "Vice Chairperson, HAB(Services)",
+  //         mail: "vchr_hab1@iitg.ac.in",
+  //         phone: "+91 361 258 2164",
+  //         imageUrl: "",
+  //         description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
+  //       },
+  //       {
+  //         name: "Dr. Romanbabu Oniam",
+  //         title: "Vice Chairperson, HAB(Services)",
+  //         mail: "vchr_hab1@iitg.ac.in",
+  //         phone: "+91 361 258 2164",
+  //         imageUrl: "",
+  //         description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
+  //       },
+  //       {
+  //         name: "Dr. Romanbabu Oniam",
+  //         title: "Vice Chairperson, HAB(Services)",
+  //         mail: "vchr_hab1@iitg.ac.in",
+  //         phone: "+91 361 258 2164",
+  //         imageUrl: "",
+  //         description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
+  //       },
+  //       {
+  //         name: "Dr. Romanbabu Oniam",
+  //         title: "Vice Chairperson, HAB(Services)",
+  //         mail: "vchr_hab1@iitg.ac.in",
+  //         phone: "+91 361 258 2164",
+  //         imageUrl: "",
+  //         description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     heading: "Associate Wardens",
+  //     members: [
+  //       {
+  //         name: "Dr. Romanbabu Oniam",
+  //         title: "Vice Chairperson, HAB(Services)",
+  //         mail: "vchr_hab1@iitg.ac.in",
+  //         phone: "+91 361 258 2164",
+  //         imageUrl: "",
+  //         description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
+  //       },
+  //       {
+  //         name: "Dr. Romanbabu Oniam",
+  //         title: "Vice Chairperson, HAB(Services)",
+  //         mail: "vchr_hab1@iitg.ac.in",
+  //         phone: "+91 361 258 2164",
+  //         imageUrl: "",
+  //         description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
+  //       },
+  //       {
+  //         name: "Dr. Romanbabu Oniam",
+  //         title: "Vice Chairperson, HAB(Services)",
+  //         mail: "vchr_hab1@iitg.ac.in",
+  //         phone: "+91 361 258 2164",
+  //         imageUrl: "",
+  //         description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
+  //       },
+  //       {
+  //         name: "Dr. Romanbabu Oniam",
+  //         title: "Vice Chairperson, HAB(Services)",
+  //         mail: "vchr_hab1@iitg.ac.in",
+  //         phone: "+91 361 258 2164",
+  //         imageUrl: "",
+  //         description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
+  //       },
+  //       {
+  //         name: "Dr. Romanbabu Oniam",
+  //         title: "Vice Chairperson, HAB(Services)",
+  //         mail: "vchr_hab1@iitg.ac.in",
+  //         phone: "+91 361 258 2164",
+  //         imageUrl: "",
+  //         description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
+  //       },
+  //       {
+  //         name: "Dr. Romanbabu Oniam",
+  //         title: "Vice Chairperson, HAB(Services)",
+  //         mail: "vchr_hab1@iitg.ac.in",
+  //         phone: "+91 361 258 2164",
+  //         imageUrl: "",
+  //         description: "Vice Chairperson, Hostel Affairs Board (Services), Students’ Affairs Section, 3rd Floor, Administrative Building, Indian Institute of Technology Guwahati, Guwahati – 781039, Assam, India",
+  //       },
+  //     ],
+  //   },
+  // ]
+  // const hmcMembers = [
+  //   {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hostel:'Barak'},
+  //   {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hostel:'Barak'},
+  //   {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hostel:'Barak'},
+  //   {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hostel:'Bramhaputra'},
+  //   {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hostel:'Lohit'},
+  //   {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hostel:'Lohit'},
+  //   {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hostel:'Dhansiri'},
+  //   {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hostel:'Dhansiri'},
+  //   {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hostel:'Gaurang'},
+  //   {name:'name', position:'Position', email:'Email', phone:'Contact', image:'', program:'Program', hoste:'Kameng'},
+  // ]

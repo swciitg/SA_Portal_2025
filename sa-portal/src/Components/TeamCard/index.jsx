@@ -7,6 +7,7 @@ import mailIcon from "../../assets/icons/mail.png";
 const ProfileCard = (props) => {
   const { name, phone, mail, responsibility, title, imageUrl } = props;
   const imgurl = imageUrl || EmptyImage;
+
   return (
     <div className="prof-card">
       <img src={imgurl} alt={name} className="prof-img" />
@@ -14,7 +15,7 @@ const ProfileCard = (props) => {
         <div>
           <p className="prof-name">{name}</p>
           <p className="prof-title">{title}</p>
-          <p className="prof-responsibility">{responsibility || ''}</p>
+          <p className="prof-responsibility">{responsibility || ""}</p>
         </div>
         <div>
           <div className="prof-contact">

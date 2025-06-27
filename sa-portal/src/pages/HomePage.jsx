@@ -5,6 +5,7 @@ import About from "../Components/About";
 import "./HomePage.css";
 import { useEffect, useState } from "react";
 import sendApiRequest from "../services/apiService";
+import ROUTES from "../constants/apiRoutes";
 
 const HomePage = () => {
   const [announcements, setAnnouncements] = useState([]);
@@ -14,8 +15,8 @@ const HomePage = () => {
     const fetchData = async () => {
       try {
         const [announcementsRes, achievementsRes] = await Promise.all([
-          sendApiRequest("/home-page-announcements", "GET"),
-          sendApiRequest("/achievements?populate=*", "GET"),
+          sendApiRequest(ROUTES.HOMEPAGE_ANNOUNCEMENTS),
+          sendApiRequest(ROUTES.HOMEPAGE_ACHIEVEMENTS),
         ]);
 
         console.log({ announcementsRes, achievementsRes });
