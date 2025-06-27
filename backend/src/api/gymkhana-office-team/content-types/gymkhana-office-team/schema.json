@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "gymkhana_office_teams",
+  "info": {
+    "singularName": "gymkhana-office-team",
+    "pluralName": "gymkhana-office-teams",
+    "displayName": "Gymkhana_Office_Team"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team-member.team-member"
+    }
+  }
+}

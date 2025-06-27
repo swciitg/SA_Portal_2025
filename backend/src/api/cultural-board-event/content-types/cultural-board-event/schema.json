@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cultural_board_events",
+  "info": {
+    "singularName": "cultural-board-event",
+    "pluralName": "cultural-board-events",
+    "displayName": "Cultural_Board_Event"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "imageUrl": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "name": {
+      "type": "text"
+    }
+  }
+}

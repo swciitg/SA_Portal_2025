@@ -25,22 +25,28 @@ const ScholarshipPage = () => {
 
         setScholarships(scholarshipsRes?.data);
       } catch (error) {
-        console.error("Error in fetching data:", error);
+        console.error("Error fetching scholarships:", error);
       }
     };
-
     fetchData();
   }, []);
 
+  const handleTypeChange = (newType) => {
+    navigate(`/scholarships?type=${newType}`);
+  };
+
+  const filteredScholarships = scholarships.filter(
+    (item) => item?.type === type
+  );
+
   return (
-    //new bg: 236 243 255
     <>
       <BannerTop
         heading={"Scholarships"}
         route={["Scholarships & Sponsorships", "Scholarships"]}
       />
+
       <div className="min-h-screen bg-gray-50">
-        {/* Navigation Bar */}
         <div className="customBgNew w-full px-12 flex justify-between">
           {/* Each section takes about 30% of total width */}
           <div
@@ -66,11 +72,15 @@ const ScholarshipPage = () => {
           </div>
         </div>
 
-        {/* Scholarship List */}
         <div className="flex flex-col items-center py-10 px-4">
           {filteredScholarships.map((item, idx) => (
-            <ScholarshipCard key={idx} idx={idx + 1} title={item.name} pdfUrl={process.env.REACT_APP_API_BASE_URL+item.pdf_File?.url}
-            wordUrl={process.env.REACT_APP_API_BASE_URL+item.word_File?.url}/>
+            <ScholarshipCard
+              key={idx}
+              idx={idx + 1}
+              title={item.name}
+              pdfUrl={process.env.REACT_APP_API_BASE_URL + item.pdf_File?.url}
+              wordUrl={process.env.REACT_APP_API_BASE_URL + item.word_File?.url}
+            />
           ))}
         </div>
       </div>

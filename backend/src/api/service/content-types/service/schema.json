@@ -11,11 +11,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "header": {
       "type": "text"
     },
-    "link": {
-      "type": "string"
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service-type.service-type"
     }
   }
 }
