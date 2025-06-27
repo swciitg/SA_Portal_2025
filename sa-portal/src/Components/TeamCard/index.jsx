@@ -6,7 +6,6 @@ import mailIcon from "../../assets/icons/mail.png";
 
 const ProfileCard = (props) => {
   const { name, phone, mail, responsibility, title, imageUrl } = props;
-  console.log(imageUrl);
   const imgurl = imageUrl || EmptyImage;
   return (
     <div className="prof-card">

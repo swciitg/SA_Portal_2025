@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "web_committee_services",
+  "info": {
+    "singularName": "web-committee-service",
+    "pluralName": "web-committee-services",
+    "displayName": "WebCommittee_Service"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

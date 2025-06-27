@@ -14,7 +14,7 @@ const HomePage = () => {
     const fetchData = async () => {
       try {
         const [announcementsRes, achievementsRes] = await Promise.all([
-          sendApiRequest("/announcements", "GET"),
+          sendApiRequest("/home-page-announcements", "GET"),
           sendApiRequest("/achievements?populate=*", "GET"),
         ]);
 
