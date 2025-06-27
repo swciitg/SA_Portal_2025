@@ -5,6 +5,7 @@ import LayeredCarousel from "../Components/LayeredCarousel";
 import TeamCard from "../Components/TeamCard";
 import sendApiRequest from "../services/apiService";
 import ROUTES from "../constants/apiRoutes";
+import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
 function SACPage() {
   const route = ["Students' Affairs Boards", "About SAC"];
@@ -32,15 +33,14 @@ function SACPage() {
       <BannerTop heading="About SAC" blueText="Board" route={route} />
       <div className="boards-about">
         <div className="boards-about-text">
-          <h1>
-            Welcome to <br />
-            Technical Board
-          </h1>
+          <h1>About SAC</h1>
           <p>
-            It comprises of Chairman, Technical Board and elected student
-            representatives. Its main function is to coordinate and execute all
-            activities of technical clubs and to coordinate and execute all
-            activities related to the annual technical festival ‘Techniche’.
+            The New SAC (Student Activity Centre) in IIT Guwahati is the central
+            social hub, a retreat for students offering air conditioning and
+            Wi-Fi. It houses club rooms and is a place for students to relax and
+            socialize after their studies. Access to club rooms requires
+            authorization from the respective secretaries, with the general
+            requirement being an expression of interest.
           </p>
         </div>
         <div className="size-60 sm:size-80 md:size-96 mt-10 shrink-0">
@@ -53,14 +53,14 @@ function SACPage() {
           <div className="team-section">
             <div className="team-cards-scroll">
               <div className="team-cards">
-                {sacMembers.map((member, index) => (
+                {sacMembers.map(({ member }, index) => (
                   <TeamCard
                     key={index}
                     name={member.name}
                     title={member.title}
                     mail={member.mail}
                     phone={member.phone}
-                    imageUrl={process.env.REACT_APP_API_BASE_URL+member.imageUrl?.url }
+                    imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
                     description={member.description}
                   />
                 ))}

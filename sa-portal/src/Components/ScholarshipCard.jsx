@@ -1,21 +1,20 @@
-import React from "react";
+import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 import "./TeamCard/TeamCard.css";
-const backendUrl = "http://localhost:1337";
 
 const ScholarshipCard = ({ idx, item }) => {
-  const pdfUrl = item?.pdf_File?.url;
-  const wordUrl = item?.word_File?.url;
+  const pdfUrl = getStrapiMediaUrl(item?.pdf_File?.url);
+  const wordUrl = getStrapiMediaUrl(item?.word_File?.url);
 
   const viewPdf = () => {
-    window.open(backendUrl + pdfUrl);
+    window.open(pdfUrl);
   };
 
   const viewWord = () => {
-    window.open(backendUrl + wordUrl);
+    window.open(wordUrl);
   };
 
   return (
-    <div className="flex flex-row items-center px-3 py-2 sm:py-2 py-1 w-full max-w-6xl mx-auto">
+    <div className="flex flex-row items-center px-3 sm:py-2 py-1 w-full max-w-6xl mx-auto">
       <div className="flex-none border border-gray-300 bg-white text-center text-sm font-semibold flex items-center justify-center sm:h-14 sm:w-14 h-12 w-12 mr-4">
         {idx}
       </div>

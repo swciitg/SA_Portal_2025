@@ -14,14 +14,28 @@
     "date": {
       "type": "date"
     },
-    "pdfUrl": {
-      "type": "string"
-    },
     "title": {
       "type": "text"
     },
-    "wordUrl": {
-      "type": "string"
+    "pdf_File": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "word_File": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

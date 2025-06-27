@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './Boards.css'
+import "./Boards.css";
 import BannerTop from "../Components/BannerTop";
 import Announcements from "../Components/Announcements";
 import BoardsEvents from "../Components/BoardsEvents";
@@ -12,27 +12,28 @@ import ROUTES from "../constants/apiRoutes";
 function TechnicalBoardPage() {
   const route = ["Students' Affairs Boards", "Technical Board"];
 
-  const [announcements,setAnnouncements] = useState([]);
-  const [events, setEvents] = useState([])
-  const [clubs, setClubs] = useState([])
-  const [team, setTeam] = useState([])
- 
+  const [announcements, setAnnouncements] = useState([]);
+  const [events, setEvents] = useState([]);
+  const [clubs, setClubs] = useState([]);
+  const [team, setTeam] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [announcementsRes,eventsRes,clubsRes,teamRes] = await Promise.all([
-          sendApiRequest(ROUTES.TECHNICAL_BOARD_ANNOUNCEMENTS),
-          sendApiRequest(ROUTES.TECHNICAL_BOARD_EVENTS),
-          sendApiRequest(ROUTES.TECHNICAL_BOARD_CLUBS),
-          sendApiRequest(ROUTES.TECHNICAL_BOARD_TEAM),
-        ])
+        const [announcementsRes, eventsRes, clubsRes, teamRes] =
+          await Promise.all([
+            sendApiRequest(ROUTES.TECHNICAL_BOARD_ANNOUNCEMENTS),
+            sendApiRequest(ROUTES.TECHNICAL_BOARD_EVENTS),
+            sendApiRequest(ROUTES.TECHNICAL_BOARD_CLUBS),
+            sendApiRequest(ROUTES.TECHNICAL_BOARD_TEAM),
+          ]);
 
-        console.log({ announcementsRes,eventsRes,clubsRes,teamRes });
+        console.log({ announcementsRes, eventsRes, clubsRes, teamRes });
 
-        setAnnouncements(announcementsRes?.data)
-        setEvents(eventsRes?.data)
-        setClubs(clubsRes?.data)
-        setTeam(teamRes?.data)
+        setAnnouncements(announcementsRes?.data);
+        setEvents(eventsRes?.data);
+        setClubs(clubsRes?.data);
+        setTeam(teamRes?.data);
       } catch (error) {
         console.error("Error in fetching data:", error);
       }
@@ -40,43 +41,58 @@ function TechnicalBoardPage() {
 
     fetchData();
   }, []);
-  
+
   return (
     <>
-      <BannerTop heading="Technical Board" blueText="Board" route={route}/>
+      <BannerTop heading="Technical Board" route={route} />
       <div className="boards-about">
         <div className="boards-about-text">
           <h1>
-            Welcome to <br/>Technical Board
+            Welcome to <br />
+            Technical Board
           </h1>
           <p>
-            It comprises of Chairman, Technical Board and elected student representatives. Its main function is to coordinate and execute all activities of technical clubs and to coordinate and execute all activities related to the annual technical festival ‘Techniche’.
+            It comprises of Chairman, Technical Board and elected student
+            representatives. Its main function is to coordinate and execute all
+            activities of technical clubs and to coordinate and execute all
+            activities related to the annual technical festival ‘Techniche’.
           </p>
         </div>
-         <div className="size-60 sm:size-80 md:size-96 mt-10 shrink-0">
+        <div className="size-60 sm:size-80 md:size-96 mt-10 shrink-0">
           <LayeredCarousel />
         </div>
       </div>
-      <div className="boards-announcements"><Announcements announcements={announcements}/></div>
-      <div className="boards-events"><BoardsEvents eventDetails={events}/></div>
+      <div className="boards-announcements">
+        <Announcements announcements={announcements} />
+      </div>
+      <div className="boards-events">
+        <BoardsEvents eventDetails={events} />
+      </div>
       <div className="boards-clubs">
         <h1>Clubs - Under Technical Board</h1>
         <div className="clubs-container">
-          {
-            clubs.map(each=>(
-              <ClubCard clubName={each.clubName} imageUrl={process.env.REACT_APP_API_BASE_URL+each.imageUrl?.url} link={each.link} />
-            ))
-          }
+          {clubs.map((each) => (
+            <ClubCard
+              clubName={each.clubName}
+              imageUrl={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
+              link={each.link}
+            />
+          ))}
         </div>
       </div>
       <div className="boards-team">
         <h1>Meet The Team</h1>
         <div className="team-container">
-          {
-            team.map(each=>(
-              <SWCTeamCard name={each.name} position={each.position} email={each.email} phone={each.phone} image={process.env.REACT_APP_API_BASE_URL+each.imageUrl?.url} program={each.program} />
-            ))
-          }
+          {team.map((each) => (
+            <SWCTeamCard
+              name={each.name}
+              position={each.position}
+              email={each.email}
+              phone={each.phone}
+              image={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
+              program={each.program}
+            />
+          ))}
         </div>
       </div>
     </>

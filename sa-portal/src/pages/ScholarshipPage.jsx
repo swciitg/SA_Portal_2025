@@ -12,10 +12,6 @@ const ScholarshipPage = () => {
 
   const [scholarships, setScholarships] = useState([]);
 
-  const filteredScholarships = scholarships.filter(
-    (scholarship) => scholarship.type?.toLowerCase() == type?.toLowerCase()
-  );
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,12 +27,8 @@ const ScholarshipPage = () => {
     fetchData();
   }, []);
 
-  const handleTypeChange = (newType) => {
-    navigate(`/scholarships?type=${newType}`);
-  };
-
   const filteredScholarships = scholarships.filter(
-    (item) => item?.type === type
+    (item) => item.type?.toLowerCase() === type?.toLowerCase()
   );
 
   return (
@@ -46,15 +38,17 @@ const ScholarshipPage = () => {
         route={["Scholarships & Sponsorships", "Scholarships"]}
       />
 
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-96 bg-gray-50">
         <div className="customBgNew w-full px-12 flex justify-between">
           {/* Each section takes about 30% of total width */}
           <div
             className="hoveredBg w-1/3 flex justify-center py-4 hover:cursor-pointer"
-            style={type === "school" ? { backgroundColor: "#c5d9fe" } : {}}
-            onClick={() => navigate("/scholarships?type=school")}
+            style={type === "college" ? { backgroundColor: "#c5d9fe" } : {}}
+            onClick={() => navigate("/scholarships?type=college")}
           >
-            <button className="text-lg font-medium">School Scholarships</button>
+            <button className="text-lg font-medium">
+              College Scholarships
+            </button>
           </div>
           <div
             className="hoveredBg w-1/3 flex justify-center py-4 hover:cursor-pointer"
@@ -72,17 +66,17 @@ const ScholarshipPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center py-10 px-4">
-          {filteredScholarships.map((item, idx) => (
-            <ScholarshipCard
-              key={idx}
-              idx={idx + 1}
-              title={item.name}
-              pdfUrl={process.env.REACT_APP_API_BASE_URL + item.pdf_File?.url}
-              wordUrl={process.env.REACT_APP_API_BASE_URL + item.word_File?.url}
-            />
-          ))}
-        </div>
+        {filteredScholarships.length > 0 ? (
+          <div className="flex flex-col items-center py-10 px-4">
+            {filteredScholarships.map((item, idx) => (
+              <ScholarshipCard key={idx} idx={idx + 1} item={item} />
+            ))}
+          </div>
+        ) : (
+          <div className="h-60 w-full flex items-center justify-center">
+            <p>Nothing to show here</p>
+          </div>
+        )}
       </div>
     </>
   );

@@ -17,11 +17,25 @@
     "date": {
       "type": "date"
     },
-    "pdfUrl": {
-      "type": "string"
+    "pdf_File": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
-    "wordUrl": {
-      "type": "string"
+    "word_File": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

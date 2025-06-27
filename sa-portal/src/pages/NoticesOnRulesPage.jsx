@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import sendApiRequest from "../services/apiService";
 import ROUTES from "../constants/apiRoutes";
+import BannerTop from "../Components/BannerTop";
+import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
 function FormsPage() {
   const [currPage, setCurrPage] = useState(1);
@@ -15,7 +17,6 @@ function FormsPage() {
     currPage * limitOnPage
   );
 
-  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -34,6 +35,7 @@ function FormsPage() {
 
   return (
     <>
+      <BannerTop heading={"Notices on Rules"} route={["Rules", "Notices"]} />
       <div className="px-4 py-4 sm:px-10 sm:py-8 md:px-28 md:py-20">
         {/* Heading and Pagination menu */}
         <div className="flex flex-col sm:flex-row items-center justify-between">
@@ -50,14 +52,13 @@ function FormsPage() {
 
         {/* Notices */}
         <div className="flex flex-col mt-4 sm:mt-6 md:mt-10 space-y-1 text-neutral-900">
-          {paginatedNotices.map((form, idx) => (
+          {paginatedNotices.map((notice, idx) => (
             <NoticeItem
               key={idx}
-              date={form.date}
-              title={form.title}
-              pdfUrl={process.env.REACT_APP_API_BASE_URL+form.pdf_File?.url}
-              wordUrl={process.env.REACT_APP_API_BASE_URL+form.word_File?.url}
-              
+              date={notice.date}
+              title={notice.title}
+              pdfUrl={getStrapiMediaUrl(notice.pdf_File?.url)}
+              wordUrl={getStrapiMediaUrl(notice.word_File?.url)}
             />
           ))}
         </div>

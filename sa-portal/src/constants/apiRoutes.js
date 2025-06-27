@@ -1,14 +1,15 @@
 const ROUTES = {
-  HOMEPAGE_ANNOUNCEMENTS: "/home-page-announcements", // DONE
-  HOMEPAGE_ACHIEVEMENTS: "/achievements?populate=*", // DONE
+  HOMEPAGE_ANNOUNCEMENTS: "/home-page-announcements", // DONE*
+  HOMEPAGE_ACHIEVEMENTS: "/achievements?populate=*", // DONE*
   SA_TEAM: "/student-affairs-teams",
-  SA_SERVICES: "/services",
-  SCHOLARSHIPS: "/scholarships?populate=*", // DONE
-  SA_COURSES: "/sa-courses", // DONE
-  NOTICES_ON_RULES: "/notices-on-rules?populate=*", // DONE
-  FORMS: "/forms?populate=*", // DONE
-  SAC_MEMBERS: "/sac-members?populate=*",  // DONE
-  SAC_MINUTES: "/sac-minutes?populate=*", // DONE
+  SA_SERVICES: "/services?populate=*", // DONE*
+  SCHOLARSHIPS: "/scholarships?populate=*", // DONE*
+  SA_COURSES: "/sa-courses", // DONE*
+  NOTICES_ON_RULES: "/notices-on-rules?populate=*", // DONE*
+  FORMS: "/forms?populate=*", // DONE*
+  SAC_MEMBERS: "/sac-members?populate[member][populate]=imageUrl", // DONE*
+  SAC_MINUTES: "/sac-minutes?populate=*", // DONE*
+  SGC_TEAM: "/student-gymkhana-teams?populate[members][populate]=imageUrl", // DONE*
   CULTURAL_BOARD_ANNOUNCEMENTS: "/cultural-board-announcements", // DONE
   CULTURAL_BOARD_EVENTS: "/cultural-board-events?populate=*", // DONE
   CULTURAL_BOARD_CLUBS: "/cultural-board-clubs?populate=*", // DONE

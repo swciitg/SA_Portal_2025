@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import BannerTop from "../Components/BannerTop";
 import ServicesAccordian from "../Components/ServicesAccordian";
 import sendApiRequest from "../services/apiService";
+import ROUTES from "../constants/apiRoutes";
 
 function ServicesPage() {
   const [services, setServices] = useState([]);
@@ -9,8 +10,8 @@ function ServicesPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const servicesRes = await sendApiRequest('/services?populate=services', "GET");
-        console.log(servicesRes.data );
+        const servicesRes = await sendApiRequest(ROUTES.SA_SERVICES);
+        console.log(servicesRes.data);
 
         setServices(servicesRes?.data);
       } catch (error) {

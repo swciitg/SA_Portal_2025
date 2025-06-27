@@ -1,52 +1,13 @@
 import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 function ServicesAccordian({ services }) {
-  // sample data
-  const data=services
-  // const data = [
-  //   {
-  //     header: "Student's Return",
-  //     services: [
-  //       {
-  //         title: "List of registered students",
-  //         link: "https://iitg.ac.in",
-  //       },
-  //       {
-  //         title:
-  //           "List Of Students Eligible For Registeration To Winter Semester , 2023",
-  //         link: "https://iitg.ac.in",
-  //       },
-  //       {
-  //         title:
-  //           "[ Notice-48 ] Regarding Re-Entry Of Research Scholar To The Campus",
-  //         link: "https://iitg.ac.in",
-  //       },
-  //       {
-  //         title: "Re-Entry Form Cum Undertaking",
-  //         link: "https://iitg.ac.in",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     header: "Room Booking Portal",
-  //     services: [],
-  //   },
-  //   {
-  //     header: "HAB Vendor Details [ 2024 ]",
-  //     services: [],
-  //   },
-  //   {
-  //     header: "Online Services",
-  //     services: [],
-  //   },
-  // ];
-
   return (
     <div className="w-full px-4 my-8 sm:px-12 sm:my-12 md:px-20 md:my-20">
       <h1 className="font-semibold text-4xl my-10">All Services</h1>
       {/* Services */}
       <div className="mb-20">
-        {data.map(({ header, services }, idx) => (
+        {services.map(({ header, services }, idx) => (
           <AccordianItem key={idx} header={header} services={services} />
         ))}
       </div>
@@ -97,13 +58,13 @@ function AccordianItem({ header, services }) {
       >
         {services.length > 0 ? (
           services.map(({ title, link }, idx) => (
-            <div
+            <Link
+              to={link}
+              target="_blank"
               key={idx}
               className="w-full px-5 py-5 flex items-center justify-between bg-blue-50"
             >
-              <a href={link} target="_blank">
-                {title}
-              </a>
+              <p>{title}</p>
               <svg
                 width="18"
                 height="18"
@@ -119,7 +80,7 @@ function AccordianItem({ header, services }) {
                   strokeLinejoin="round"
                 />
               </svg>
-            </div>
+            </Link>
           ))
         ) : (
           <div className="w-full px-5 py-5 flex items-center justify-between bg-blue-50">

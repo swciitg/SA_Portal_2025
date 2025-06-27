@@ -14,7 +14,7 @@
     "title": {
       "type": "string"
     },
-    "pdfUrl": {
+    "pdf_File": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [

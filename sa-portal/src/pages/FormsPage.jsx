@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import BannerTop from "../Components/BannerTop";
 import sendApiRequest from "../services/apiService";
 import ROUTES from "../constants/apiRoutes";
+import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
 function FormsPage() {
   const [currPage, setCurrPage] = useState(1);
   const limitOnPage = 5; // limit per page
 
-   const [forms, setForms] = useState([]);
+  const [forms, setForms] = useState([]);
 
   // paginated forms to render
   const paginatedForms = forms.slice(
@@ -53,17 +54,23 @@ function FormsPage() {
         </div>
 
         {/* Forms */}
-        <div className="flex flex-col mt-4 sm:mt-6 md:mt-10 space-y-1 text-neutral-900">
-          {paginatedForms.map((form, idx) => (
-            <FormItem
-              key={idx}
-              date={form.date}
-              title={form.title}
-             pdfUrl={process.env.REACT_APP_API_BASE_URL+form.pdf_File?.url}
-            wordUrl={process.env.REACT_APP_API_BASE_URL+form.word_File?.url}
-            />
-          ))}
-        </div>
+        {paginatedForms.length > 0 ? (
+          <div className="flex flex-col mt-4 sm:mt-6 md:mt-10 space-y-1 text-neutral-900">
+            {paginatedForms.map((form, idx) => (
+              <FormItem
+                key={idx}
+                date={form.date}
+                title={form.title}
+                pdfUrl={getStrapiMediaUrl(form.pdf_File?.url)}
+                wordUrl={getStrapiMediaUrl(form.word_File?.url)}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="min-h-60 w-full flex items-center justify-center">
+            <p>Nothing to show here.</p>
+          </div>
+        )}
       </div>
     </>
   );

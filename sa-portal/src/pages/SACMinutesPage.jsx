@@ -3,6 +3,7 @@ import MinuteCard from "../Components/MinuteCard";
 import BannerTop from "../Components/BannerTop";
 import sendApiRequest from "../services/apiService";
 import ROUTES from "../constants/apiRoutes";
+import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
 const SMALL_SCREEN_CARDS = 20;
 const LARGE_SCREEN_CARDS = 40;
@@ -11,7 +12,7 @@ const SACMinutesPage = () => {
   const [page, setPage] = useState(1);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
-    const [minutes, setMinutes] = useState([]);
+  const [minutes, setMinutes] = useState([]);
 
   useEffect(() => {
     const handleResize = () => setIsLargeScreen(window.innerWidth >= 768);
@@ -151,7 +152,7 @@ const SACMinutesPage = () => {
                   key={startIdx + idx}
                   idx={startIdx + idx + 1}
                   title={item.title}
-                  pdfUrl={process.env.REACT_APP_API_BASE_URL+item.pdfUrl?.url}
+                  pdfUrl={getStrapiMediaUrl(item.pdf_File?.url)}
                 />
               ))}
             </div>
@@ -163,7 +164,7 @@ const SACMinutesPage = () => {
                   key={startIdx + SMALL_SCREEN_CARDS + idx}
                   idx={startIdx + SMALL_SCREEN_CARDS + idx + 1}
                   title={item.title}
-                   pdfUrl={process.env.REACT_APP_API_BASE_URL+item.pdfUrl?.url}
+                  pdfUrl={getStrapiMediaUrl(item.pdf_File?.url)}
                 />
               ))}
             </div>
@@ -175,7 +176,7 @@ const SACMinutesPage = () => {
                 key={startIdx + idx}
                 idx={startIdx + idx + 1}
                 title={item.title}
-                 pdfUrl={process.env.REACT_APP_API_BASE_URL+item.pdfUrl?.url}
+                pdfUrl={getStrapiMediaUrl(item.pdf_File?.url)}
               />
             ))}
           </div>
