@@ -19,7 +19,7 @@
         "Others"
       ]
     },
-    "name": {
+    "title": {
       "type": "string"
     },
     "link": {

@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hostel_affairs_board_announcements",
+  "info": {
+    "singularName": "hostel-affairs-board-announcement",
+    "pluralName": "hostel-affairs-board-announcements",
+    "displayName": "Hostel_Affairs_Board_Announcement"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text": {
+      "type": "text"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

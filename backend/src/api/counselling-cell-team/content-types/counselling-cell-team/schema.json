@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "counselling_cell_teams",
+  "info": {
+    "singularName": "counselling-cell-team",
+    "pluralName": "counselling-cell-teams",
+    "displayName": "Counselling_Cell_Team"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "head": {
+      "type": "string"
+    },
+    "members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team-member.team-member"
+    }
+  }
+}

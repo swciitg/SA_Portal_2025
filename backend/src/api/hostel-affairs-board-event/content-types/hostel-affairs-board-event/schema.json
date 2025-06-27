@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hostel_affairs_board_events",
+  "info": {
+    "singularName": "hostel-affairs-board-event",
+    "pluralName": "hostel-affairs-board-events",
+    "displayName": "Hostel_Affairs_Board_Event"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "imageUrl": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "name": {
+      "type": "text"
+    }
+  }
+}

@@ -9,9 +9,8 @@ function ServicesPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const servicesRes = await sendApiRequest("/services", "GET");
-
-        console.log({ servicesRes });
+        const servicesRes = await sendApiRequest('/services?populate=services', "GET");
+        console.log(servicesRes.data );
 
         setServices(servicesRes?.data);
       } catch (error) {
