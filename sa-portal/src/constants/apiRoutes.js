@@ -29,14 +29,14 @@ const ROUTES = {
   TECHNICAL_BOARD_EVENTS: "/technical-board-events?populate=*", // DONE
   TECHNICAL_BOARD_CLUBS: "/technical-board-clubs?populate=*", // DONE
   TECHNICAL_BOARD_TEAM: "/technical-board-teams?populate=*", // DONE
-  WELFARE_BOARD_ANNOUNCEMENTS: "/welfare-board-announcements", // DONE
-  WELFARE_BOARD_EVENTS: "/welfare-board-events?populate=*", // DONE
-  WELFARE_BOARD_CLUBS: "/clubs-board-clubs?populate=*", // DONE
-  WELFARE_BOARD_TEAM: "/welfare-board-teams?populate=*", // DONE
-  WEB_COMMITTEE_ANNOUNCEMENTS: "/welfare-board-announcements", // DONE
-  WEB_COMMITTEE_EVENTS: "/welfare-board-events?populate=*", // DONE
-  WEB_COMMITTEE_SERVICES: "/welfare-board-services?populate=*", // DONE
-  WEB_COMMITTEE_TEAM: "/welfare-board-teams?populate=*", // DONE
+  WELFARE_BOARD_ANNOUNCEMENTS: "/welfare-board-club-announcements", // DONE*
+  WELFARE_BOARD_EVENTS: "/welfare-board-events?populate=*", // DONE -- card responsiveness left
+  WELFARE_BOARD_CLUBS: "/welfare-board-clubs?populate[club][populate]=*", // DONE*
+  WELFARE_BOARD_TEAM: "/welfare-board-teams?populate[members][populate]=*", // DONE*
+  WEB_COMMITTEE_ANNOUNCEMENTS: "/web-committee-announcements", // DONE*
+  WEB_COMMITTEE_EVENTS: "/web-committee-events?populate=*", // DONE
+  WEB_COMMITTEE_SERVICES: "/web-committee-services?populate=*", // DONE*
+  WEB_COMMITTEE_TEAM: "/swc-teams?populate=*", // DONE*
 };
 
 export default ROUTES;

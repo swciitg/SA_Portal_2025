@@ -11,9 +11,9 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "clubs": {
+    "club": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::club.club"
     }
   }

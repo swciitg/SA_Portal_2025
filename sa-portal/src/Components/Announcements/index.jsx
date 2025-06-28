@@ -1,5 +1,5 @@
-import { useState } from "react";
 import EachAnnouncement from "../EachAnnouncement/index";
+import getFormattedDate from "../../utils/getDate";
 
 const Announcements = ({ announcements = [] }) => {
   return (
@@ -10,7 +10,8 @@ const Announcements = ({ announcements = [] }) => {
           <EachAnnouncement
             key={index}
             text={each.text}
-            date={new Date(each.createdAt).toISOString().slice(0, 10)}
+            url={each.url}
+            date={getFormattedDate(each.createdAt)}
           />
         ))}
       </div>

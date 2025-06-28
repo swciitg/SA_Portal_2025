@@ -1367,12 +1367,11 @@ export interface ApiSwcTeamSwcTeam extends Struct.CollectionTypeSchema {
   };
   attributes: {
     branch: Schema.Attribute.String;
-    contact_number: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     email: Schema.Attribute.String;
-    img: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1380,7 +1379,8 @@ export interface ApiSwcTeamSwcTeam extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
-    Position: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
+    position: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1529,7 +1529,7 @@ export interface ApiWebCommitteeEventWebCommitteeEvent
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1560,7 +1560,7 @@ export interface ApiWebCommitteeServiceWebCommitteeService
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1618,7 +1618,7 @@ export interface ApiWelfareBoardClubWelfareBoardClub
     draftAndPublish: true;
   };
   attributes: {
-    clubs: Schema.Attribute.Relation<'oneToMany', 'api::club.club'>;
+    club: Schema.Attribute.Relation<'oneToOne', 'api::club.club'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1688,7 +1688,7 @@ export interface ApiWelfareBoardTeamWelfareBoardTeam
     > &
       Schema.Attribute.Private;
     members: Schema.Attribute.Relation<
-      'oneToOne',
+      'oneToMany',
       'api::team-member.team-member'
     >;
     publishedAt: Schema.Attribute.DateTime;
