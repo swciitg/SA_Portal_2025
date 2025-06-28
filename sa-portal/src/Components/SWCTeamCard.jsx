@@ -1,16 +1,7 @@
 import React from "react";
 
-function SWCTeamCard({ name, position, email, phone, image, program="" }) {
-  // sample data -> has to be from props
-  // const data = {
-  //   name: "John Doe",
-  //   position: "Overall Coordinator",
-  //   email: "johndoe99@outlook.com",
-  //   phone: "1234567890",
-  //   image: "agriculture-bg.jpg",
-  //   program: "B.Tech in Chemical Engineering",
-  // };
-
+function SWCTeamCard({ name, position, email, phone, image, program = "" }) {
+  console.log({ name, position, email, phone, image, program });
   return (
     <div className="flex items-center space-x-1 sm:space-x-10 px-2 sm:py-6 border-2 border-blue-50">
       <img

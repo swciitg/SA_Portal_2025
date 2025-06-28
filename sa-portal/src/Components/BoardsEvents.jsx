@@ -3,33 +3,33 @@ import AchievementsCard from "./AchievementsCard";
 import emptyImage from "../assets/Images/empty.png";
 import next from "../assets/Images/next.png";
 import { useState, useEffect, useRef } from "react";
+import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
-const BoardsEvents = ({eventDetails}) => {
+const BoardsEvents = ({ eventDetails }) => {
   const [current, setCurrent] = useState(1);
   const listRef = useRef(null);
 
   const events = eventDetails || [
     {
       imageUrl: "",
-      name: "Event 1",
+      title: "Event 1",
     },
     {
       imageUrl: "",
-      name: "Event 2",
+      title: "Event 2",
     },
     {
       imageUrl: "",
-      name: "Event 3",
+      title: "Event 3",
     },
     {
       imageUrl: "",
-      name: "Event 4",
+      title: "Event 4",
     },
     {
       imageUrl: "",
-      name: "Event 5",
+      title: "Event 5",
     },
-
   ];
 
   const eventsLength = events.length;
@@ -121,9 +121,7 @@ const BoardsEvents = ({eventDetails}) => {
                 ? "achievements-index active-index"
                 : "achievements-index"
             }
-            onClick={() =>
-              setCurrent(Math.min(current + 1, eventsLength))
-            }
+            onClick={() => setCurrent(Math.min(current + 1, eventsLength))}
           >
             {Math.min(current + 1, eventsLength)}
           </button>
@@ -144,12 +142,17 @@ const BoardsEvents = ({eventDetails}) => {
       {/* Wrapper for overflow hidden */}
       <div className="achievements-cards-wrapper">
         <div className="achievements-cards" ref={listRef}>
-          {events.map((event,index) => (
+          {events.map((event, index) => (
             <div className="event-card" key={index}>
-              <img src={process.env.REACT_APP_API_BASE_URL+event.imageUrl?.url || emptyImage} alt={event.name} />
+              <img
+                src={getStrapiMediaUrl(event.imageUrl?.url) || emptyImage}
+                alt={event.title}
+              />
               <div className="event-card-content">
-                <p>{event.name}</p>
-                <a>Know More</a>
+                <p>{event.title}</p>
+                <a href={event.url} target="_blank">
+                  Know More
+                </a>
               </div>
             </div>
           ))}
