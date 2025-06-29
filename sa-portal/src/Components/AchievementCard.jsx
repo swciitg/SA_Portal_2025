@@ -9,7 +9,7 @@ const AchievementCard = ({ item, key }) => {
       <div className="flex h-full">
         <div className="w-1/2 h-full">
           <img
-            src={`${process.env.REACT_APP_API_BASE_URL}${item.image}`}
+            src={item.image}
             alt="Achievement"
             className="w-full h-full object-cover"
           />
