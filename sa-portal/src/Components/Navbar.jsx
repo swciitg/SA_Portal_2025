@@ -4,34 +4,19 @@ import NavLink from "./NavLink";
 import NavLinkDropdown from "./NavLinkDropdown";
 import Hamburger from "./Hamburger.jsx";
 // PDF links from public/pdfs folder
-const ordiScho =
-  process.env.PUBLIC_URL +
-  "/pdfs/Ordinance_and_Rules_on_Scholarship_6fbd5a3a76 (1).pdf";
-const swf =
-  process.env.PUBLIC_URL +
-  "/pdfs/Students_Welfare_Fund_STAF_SCF_SCAF_fda7181688 (1).pdf";
-const sbf =
-  process.env.PUBLIC_URL + "/pdfs/Students_Brotherhood_Fund_601e513b41 (1).pdf";
-const GuidelinesSpon =
-  process.env.PUBLIC_URL + "/pdfs/Guidelines_on_Sponsorship_77ed6d24b2.pdf";
-const MoUSpon =
-  process.env.PUBLIC_URL + "/pdfs/Mo_U_for_Sponsorship_7db7ec2d97.pdf";
-const SponsorshipCert =
-  process.env.PUBLIC_URL + "/pdfs/Sponsorship_Certificate_12a4792e50.pdf";
-const HABPro =
-  process.env.PUBLIC_URL +
-  "/pdfs/HAB_Procedures_and_Resolutions_b513fcecda.pdf";
-const GenRules =
-  process.env.PUBLIC_URL +
-  "/pdfs/General_Rules_for_Hostel_Residents_7c7a7c76c8.pdf";
-const HABCon = process.env.PUBLIC_URL + "/pdfs/HAB_Constitution_e299093392.pdf";
+const ordiScho = "/pdfs/Ordinance_and_Rules_on_Scholarship_6fbd5a3a76 (1).pdf";
+const swf = "/pdfs/Students_Welfare_Fund_STAF_SCF_SCAF_fda7181688 (1).pdf";
+const sbf = "/pdfs/Students_Brotherhood_Fund_601e513b41 (1).pdf";
+const GuidelinesSpon = "/pdfs/Guidelines_on_Sponsorship_77ed6d24b2.pdf";
+const MoUSpon = "/pdfs/Mo_U_for_Sponsorship_7db7ec2d97.pdf";
+const SponsorshipCert = "/pdfs/Sponsorship_Certificate_12a4792e50.pdf";
+const HABPro = "/pdfs/HAB_Procedures_and_Resolutions_b513fcecda.pdf";
+const GenRules = "/pdfs/General_Rules_for_Hostel_Residents_7c7a7c76c8.pdf";
+const HABCon = "/pdfs/HAB_Constitution_e299093392.pdf";
 const ordinacneOnCodeCon =
-  process.env.PUBLIC_URL +
   "/pdfs/95_BOG_Ordinance_COC_19_12_2018_website_2_1347674f83.pdf";
-const InterIITSports =
-  process.env.PUBLIC_URL + "/pdfs/Inter_IIT_Sports_Meet_66a17c869d.pdf";
+const InterIITSports = "/pdfs/Inter_IIT_Sports_Meet_66a17c869d.pdf";
 const rulesForSwimming =
-  process.env.PUBLIC_URL +
   "/pdfs/Rules_and_guidelines_for_swimming_pool_user_75f197a6d7.pdf";
 
 const Navbar = () => {
