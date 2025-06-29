@@ -3,6 +3,18 @@ import { Link } from "react-router-dom";
 import NavLink from "./NavLink";
 import NavLinkDropdown from "./NavLinkDropdown";
 import Hamburger from "./Hamburger.jsx";
+import ordiScho from "../assets/pdfs/Ordinance_and_Rules_on_Scholarship_6fbd5a3a76 (1).pdf";
+import swf from "../assets/pdfs/Students_Welfare_Fund_STAF_SCF_SCAF_fda7181688 (1).pdf";
+import sbf from "../assets/pdfs/Students_Brotherhood_Fund_601e513b41 (1).pdf";
+import GuidelinesSpon from "../assets/pdfs/Guidelines_on_Sponsorship_77ed6d24b2.pdf";
+import MoUSpon from "../assets/pdfs/Mo_U_for_Sponsorship_7db7ec2d97.pdf";
+import SponsorshipCert from "../assets/pdfs/Sponsorship_Certificate_12a4792e50.pdf";
+import HABPro from "../assets/pdfs/HAB_Procedures_and_Resolutions_b513fcecda.pdf";
+import GenRules from "../assets/pdfs/General_Rules_for_Hostel_Residents_7c7a7c76c8.pdf";
+import HABCon from "../assets/pdfs/HAB_Constitution_e299093392.pdf";
+import ordinacneOnCodeCon from "../assets/pdfs/95_BOG_Ordinance_COC_19_12_2018_website_2_1347674f83.pdf";
+import InterIITSports from "../assets/pdfs/Inter_IIT_Sports_Meet_66a17c869d.pdf";
+import rulesForSwimming from "../assets/pdfs/Rules_and_guidelines_for_swimming_pool_user_75f197a6d7.pdf";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,32 +42,32 @@ const Navbar = () => {
       dropdownItems: [
         {
           title: "Ordinances and Rules on Scholarship",
-          href: "#",
+          href: ordiScho,
           type: "link",
         },
         {
           title: "Students Welfare Fund",
-          href: "#",
+          href: swf,
           type: "link",
         },
         {
           title: "Students Brotherhood Fund",
-          href: "#",
+          href: sbf,
           type: "link",
         },
         {
           title: "Guidelines to Sponsorship",
-          href: "#",
+          href: GuidelinesSpon,
           type: "link",
         },
         {
           title: "MoU for Sponsorship",
-          href: "#",
+          href: MoUSpon,
           type: "link",
         },
         {
           title: "Sponsorship Certificate",
-          href: "#",
+          href: SponsorshipCert,
           type: "link",
         },
         {
@@ -92,32 +104,32 @@ const Navbar = () => {
       dropdownItems: [
         {
           title: "Ordinances on Code and Conducts",
-          href: "#",
+          href: ordinacneOnCodeCon,
           type: "link",
         },
         {
           title: "General Rules for Hostel Residents",
-          href: "#",
+          href: GenRules,
           type: "link",
         },
         {
           title: "HAB Procedures and Resolution",
-          href: "#",
+          href: HABPro,
           type: "link",
         },
         {
           title: "HAB Constitution",
-          href: "#",
+          href: HABCon,
           type: "link",
         },
         {
           title: "Rules for Swimming Pool Users",
-          href: "#",
+          href: rulesForSwimming,
           type: "link",
         },
         {
           title: "Rules for Inter IIT Sports Meet",
-          href: "#",
+          href: InterIITSports,
           type: "link",
         },
         {
@@ -179,43 +191,38 @@ const Navbar = () => {
           type: "page",
         },
         {
-          title: "Students' Senate",
-          href: "#",
-          type: "page",
-        },
-        {
-          title: "Minutes of Students' Senate",
-          href: "#",
+          title: "Students' Gymkhana Portal",
+          href: "https://www.iitg.ac.in/stud/gymkhana/",
           type: "page",
         },
         {
           title: "Cultural Board",
-          href: "/sab/cultural-board",
+          href: "/sgc/cultural-board",
           type: "page",
         },
         {
           title: "Hostel Affairs Board",
-          href: "/sab/hostel-affairs-board",
+          href: "/sgc/hostel-affairs-board",
           type: "page",
         },
         {
           title: "Sports Board",
-          href: "/sab/sports-board",
+          href: "/sgc/sports-board",
           type: "page",
         },
         {
           title: "Technical Board",
-          href: "/sab/technical-board",
+          href: "/sgc/technical-board",
           type: "page",
         },
         {
           title: "Welfare Board",
-          href: "/sab/welfare-board",
+          href: "/sgc/students-welfare-board",
           type: "page",
         },
         {
           title: "Web Committee",
-          href: "/sab/web-committee",
+          href: "/sgc/students-web-committee",
           type: "page",
         },
       ],
@@ -226,12 +233,12 @@ const Navbar = () => {
       dropdownItems: [
         {
           title: "SA Calendar",
-          href: "#",
+          href: "https://iitg.ac.in/acad/academic_calendar.php/",
           type: "link",
         },
         {
           title: "SSO Portal",
-          href: "#",
+          href: "https://academic.iitg.ac.in/sso/",
           type: "link",
         },
         {
@@ -246,27 +253,27 @@ const Navbar = () => {
         },
         {
           title: "Internal Complaints Committee",
-          href: "#",
+          href: "https://www.iitg.ac.in/iitgicc/",
           type: "link",
         },
         {
           title: "GoI Wellbeing Link",
-          href: "#",
+          href: "https://mohfw.gov.in/",
           type: "link",
         },
         {
           title: "Anti-Ragging Affidavits",
-          href: "#",
+          href: "https://www.antiragging.in/affidavit_registration_disclaimer.html",
           type: "link",
         },
         {
           title: "POSH Act",
-          href: "#",
+          href: "https://www.indiacode.nic.in/handle/123456789/2104",
           type: "link",
         },
         {
           title: "Narcotics Control Bureau",
-          href: "#",
+          href: "https://narcoticsindia.nic.in/",
           type: "link",
         },
       ],
