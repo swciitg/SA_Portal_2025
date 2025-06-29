@@ -33,7 +33,8 @@ const MeetTheTeam = () => {
 
   const [category, setCategory] = useState("Student Affairs Functionaries");
 
-  const [teams, setTeams] = useState(
+  const [teams, setTeams] =
+    useState();
     // "Student Affairs Functionaries": [ /* dummy data here */ {
     //   heading: "Dean",
     //   members: [
@@ -84,7 +85,6 @@ const MeetTheTeam = () => {
     // "Gymkhana Office": [/* dummy */],
     // "Counselling Cell": [/* dummy */],
     // "New SAC": [/* dummy */],
-  );
 
   const groups = [
     "Student Affairs Functionaries",
@@ -102,7 +102,9 @@ const MeetTheTeam = () => {
   const scrolled = () => {
     const categorySelector = document.querySelector(".category-selector");
     const categoryIcon = document.querySelectorAll(".category-icon");
-    const h = document.querySelector(".mtt-banner").getBoundingClientRect().bottom;
+    const h = document
+      .querySelector(".mtt-banner")
+      .getBoundingClientRect().bottom;
     if (h <= 55) {
       categoryIcon.forEach((each) => each.classList.add("display-none"));
       categorySelector.classList.add("category-selector-scrolled");
@@ -113,16 +115,16 @@ const MeetTheTeam = () => {
   };
 
   const selectedYear = (each) => () => {
-    const yearList = document.querySelector('.teams-container ul');
-    const selectYear = document.querySelector('#select-year');
+    const yearList = document.querySelector(".teams-container ul");
+    const selectYear = document.querySelector("#select-year");
     yearList.style.display = "none";
     selectYear.innerText = each;
     setYear(each);
   };
 
   const showYearList = () => {
-    const yearList = document.querySelector('.teams-container ul');
-    const selectYear = document.querySelector('#select-year');
+    const yearList = document.querySelector(".teams-container ul");
+    const selectYear = document.querySelector("#select-year");
     if (yearList.style.display === "block") {
       yearList.style.display = "none";
       selectYear.innerText = year;
@@ -152,7 +154,7 @@ const MeetTheTeam = () => {
     window.history.pushState(
       {},
       "",
-      `/meet-the-team?team=${group.toLowerCase().replace(/\s+/g, '-')}`
+      `/meet-the-team?team=${group.toLowerCase().replace(/\s+/g, "-")}`
     );
     await fetchTeamData(group);
   };
@@ -164,7 +166,9 @@ const MeetTheTeam = () => {
 
   useEffect(() => {
     if (team) {
-      const groupFromUrl = team.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
+      const groupFromUrl = team
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (l) => l.toUpperCase());
       setCategory(groupFromUrl);
       fetchTeamData(groupFromUrl);
     } else {
@@ -207,28 +211,47 @@ const MeetTheTeam = () => {
             </li>
           ))}
         </ul>
-        <div className='teams-container'>
+        <div className="teams-container">
           {category === "Students Gymkhana" && (
             <>
               <div className="lg:ml-[15vw] sm:ml-[10vw] mt-[60px] w-[273px] h-[60px] flex justify-between border-solid border-[2px] border-[rgba(0,0,0,0.2)]">
-                <p id='select-year' className="my-auto ml-[20px] text-[rgba(0,0,0,0.6)]">Select Year</p>
-                <button onClick={showYearList} className="h-100 w-[58px] bg-[#0A31A0]" type='button'>
-                  <img className="w-[30px] h-[30px] m-auto" src={down} alt='down' />
+                <p
+                  id="select-year"
+                  className="my-auto ml-[20px] text-[rgba(0,0,0,0.6)]"
+                >
+                  Select Year
+                </p>
+                <button
+                  onClick={showYearList}
+                  className="h-100 w-[58px] bg-[#0A31A0]"
+                  type="button"
+                >
+                  <img
+                    className="w-[30px] h-[30px] m-auto"
+                    src={down}
+                    alt="down"
+                  />
                 </button>
               </div>
               <ul className="lg:ml-[15vw] sm:ml-[10vw] hidden absolute h-[300px] overflow-y-scroll w-[273px] [&::-webkit-scrollbar]:w-[10px] [&::-webkit-scrollbar-track]:bg-[#D0D3E6] [&::-webkit-scrollbar-thumb]:bg-[rgba(0,0,0,0.38)] [&::-webkit-scrollbar]:h-[0px]">
                 {years.map((each, index) => (
-                  <li onClick={selectedYear(each)} className="text-[20px] bg-[#E7ECFC] h-[58px] w-[273px] text-[#00000099] pl-[20px] flex items-center border border-solid border-[rgba(0,0,0,0.2)] cursor-pointer hover:underline"
-                    key={index} value={each}>{each}</li>
+                  <li
+                    onClick={selectedYear(each)}
+                    className="text-[20px] bg-[#E7ECFC] h-[58px] w-[273px] text-[#00000099] pl-[20px] flex items-center border border-solid border-[rgba(0,0,0,0.2)] cursor-pointer hover:underline"
+                    key={index}
+                    value={each}
+                  >
+                    {each}
+                  </li>
                 ))}
               </ul>
             </>
           )}
           {(teams || []).map((team, index) => (
-            <div key={index} className='team-section'>
-              <h1 className='team-heading'>{team.heading}</h1>
-              <div className='team-cards-scroll'>
-                <div className='team-cards'>
+            <div key={index} className="team-section">
+              <h1 className="team-heading">{team.heading}</h1>
+              <div className="team-cards-scroll">
+                <div className="team-cards">
                   {team.members.map((member, idx) => (
                     // (category !== "Students Gymkhana" || member.year === year) && (
                     <TeamCard
@@ -237,7 +260,7 @@ const MeetTheTeam = () => {
                       title={member.title}
                       mail={member.mail}
                       phone={member.phone}
-                      imageUrl={member.imageUrl}
+                      imageUrl={`${process.env.REACT_APP_API_BASE_URL}${member.imageUrl}`}
                       responsibility={member.responsibility}
                     />
                     // )

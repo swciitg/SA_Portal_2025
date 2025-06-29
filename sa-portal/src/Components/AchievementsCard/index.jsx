@@ -7,7 +7,7 @@ const AchievementsCard = (props) => {
   return (
     <div className="achievement-card">
       <img
-        src={imageUrl || EmptyImage}
+        src={`${process.env.REACT_APP_API_BASE_URL}${imageUrl}`}
         alt="Achievement-image"
         className="achievement-image"
       />

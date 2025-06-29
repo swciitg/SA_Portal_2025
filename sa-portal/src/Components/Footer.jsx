@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import iitg_logo from "../assets/Images/iitg_logo.png";
 import LinkedIn_logo from "../assets/Images/LinkedIn.png";
 import X_logo from "../assets/Images/X.png";
@@ -13,16 +13,17 @@ const Footer = () => {
     "HAB Portal": "/sab/hostel-affairs-board",
     "Internal Complaints Committee": "https://www.iitg.ac.in/iitgicc/",
     "GOI Wellbeing Link": "https://mohfw.gov.in/",
-    "Anti - Ragging Affidavits": "https://www.antiragging.in/affidavit_registration_disclaimer.html",
+    "Anti - Ragging Affidavits":
+      "https://www.antiragging.in/affidavit_registration_disclaimer.html",
     "POSH Act": "https://www.indiacode.nic.in/handle/123456789/2104",
     "Narcotics Control Bureau": "https://narcoticsindia.nic.in/",
     "Guest House Booking": "#",
     "Fee Structure": "https://iitg.ac.in/acad/admission/imp_info/fee.php",
     "Academic Calendar": "https://www.iitg.ac.in/acad/academic_calendar.php",
     "NSS, IIT Guwahati": "https://www.iitg.ac.in/nss/",
-    "NPTEL": "https://nptel.ac.in/",
-    "Swayam": "https://swayam.gov.in/"
-  }
+    NPTEL: "https://nptel.ac.in/",
+    Swayam: "https://swayam.gov.in/",
+  };
 
   return (
     <footer
@@ -32,7 +33,11 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row justify-between gap-10">
         <div className="flex flex-col md:w-1/3">
           <div className="flex items-center mb-4">
-            <img src={iitg_logo} alt="Logo" className="w-12 h-12 mr-3" />
+            <img
+              src={`${process.env.REACT_APP_API_BASE_URL}${iitg_logo}`}
+              alt="Logo"
+              className="w-12 h-12 mr-3"
+            />
             <div>
               <h1 className="text-2xl font-semibold md:text-3xl">
                 Students' Affairs
@@ -102,10 +107,14 @@ const Footer = () => {
             <h2 className="font-semibold mb-2 text-xl">Useful Links</h2>
             <ul className="text-sm space-y-1 font-light">
               <li>
-                <a href={links["SA Calendar"]} target="_blank">SA Calendar</a>
+                <a href={links["SA Calendar"]} target="_blank">
+                  SA Calendar
+                </a>
               </li>
               <li>
-                <a href={links["SSO Portal"]} target="_blank">SSO Portal</a>
+                <a href={links["SSO Portal"]} target="_blank">
+                  SSO Portal
+                </a>
               </li>
               <li>
                 <Link to={links["HAB Portal"]}>HAB Portal</Link>
@@ -114,19 +123,32 @@ const Footer = () => {
                 <a href={links["Guest House Booking"]}>Guest House Booking</a>
               </li>
               <li>
-                <a href={links["Internal Complaints Committee"]} target="_blank">Internal Complaints Committee</a>
+                <a
+                  href={links["Internal Complaints Committee"]}
+                  target="_blank"
+                >
+                  Internal Complaints Committee
+                </a>
               </li>
               <li>
-                <a href={links["GOI Wellbeing Link"]} target="_blank">GOI Wellbeing Link</a>
+                <a href={links["GOI Wellbeing Link"]} target="_blank">
+                  GOI Wellbeing Link
+                </a>
               </li>
               <li>
-                <a href={links["Anti - Ragging Affidavits"]} target="_blank">Anti - Ragging Affidavits</a>
+                <a href={links["Anti - Ragging Affidavits"]} target="_blank">
+                  Anti - Ragging Affidavits
+                </a>
               </li>
               <li>
-                <a href={links["POSH Act"]} target="_blank">POSH Act</a>
+                <a href={links["POSH Act"]} target="_blank">
+                  POSH Act
+                </a>
               </li>
               <li>
-                <a href={links["Narcotics Control Bureau"]} target="_blank">Narcotics Control Bureau</a>
+                <a href={links["Narcotics Control Bureau"]} target="_blank">
+                  Narcotics Control Bureau
+                </a>
               </li>
             </ul>
           </div>
@@ -136,10 +158,14 @@ const Footer = () => {
               <h2 className="font-semibold mb-2 text-lg">Resources</h2>
               <ul className="text-sm space-y-1 font-light">
                 <li>
-                  <a href={links["Fee Structure"]} target="_blank">Fee Structure</a>
+                  <a href={links["Fee Structure"]} target="_blank">
+                    Fee Structure
+                  </a>
                 </li>
                 <li>
-                  <a href={links["Academic Calendar"]} target="_blank">Academic Calendar</a>
+                  <a href={links["Academic Calendar"]} target="_blank">
+                    Academic Calendar
+                  </a>
                 </li>
               </ul>
             </div>
@@ -147,13 +173,19 @@ const Footer = () => {
               <h3 className="font-semibold mb-2 text-lg">Explore</h3>
               <ul className="text-sm space-y-1 font-light">
                 <li>
-                  <a href={links["NSS, IIT Guwahati"]} target="_blank">NSS, IIT Guwahati</a>
+                  <a href={links["NSS, IIT Guwahati"]} target="_blank">
+                    NSS, IIT Guwahati
+                  </a>
                 </li>
                 <li>
-                  <a href={links["NPTEL"]} target="_blank">NPTEL</a>
+                  <a href={links["NPTEL"]} target="_blank">
+                    NPTEL
+                  </a>
                 </li>
                 <li>
-                  <a href={links["Swayam"]} target="_blank">Swayam</a>
+                  <a href={links["Swayam"]} target="_blank">
+                    Swayam
+                  </a>
                 </li>
               </ul>
             </div>
