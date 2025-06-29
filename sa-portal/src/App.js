@@ -51,7 +51,6 @@ const App = () => {
               <Route path="web-committee" element={<WebCommitteePage />} />
             </Route>
 
-            {/* <Route path="" element={}/> */}
           </Routes>
         </Layout>
       </BrowserRouter>
