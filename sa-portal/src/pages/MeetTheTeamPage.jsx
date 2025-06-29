@@ -261,7 +261,7 @@ const MeetTheTeam = () => {
                       title={member.title}
                       mail={member.mail}
                       phone={member.phone}
-                      imageUrl={process.env.REACT_APP_API_BASE_URL+member.imageUrl.url}
+                      imageUrl={process.env.REACT_APP_API_BASE_URL+member.imageUrl?.url}
                       responsibility={member.responsibility}
                     />
                     // )
