@@ -152,7 +152,7 @@ const MeetTheTeam = () => {
     window.history.pushState(
       {},
       "",
-      `/meet-the-team?team=${group.toLowerCase().replace(/\s+/g, '-')}`
+      `${process.env.REACT_APP_BASE_URL}/meet-the-team?team=${group.toLowerCase().replace(/\s+/g, '-')}`
     );
     await fetchTeamData(group);
   };

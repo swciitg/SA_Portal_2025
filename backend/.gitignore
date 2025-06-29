@@ -96,7 +96,9 @@ logs
 results
 node_modules
 .node_history
-
+.env.prod
+.env.test
+.env.development
 ############################
 # Package managers
 ############################

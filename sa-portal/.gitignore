@@ -11,6 +11,8 @@
 /coverage
 
 .env
+.env.test
+.env.prod
 
 # production
 /build

@@ -281,7 +281,7 @@ const Navbar = () => {
         <div className="flex items-center gap-2 md:gap-4 mx-auto md:mx-0">
           <a href="https://www.iitg.ac.in" target="_blank">
             <img
-              src="/iitg-black.png" // It should be the black one
+              src={`${process.env.REACT_APP_BASE_URL}/iitg-black.png`} // It should be the black one
               alt="IITG Logo"
               className="h-12 w-12 md:h-20 md:w-20 shrink-0"
             />

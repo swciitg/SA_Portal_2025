@@ -23,7 +23,7 @@ import WebCommitteePage from "./pages/WebCommitteePage";
 const App = () => {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.REACT_APP_BASE_URL}>
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
