@@ -1,7 +1,7 @@
 const ROUTES = {
   HOMEPAGE_ANNOUNCEMENTS: "/home-page-announcements", // DONE*
   HOMEPAGE_ACHIEVEMENTS: "/achievements?populate=*", // DONE*
-  SA_TEAM: "/student-affairs-teams?populate=*",
+  SA_TEAM: "/student-affairs-teams?populate[members][populate]=imageUrl",
   SA_SERVICES: "/services?populate=*", // DONE*
   SCHOLARSHIPS: "/scholarships?populate=*", // DONE*
   SA_COURSES: "/sa-courses", // DONE*
