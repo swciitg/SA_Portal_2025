@@ -138,7 +138,7 @@ const MeetTheTeam = () => {
     if (!endpoint) return;
 
     try {
-      const res = await sendApiRequest(`${endpoint}?populate=members`, "GET");
+      const res = await sendApiRequest(`${endpoint}`, "GET");
       if (res?.data) {
         console.log(res.data);
         setTeams(res.data);
