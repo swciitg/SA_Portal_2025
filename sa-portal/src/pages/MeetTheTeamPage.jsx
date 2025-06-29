@@ -33,58 +33,57 @@ const MeetTheTeam = () => {
 
   const [category, setCategory] = useState("Student Affairs Functionaries");
 
-  const [teams, setTeams] =
-    useState();
-    // "Student Affairs Functionaries": [ /* dummy data here */ {
-    //   heading: "Dean",
-    //   members: [
-    //     {
-    //       name: "Prof. Perumal Alagarsamy",
-    //       title: "Dean of Students’ Affairs",
-    //       mail: "dos@iitg.ac.in",
-    //       phone: "+91-361-258 2083",
-    //       imageUrl:
-    //         "https://res.cloudinary.com/dgyo6ph3j/image/upload/v1748584974/dean_e9gohp.png",
-    //       responsibility: "",
-    //     },
-    //   ],
-    // }, {
-    //   heading: "Associate Dean",
-    //   members: [
-    //     {
-    //       name: "Prof. Perumal Alagarsamy",
-    //       title: "Dean of Students’ Affairs",
-    //       mail: "dos@iitg.ac.in",
-    //       phone: "+91-361-258 2083",
-    //       imageUrl:
-    //         "https://res.cloudinary.com/dgyo6ph3j/image/upload/v1748584974/dean_e9gohp.png",
-    //       responsibility: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    //     },
-    //     {
-    //       name: "Prof. Perumal Alagarsamy",
-    //       title: "Dean of Students’ Affairs",
-    //       mail: "dos@iitg.ac.in",
-    //       phone: "+91-361-258 2083",
-    //       imageUrl:
-    //         "https://res.cloudinary.com/dgyo6ph3j/image/upload/v1748584974/dean_e9gohp.png",
-    //       responsibility: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    //     },
-    //     {
-    //       name: "Prof. Perumal Alagarsamy",
-    //       title: "Dean of Students’ Affairs",
-    //       mail: "dos@iitg.ac.in",
-    //       phone: "+91-361-258 2083",
-    //       imageUrl:
-    //         "https://res.cloudinary.com/dgyo6ph3j/image/upload/v1748584974/dean_e9gohp.png",
-    //       responsibility: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    //     },
-    //   ],
-    // }],
-    // "Hostel Affairs Board": [/* dummy */],
-    // "Students Gymkhana": [/* dummy */],
-    // "Gymkhana Office": [/* dummy */],
-    // "Counselling Cell": [/* dummy */],
-    // "New SAC": [/* dummy */],
+  const [teams, setTeams] = useState();
+  // "Student Affairs Functionaries": [ /* dummy data here */ {
+  //   heading: "Dean",
+  //   members: [
+  //     {
+  //       name: "Prof. Perumal Alagarsamy",
+  //       title: "Dean of Students’ Affairs",
+  //       mail: "dos@iitg.ac.in",
+  //       phone: "+91-361-258 2083",
+  //       imageUrl:
+  //         "https://res.cloudinary.com/dgyo6ph3j/image/upload/v1748584974/dean_e9gohp.png",
+  //       responsibility: "",
+  //     },
+  //   ],
+  // }, {
+  //   heading: "Associate Dean",
+  //   members: [
+  //     {
+  //       name: "Prof. Perumal Alagarsamy",
+  //       title: "Dean of Students’ Affairs",
+  //       mail: "dos@iitg.ac.in",
+  //       phone: "+91-361-258 2083",
+  //       imageUrl:
+  //         "https://res.cloudinary.com/dgyo6ph3j/image/upload/v1748584974/dean_e9gohp.png",
+  //       responsibility: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  //     },
+  //     {
+  //       name: "Prof. Perumal Alagarsamy",
+  //       title: "Dean of Students’ Affairs",
+  //       mail: "dos@iitg.ac.in",
+  //       phone: "+91-361-258 2083",
+  //       imageUrl:
+  //         "https://res.cloudinary.com/dgyo6ph3j/image/upload/v1748584974/dean_e9gohp.png",
+  //       responsibility: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  //     },
+  //     {
+  //       name: "Prof. Perumal Alagarsamy",
+  //       title: "Dean of Students’ Affairs",
+  //       mail: "dos@iitg.ac.in",
+  //       phone: "+91-361-258 2083",
+  //       imageUrl:
+  //         "https://res.cloudinary.com/dgyo6ph3j/image/upload/v1748584974/dean_e9gohp.png",
+  //       responsibility: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  //     },
+  //   ],
+  // }],
+  // "Hostel Affairs Board": [/* dummy */],
+  // "Students Gymkhana": [/* dummy */],
+  // "Gymkhana Office": [/* dummy */],
+  // "Counselling Cell": [/* dummy */],
+  // "New SAC": [/* dummy */],
 
   const groups = [
     "Student Affairs Functionaries",
@@ -154,7 +153,9 @@ const MeetTheTeam = () => {
     window.history.pushState(
       {},
       "",
-      `/meet-the-team?team=${group.toLowerCase().replace(/\s+/g, "-")}`
+      `${process.env.REACT_APP_BASE_URL}/meet-the-team?team=${group
+        .toLowerCase()
+        .replace(/\s+/g, "-")}`
     );
     await fetchTeamData(group);
   };

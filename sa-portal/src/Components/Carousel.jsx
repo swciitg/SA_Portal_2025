@@ -17,7 +17,7 @@ const Carousel = () => {
       {images.map((img, index) => (
         <img
           key={index}
-          src={img}
+          src={ process.env.REACT_APP_BASE_URL+img}
           alt={`Slide ${index}`}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
             current === index ? "opacity-100" : "opacity-0"

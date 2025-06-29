@@ -1,0 +1,21 @@
+
+version: "3.3"
+
+services:
+ sa_portal_frontend_test:
+    image: sa_portal_frontend_test
+    container_name: sa_portal_frontend_test
+    restart: always
+    build:
+      context: .
+    ports:
+      - "1746:3000"
+    env_file:
+      - .env
+    command: sh -c "cd /app && serve -s build"
+    networks:
+      - frontend_default
+
+networks:
+  frontend_default:
+    external: true
