@@ -21,13 +21,13 @@ const ROUTES = {
   SPORTS_BOARD_COURSES: "/sports-board-courses?populate=*",
   SPORTS_BOARD_FACILITIES: "/sports-board-facilities?populate=*", // DONE
   SPORTS_BOARD_EVENTS: "/sports-board-events?populate=*", // DONE
-  SPORTS_BOARD_CLUBS: "/sports-board-clubs?populate=*", // DONE
+  SPORTS_BOARD_CLUBS: "/sports-board-clubs?populate[club][populate]=*", // DONE
   SPORTS_BOARD_TEAM: "/sports-board-teams?populate=*", // DONE
   SPORTS_BOARD_RULES: "/sports-board-rules?populate=*", // DONE
   SPORTS_BOARD_FORMS: "/sports-board-forms?populate=*", // DONE
   TECHNICAL_BOARD_ANNOUNCEMENTS: "/technical-board-announcements", // DONE
   TECHNICAL_BOARD_EVENTS: "/technical-board-events?populate=*", // DONE
-  TECHNICAL_BOARD_CLUBS: "/technical-board-clubs?populate=*", // DONE
+  TECHNICAL_BOARD_CLUBS: "/technical-board-clubs?populate[club][populate]=*", // DONE
   TECHNICAL_BOARD_TEAM: "/technical-board-teams?populate=*", // DONE
   WELFARE_BOARD_ANNOUNCEMENTS: "/welfare-board-club-announcements", // DONE*
   WELFARE_BOARD_EVENTS: "/welfare-board-events?populate=*", // DONE -- card responsiveness left

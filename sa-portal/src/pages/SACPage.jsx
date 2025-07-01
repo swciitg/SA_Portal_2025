@@ -60,7 +60,7 @@ function SACPage() {
                     title={member.title}
                     mail={member.mail}
                     phone={member.phone}
-                    imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
+                    imageUrl={member.imageUrl?.url}
                     description={member.description}
                   />
                 ))}

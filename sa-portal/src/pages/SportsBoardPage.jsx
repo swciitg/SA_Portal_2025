@@ -39,7 +39,7 @@ function SportsBoardPage() {
         ])
 
         console.log({ coursesRes, facilitiesRes, eventsRes, clubsRes, teamRes, rulesRes, formsRes });
-
+        console.log(facilitiesRes.data)
         setCourses(coursesRes?.data)
         setFacilities(facilitiesRes?.data)
         setEvents(eventsRes?.data)
@@ -148,10 +148,11 @@ function SportsBoardPage() {
         <div className="clubs-container">
           {clubs.map((each) => (
             <SportsClubCard
-              clubName={each.clubName}
-              imageUrl={each.imageUrl?.url}
+// process.env.REACT_APP_API_BASE_URL+ each?.club?.imageUrl?.url
+              clubName={each.club?.clubName}
+              imageUrl={process.env.REACT_APP_API_BASE_URL+each?.club?.imageUrl?.url}
               // imageUrl={process.env.REACT_APP_API_BASE_URL+each.imageUrl?.url}
-              description={each.description}
+              description={each.club?.description}
             />
           ))}
         </div>
@@ -165,7 +166,7 @@ function SportsBoardPage() {
               position={each.position}
               email={each.email}
               phone={each.phone}
-              image={each.imageUrl?.url}
+              image={process.env.REACT_APP_API_BASE_URL + each.image?.url}
               // image={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
               program={each.program}
             />
@@ -188,7 +189,7 @@ function SportsBoardPage() {
                   {each.title}
                 </span>
                 <div className="flex space-x-2 shrink-0">
-                  <Link to={process.env.REACT_APP_API_BASE_URL + each.pdfUrl?.url} target="_blank" className="hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm">
+                  <Link to={process.env.REACT_APP_API_BASE_URL + each.pdf?.url} target="_blank" className="hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm">
                     PDF
                   </Link>
                 </div>
@@ -213,7 +214,7 @@ function SportsBoardPage() {
                   {each.title}
                 </span>
                 <div className="flex space-x-2 shrink-0">
-                  <Link to={process.env.REACT_APP_API_BASE_URL + each.pdfUrl?.url} target="_blank" className="hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm">
+                  <Link to={process.env.REACT_APP_API_BASE_URL + each.pdf?.url} target="_blank" className="hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm">
                     PDF
                   </Link>
                 </div>

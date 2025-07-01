@@ -66,6 +66,7 @@ function CulturalBoardPage() {
           {
             clubs.map(each => (
               <ClubCard clubName={each?.club?.clubName} imageUrl={process.env.REACT_APP_API_BASE_URL+ each?.club?.imageUrl?.url} link={each?.club?.link} />
+              // <ClubCard clubName={each.clubName} imageUrl={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url} link={each.link} />
             ))
           }
         </div>
