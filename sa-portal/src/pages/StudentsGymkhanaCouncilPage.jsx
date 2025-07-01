@@ -64,7 +64,7 @@ function StudentsGymkhanaCouncilPage() {
                       title={member.title}
                       mail={member.mail}
                       phone={member.phone}
-                      imageUrl={member.imageUrl?.url}
+                      imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
                       description={member.description}
                     />
                   ))}
