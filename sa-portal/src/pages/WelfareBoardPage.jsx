@@ -9,11 +9,13 @@ import TeamCard from "../Components/TeamCard";
 import sendApiRequest from "../services/apiService";
 import ROUTES from "../constants/apiRoutes";
 import getStrapiMediaUrl from "../utils/strApiMediaUrl";
+import SWCTeamCard from "../Components/SWCTeamCard";
 
 function WelfareBoardPage() {
   const route = ["Students' Affairs Boards", "Student's Welfare Board"];
-  
+
   const [announcements, setAnnouncements] = useState([]);
+  const [clubSecretaries, setClubSecretaries] = useState([]);
   const [events, setEvents] = useState([]);
   const [clubs, setClubs] = useState([]);
   const [team, setTeam] = useState([]);
@@ -21,20 +23,22 @@ function WelfareBoardPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [announcementsRes, eventsRes, clubsRes, teamRes] =
+        const [announcementsRes, eventsRes, clubsRes, teamRes, clubSecretariesRes] =
           await Promise.all([
             sendApiRequest(ROUTES.WELFARE_BOARD_ANNOUNCEMENTS),
             sendApiRequest(ROUTES.WELFARE_BOARD_EVENTS),
             sendApiRequest(ROUTES.WELFARE_BOARD_CLUBS),
             sendApiRequest(ROUTES.WELFARE_BOARD_TEAM),
+            sendApiRequest(ROUTES.WELFARE_BOARD_CLUB_SECRETARIES),
           ]);
 
-        console.log({ announcementsRes, eventsRes, clubsRes, teamRes });
+        console.log({ announcementsRes, eventsRes, clubsRes, teamRes, clubSecretariesRes });
 
         setAnnouncements(announcementsRes?.data);
         setEvents(eventsRes?.data);
         setClubs(clubsRes?.data);
         setTeam(teamRes?.data);
+        setClubSecretaries(clubSecretariesRes?.data);
       } catch (error) {
         console.error("Error in fetching data:", error);
       }
@@ -107,6 +111,22 @@ function WelfareBoardPage() {
                 </div>
               </div>
             </div>
+          ))}
+        </div>
+      </div>
+      <div className="boards-team">
+        <h1>Club Secretaries</h1>
+        <div className="team-container">
+          {clubSecretaries.map((each) => (
+            <SWCTeamCard
+              name={each.name}
+              position={each.position}
+              email={each.email}
+              phone={each.phone}
+              image={process.env.REACT_APP_API_BASE_URL + each.image?.url}
+              // image={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
+              program={each.program}
+            />
           ))}
         </div>
       </div>

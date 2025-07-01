@@ -13,6 +13,7 @@ function CulturalBoardPage() {
   const route = ["Students' Affairs Boards", "Cultural Board"];
 
   const [announcements, setAnnouncements] = useState([]);
+  const [clubSecretaries, setClubSecretaries] = useState([]);
   const [events, setEvents] = useState([]);
   const [clubs, setClubs] = useState([]);
   const [team, setTeam] = useState([]);
@@ -20,19 +21,21 @@ function CulturalBoardPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [announcementsRes, eventsRes, clubsRes, teamRes] = await Promise.all([
+        const [announcementsRes, eventsRes, clubsRes, teamRes, clubSecretariesRes] = await Promise.all([
           sendApiRequest(ROUTES.CULTURAL_BOARD_ANNOUNCEMENTS),
           sendApiRequest(ROUTES.CULTURAL_BOARD_EVENTS),
           sendApiRequest(ROUTES.CULTURAL_BOARD_CLUBS),
           sendApiRequest(ROUTES.CULTURAL_BOARD_TEAM),
+          sendApiRequest(ROUTES.CULTURAL_BOARD_CLUB_SECRETARIES),
         ])
 
-        console.log({ announcementsRes, eventsRes, clubsRes, teamRes });
+        console.log({ announcementsRes, eventsRes, clubsRes, teamRes, clubSecretariesRes  });
         console.log(clubsRes.data)
         setAnnouncements(announcementsRes?.data)
         setEvents(eventsRes?.data)
         setClubs(clubsRes?.data)
         setTeam(teamRes?.data)
+        setClubSecretaries(clubSecretariesRes?.data)
       } catch (error) {
         console.error("Error in fetching data:", error);
       }
@@ -80,6 +83,22 @@ function CulturalBoardPage() {
               <SWCTeamCard name={each.name} position={each.position} email={each.email} phone={each.phone} image={process.env.REACT_APP_API_BASE_URL+each.image?.url} program={each.program} />
             ))
           }
+        </div>
+      </div>
+      <div className="boards-team">
+        <h1>Club Secretaries</h1>
+        <div className="team-container">
+          {clubSecretaries.map((each) => (
+            <SWCTeamCard
+              name={each.name}
+              position={each.position}
+              email={each.email}
+              phone={each.phone}
+              image={process.env.REACT_APP_API_BASE_URL + each.image?.url}
+              // image={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
+              program={each.program}
+            />
+          ))}
         </div>
       </div>
     </>

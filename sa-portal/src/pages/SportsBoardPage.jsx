@@ -18,6 +18,7 @@ function SportsBoardPage() {
 
   const [courses, setCourses] = useState([]);
   const [facilities, setFacilities] = useState([])
+  const [clubSecretaries, setClubSecretaries] = useState([])
   const [events, setEvents] = useState([])
   const [clubs, setClubs] = useState([])
   const [team, setTeam] = useState([])
@@ -27,7 +28,7 @@ function SportsBoardPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [coursesRes, facilitiesRes, eventsRes, clubsRes, teamRes, rulesRes, formsRes] = await Promise.all([
+        const [coursesRes, facilitiesRes, eventsRes, clubsRes, teamRes, rulesRes, formsRes, clubSecretariesRes] = await Promise.all([
           sendApiRequest(ROUTES.SPORTS_BOARD_COURSES),
           sendApiRequest(ROUTES.SPORTS_BOARD_FACILITIES),
           sendApiRequest(ROUTES.SPORTS_BOARD_EVENTS),
@@ -35,10 +36,10 @@ function SportsBoardPage() {
           sendApiRequest(ROUTES.SPORTS_BOARD_TEAM),
           sendApiRequest(ROUTES.SPORTS_BOARD_RULES),
           sendApiRequest(ROUTES.SPORTS_BOARD_FORMS),
-
+          sendApiRequest(ROUTES.SPORTS_BOARD_CLUB_SECRETARIES),
         ])
 
-        console.log({ coursesRes, facilitiesRes, eventsRes, clubsRes, teamRes, rulesRes, formsRes });
+        console.log({ coursesRes, facilitiesRes, eventsRes, clubsRes, teamRes, rulesRes, formsRes, clubSecretariesRes });
         console.log(facilitiesRes.data)
         setCourses(coursesRes?.data)
         setFacilities(facilitiesRes?.data)
@@ -47,6 +48,7 @@ function SportsBoardPage() {
         setTeam(teamRes?.data)
         setRules(rulesRes?.data)
         setForms(formsRes?.data)
+        setClubSecretaries(clubSecretariesRes?.data);
       } catch (error) {
         console.error("Error in fetching data:", error);
       }
@@ -161,6 +163,22 @@ function SportsBoardPage() {
         <h1>Meet The Team</h1>
         <div className="team-container">
           {team.map((each) => (
+            <SWCTeamCard
+              name={each.name}
+              position={each.position}
+              email={each.email}
+              phone={each.phone}
+              image={process.env.REACT_APP_API_BASE_URL + each.image?.url}
+              // image={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
+              program={each.program}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="boards-team">
+        <h1>Club Secretaries</h1>
+        <div className="team-container">
+          {clubSecretaries.map((each) => (
             <SWCTeamCard
               name={each.name}
               position={each.position}
