@@ -1,4 +1,5 @@
 import React from "react";
+import mailIcon from "../assets/icons/mail.png";
 
 function SWCTeamCard({ name, position, email, phone, image, program = "" }) {
   console.log({ name, position, email, phone, image, program });
@@ -9,18 +10,29 @@ function SWCTeamCard({ name, position, email, phone, image, program = "" }) {
         alt={name}
         className="size-36 sm:size-44 md:size-60 rounded-full"
       />
-      <div className="h-full w-1/2 flex-col items-start justify-between">
+      <div className="h-full w-1/2 flex flex-col items-start justify-around">
         <div className="">
           <h2 className="font-semibold text-xl md:text-3xl mb-1 sm:mb-4 text-black/85">
             {name}
           </h2>
           <hr className="border-b" />
           <div className="w-1/2 border-b-2 border-blue-500"></div>
-          <p className="mt-2 sm:mt-4 text-sm sm:text-base text-black/85">
+          <p className="sm:mt-1 text-base font-medium">
             {position}
           </p>
         </div>
-
+        <div>
+          <img
+            src={mailIcon}
+            alt="mail icon"
+            className="inline-block" 
+            height="24"
+            width="24"
+            />
+          <span className="text-black/60 text-sm sm:text-base ml-1">
+            {email}
+          </span>
+        </div>
         <div className="flex flex-col sm:space-y-2">
           <div className="flex items-center space-x-1">
             <svg

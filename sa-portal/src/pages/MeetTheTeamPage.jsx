@@ -16,6 +16,7 @@ import { useSearchParams } from "react-router-dom";
 import sendApiRequest from "../services/apiService";
 import ROUTES from "../constants/apiRoutes";
 import getStrapiMediaUrl from "../utils/strApiMediaUrl";
+import BannerTop from "../Components/BannerTop";
 
 const categoryToApiRouteMap = {
   "Student Affairs Functionaries": ROUTES.SA_TEAM,
@@ -29,7 +30,6 @@ const categoryToApiRouteMap = {
 const MeetTheTeam = () => {
   const [searchParams] = useSearchParams();
   const team = searchParams.get("team");
-
   const [saTeam, setSaTeam] = useState([]);
 
   const [category, setCategory] = useState("Student Affairs Functionaries");
@@ -98,19 +98,40 @@ const MeetTheTeam = () => {
   const [year, setYear] = useState("2023");
   const years = ["2023", "2022", "2021"];
   const images = [saf, hab, sg, go, cc, ns];
+  const route = ["Student Affairs","Team"];
+  // const scrolled = () => {
+  //   const categorySelector = document.querySelector(".category-selector");
+  //   const categoryIcon = document.querySelectorAll(".category-icon");
+  //   const h = document
+  //     .querySelector(".mtt-banner")
+  //     .getBoundingClientRect().bottom;
+  //   if (h <= 55) {
+  //     categoryIcon.forEach((each) => each.classList.add("display-none"));
+  //     categorySelector.classList.add("category-selector-scrolled");
+  //   } else if (h >= 90) {
+  //     categoryIcon.forEach((each) => each.classList.remove("display-none"));
+  //     categorySelector.classList.remove("category-selector-scrolled");
+  //   }
+  // };
 
   const scrolled = () => {
-    const categorySelector = document.querySelector(".category-selector");
-    const categoryIcon = document.querySelectorAll(".category-icon");
-    const h = document
-      .querySelector(".mtt-banner")
-      .getBoundingClientRect().bottom;
-    if (h <= 55) {
-      categoryIcon.forEach((each) => each.classList.add("display-none"));
-      categorySelector.classList.add("category-selector-scrolled");
-    } else if (h >= 90) {
-      categoryIcon.forEach((each) => each.classList.remove("display-none"));
-      categorySelector.classList.remove("category-selector-scrolled");
+    try{
+      const categorySelector = document.querySelector(".category-selector");
+      const categoryIcon = document.querySelectorAll(".category-icon");
+      const nav = document.querySelector("nav");
+      const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+      const h = document.querySelector(".mtt-banner").getBoundingClientRect().bottom;
+      console.log("Scrolled height: ", h, "Nav height: ", navHeight);
+      if ( h <= navHeight) {
+        categoryIcon.forEach((each) => each.classList.add("display-none"));
+        categorySelector.classList.add("category-selector-scrolled");
+        categorySelector.style.top = `${navHeight}px`;
+      } else if( h >= navHeight){
+        categoryIcon.forEach((each) => each.classList.remove("display-none"));
+        categorySelector.classList.remove("category-selector-scrolled");
+      }
+    } catch(e){
+      console.error("Error in scrolled function: ", e);
     }
   };
 
@@ -182,23 +203,8 @@ const MeetTheTeam = () => {
     <div className="meet-the-team-page">
       <div className="inner">{/* <Navbar /> */}</div>
       <div className="mtt-body">
-        <div className="mtt-banner">
-          <div>
-            <h1>
-              Meet
-              <br /> the <span>Team</span>.
-            </h1>
-            <div className="mtt-banner-links">
-              <p>Student's Affairs</p>
-              <img src={doubleArrow} alt="double-arrow" />
-              <p>Team</p>
-              <img src={doubleArrow} alt="double-arrow" />
-              <a>{category}</a>
-              <img src={downArrow} alt="down-arrow" />
-            </div>
-          </div>
-          <img src={MeetTheTeamBanner} alt="banner" />
-        </div>
+        <BannerTop route={[...route,category]} heading="Meet The " blueText="Team"/>
+        <div className="mtt-banner"></div>
         <ul className="category-selector">
           {groups.map((group, index) => (
             <li
@@ -255,7 +261,6 @@ const MeetTheTeam = () => {
               <div className="team-cards-scroll">
                 <div className="team-cards">
                   {team.members.map((member, idx) => (
-                    // (category !== "Students Gymkhana" || member.year === year) && (
                     <TeamCard
                       key={idx}
                       name={member.name}
@@ -263,10 +268,8 @@ const MeetTheTeam = () => {
                       mail={member.mail}
                       phone={member.phone}
                       imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
-                      // imageUrl={process.env.REACT_APP_API_BASE_URL+member.imageUrl?.url}
                       responsibility={member.responsibility}
                     />
-                    // )
                   ))}
                 </div>
               </div>

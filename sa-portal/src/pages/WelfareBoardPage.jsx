@@ -12,7 +12,7 @@ import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
 function WelfareBoardPage() {
   const route = ["Students' Affairs Boards", "Student's Welfare Board"];
-
+  
   const [announcements, setAnnouncements] = useState([]);
   const [events, setEvents] = useState([]);
   const [clubs, setClubs] = useState([]);

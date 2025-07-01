@@ -4,6 +4,7 @@ import BannerTop from "../Components/BannerTop";
 import LayeredCarousel from "../Components/LayeredCarousel";
 import TeamCard from "../Components/TeamCard";
 import sendApiRequest from "../services/apiService";
+import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 import ROUTES from "../constants/apiRoutes";
 
 function StudentsGymkhanaCouncilPage() {

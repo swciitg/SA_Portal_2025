@@ -7,7 +7,7 @@ import downArrow from "../assets/Images/chevron-down.png";
   Heading : String | DOMElement;
   route : Array[string];
 */
-function BannerTop({ heading, route }) {
+function BannerTop({ heading, route, blueText }) {
   return (
     <div className="relative bg-[#08267C] h-40 sm:h-64 md:h-72 lg:h-[430px] flex justify-start items-end px-4 sm:px-10 md:px-16 lg:px-20 pb-4 sm:pb-10 md:pb-20 text-white overflow-hidden">
       <div
@@ -15,7 +15,7 @@ function BannerTop({ heading, route }) {
         style={{ fontWeight: 900, lineHeight: 1 }}
       >
         <h1 className="text-2xl sm:text-5xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
-          {heading}
+          {heading} <span className="text-blue-500">{blueText}</span>
         </h1>
 
         <div className="mt-1 sm:mt-4 flex flex-wrap items-center sm:gap-3 text-sm sm:text-lg font-normal">
