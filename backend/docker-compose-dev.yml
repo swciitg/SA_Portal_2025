@@ -10,7 +10,7 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
-      - ./uploads:/usr/src/app/backend/uploads
+      - ./public/uploads:/usr/src/app/backend/public/uploads
     ports:
       - "2579:3002"
     env_file:
