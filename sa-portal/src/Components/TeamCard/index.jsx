@@ -11,7 +11,7 @@ const ProfileCard = (props) => {
   return (
     <div className="prof-card">
       <img
-        src={`${process.env.REACT_APP_API_BASE_URL}${imgurl}`}
+        src={imgurl}
         alt={name}
         className="prof-img"
       />
