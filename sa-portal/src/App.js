@@ -47,8 +47,8 @@ const App = () => {
               />
               <Route path="sports-board" element={<SportsBoardPage />} />
               <Route path="technical-board" element={<TechnicalBoardPage />} />
-              <Route path="welfare-board" element={<WelfareBoardPage />} />
-              <Route path="web-committee" element={<WebCommitteePage />} />
+              <Route path="students-welfare-board" element={<WelfareBoardPage />} />
+              <Route path="students-web-committee" element={<WebCommitteePage />} />
             </Route>
 
             {/* <Route path="" element={}/> */}
