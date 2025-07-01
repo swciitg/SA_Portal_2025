@@ -534,7 +534,7 @@ export interface ApiCulturalBoardClubCulturalBoardClub
     draftAndPublish: true;
   };
   attributes: {
-    clubs: Schema.Attribute.Relation<'oneToMany', 'api::club.club'>;
+    club: Schema.Attribute.Relation<'oneToOne', 'api::club.club'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

@@ -29,8 +29,8 @@ module.exports = ({ env }) => {
       database: env('DATABASE_NAME'),
       user: env('DATABASE_USERNAME'),
       password: env('DATABASE_PASSWORD'),
-      schema: 'public',
-      ssl: false,
+      schema: 'public', // Not required
+      ssl: false, // Not required
     },
       pool: { min: env.int('DATABASE_POOL_MIN', 2), max: env.int('DATABASE_POOL_MAX', 10) },
     },

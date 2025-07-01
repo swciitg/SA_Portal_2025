@@ -19,7 +19,10 @@ function StudentsGymkhanaCouncilPage() {
       try {
         const sgcTeamRes = await sendApiRequest(ROUTES.SGC_TEAM);
 
-        console.log({ sgcTeamRes });
+        console.log(sgcTeamRes.data);
+        sgcTeamRes.data.map(mem=>{
+          console.log(mem)
+        })
 
         setSgcTeam(sgcTeamRes?.data);
       } catch (error) {

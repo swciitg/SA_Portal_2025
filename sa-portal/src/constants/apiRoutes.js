@@ -12,11 +12,11 @@ const ROUTES = {
   SGC_TEAM: "/student-gymkhana-teams?populate[members][populate]=imageUrl", // DONE*
   CULTURAL_BOARD_ANNOUNCEMENTS: "/cultural-board-announcements", // DONE
   CULTURAL_BOARD_EVENTS: "/cultural-board-events?populate=*", // DONE
-  CULTURAL_BOARD_CLUBS: "/cultural-board-clubs?populate=*", // DONE
+  CULTURAL_BOARD_CLUBS: "/cultural-board-clubs?populate[club][populate]=*", // DONE
   CULTURAL_BOARD_TEAM: "/cultural-board-teams?populate=*", // DONE
   HOSTEL_AFFAIRS_BOARD_ANNOUNCEMENTS: "/hostel-affairs-board-announcements", // DONE
   HOSTEL_AFFAIRS_BOARD_EVENTS: "/hostel-affairs-board-events?populate=*", // DONE
-  HOSTEL_AFFAIRS_BOARD_TEAM: "/hostel-affairs-teams?populate=*", // DONE
+  HOSTEL_AFFAIRS_BOARD_TEAM: "/hostel-affairs-teams?populate[members][populate]=imageUrl", // DONE
   HMC_MEMBERS: "/hmc-members?populate=*", // DONE
   SPORTS_BOARD_COURSES: "/sports-board-courses?populate=*",
   SPORTS_BOARD_FACILITIES: "/sports-board-facilities?populate=*", // DONE

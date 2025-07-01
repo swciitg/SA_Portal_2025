@@ -28,7 +28,7 @@ function CulturalBoardPage() {
         ])
 
         console.log({ announcementsRes, eventsRes, clubsRes, teamRes });
-
+        console.log(clubsRes.data)
         setAnnouncements(announcementsRes?.data)
         setEvents(eventsRes?.data)
         setClubs(clubsRes?.data)
@@ -65,8 +65,7 @@ function CulturalBoardPage() {
         <div className="clubs-container">
           {
             clubs.map(each => (
-              <ClubCard clubName={each.clubName} imageUrl={ each.imageUrl?.url} link={each.link} />
-              // <ClubCard clubName={each.clubName} imageUrl={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url} link={each.link} />
+              <ClubCard clubName={each?.club?.clubName} imageUrl={process.env.REACT_APP_API_BASE_URL+ each?.club?.imageUrl?.url} link={each?.club?.link} />
             ))
           }
         </div>
@@ -76,8 +75,8 @@ function CulturalBoardPage() {
         <div className="team-container">
           {
             team.map(each => (
-              <SWCTeamCard name={each.name} position={each.position} email={each.email} phone={each.phone} image={each.image?.url} program={each.program} />
-              // <SWCTeamCard name={each.name} position={each.position} email={each.email} phone={each.phone} image={process.env.REACT_APP_API_BASE_URL+each.image?.url} program={each.program} />
+              // <SWCTeamCard name={each.name} position={each.position} email={each.email} phone={each.phone} image={ each.image?.url} program={each.program} />
+              <SWCTeamCard name={each.name} position={each.position} email={each.email} phone={each.phone} image={process.env.REACT_APP_API_BASE_URL+each.image?.url} program={each.program} />
             ))
           }
         </div>
