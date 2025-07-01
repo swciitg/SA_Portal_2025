@@ -3,11 +3,12 @@ import "./TeamCard.css";
 import EmptyImage from "../../assets/Images/empty.png";
 import phoneIcon from "../../assets/icons/phone.png";
 import mailIcon from "../../assets/icons/mail.png";
+import getStrapiMediaUrl from "../../utils/strApiMediaUrl";
 
 const ProfileCard = (props) => {
   const { name, phone, mail, responsibility, title, imageUrl } = props;
   const imgurl = imageUrl || EmptyImage;
-
+  console.log("Image URL:", imageUrl);
   return (
     <div className="prof-card">
       <img

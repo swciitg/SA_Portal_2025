@@ -15,6 +15,7 @@ import "./MeetTheTeam.css";
 import { useSearchParams } from "react-router-dom";
 import sendApiRequest from "../services/apiService";
 import ROUTES from "../constants/apiRoutes";
+import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
 const categoryToApiRouteMap = {
   "Student Affairs Functionaries": ROUTES.SA_TEAM,
@@ -261,7 +262,7 @@ const MeetTheTeam = () => {
                       title={member.title}
                       mail={member.mail}
                       phone={member.phone}
-                      imageUrl={ member.imageUrl?.url}
+                      imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
                       // imageUrl={process.env.REACT_APP_API_BASE_URL+member.imageUrl?.url}
                       responsibility={member.responsibility}
                     />
