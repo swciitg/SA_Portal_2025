@@ -1,0 +1,37 @@
+.achievement-card {
+  display: flex;
+  width: 486px;
+  height: 263px;
+  background: #ffffff;
+  border: 1px solid #E9EBF4;
+}
+
+.achievement-card .achievement-image {
+  width: 210px;
+  height: 100%;
+}
+
+.achievement-right{
+    padding:28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.achievement-title{
+    font-size: 20px;
+}
+
+.achievement-description {
+  font-size: 16px;
+  color: #00000061;
+  display: inline-block;
+  text-overflow: ellipsis;
+  max-height: 140px;
+  overflow: hidden;
+}
+
+.achievement-right a{
+    color: #0D3FCD;
+    font-size: 13px;
+}

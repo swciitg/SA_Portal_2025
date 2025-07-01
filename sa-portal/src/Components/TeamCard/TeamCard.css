@@ -1,0 +1,96 @@
+.prof-card {
+  display: flex;
+  width: 588px;
+  height: 268px;
+  border: 2px solid #f0f1f7;
+  border-radius: 6px;
+  overflow: hidden;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+}
+
+.prof-img {
+  height: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 4px;
+  object-fit: cover;
+  margin: 0;
+}
+
+.prof-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #fff;
+  padding: 0px 5%;
+}
+
+.prof-name {
+  font-size: 20px;
+  margin: 0;
+}
+
+.prof-title {
+  font-size: 16px;
+  color: #00000061;
+  margin: 0;
+}
+
+.prof-responsibility {
+  font-size: 15px;
+  color: #00000061;
+  margin: 8px 0;
+  /* max-height: 50%; */
+}
+
+.prof-contact {
+  font-size: 15px;
+  color: #00000061;
+  margin: 6px 0;
+  display: flex;
+  align-items: center;
+}
+
+.prof-contact img {
+  margin-right: 8px;
+  height: 18px;
+  width: 18px;
+}
+
+@media screen and (max-width: 768px) {
+  .prof-card {
+    width: 440px;
+    height: 200px;
+  }
+
+  .prof-name {
+    font-size: 18px;
+  }
+
+  .prof-title,
+  .prof-contact {
+    font-size: 14px;
+  }
+  
+}
+
+@media screen and (max-width: 480px) {
+  .prof-card {
+    width: 360px;
+    height: 164px;
+  }
+
+  .prof-right {
+    padding: 15px;
+  }
+
+  .prof-name {
+    font-size: 15px;
+  }
+
+  .prof-title,
+  .prof-contact {
+    font-size: 12px;
+  }
+  
+}
