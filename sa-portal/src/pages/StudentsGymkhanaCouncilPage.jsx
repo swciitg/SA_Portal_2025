@@ -5,6 +5,7 @@ import LayeredCarousel from "../Components/LayeredCarousel";
 import TeamCard from "../Components/TeamCard";
 import sendApiRequest from "../services/apiService";
 import ROUTES from "../constants/apiRoutes";
+import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
 function StudentsGymkhanaCouncilPage() {
   const route = [
