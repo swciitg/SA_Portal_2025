@@ -29,7 +29,7 @@ function TechnicalBoardPage() {
           ]);
 
         console.log({ announcementsRes, eventsRes, clubsRes, teamRes });
-
+        console.log(clubsRes.data);
         setAnnouncements(announcementsRes?.data);
         setEvents(eventsRes?.data);
         setClubs(clubsRes?.data);
@@ -73,10 +73,10 @@ function TechnicalBoardPage() {
         <div className="clubs-container">
           {clubs.map((each) => (
             <ClubCard
-              clubName={each.clubName}
-              imageUrl={each.imageUrl?.url}
+              clubName={each?.club.clubName}
+              imageUrl={process.env.REACT_APP_API_BASE_URL + each?.club.imageUrl?.url}
               // imageUrl={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
-              link={each.link}
+              link={each?.club.link}
             />
           ))}
         </div>
@@ -90,7 +90,7 @@ function TechnicalBoardPage() {
               position={each.position}
               email={each.email}
               phone={each.phone}
-              image={ each.imageUrl?.url}
+              image={process.env.REACT_APP_API_BASE_URL + each.image?.url}
               // image={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
               program={each.program}
             />

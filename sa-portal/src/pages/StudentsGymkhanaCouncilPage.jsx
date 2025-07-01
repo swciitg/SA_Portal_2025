@@ -12,21 +12,15 @@ function StudentsGymkhanaCouncilPage() {
     "About Students' Gymkhana Council",
   ];
 
-  const [sgcTeam, setSgcTeam] = useState([]);
+  const [sgcSections, setSgcSections] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const sgcTeamRes = await sendApiRequest(ROUTES.SGC_TEAM);
-
-        console.log(sgcTeamRes.data);
-        sgcTeamRes.data.map(mem=>{
-          console.log(mem)
-        })
-
-        setSgcTeam(sgcTeamRes?.data);
+        setSgcSections(sgcTeamRes?.data || []);
       } catch (error) {
-        console.error("Error in fetching data:", error);
+        console.error("Error in fetching SGC team data:", error);
       }
     };
 
@@ -54,29 +48,30 @@ function StudentsGymkhanaCouncilPage() {
           <LayeredCarousel />
         </div>
       </div>
+
       <div className="boards-team">
-        <h1>Members</h1>
+        <h1>Meet The Team - Gymkhana Council</h1>
         <div className="teams-container">
-          <div className="team-section">
-            <div className="team-cards-scroll">
-              <div className="team-cards">
-                {sgcTeam.map((member, index) => (
-                  <TeamCard
-                    key={index}
-                    name={member.name}
-                    title={member.title}
-                    mail={member.mail}
-                    phone={member.phone}
-                    imageUrl={member.imageUrl?.url}
-                    // imageUrl={
-                    //   process.env.REACT_APP_API_BASE_URL + member.imageUrl?.url
-                    // }
-                    description={member.description}
-                  />
-                ))}
+          {sgcSections.map((section, index) => (
+            <div key={index} className="team-section">
+              <h1 className="team-heading">{section.heading}</h1>
+              <div className="team-cards-scroll">
+                <div className="team-cards team-cards-hab">
+                  {section.members.map((member, idx) => (
+                    <TeamCard
+                      key={idx}
+                      name={member.name}
+                      title={member.title}
+                      mail={member.mail}
+                      phone={member.phone}
+                      imageUrl={member.imageUrl?.url}
+                      description={member.description}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </>

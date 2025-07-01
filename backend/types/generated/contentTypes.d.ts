@@ -1424,6 +1424,36 @@ export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiTechnicalBoardAnnouncementTechnicalBoardAnnouncement
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'technical_board_announcements';
+  info: {
+    displayName: 'Technical_Board_Announcement';
+    pluralName: 'technical-board-announcements';
+    singularName: 'technical-board-announcement';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::technical-board-announcement.technical-board-announcement'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    text: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
+  };
+}
+
 export interface ApiTechnicalBoardClubTechnicalBoardClub
   extends Struct.CollectionTypeSchema {
   collectionName: 'technical_board_clubs';
@@ -1436,7 +1466,7 @@ export interface ApiTechnicalBoardClubTechnicalBoardClub
     draftAndPublish: true;
   };
   attributes: {
-    clubs: Schema.Attribute.Relation<'oneToMany', 'api::club.club'>;
+    club: Schema.Attribute.Relation<'oneToOne', 'api::club.club'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1446,6 +1476,36 @@ export interface ApiTechnicalBoardClubTechnicalBoardClub
       'api::technical-board-club.technical-board-club'
     > &
       Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTechnicalBoardEventTechnicalBoardEvent
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'technical_board_events';
+  info: {
+    displayName: 'Technical_Board_Event';
+    pluralName: 'technical-board-events';
+    singularName: 'technical-board-event';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::technical-board-event.technical-board-event'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -2244,7 +2304,9 @@ declare module '@strapi/strapi' {
       'api::student-gymkhana-team.student-gymkhana-team': ApiStudentGymkhanaTeamStudentGymkhanaTeam;
       'api::swc-team.swc-team': ApiSwcTeamSwcTeam;
       'api::team-member.team-member': ApiTeamMemberTeamMember;
+      'api::technical-board-announcement.technical-board-announcement': ApiTechnicalBoardAnnouncementTechnicalBoardAnnouncement;
       'api::technical-board-club.technical-board-club': ApiTechnicalBoardClubTechnicalBoardClub;
+      'api::technical-board-event.technical-board-event': ApiTechnicalBoardEventTechnicalBoardEvent;
       'api::technical-board-team.technical-board-team': ApiTechnicalBoardTeamTechnicalBoardTeam;
       'api::web-committee-announcement.web-committee-announcement': ApiWebCommitteeAnnouncementWebCommitteeAnnouncement;
       'api::web-committee-event.web-committee-event': ApiWebCommitteeEventWebCommitteeEvent;
