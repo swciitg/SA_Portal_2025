@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sports_board_teams",
+  "info": {
+    "singularName": "sports-board-team",
+    "pluralName": "sports-board-teams",
+    "displayName": "Sports_Board_Team"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "program": {
+      "type": "string"
+    }
+  }
+}

@@ -4,7 +4,7 @@
   "info": {
     "singularName": "swc-team",
     "pluralName": "swc-teams",
-    "displayName": "swcTeam"
+    "displayName": "SWC team"
   },
   "options": {
     "draftAndPublish": true
@@ -14,10 +14,19 @@
     "name": {
       "type": "string"
     },
-    "POR": {
+    "position": {
       "type": "string"
     },
-    "imgurl": {
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "branch": {
+      "type": "string"
+    },
+    "imageUrl": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
@@ -26,12 +35,6 @@
         "videos",
         "audios"
       ]
-    },
-    "email": {
-      "type": "email"
-    },
-    "contact": {
-      "type": "biginteger"
     }
   }
 }

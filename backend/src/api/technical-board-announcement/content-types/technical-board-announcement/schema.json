@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "technical_board_announcements",
+  "info": {
+    "singularName": "technical-board-announcement",
+    "pluralName": "technical-board-announcements",
+    "displayName": "Technical_Board_Announcement"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text": {
+      "type": "text"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

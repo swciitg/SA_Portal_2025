@@ -1,22 +1,32 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import NavLink from "./NavLink";
 import NavLinkDropdown from "./NavLinkDropdown";
-import Hamburger from './Hamburger.jsx';
+import Hamburger from "./Hamburger.jsx";
+// PDF links from public/pdfs folder
+const ordiScho = "/pdfs/Ordinance_and_Rules_on_Scholarship_6fbd5a3a76 (1).pdf";
+const swf = "/pdfs/Students_Welfare_Fund_STAF_SCF_SCAF_fda7181688 (1).pdf";
+const sbf = "/pdfs/Students_Brotherhood_Fund_601e513b41 (1).pdf";
+const GuidelinesSpon = "/pdfs/Guidelines_on_Sponsorship_77ed6d24b2.pdf";
+const MoUSpon = "/pdfs/Mo_U_for_Sponsorship_7db7ec2d97.pdf";
+const SponsorshipCert = "/pdfs/Sponsorship_Certificate_12a4792e50.pdf";
+const HABPro = "/pdfs/HAB_Procedures_and_Resolutions_b513fcecda.pdf";
+const GenRules = "/pdfs/General_Rules_for_Hostel_Residents_7c7a7c76c8.pdf";
+const HABCon = "/pdfs/HAB_Constitution_e299093392.pdf";
+const ordinacneOnCodeCon =
+  "/pdfs/95_BOG_Ordinance_COC_19_12_2018_website_2_1347674f83.pdf";
+const InterIITSports = "/pdfs/Inter_IIT_Sports_Meet_66a17c869d.pdf";
+const rulesForSwimming =
+  "/pdfs/Rules_and_guidelines_for_swimming_pool_user_75f197a6d7.pdf";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navData = [
     {
-      title: "Students' Affair",
+      title: "Students' Affairs",
       hasDropdown: true,
       dropdownItems: [
-        {
-          title: "About Us",
-          href: "#",
-          type: "page",
-        },
         {
           title: "Students' Affairs Team",
           href: "/meet-the-team?team=student-affairs-functionaries",
@@ -35,47 +45,37 @@ const Navbar = () => {
       dropdownItems: [
         {
           title: "Ordinances and Rules on Scholarship",
-          href: "#",
+          href: ordiScho,
           type: "link",
         },
         {
           title: "Students Welfare Fund",
-          href: "#",
+          href: swf,
           type: "link",
         },
         {
           title: "Students Brotherhood Fund",
-          href: "#",
+          href: sbf,
           type: "link",
         },
         {
           title: "Guidelines to Sponsorship",
-          href: "#",
+          href: GuidelinesSpon,
           type: "link",
         },
         {
           title: "MoU for Sponsorship",
-          href: "#",
+          href: MoUSpon,
           type: "link",
         },
         {
           title: "Sponsorship Certificate",
-          href: "#",
+          href: SponsorshipCert,
           type: "link",
         },
         {
           title: "Scholarship Beneficiary List",
-          href: "/scholarships?type=beneficiary-list",
-          type: "page",
-        },
-        {
-          title: "Government Scholarships List",
-          href: "/scholarships?type=government",
-          type: "page",
-        },
-        {
-          title: "External Scholarships List",
-          href: "/scholarships?type=external",
+          href: "/scholarships?type=college",
           type: "page",
         },
       ],
@@ -95,11 +95,6 @@ const Navbar = () => {
           type: "link",
         },
         {
-          title: "List of Courses",
-          href: "/sa-courses",
-          type: "page",
-        },
-        {
           title: "Course Forms",
           href: "#",
           type: "page",
@@ -112,32 +107,32 @@ const Navbar = () => {
       dropdownItems: [
         {
           title: "Ordinances on Code and Conducts",
-          href: "#",
+          href: ordinacneOnCodeCon,
           type: "link",
         },
         {
           title: "General Rules for Hostel Residents",
-          href: "#",
+          href: GenRules,
           type: "link",
         },
         {
           title: "HAB Procedures and Resolution",
-          href: "#",
+          href: HABPro,
           type: "link",
         },
         {
           title: "HAB Constitution",
-          href: "#",
+          href: HABCon,
           type: "link",
         },
         {
           title: "Rules for Swimming Pool Users",
-          href: "#",
+          href: rulesForSwimming,
           type: "link",
         },
         {
           title: "Rules for Inter IIT Sports Meet",
-          href: "#",
+          href: InterIITSports,
           type: "link",
         },
         {
@@ -199,57 +194,41 @@ const Navbar = () => {
           type: "page",
         },
         {
-          title: "Students' Senate",
-          href: "#",
-          type: "page",
-        },
-        {
-          title: "Minutes of Students' Senate",
-          href: "#",
-          type: "page",
-        },
-        {
-          title: "About Students' Affairs Board",
-          href: "/sab",
+          title: "Students' Gymkhana Portal",
+          href: "https://www.iitg.ac.in/stud/gymkhana/",
           type: "page",
         },
         {
           title: "Cultural Board",
-          href: "/sab/cultural-board",
+          href: "/sgc/cultural-board",
           type: "page",
         },
         {
           title: "Hostel Affairs Board",
-          href: "/sab/hostel-affairs-board",
+          href: "/sgc/hostel-affairs-board",
           type: "page",
         },
         {
           title: "Sports Board",
-          href: "/sab/sports-board",
+          href: "/sgc/sports-board",
           type: "page",
         },
         {
           title: "Technical Board",
-          href: "/sab/technical-board",
+          href: "/sgc/technical-board",
           type: "page",
         },
         {
           title: "Welfare Board",
-          href: "/sab/welfare-board",
+          href: "/sgc/students-welfare-board",
           type: "page",
         },
         {
           title: "Web Committee",
-          href: "/sab/web-committee",
+          href: "/sgc/students-web-committee",
           type: "page",
         },
       ],
-    },
-    {
-      title: "Students' Campus Wellbeing",
-      hasDropdown: false,
-      type: "page",
-      href: "/students-campus-wellbeing",
     },
     {
       title: "Important Links",
@@ -257,12 +236,12 @@ const Navbar = () => {
       dropdownItems: [
         {
           title: "SA Calendar",
-          href: "#",
+          href: "https://iitg.ac.in/acad/academic_calendar.php/",
           type: "link",
         },
         {
           title: "SSO Portal",
-          href: "#",
+          href: "https://academic.iitg.ac.in/sso/",
           type: "link",
         },
         {
@@ -277,27 +256,27 @@ const Navbar = () => {
         },
         {
           title: "Internal Complaints Committee",
-          href: "#",
+          href: "https://www.iitg.ac.in/iitgicc/",
           type: "link",
         },
         {
           title: "GoI Wellbeing Link",
-          href: "#",
+          href: "https://mohfw.gov.in/",
           type: "link",
         },
         {
           title: "Anti-Ragging Affidavits",
-          href: "#",
+          href: "https://www.antiragging.in/affidavit_registration_disclaimer.html",
           type: "link",
         },
         {
           title: "POSH Act",
-          href: "#",
+          href: "https://www.indiacode.nic.in/handle/123456789/2104",
           type: "link",
         },
         {
           title: "Narcotics Control Bureau",
-          href: "#",
+          href: "https://narcoticsindia.nic.in/",
           type: "link",
         },
       ],
@@ -312,14 +291,14 @@ const Navbar = () => {
         <div className="flex items-center gap-2 md:gap-4 mx-auto md:mx-0">
           <a href="https://www.iitg.ac.in" target="_blank">
             <img
-              src="/iitg-black.png" // It should be the black one
+              src={`${process.env.REACT_APP_BASE_URL}/iitg-black.png`} // It should be the black one
               alt="IITG Logo"
               className="h-12 w-12 md:h-20 md:w-20 shrink-0"
             />
           </a>
           <Link to={"/"} className="min-w-0">
             <h1 className="text-xl md:text-3xl font-semibold text-gray-900 leading-tight">
-              Students' Affair
+              Students' Affairs
             </h1>
             <p className="text-xs md:text-sm text-gray-500 leading-tight">
               Indian Institute of Technology, Guwahati
@@ -385,22 +364,6 @@ const Navbar = () => {
       <nav className="relative md:sticky md:top-0 z-50 md:px-12 border-b shadow-sm bg-white font-Satoshi">
         {/* >=md */}
         <div className="hidden md:flex flex-wrap md:mx-6 text-base text-gray-700">
-          {/* {navData.map((item, idx) =>
-            item.hasDropdown ? (
-              <NavLinkDropdown
-                key={idx}
-                title={item.title}
-                dropdownItems={item.dropdownItems}
-              />
-            ) : (
-              <NavLink
-                key={idx}
-                title={item.title}
-                href={item.href}
-                type={item.type}
-              />
-            )
-          )} */}
           <Hamburger navData={navData} />
         </div>
         {/* Mobile */}
@@ -430,61 +393,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-// function NavLink({ title, href, type }) {
-//   return (
-//     <Link
-//       to={href || "#"}
-//       target={type === "link" ? "_blank" : "_self"}
-//       className="py-2 md:py-4 hover:text-blue-600 cursor-pointer"
-//     >
-//       {title}
-//     </Link>
-//   );
-// }
-
-// function NavLinkDropdown({ title, dropdownItems }) {
-//   const [isOpen, setIsOpen] = useState(false);
-//   const dropdownRef = useRef(null);
-
-//   useEffect(() => {
-//     const handleClickOutside = (event) => {
-//       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-//         setIsOpen(false);
-//       }
-//     };
-
-//     document.addEventListener("mousedown", handleClickOutside);
-//     return () => document.removeEventListener("mousedown", handleClickOutside);
-//   }, []);
-
-//   return (
-//     <div className="relative inline-block" ref={dropdownRef}>
-//       <div
-//         className="py-2 md:py-4 relative hover:text-blue-600 cursor-pointer"
-//         onClick={() => setIsOpen(!isOpen)}
-//       >
-//         {title}
-//         <span className="ml-1">▾</span>
-//         {isOpen && (
-//           <hr className="absolute w-full border-2 bottom-0 border-blue-700" />
-//         )}
-//       </div>
-
-//       {isOpen && (
-//         <div className="absolute top-[102%] min-w-64 md:min-w-72 z-10 border divide-y-[1px]">
-//           {dropdownItems.map((item, idx) => (
-//             <Link
-//               key={idx}
-//               to={item.href}
-//               target={item.type === "link" ? "_blank" : "_self"}
-//               className="block px-4 py-1.5 bg-white hover:bg-[#E9EAEC] transition duration-75"
-//             >
-//               {item.title}
-//             </Link>
-//           ))}
-//         </div>
-//       )}
-//     </div>
-//   );
-// }

@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sports_board_events",
+  "info": {
+    "singularName": "sports-board-event",
+    "pluralName": "sports-board-events",
+    "displayName": "Sports_Board_Event"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "imageUrl": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "technical_board_events",
+  "info": {
+    "singularName": "technical-board-event",
+    "pluralName": "technical-board-events",
+    "displayName": "Technical_Board_Event"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "text"
+    },
+    "imageUrl": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+version: "3.3"
+services:
+  sa_portal_backend_test:
+    container_name: sa_portal_backend_test
+    image: sa_portal_backend_test
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./public/uploads:/usr/src/app/backend/public/uploads
+    ports:
+      - "2579:3002"
+    env_file:
+      - .env.test
+    networks:
+      - backend_welfare-board-strapi
+
+networks:
+  backend_welfare-board-strapi:
+    external: true

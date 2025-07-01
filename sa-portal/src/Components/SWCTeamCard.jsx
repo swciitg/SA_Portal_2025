@@ -1,30 +1,30 @@
 import React from "react";
 
-function SWCTeamCard({ name, position, email, phone, image, program }) {
-  // sample data -> has to be from props
-  // const data = {
-  //   name: "John Doe",
-  //   position: "Overall Coordinator",
-  //   email: "johndoe99@outlook.com",
-  //   phone: "1234567890",
-  //   image: "agriculture-bg.jpg",
-  //   program: "B.Tech in Chemical Engineering",
-  // };
-
+function SWCTeamCard({ name, position, email, phone, image, program = "" }) {
+  console.log({ name, position, email, phone, image, program });
   return (
-    <div className="flex items-center space-x-10 px-4 py-6 border-2 border-blue-50">
-      <img src={image} alt={name} className="size-60 rounded-full" />
-      <div className="h-full flex flex-col justify-around">
-        <div>
-          <h2 className="font-semibold text-3xl mb-4 text-black/85">{name}</h2>
+    <div className="flex items-center space-x-1 sm:space-x-10 px-2 sm:py-6 border-2 border-blue-50">
+      <img
+        src={image}
+        alt={name}
+        className="size-36 sm:size-44 md:size-60 rounded-full"
+      />
+      <div className="h-full w-1/2 flex-col items-start justify-between">
+        <div className="">
+          <h2 className="font-semibold text-xl md:text-3xl mb-1 sm:mb-4 text-black/85">
+            {name}
+          </h2>
           <hr className="border-b" />
           <div className="w-1/2 border-b-2 border-blue-500"></div>
-          <p className="mt-4 text-black/85">{position}</p>
+          <p className="mt-2 sm:mt-4 text-sm sm:text-base text-black/85">
+            {position}
+          </p>
         </div>
 
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col sm:space-y-2">
           <div className="flex items-center space-x-1">
             <svg
+              className="scale-75 sm:scale-100"
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -40,10 +40,11 @@ function SWCTeamCard({ name, position, email, phone, image, program }) {
               />
             </svg>
 
-            <span className="text-black/60">{phone}</span>
+            <span className="text-black/60 text-sm sm:text-base">{phone}</span>
           </div>
-          <div className="flex items-center space-x-1">
+          <div className="flex items-center space-x-1 shrink-0">
             <svg
+              className="scale-75 sm:scale-100 shrink-0"
               width="24"
               height="25"
               viewBox="0 0 24 25"
@@ -60,7 +61,9 @@ function SWCTeamCard({ name, position, email, phone, image, program }) {
             </svg>
 
             <a href={"mailto:" + email}>
-              <span className="text-black/60">{program}</span>
+              <span className="text-black/60 text-sm sm:text-base">
+                {program}
+              </span>
             </a>
           </div>
         </div>

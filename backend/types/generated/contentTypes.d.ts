@@ -373,12 +373,12 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiNewFieldNewField extends Struct.CollectionTypeSchema {
-  collectionName: 'new_fields';
+export interface ApiAchievementAchievement extends Struct.CollectionTypeSchema {
+  collectionName: 'achievements';
   info: {
-    displayName: 'newField';
-    pluralName: 'new-fields';
-    singularName: 'new-field';
+    displayName: 'Achievement';
+    pluralName: 'achievements';
+    singularName: 'achievement';
   };
   options: {
     draftAndPublish: true;
@@ -387,14 +387,599 @@ export interface ApiNewFieldNewField extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    imageurl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    description: Schema.Attribute.Text;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::new-field.new-field'
+      'api::achievement.achievement'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiBoardsEventBoardsEvent extends Struct.CollectionTypeSchema {
+  collectionName: 'boards_events';
+  info: {
+    displayName: 'Boards_Event';
+    pluralName: 'boards-events';
+    singularName: 'boards-event';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::boards-event.boards-event'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiClubClub extends Struct.CollectionTypeSchema {
+  collectionName: 'clubs';
+  info: {
+    displayName: 'Club';
+    pluralName: 'clubs';
+    singularName: 'club';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    clubName: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    link: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::club.club'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCounsellingCellTeamCounsellingCellTeam
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'counselling_cell_teams';
+  info: {
+    displayName: 'Counselling_Cell_Team';
+    pluralName: 'counselling-cell-teams';
+    singularName: 'counselling-cell-team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    head: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::counselling-cell-team.counselling-cell-team'
+    > &
+      Schema.Attribute.Private;
+    members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCulturalBoardAnnouncementCulturalBoardAnnouncement
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'cultural_board_announcements';
+  info: {
+    displayName: 'Cultural_Board_Announcement';
+    pluralName: 'cultural-board-announcements';
+    singularName: 'cultural-board-announcement';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::cultural-board-announcement.cultural-board-announcement'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    text: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface ApiCulturalBoardClubCulturalBoardClub
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'cultural_board_clubs';
+  info: {
+    displayName: 'Cultural_Board_Club';
+    pluralName: 'cultural-board-clubs';
+    singularName: 'cultural-board-club';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    club: Schema.Attribute.Relation<'oneToOne', 'api::club.club'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::cultural-board-club.cultural-board-club'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCulturalBoardEventCulturalBoardEvent
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'cultural_board_events';
+  info: {
+    displayName: 'Cultural_Board_Event';
+    pluralName: 'cultural-board-events';
+    singularName: 'cultural-board-event';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::cultural-board-event.cultural-board-event'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCulturalBoardTeamCulturalBoardTeam
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'cultural_board_teams';
+  info: {
+    displayName: 'Cultural-Board-Team';
+    pluralName: 'cultural-board-teams';
+    singularName: 'cultural-board-team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::cultural-board-team.cultural-board-team'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.BigInteger;
+    position: Schema.Attribute.String;
+    program: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFormForm extends Struct.CollectionTypeSchema {
+  collectionName: 'forms';
+  info: {
+    displayName: 'Form';
+    pluralName: 'forms';
+    singularName: 'form';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::form.form'> &
+      Schema.Attribute.Private;
+    pdf_File: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    word_File: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface ApiGymkhanaOfficeTeamGymkhanaOfficeTeam
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'gymkhana_office_teams';
+  info: {
+    displayName: 'Gymkhana_Office_Team';
+    pluralName: 'gymkhana-office-teams';
+    singularName: 'gymkhana-office-team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heading: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::gymkhana-office-team.gymkhana-office-team'
+    > &
+      Schema.Attribute.Private;
+    members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiHmcMemberHmcMember extends Struct.CollectionTypeSchema {
+  collectionName: 'hmc_members';
+  info: {
+    displayName: 'HMC_Member';
+    pluralName: 'hmc-members';
+    singularName: 'hmc-member';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.String;
+    hostel: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hmc-member.hmc-member'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.BigInteger;
+    position: Schema.Attribute.String;
+    program: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiHomePageAnnouncementHomePageAnnouncement
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'home_page_announcements';
+  info: {
+    displayName: 'HomePage_Announcement';
+    pluralName: 'home-page-announcements';
+    singularName: 'home-page-announcement';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-page-announcement.home-page-announcement'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    text: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface ApiHostelAffairsBoardAnnouncementHostelAffairsBoardAnnouncement
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'hostel_affairs_board_announcements';
+  info: {
+    displayName: 'Hostel_Affairs_Board_Announcement';
+    pluralName: 'hostel-affairs-board-announcements';
+    singularName: 'hostel-affairs-board-announcement';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hostel-affairs-board-announcement.hostel-affairs-board-announcement'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    text: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface ApiHostelAffairsBoardEventHostelAffairsBoardEvent
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'hostel_affairs_board_events';
+  info: {
+    displayName: 'Hostel_Affairs_Board_Event';
+    pluralName: 'hostel-affairs-board-events';
+    singularName: 'hostel-affairs-board-event';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hostel-affairs-board-event.hostel-affairs-board-event'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiHostelAffairsTeamHostelAffairsTeam
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'hostel_affairs_teams';
+  info: {
+    displayName: 'Hostel_Affairs_Team';
+    pluralName: 'hostel-affairs-teams';
+    singularName: 'hostel-affairs-team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heading: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::hostel-affairs-team.hostel-affairs-team'
+    > &
+      Schema.Attribute.Private;
+    members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiNewSacTeamNewSacTeam extends Struct.CollectionTypeSchema {
+  collectionName: 'new_sac_teams';
+  info: {
+    displayName: 'New_SAC_Team';
+    pluralName: 'new-sac-teams';
+    singularName: 'new-sac-team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heading: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::new-sac-team.new-sac-team'
+    > &
+      Schema.Attribute.Private;
+    members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiNoticesOnRuleNoticesOnRule
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'notices_on_rules';
+  info: {
+    displayName: 'Notices_On_Rule';
+    pluralName: 'notices-on-rules';
+    singularName: 'notices-on-rule';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::notices-on-rule.notices-on-rule'
+    > &
+      Schema.Attribute.Private;
+    pdf_File: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    word_File: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface ApiSaCourseSaCourse extends Struct.CollectionTypeSchema {
+  collectionName: 'sa_courses';
+  info: {
+    displayName: 'SA Course';
+    pluralName: 'sa-courses';
+    singularName: 'sa-course';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    code: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sa-course.sa-course'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSacMemberSacMember extends Struct.CollectionTypeSchema {
+  collectionName: 'sac_members';
+  info: {
+    displayName: 'SAC_Member';
+    pluralName: 'sac-members';
+    singularName: 'sac-member';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sac-member.sac-member'
+    > &
+      Schema.Attribute.Private;
+    member: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::team-member.team-member'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSacMinuteSacMinute extends Struct.CollectionTypeSchema {
+  collectionName: 'sac_minutes';
+  info: {
+    displayName: 'SAC Minute';
+    pluralName: 'sac-minutes';
+    singularName: 'sac-minute';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sac-minute.sac-minute'
+    > &
+      Schema.Attribute.Private;
+    pdf_File: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -415,10 +1000,603 @@ export interface ApiScholarshipScholarship extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    link: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::scholarship.scholarship'
+    > &
+      Schema.Attribute.Private;
+    pdf_File: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<['College', 'Government', 'Others']>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    word_File: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface ApiServiceTypeServiceType extends Struct.CollectionTypeSchema {
+  collectionName: 'service_types';
+  info: {
+    displayName: 'Service_type';
+    pluralName: 'service-types';
+    singularName: 'service-type';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    link: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::service-type.service-type'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiServiceService extends Struct.CollectionTypeSchema {
+  collectionName: 'services';
+  info: {
+    displayName: 'Service';
+    pluralName: 'services';
+    singularName: 'service';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    header: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::service.service'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    services: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::service-type.service-type'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSportsBoardClubSportsBoardClub
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'sports_board_clubs';
+  info: {
+    displayName: 'Sports_Board_Club';
+    pluralName: 'sports-board-clubs';
+    singularName: 'sports-board-club';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    club: Schema.Attribute.Relation<'oneToOne', 'api::club.club'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sports-board-club.sports-board-club'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSportsBoardCourseSportsBoardCourse
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'sports_board_courses';
+  info: {
+    displayName: 'Sports_Board_Course';
+    pluralName: 'sports-board-courses';
+    singularName: 'sports-board-course';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    link: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sports-board-course.sports-board-course'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSportsBoardEventSportsBoardEvent
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'sports_board_events';
+  info: {
+    displayName: 'Sports_Board_Event';
+    pluralName: 'sports-board-events';
+    singularName: 'sports-board-event';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sports-board-event.sports-board-event'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSportsBoardFacilitySportsBoardFacility
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'sports_board_facilities';
+  info: {
+    displayName: 'Sports_Board_Facility ';
+    pluralName: 'sports-board-facilities';
+    singularName: 'sports-board-facility';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sports-board-facility.sports-board-facility'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSportsBoardFormSportsBoardForm
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'sports_board_forms';
+  info: {
+    displayName: 'Sports_Board_Form';
+    pluralName: 'sports-board-forms';
+    singularName: 'sports-board-form';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sports-board-form.sports-board-form'
+    > &
+      Schema.Attribute.Private;
+    pdf: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSportsBoardRuleSportsBoardRule
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'sports_board_rules';
+  info: {
+    displayName: 'Sports_Board_Rule';
+    pluralName: 'sports-board-rules';
+    singularName: 'sports-board-rule';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sports-board-rule.sports-board-rule'
+    > &
+      Schema.Attribute.Private;
+    pdf: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSportsBoardTeamSportsBoardTeam
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'sports_board_teams';
+  info: {
+    displayName: 'Sports_Board_Team';
+    pluralName: 'sports-board-teams';
+    singularName: 'sports-board-team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sports-board-team.sports-board-team'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
+    position: Schema.Attribute.String;
+    program: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStudentAffairsTeamStudentAffairsTeam
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'student_affairs_teams';
+  info: {
+    displayName: 'Student_Affairs _Team';
+    pluralName: 'student-affairs-teams';
+    singularName: 'student-affairs-team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heading: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::student-affairs-team.student-affairs-team'
+    > &
+      Schema.Attribute.Private;
+    members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStudentGymkhanaTeamStudentGymkhanaTeam
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'student_gymkhana_teams';
+  info: {
+    displayName: 'Student_Gymkhana_Team';
+    pluralName: 'student-gymkhana-teams';
+    singularName: 'student-gymkhana-team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heading: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::student-gymkhana-team.student-gymkhana-team'
+    > &
+      Schema.Attribute.Private;
+    members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSwcTeamSwcTeam extends Struct.CollectionTypeSchema {
+  collectionName: 'swc_teams';
+  info: {
+    displayName: 'SWC team';
+    pluralName: 'swc-teams';
+    singularName: 'swc-team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    branch: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.String;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::swc-team.swc-team'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
+    position: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
+  collectionName: 'team_members';
+  info: {
+    displayName: 'TeamMember';
+    pluralName: 'team-members';
+    singularName: 'team-member';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    > &
+      Schema.Attribute.Private;
+    mail: Schema.Attribute.Email;
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTechnicalBoardAnnouncementTechnicalBoardAnnouncement
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'technical_board_announcements';
+  info: {
+    displayName: 'Technical_Board_Announcement';
+    pluralName: 'technical-board-announcements';
+    singularName: 'technical-board-announcement';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::technical-board-announcement.technical-board-announcement'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    text: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface ApiTechnicalBoardClubTechnicalBoardClub
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'technical_board_clubs';
+  info: {
+    displayName: 'Technical_Board_Club';
+    pluralName: 'technical-board-clubs';
+    singularName: 'technical-board-club';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    club: Schema.Attribute.Relation<'oneToOne', 'api::club.club'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::technical-board-club.technical-board-club'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTechnicalBoardEventTechnicalBoardEvent
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'technical_board_events';
+  info: {
+    displayName: 'Technical_Board_Event';
+    pluralName: 'technical-board-events';
+    singularName: 'technical-board-event';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::technical-board-event.technical-board-event'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTechnicalBoardTeamTechnicalBoardTeam
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'technical_board_teams';
+  info: {
+    displayName: 'Technical_Board_Team';
+    pluralName: 'technical-board-teams';
+    singularName: 'technical-board-team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::technical-board-team.technical-board-team'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
+    position: Schema.Attribute.String;
+    program: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWebCommitteeAnnouncementWebCommitteeAnnouncement
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'web_committee_announcements';
+  info: {
+    displayName: 'WebCommittee_Announcement';
+    pluralName: 'web-committee-announcements';
+    singularName: 'web-committee-announcement';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::web-committee-announcement.web-committee-announcement'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface ApiWebCommitteeEventWebCommitteeEvent
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'web_committee_events';
+  info: {
+    displayName: 'WebCommittee_Event';
+    pluralName: 'web-committee-events';
+    singularName: 'web-committee-event';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::web-committee-event.web-committee-event'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
@@ -430,31 +1608,152 @@ export interface ApiScholarshipScholarship extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiSwcTeamSwcTeam extends Struct.CollectionTypeSchema {
-  collectionName: 'swc_teams';
+export interface ApiWebCommitteeServiceWebCommitteeService
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'web_committee_services';
   info: {
-    displayName: 'swcTeam';
-    pluralName: 'swc-teams';
-    singularName: 'swc-team';
+    displayName: 'WebCommittee_Service';
+    pluralName: 'web-committee-services';
+    singularName: 'web-committee-service';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    contact: Schema.Attribute.BigInteger;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
-    imgurl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::swc-team.swc-team'
+      'api::web-committee-service.web-committee-service'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    POR: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface ApiWelfareBoardClubAnnouncementWelfareBoardClubAnnouncement
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'welfare_board_club_announcements';
+  info: {
+    displayName: 'WelfareBoard_Club_Announcement';
+    pluralName: 'welfare-board-club-announcements';
+    singularName: 'welfare-board-club-announcement';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::welfare-board-club-announcement.welfare-board-club-announcement'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    text: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
+  };
+}
+
+export interface ApiWelfareBoardClubWelfareBoardClub
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'welfare_board_clubs';
+  info: {
+    displayName: 'WelfareBoard_Club';
+    pluralName: 'welfare-board-clubs';
+    singularName: 'welfare-board-club';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    club: Schema.Attribute.Relation<'oneToOne', 'api::club.club'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::welfare-board-club.welfare-board-club'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWelfareBoardEventWelfareBoardEvent
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'welfare_board_events';
+  info: {
+    displayName: 'WelfareBoard_Event';
+    pluralName: 'welfare-board-events';
+    singularName: 'welfare-board-event';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::welfare-board-event.welfare-board-event'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWelfareBoardTeamWelfareBoardTeam
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'welfare_board_teams';
+  info: {
+    displayName: 'WelfareBoard_Team';
+    pluralName: 'welfare-board-teams';
+    singularName: 'welfare-board-team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heading: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::welfare-board-team.welfare-board-team'
+    > &
+      Schema.Attribute.Private;
+    members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -971,9 +2270,51 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::new-field.new-field': ApiNewFieldNewField;
+      'api::achievement.achievement': ApiAchievementAchievement;
+      'api::boards-event.boards-event': ApiBoardsEventBoardsEvent;
+      'api::club.club': ApiClubClub;
+      'api::counselling-cell-team.counselling-cell-team': ApiCounsellingCellTeamCounsellingCellTeam;
+      'api::cultural-board-announcement.cultural-board-announcement': ApiCulturalBoardAnnouncementCulturalBoardAnnouncement;
+      'api::cultural-board-club.cultural-board-club': ApiCulturalBoardClubCulturalBoardClub;
+      'api::cultural-board-event.cultural-board-event': ApiCulturalBoardEventCulturalBoardEvent;
+      'api::cultural-board-team.cultural-board-team': ApiCulturalBoardTeamCulturalBoardTeam;
+      'api::form.form': ApiFormForm;
+      'api::gymkhana-office-team.gymkhana-office-team': ApiGymkhanaOfficeTeamGymkhanaOfficeTeam;
+      'api::hmc-member.hmc-member': ApiHmcMemberHmcMember;
+      'api::home-page-announcement.home-page-announcement': ApiHomePageAnnouncementHomePageAnnouncement;
+      'api::hostel-affairs-board-announcement.hostel-affairs-board-announcement': ApiHostelAffairsBoardAnnouncementHostelAffairsBoardAnnouncement;
+      'api::hostel-affairs-board-event.hostel-affairs-board-event': ApiHostelAffairsBoardEventHostelAffairsBoardEvent;
+      'api::hostel-affairs-team.hostel-affairs-team': ApiHostelAffairsTeamHostelAffairsTeam;
+      'api::new-sac-team.new-sac-team': ApiNewSacTeamNewSacTeam;
+      'api::notices-on-rule.notices-on-rule': ApiNoticesOnRuleNoticesOnRule;
+      'api::sa-course.sa-course': ApiSaCourseSaCourse;
+      'api::sac-member.sac-member': ApiSacMemberSacMember;
+      'api::sac-minute.sac-minute': ApiSacMinuteSacMinute;
       'api::scholarship.scholarship': ApiScholarshipScholarship;
+      'api::service-type.service-type': ApiServiceTypeServiceType;
+      'api::service.service': ApiServiceService;
+      'api::sports-board-club.sports-board-club': ApiSportsBoardClubSportsBoardClub;
+      'api::sports-board-course.sports-board-course': ApiSportsBoardCourseSportsBoardCourse;
+      'api::sports-board-event.sports-board-event': ApiSportsBoardEventSportsBoardEvent;
+      'api::sports-board-facility.sports-board-facility': ApiSportsBoardFacilitySportsBoardFacility;
+      'api::sports-board-form.sports-board-form': ApiSportsBoardFormSportsBoardForm;
+      'api::sports-board-rule.sports-board-rule': ApiSportsBoardRuleSportsBoardRule;
+      'api::sports-board-team.sports-board-team': ApiSportsBoardTeamSportsBoardTeam;
+      'api::student-affairs-team.student-affairs-team': ApiStudentAffairsTeamStudentAffairsTeam;
+      'api::student-gymkhana-team.student-gymkhana-team': ApiStudentGymkhanaTeamStudentGymkhanaTeam;
       'api::swc-team.swc-team': ApiSwcTeamSwcTeam;
+      'api::team-member.team-member': ApiTeamMemberTeamMember;
+      'api::technical-board-announcement.technical-board-announcement': ApiTechnicalBoardAnnouncementTechnicalBoardAnnouncement;
+      'api::technical-board-club.technical-board-club': ApiTechnicalBoardClubTechnicalBoardClub;
+      'api::technical-board-event.technical-board-event': ApiTechnicalBoardEventTechnicalBoardEvent;
+      'api::technical-board-team.technical-board-team': ApiTechnicalBoardTeamTechnicalBoardTeam;
+      'api::web-committee-announcement.web-committee-announcement': ApiWebCommitteeAnnouncementWebCommitteeAnnouncement;
+      'api::web-committee-event.web-committee-event': ApiWebCommitteeEventWebCommitteeEvent;
+      'api::web-committee-service.web-committee-service': ApiWebCommitteeServiceWebCommitteeService;
+      'api::welfare-board-club-announcement.welfare-board-club-announcement': ApiWelfareBoardClubAnnouncementWelfareBoardClubAnnouncement;
+      'api::welfare-board-club.welfare-board-club': ApiWelfareBoardClubWelfareBoardClub;
+      'api::welfare-board-event.welfare-board-event': ApiWelfareBoardEventWelfareBoardEvent;
+      'api::welfare-board-team.welfare-board-team': ApiWelfareBoardTeamWelfareBoardTeam;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

@@ -1,20 +1,35 @@
 import chevronRight from "../../assets/Images/chevron-right.png";
 
-const EachAnnouncement = ({ text, date }) => {
+const EachAnnouncement = ({ text, url, date }) => {
   return (
-    <div className="flex justify-between bg-[#F0F1F7] w-full p-3">
+    <a
+      href={url}
+      target="_blank"
+      className="h-[92px] bg-neutral-100 my-1 flex justify-between p-4 items-center select-none"
+    >
+      <div className="space-y-2">
+        <p className="text-black/40 text-xs font-medium">{date}</p>
+        <p>{text}</p>
+      </div>
       <div>
-        <p className="text-[12px] text-black/40">{date}</p>
-        <h2 className="text-[16px] font-normal leading-snug">{text}</h2>
+        <svg
+          width="25"
+          height="24"
+          viewBox="0 0 25 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.5 18L15.5 12L9.5 6"
+            stroke="black"
+            strokeOpacity="0.38"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
       </div>
-      <div className="flex justify-center items-center min-w-[22px]">
-        <img
-          src={chevronRight}
-          alt="chevron-right"
-          className="w-[20px] h-[20px]"
-        />
-      </div>
-    </div>
+    </a>
   );
 };
 

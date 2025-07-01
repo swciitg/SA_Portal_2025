@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const MinuteCard = ({ idx, title }) => {
+const MinuteCard = ({ idx, title,pdfUrl ="#" }) => {
     return (
         <div className='flex flex-row items-center px-3 py-1 w-full'>
             {/* Index Box with responsive sizing */}
@@ -15,9 +16,9 @@ const MinuteCard = ({ idx, title }) => {
                 </span>
 
                 <div className='flex space-x-2 shrink-0'>
-                    <button className='hoverCustom bg-gray-200 hover:text-white text-black px-3 py-1 text-sm'>
+                    <Link to={pdfUrl} target='_blank' className='hoverCustom bg-gray-200 hover:text-white text-black px-3 py-1 text-sm'>
                         PDF
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -65,7 +65,7 @@ $RECYCLE.BIN/
 # Logs and databases
 ############################
 
-.tmp
+# .tmp
 *.log
 *.sql
 *.sqlite
@@ -96,7 +96,9 @@ logs
 results
 node_modules
 .node_history
-
+.env.prod
+.env.test
+.env.development
 ############################
 # Package managers
 ############################
@@ -110,6 +112,7 @@ node_modules
 !.yarn/versions
 .pnp.*
 yarn-error.log
+
 
 ############################
 # Tests

@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sports_board_clubs",
+  "info": {
+    "singularName": "sports-board-club",
+    "pluralName": "sports-board-clubs",
+    "displayName": "Sports_Board_Club"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "club": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::club.club"
+    }
+  }
+}

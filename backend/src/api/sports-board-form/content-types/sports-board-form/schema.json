@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sports_board_forms",
+  "info": {
+    "singularName": "sports-board-form",
+    "pluralName": "sports-board-forms",
+    "displayName": "Sports_Board_Form"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "pdf": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

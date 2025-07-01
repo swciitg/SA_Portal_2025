@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sports_board_rules",
+  "info": {
+    "singularName": "sports-board-rule",
+    "pluralName": "sports-board-rules",
+    "displayName": "Sports_Board_Rule"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "pdf": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

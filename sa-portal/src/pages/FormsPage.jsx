@@ -1,23 +1,37 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import BannerTop from "../Components/BannerTop";
+import sendApiRequest from "../services/apiService";
+import ROUTES from "../constants/apiRoutes";
+import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
 function FormsPage() {
   const [currPage, setCurrPage] = useState(1);
   const limitOnPage = 5; // limit per page
-  // sample forms
-  const forms = Array.from({ length: 20 }, (_, index) => ({
-    date: "2025-02-11",
-    title: `Notice for vacating hostel rooms ${index + 1}`,
-    pdfUrl: "https://example.com/demo.pdf",
-    wordUrl: "https://example.com/demo.docx",
-  }));
+
+  const [forms, setForms] = useState([]);
 
   // paginated forms to render
   const paginatedForms = forms.slice(
     (currPage - 1) * limitOnPage,
     currPage * limitOnPage
   );
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const formsRes = await sendApiRequest(ROUTES.FORMS);
+
+        console.log({ formsRes });
+
+        setForms(formsRes?.data);
+      } catch (error) {
+        console.error("Error in fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -40,17 +54,23 @@ function FormsPage() {
         </div>
 
         {/* Forms */}
-        <div className="flex flex-col mt-4 sm:mt-6 md:mt-10 space-y-1 text-neutral-900">
-          {paginatedForms.map((form, idx) => (
-            <FormItem
-              key={idx}
-              date={form.date}
-              title={form.title}
-              pdfUrl={form.pdfUrl}
-              wordUrl={form.wordUrl}
-            />
-          ))}
-        </div>
+        {paginatedForms.length > 0 ? (
+          <div className="flex flex-col mt-4 sm:mt-6 md:mt-10 space-y-1 text-neutral-900">
+            {paginatedForms.map((form, idx) => (
+              <FormItem
+                key={idx}
+                date={form.date}
+                title={form.title}
+                pdfUrl={getStrapiMediaUrl(form.pdf_File?.url)}
+                wordUrl={getStrapiMediaUrl(form.word_File?.url)}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="min-h-60 w-full flex items-center justify-center">
+            <p>Nothing to show here.</p>
+          </div>
+        )}
       </div>
     </>
   );

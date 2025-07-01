@@ -11,11 +11,39 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "College",
+        "Government",
+        "Others"
+      ]
+    },
     "title": {
       "type": "string"
     },
-    "url": {
+    "link": {
       "type": "string"
+    },
+    "pdf_File": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "word_File": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }

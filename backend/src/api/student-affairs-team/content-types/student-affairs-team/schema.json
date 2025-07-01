@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "student_affairs_teams",
+  "info": {
+    "singularName": "student-affairs-team",
+    "pluralName": "student-affairs-teams",
+    "displayName": "Student_Affairs _Team"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team-member.team-member"
+    }
+  }
+}

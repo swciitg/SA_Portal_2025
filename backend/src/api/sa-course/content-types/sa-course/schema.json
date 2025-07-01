@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sa_courses",
+  "info": {
+    "singularName": "sa-course",
+    "pluralName": "sa-courses",
+    "displayName": "SA Course"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    }
+  }
+}

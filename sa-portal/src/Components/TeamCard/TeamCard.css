@@ -94,3 +94,17 @@
   }
   
 }
+
+@media screen and (max-width: 360px) {
+  .prof-card {
+    flex-direction: column;
+    height: fit-content;
+  }
+  .prof-img {
+    height: 100%;
+    aspect-ratio: 1/1;
+    max-height: 150px;
+    margin: auto;
+    margin-top:10px;
+  }
+}

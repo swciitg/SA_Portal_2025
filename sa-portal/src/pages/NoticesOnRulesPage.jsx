@@ -1,16 +1,15 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import sendApiRequest from "../services/apiService";
+import ROUTES from "../constants/apiRoutes";
+import BannerTop from "../Components/BannerTop";
+import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
 function FormsPage() {
   const [currPage, setCurrPage] = useState(1);
   const limitOnPage = 5; // limit per page
-  // sample notices
-  const notices = Array.from({ length: 20 }, (_, index) => ({
-    date: "2025-02-11",
-    title: `Notice for vacating hostel rooms ${index + 1}`,
-    pdfUrl: "https://example.com/demo.pdf",
-    wordUrl: "https://example.com/demo.docx",
-  }));
+
+  const [notices, setNotices] = useState([]);
 
   // paginated forms to render
   const paginatedNotices = notices.slice(
@@ -18,8 +17,25 @@ function FormsPage() {
     currPage * limitOnPage
   );
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const noticesRes = await sendApiRequest(ROUTES.NOTICES_ON_RULES);
+
+        console.log({ noticesRes });
+
+        setNotices(noticesRes?.data);
+      } catch (error) {
+        console.error("Error in fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
+      <BannerTop heading={"Notices on Rules"} route={["Rules", "Notices"]} />
       <div className="px-4 py-4 sm:px-10 sm:py-8 md:px-28 md:py-20">
         {/* Heading and Pagination menu */}
         <div className="flex flex-col sm:flex-row items-center justify-between">
@@ -36,13 +52,13 @@ function FormsPage() {
 
         {/* Notices */}
         <div className="flex flex-col mt-4 sm:mt-6 md:mt-10 space-y-1 text-neutral-900">
-          {paginatedNotices.map((form, idx) => (
+          {paginatedNotices.map((notice, idx) => (
             <NoticeItem
               key={idx}
-              date={form.date}
-              title={form.title}
-              pdfUrl={form.pdfUrl}
-              wordUrl={form.wordUrl}
+              date={notice.date}
+              title={notice.title}
+              pdfUrl={getStrapiMediaUrl(notice.pdf_File?.url)}
+              wordUrl={getStrapiMediaUrl(notice.word_File?.url)}
             />
           ))}
         </div>

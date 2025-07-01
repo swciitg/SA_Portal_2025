@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sports_board_courses",
+  "info": {
+    "singularName": "sports-board-course",
+    "pluralName": "sports-board-courses",
+    "displayName": "Sports_Board_Course"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

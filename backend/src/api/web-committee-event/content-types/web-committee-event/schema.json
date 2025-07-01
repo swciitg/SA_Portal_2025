@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "web_committee_events",
+  "info": {
+    "singularName": "web-committee-event",
+    "pluralName": "web-committee-events",
+    "displayName": "WebCommittee_Event"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "imageUrl": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

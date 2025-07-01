@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "welfare_board_teams",
+  "info": {
+    "singularName": "welfare-board-team",
+    "pluralName": "welfare-board-teams",
+    "displayName": "WelfareBoard_Team"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team-member.team-member"
+    }
+  }
+}

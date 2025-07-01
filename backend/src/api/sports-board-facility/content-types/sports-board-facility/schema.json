@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sports_board_facilities",
+  "info": {
+    "singularName": "sports-board-facility",
+    "pluralName": "sports-board-facilities",
+    "displayName": "Sports_Board_Facility "
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "imageUrl": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

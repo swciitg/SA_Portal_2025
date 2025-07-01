@@ -13,11 +13,11 @@ const Carousel = () => {
   }, []);
 
   return (
-    <div className="relative w-full" style={{ height: "calc(72vh - 0px)" }}>
+    <div className="relative w-full" style={{ height: "calc(60vh - 0px)" }}>
       {images.map((img, index) => (
         <img
           key={index}
-          src={img}
+          src={process.env.REACT_APP_BASE_URL + img}
           alt={`Slide ${index}`}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
             current === index ? "opacity-100" : "opacity-0"
