@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 function SportsBoardPage() {
   const routes = ["Student Affairs Board", "Sports Board"];
 
-  const [courses,setCourses] = useState([]);
+  const [courses, setCourses] = useState([]);
   const [facilities, setFacilities] = useState([])
   const [events, setEvents] = useState([])
   const [clubs, setClubs] = useState([])
@@ -27,7 +27,7 @@ function SportsBoardPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [coursesRes,facilitiesRes,eventsRes,clubsRes,teamRes,rulesRes,formsRes] = await Promise.all([
+        const [coursesRes, facilitiesRes, eventsRes, clubsRes, teamRes, rulesRes, formsRes] = await Promise.all([
           sendApiRequest(ROUTES.SPORTS_BOARD_COURSES),
           sendApiRequest(ROUTES.SPORTS_BOARD_FACILITIES),
           sendApiRequest(ROUTES.SPORTS_BOARD_EVENTS),
@@ -35,10 +35,10 @@ function SportsBoardPage() {
           sendApiRequest(ROUTES.SPORTS_BOARD_TEAM),
           sendApiRequest(ROUTES.SPORTS_BOARD_RULES),
           sendApiRequest(ROUTES.SPORTS_BOARD_FORMS),
-          
+
         ])
 
-        console.log({ coursesRes,facilitiesRes,eventsRes,clubsRes,teamRes,rulesRes,formsRes });
+        console.log({ coursesRes, facilitiesRes, eventsRes, clubsRes, teamRes, rulesRes, formsRes });
 
         setCourses(coursesRes?.data)
         setFacilities(facilitiesRes?.data)
@@ -137,7 +137,7 @@ function SportsBoardPage() {
             your skill level, you’ll find the space, support, and community to
             grow, compete, and thrive.
           </p>
-          <BoardsFacilities facilityDetails={facilities}/>
+          <BoardsFacilities facilityDetails={facilities} />
         </div>
       </div>
       <div className="boards-events">
@@ -149,7 +149,8 @@ function SportsBoardPage() {
           {clubs.map((each) => (
             <SportsClubCard
               clubName={each.clubName}
-              imageUrl={process.env.REACT_APP_API_BASE_URL+each.imageUrl?.url}
+              imageUrl={each.imageUrl?.url}
+              // imageUrl={process.env.REACT_APP_API_BASE_URL+each.imageUrl?.url}
               description={each.description}
             />
           ))}
@@ -164,7 +165,8 @@ function SportsBoardPage() {
               position={each.position}
               email={each.email}
               phone={each.phone}
-              image={process.env.REACT_APP_API_BASE_URL+each.imageUrl?.url}
+              image={each.imageUrl?.url}
+              // image={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
               program={each.program}
             />
           ))}
@@ -186,7 +188,7 @@ function SportsBoardPage() {
                   {each.title}
                 </span>
                 <div className="flex space-x-2 shrink-0">
-                  <Link to={process.env.REACT_APP_API_BASE_URL+each.pdfUrl?.url} target="_blank" className="hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm">
+                  <Link to={process.env.REACT_APP_API_BASE_URL + each.pdfUrl?.url} target="_blank" className="hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm">
                     PDF
                   </Link>
                 </div>
@@ -211,7 +213,7 @@ function SportsBoardPage() {
                   {each.title}
                 </span>
                 <div className="flex space-x-2 shrink-0">
-                  <Link to={process.env.REACT_APP_API_BASE_URL+each.pdfUrl?.url} target="_blank" className="hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm">
+                  <Link to={process.env.REACT_APP_API_BASE_URL + each.pdfUrl?.url} target="_blank" className="hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm">
                     PDF
                   </Link>
                 </div>
@@ -226,133 +228,133 @@ function SportsBoardPage() {
 
 export default SportsBoardPage;
 
-  // const rules = [
-  //   {
-  //     title: "Badminton Rules",
-  //     link: "https://example.com/badminton-rules",
-  //   },
-  //   {
-  //     title: "Basketball Rules",
-  //     link: "https://example.com/basketball-rules",
-  //   },
-  //   {
-  //     title: "Football Rules",
-  //     link: "https://example.com/football-rules",
-  //   },
-  //   {
-  //     title: "Tennis Rules",
-  //     link: "https://example.com/tennis-rules",
-  //   },
-  //   {
-  //     title: "Swimming Pool Rules",
-  //     link: "https://example.com/swimming-pool-rules",
-  //   },
-  //   {
-  //     title: "Central Gym Rules",
-  //     link: "https://example.com/gymnasium-rules",
-  //   },
-  // ];
-  // const forms = [
-  //   {
-  //     title: "Good Issue",
-  //     link: "https://example.com/badminton-rules",
-  //   },
-  //   {
-  //     title: "Guest Access Form",
-  //     link: "https://example.com/basketball-rules",
-  //   },
-  //   {
-  //     title: "Booking",
-  //     link: "https://example.com/football-rules",
-  //   },
-  // ];
-  // const eventDetails = [
-  //   {
-  //     imageUrl: "",
-  //     name: "Inter IIT",
-  //   },
-  //   {
-  //     imageUrl: "",
-  //     name: "Inter IIT Staff",
-  //   },
-  //   {
-  //     imageUrl: "",
-  //     name: "Spirit",
-  //   },
-  //   {
-  //     imageUrl: "",
-  //     name: "Spardha",
-  //   },
-  // ];
-  // const clubs = [
-  //   { clubName: "", imageUrl: "", description: "" },
-  //   { clubName: "", imageUrl: "", description: "" },
-  //   { clubName: "", imageUrl: "", description: "" },
-  //   { clubName: "", imageUrl: "", description: "" },
-  //   { clubName: "", imageUrl: "", description: "" },
-  //   { clubName: "", imageUrl: "", description: "" },
-  //   { clubName: "", imageUrl: "", description: "" },
-  //   { clubName: "", imageUrl: "", description: "" },
-  //   { clubName: "", imageUrl: "", description: "" },
-  //   { clubName: "", imageUrl: "", description: "" },
-  //   { clubName: "", imageUrl: "", description: "" },
-  // ];
-  // const team = [
-  //   {
-  //     name: "name",
-  //     position: "Position",
-  //     email: "Email",
-  //     phone: "Contact",
-  //     image: "",
-  //     program: "Program",
-  //   },
-  //   {
-  //     name: "name",
-  //     position: "Position",
-  //     email: "Email",
-  //     phone: "Contact",
-  //     image: "",
-  //     program: "Program",
-  //   },
-  //   {
-  //     name: "name",
-  //     position: "Position",
-  //     email: "Email",
-  //     phone: "Contact",
-  //     image: "",
-  //     program: "Program",
-  //   },
-  //   {
-  //     name: "name",
-  //     position: "Position",
-  //     email: "Email",
-  //     phone: "Contact",
-  //     image: "",
-  //     program: "Program",
-  //   },
-  //   {
-  //     name: "name",
-  //     position: "Position",
-  //     email: "Email",
-  //     phone: "Contact",
-  //     image: "",
-  //     program: "Program",
-  //   },
-  //   {
-  //     name: "name",
-  //     position: "Position",
-  //     email: "Email",
-  //     phone: "Contact",
-  //     image: "",
-  //     program: "Program",
-  //   },
-  //   {
-  //     name: "name",
-  //     position: "Position",
-  //     email: "Email",
-  //     phone: "Contact",
-  //     image: "",
-  //     program: "Program",
-  //   },
-  // ];
+// const rules = [
+//   {
+//     title: "Badminton Rules",
+//     link: "https://example.com/badminton-rules",
+//   },
+//   {
+//     title: "Basketball Rules",
+//     link: "https://example.com/basketball-rules",
+//   },
+//   {
+//     title: "Football Rules",
+//     link: "https://example.com/football-rules",
+//   },
+//   {
+//     title: "Tennis Rules",
+//     link: "https://example.com/tennis-rules",
+//   },
+//   {
+//     title: "Swimming Pool Rules",
+//     link: "https://example.com/swimming-pool-rules",
+//   },
+//   {
+//     title: "Central Gym Rules",
+//     link: "https://example.com/gymnasium-rules",
+//   },
+// ];
+// const forms = [
+//   {
+//     title: "Good Issue",
+//     link: "https://example.com/badminton-rules",
+//   },
+//   {
+//     title: "Guest Access Form",
+//     link: "https://example.com/basketball-rules",
+//   },
+//   {
+//     title: "Booking",
+//     link: "https://example.com/football-rules",
+//   },
+// ];
+// const eventDetails = [
+//   {
+//     imageUrl: "",
+//     name: "Inter IIT",
+//   },
+//   {
+//     imageUrl: "",
+//     name: "Inter IIT Staff",
+//   },
+//   {
+//     imageUrl: "",
+//     name: "Spirit",
+//   },
+//   {
+//     imageUrl: "",
+//     name: "Spardha",
+//   },
+// ];
+// const clubs = [
+//   { clubName: "", imageUrl: "", description: "" },
+//   { clubName: "", imageUrl: "", description: "" },
+//   { clubName: "", imageUrl: "", description: "" },
+//   { clubName: "", imageUrl: "", description: "" },
+//   { clubName: "", imageUrl: "", description: "" },
+//   { clubName: "", imageUrl: "", description: "" },
+//   { clubName: "", imageUrl: "", description: "" },
+//   { clubName: "", imageUrl: "", description: "" },
+//   { clubName: "", imageUrl: "", description: "" },
+//   { clubName: "", imageUrl: "", description: "" },
+//   { clubName: "", imageUrl: "", description: "" },
+// ];
+// const team = [
+//   {
+//     name: "name",
+//     position: "Position",
+//     email: "Email",
+//     phone: "Contact",
+//     image: "",
+//     program: "Program",
+//   },
+//   {
+//     name: "name",
+//     position: "Position",
+//     email: "Email",
+//     phone: "Contact",
+//     image: "",
+//     program: "Program",
+//   },
+//   {
+//     name: "name",
+//     position: "Position",
+//     email: "Email",
+//     phone: "Contact",
+//     image: "",
+//     program: "Program",
+//   },
+//   {
+//     name: "name",
+//     position: "Position",
+//     email: "Email",
+//     phone: "Contact",
+//     image: "",
+//     program: "Program",
+//   },
+//   {
+//     name: "name",
+//     position: "Position",
+//     email: "Email",
+//     phone: "Contact",
+//     image: "",
+//     program: "Program",
+//   },
+//   {
+//     name: "name",
+//     position: "Position",
+//     email: "Email",
+//     phone: "Contact",
+//     image: "",
+//     program: "Program",
+//   },
+//   {
+//     name: "name",
+//     position: "Position",
+//     email: "Email",
+//     phone: "Contact",
+//     image: "",
+//     program: "Program",
+//   },
+// ];
 

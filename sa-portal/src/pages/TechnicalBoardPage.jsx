@@ -74,7 +74,8 @@ function TechnicalBoardPage() {
           {clubs.map((each) => (
             <ClubCard
               clubName={each.clubName}
-              imageUrl={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
+              imageUrl={each.imageUrl?.url}
+              // imageUrl={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
               link={each.link}
             />
           ))}
@@ -89,7 +90,8 @@ function TechnicalBoardPage() {
               position={each.position}
               email={each.email}
               phone={each.phone}
-              image={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
+              image={ each.imageUrl?.url}
+              // image={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
               program={each.program}
             />
           ))}

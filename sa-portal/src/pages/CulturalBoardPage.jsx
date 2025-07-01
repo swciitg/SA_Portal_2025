@@ -12,22 +12,22 @@ import ROUTES from "../constants/apiRoutes";
 function CulturalBoardPage() {
   const route = ["Students' Affairs Boards", "Cultural Board"];
 
-  const [announcements,setAnnouncements] = useState([]);
-  const [events,setEvents] = useState([]);
-  const [clubs,setClubs] = useState([]);
-  const [team,setTeam] = useState([]);
+  const [announcements, setAnnouncements] = useState([]);
+  const [events, setEvents] = useState([]);
+  const [clubs, setClubs] = useState([]);
+  const [team, setTeam] = useState([]);
 
-   useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
-        const [announcementsRes,eventsRes,clubsRes,teamRes] = await Promise.all([
+        const [announcementsRes, eventsRes, clubsRes, teamRes] = await Promise.all([
           sendApiRequest(ROUTES.CULTURAL_BOARD_ANNOUNCEMENTS),
           sendApiRequest(ROUTES.CULTURAL_BOARD_EVENTS),
           sendApiRequest(ROUTES.CULTURAL_BOARD_CLUBS),
           sendApiRequest(ROUTES.CULTURAL_BOARD_TEAM),
         ])
 
-        console.log({ announcementsRes,eventsRes,clubsRes,teamRes });
+        console.log({ announcementsRes, eventsRes, clubsRes, teamRes });
 
         setAnnouncements(announcementsRes?.data)
         setEvents(eventsRes?.data)
@@ -40,32 +40,33 @@ function CulturalBoardPage() {
 
     fetchData();
   }, []);
-  
+
   return (
     <>
-      <BannerTop heading="Cultural Board" blueText="Board" route={route}/>
+      <BannerTop heading="Cultural Board" blueText="Board" route={route} />
       <div className="boards-about">
         <div className="boards-about-text">
           <h1>
-            Welcome to <br/>Cultural Board
+            Welcome to <br />Cultural Board
           </h1>
           <p>
             It comprises of Chairman, Cultural Board and elected student representatives.
-            <br/> Its main function is to coordinate and execute all cultural activities through the various clubs and to coordinate and execute all activities related to the annual cultural festival ‘Alcheringa’.
+            <br /> Its main function is to coordinate and execute all cultural activities through the various clubs and to coordinate and execute all activities related to the annual cultural festival ‘Alcheringa’.
           </p>
         </div>
-         <div className="size-60 sm:size-80 md:size-96 mt-10 shrink-0">
+        <div className="size-60 sm:size-80 md:size-96 mt-10 shrink-0">
           <LayeredCarousel />
         </div>
       </div>
-      <div className="boards-announcements"><Announcements announcements={announcements}/></div>
-      <div className="boards-events"><BoardsEvents eventDetails={events}/></div>
+      <div className="boards-announcements"><Announcements announcements={announcements} /></div>
+      <div className="boards-events"><BoardsEvents eventDetails={events} /></div>
       <div className="boards-clubs">
         <h1>Clubs - Under Cultural Board</h1>
         <div className="clubs-container">
           {
-            clubs.map(each=>(
-              <ClubCard clubName={each.clubName} imageUrl={process.env.REACT_APP_API_BASE_URL+each.imageUrl?.url} link={each.link} />
+            clubs.map(each => (
+              <ClubCard clubName={each.clubName} imageUrl={ each.imageUrl?.url} link={each.link} />
+              // <ClubCard clubName={each.clubName} imageUrl={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url} link={each.link} />
             ))
           }
         </div>
@@ -74,8 +75,9 @@ function CulturalBoardPage() {
         <h1>Meet The Team</h1>
         <div className="team-container">
           {
-            team.map(each=>(
-              <SWCTeamCard name={each.name} position={each.position} email={each.email} phone={each.phone} image={process.env.REACT_APP_API_BASE_URL+each.image?.url} program={each.program} />
+            team.map(each => (
+              <SWCTeamCard name={each.name} position={each.position} email={each.email} phone={each.phone} image={each.image?.url} program={each.program} />
+              // <SWCTeamCard name={each.name} position={each.position} email={each.email} phone={each.phone} image={process.env.REACT_APP_API_BASE_URL+each.image?.url} program={each.program} />
             ))
           }
         </div>
