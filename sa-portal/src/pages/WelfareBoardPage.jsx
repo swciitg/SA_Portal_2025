@@ -10,7 +10,7 @@ import SWCTeamCard from "../Components/SWCTeamCard";
 import sendApiRequest from "../services/apiService";
 import ROUTES from "../constants/apiRoutes";
 import getStrapiMediaUrl from "../utils/strApiMediaUrl";
-import SWCTeamCard from "../Components/SWCTeamCard";
+
 
 function WelfareBoardPage() {
   const route = ["Students' Affairs Boards", "Student's Welfare Board"];
