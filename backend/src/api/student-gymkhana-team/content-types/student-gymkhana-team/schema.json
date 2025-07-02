@@ -11,13 +11,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "heading": {
-      "type": "string"
+    "year": {
+      "type": "biginteger"
     },
     "members": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::team-member.team-member"
+      "target": "api::students-gymkhana-team-member.students-gymkhana-team-member"
     }
   }
 }

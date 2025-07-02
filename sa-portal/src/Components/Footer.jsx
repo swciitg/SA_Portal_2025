@@ -34,7 +34,7 @@ const Footer = () => {
         <div className="flex flex-col md:w-1/3">
           <div className="flex items-center mb-4">
             <img
-              src={`${process.env.REACT_APP_API_BASE_URL}${iitg_logo}`}
+              src={`${iitg_logo}`}
               alt="Logo"
               className="w-12 h-12 mr-3"
             />

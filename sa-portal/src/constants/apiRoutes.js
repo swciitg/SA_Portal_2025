@@ -9,14 +9,14 @@ const ROUTES = {
   FORMS: "/forms?populate=*", // DONE*
   SAC_MEMBERS: "/sac-members?populate[member][populate]=imageUrl", // DONE*
   SAC_MINUTES: "/sac-minutes?populate=*", // DONE*
-  SGC_TEAM: "/student-gymkhana-teams?populate[members][populate]=imageUrl", // DONE*
+  SGC_TEAM: "/student-gymkhana-teams?populate=*", // DONE*
   CULTURAL_BOARD_ANNOUNCEMENTS: "/cultural-board-announcements", // DONE
   CULTURAL_BOARD_EVENTS: "/cultural-board-events?populate=*", // DONE
   CULTURAL_BOARD_CLUBS: "/cultural-board-clubs?populate[club][populate]=*", // DONE
   CULTURAL_BOARD_TEAM: "/cultural-board-teams?populate=*", // DONE
   HOSTEL_AFFAIRS_BOARD_ANNOUNCEMENTS: "/hostel-affairs-board-announcements", // DONE
   HOSTEL_AFFAIRS_BOARD_EVENTS: "/hostel-affairs-board-events?populate=*", // DONE
-  HOSTEL_AFFAIRS_BOARD_TEAM: "/hostel-affairs-teams?populate[members][populate]=imageUrl", // DONE
+  HOSTEL_AFFAIRS_BOARD_TEAM: "/hostel-affairs-teams?populate=*", // DONE
   HMC_MEMBERS: "/hmc-members?populate=*", // DONE
   SPORTS_BOARD_COURSES: "/sports-board-courses?populate=*",
   SPORTS_BOARD_FACILITIES: "/sports-board-facilities?populate=*", // DONE
@@ -37,6 +37,14 @@ const ROUTES = {
   WEB_COMMITTEE_EVENTS: "/web-committee-events?populate=*", // DONE
   WEB_COMMITTEE_SERVICES: "/web-committee-services?populate=*", // DONE*
   WEB_COMMITTEE_TEAM: "/swc-teams?populate=*", // DONE*
+  SA_HOSTEL_TEAM:"/sa-hostel-teams?populate[members][populate]=imageUrl",
+  NEW_SAC_TEAM:"/new-sac-teams?populate[members][populate]=imageUrl",
+  GYMKHANA_OFFICE_TEAM:"/gymkhana-office-teams?populate[members][populate]=imageUrl",//hai//gymkhana-office-teams
+  COUNCELLING_CELL_TEAM:"/counselling-cell-teams?populate[members][populate]=imageUrl",//hai//counselling-cell-teams
+  TECHNICAL_BOARD_CLUB_SECRETARIES:"/technical-board-club-secretaries?populate=*",
+  CULTURAL_BOARD_CLUB_SECRETARIES:"/cultural-board-club-secrataries?populate=*",
+  WELFARE_BOARD_CLUB_SECRETARIES:"/welfare-board-club-secrataries?populate=*",
+  SPORTS_BOARD_CLUB_SECRETARIES:"/sports-board-club-secretaries?populate=*"
 };
 
 export default ROUTES;

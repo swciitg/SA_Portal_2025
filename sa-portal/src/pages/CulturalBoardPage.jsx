@@ -8,6 +8,7 @@ import ClubCard from "../Components/ClubCard";
 import SWCTeamCard from "../Components/SWCTeamCard";
 import sendApiRequest from "../services/apiService";
 import ROUTES from "../constants/apiRoutes";
+import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
 function CulturalBoardPage() {
   const route = ["Students' Affairs Boards", "Cultural Board"];
@@ -16,19 +17,21 @@ function CulturalBoardPage() {
   const [events, setEvents] = useState([]);
   const [clubs, setClubs] = useState([]);
   const [team, setTeam] = useState([]);
+  const [clubSecretaries, setClubSecretaries] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [announcementsRes, eventsRes, clubsRes, teamRes] = await Promise.all([
+        const [announcementsRes, eventsRes, clubsRes, teamRes, clubSecretariesRes] = await Promise.all([
           sendApiRequest(ROUTES.CULTURAL_BOARD_ANNOUNCEMENTS),
           sendApiRequest(ROUTES.CULTURAL_BOARD_EVENTS),
           sendApiRequest(ROUTES.CULTURAL_BOARD_CLUBS),
           sendApiRequest(ROUTES.CULTURAL_BOARD_TEAM),
+          sendApiRequest(ROUTES.CULTURAL_BOARD_CLUB_SECRETARIES),
         ])
 
-        console.log({ announcementsRes, eventsRes, clubsRes, teamRes });
-        console.log(clubsRes.data)
+        console.log({ announcementsRes, eventsRes, clubsRes, teamRes, clubSecretariesRes });
+        setClubSecretaries(clubSecretariesRes?.data)
         setAnnouncements(announcementsRes?.data)
         setEvents(eventsRes?.data)
         setClubs(clubsRes?.data)
@@ -65,7 +68,9 @@ function CulturalBoardPage() {
         <div className="clubs-container">
           {
             clubs.map(each => (
-              <ClubCard clubName={each?.club?.clubName} imageUrl={process.env.REACT_APP_API_BASE_URL+ each?.club?.imageUrl?.url} link={each?.club?.link} />
+              <ClubCard clubName={each?.club?.clubName} imageUrl={getStrapiMediaUrl(each?.club?.imageUrl?.url)} link={each?.club?.link} />
+
+              // <ClubCard clubName={each?.club?.clubName} imageUrl={process.env.REACT_APP_API_BASE_URL+ each?.club?.imageUrl?.url} link={each?.club?.link} />
               // <ClubCard clubName={each.clubName} imageUrl={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url} link={each.link} />
             ))
           }
@@ -76,10 +81,28 @@ function CulturalBoardPage() {
         <div className="team-container">
           {
             team.map(each => (
+              <SWCTeamCard name={each.name} position={each.position} email={each.email} phone={each.phone} image={getStrapiMediaUrl(each?.image?.url)} program={each.program} />
               // <SWCTeamCard name={each.name} position={each.position} email={each.email} phone={each.phone} image={ each.image?.url} program={each.program} />
-              <SWCTeamCard name={each.name} position={each.position} email={each.email} phone={each.phone} image={process.env.REACT_APP_API_BASE_URL+each.image?.url} program={each.program} />
+              // <SWCTeamCard name={each.name} position={each.position} email={each.email} phone={each.phone} image={process.env.REACT_APP_API_BASE_URL + each.image?.url} program={each.program} />
             ))
           }
+        </div>
+      </div>
+      <div className="boards-team">
+        <h1>Club Secretaries</h1>
+        <div className="team-container">
+          {clubSecretaries.map((each) => (
+            <SWCTeamCard
+              name={each.club}
+              position={each.name}
+              email={each.email}
+              phone={each.phone}
+              image={getStrapiMediaUrl(each?.image?.url)}
+              // image={process.env.REACT_APP_API_BASE_URL + each.image?.url}
+              // image={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
+              program={each.program}
+            />
+          ))}
         </div>
       </div>
     </>

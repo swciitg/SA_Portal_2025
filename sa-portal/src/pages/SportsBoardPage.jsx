@@ -12,6 +12,7 @@ import BoardsFacilities from "../Components/BoardsFacilities";
 import sendApiRequest from "../services/apiService";
 import ROUTES from "../constants/apiRoutes";
 import { Link } from "react-router-dom";
+import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
 function SportsBoardPage() {
   const routes = ["Student Affairs Board", "Sports Board"];
@@ -23,11 +24,12 @@ function SportsBoardPage() {
   const [team, setTeam] = useState([])
   const [rules, setRules] = useState([])
   const [forms, setForms] = useState([])
+  const [clubSecretaries, setClubSecretaries] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [coursesRes, facilitiesRes, eventsRes, clubsRes, teamRes, rulesRes, formsRes] = await Promise.all([
+        const [coursesRes, facilitiesRes, eventsRes, clubsRes, teamRes, rulesRes, formsRes, clubSecretariesRes] = await Promise.all([
           sendApiRequest(ROUTES.SPORTS_BOARD_COURSES),
           sendApiRequest(ROUTES.SPORTS_BOARD_FACILITIES),
           sendApiRequest(ROUTES.SPORTS_BOARD_EVENTS),
@@ -35,10 +37,10 @@ function SportsBoardPage() {
           sendApiRequest(ROUTES.SPORTS_BOARD_TEAM),
           sendApiRequest(ROUTES.SPORTS_BOARD_RULES),
           sendApiRequest(ROUTES.SPORTS_BOARD_FORMS),
-
+          sendApiRequest(ROUTES.SPORTS_BOARD_CLUB_SECRETARIES),
         ])
 
-        console.log({ coursesRes, facilitiesRes, eventsRes, clubsRes, teamRes, rulesRes, formsRes });
+        console.log({ coursesRes, facilitiesRes, eventsRes, clubsRes, teamRes, rulesRes, formsRes, clubSecretariesRes });
         console.log(facilitiesRes.data)
         setCourses(coursesRes?.data)
         setFacilities(facilitiesRes?.data)
@@ -47,6 +49,7 @@ function SportsBoardPage() {
         setTeam(teamRes?.data)
         setRules(rulesRes?.data)
         setForms(formsRes?.data)
+        setClubSecretaries(clubSecretariesRes?.data)
       } catch (error) {
         console.error("Error in fetching data:", error);
       }
@@ -57,7 +60,7 @@ function SportsBoardPage() {
 
   return (
     <>
-      <BannerTop heading="Sports Board" route={routes} />
+      <BannerTop heading="Sports" blueText="Board" route={routes} />
       <div className="boards-about">
         <div className="boards-about-text">
           <h1 className="mb-4">
@@ -148,9 +151,11 @@ function SportsBoardPage() {
         <div className="clubs-container">
           {clubs.map((each) => (
             <SportsClubCard
-// process.env.REACT_APP_API_BASE_URL+ each?.club?.imageUrl?.url
+              // process.env.REACT_APP_API_BASE_URL+ each?.club?.imageUrl?.url
               clubName={each.club?.clubName}
-              imageUrl={process.env.REACT_APP_API_BASE_URL+each?.club?.imageUrl?.url}
+              imageUrl={getStrapiMediaUrl(each?.club?.imageUrl?.url)}
+
+              // imageUrl={process.env.REACT_APP_API_BASE_URL + each?.club?.imageUrl?.url}
               // imageUrl={process.env.REACT_APP_API_BASE_URL+each.imageUrl?.url}
               description={each.club?.description}
             />
@@ -166,7 +171,25 @@ function SportsBoardPage() {
               position={each.position}
               email={each.email}
               phone={each.phone}
-              image={process.env.REACT_APP_API_BASE_URL + each.image?.url}
+              image={getStrapiMediaUrl(each?.image?.url)}
+              // image={process.env.REACT_APP_API_BASE_URL + each.image?.url}
+              // image={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
+              program={each.program}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="boards-team">
+        <h1>Club Secretaries</h1>
+        <div className="team-container">
+          {clubSecretaries.map((each) => (
+            <SWCTeamCard
+              name={each.club}
+              position={each.name}
+              email={each.email}
+              phone={each.phone}
+              image={getStrapiMediaUrl(each?.image?.url)}
+              // image={process.env.REACT_APP_API_BASE_URL + each.image?.url}
               // image={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
               program={each.program}
             />
@@ -189,7 +212,8 @@ function SportsBoardPage() {
                   {each.title}
                 </span>
                 <div className="flex space-x-2 shrink-0">
-                  <Link to={process.env.REACT_APP_API_BASE_URL + each.pdf?.url} target="_blank" className="hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm">
+                  <Link to={getStrapiMediaUrl(each.pdf?.url)} target="_blank" className="hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm">
+                    {/* <Link to={process.env.REACT_APP_API_BASE_URL + each.pdf?.url} target="_blank" className="hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm"> */}
                     PDF
                   </Link>
                 </div>
@@ -214,7 +238,8 @@ function SportsBoardPage() {
                   {each.title}
                 </span>
                 <div className="flex space-x-2 shrink-0">
-                  <Link to={process.env.REACT_APP_API_BASE_URL + each.pdf?.url} target="_blank" className="hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm">
+                  <Link to={getStrapiMediaUrl(each.pdf?.url)} target="_blank" className="hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm">
+                    {/* <Link to={process.env.REACT_APP_API_BASE_URL + each.pdf?.url} target="_blank" className="hoverCustom bg-gray-200 hover:text-white text-black px-3 py-2 text-sm"> */}
                     PDF
                   </Link>
                 </div>

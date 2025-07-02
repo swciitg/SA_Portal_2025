@@ -11,7 +11,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "head": {
+    "heading": {
       "type": "string"
     },
     "members": {

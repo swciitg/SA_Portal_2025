@@ -11,13 +11,30 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "heading": {
+    "name": {
       "type": "string"
     },
-    "members": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::team-member.team-member"
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "imageUrl": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "branch": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
     }
   }
 }

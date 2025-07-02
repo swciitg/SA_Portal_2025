@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cultural_board_club_secrataries",
+  "info": {
+    "singularName": "cultural-board-club-secratary",
+    "pluralName": "cultural-board-club-secrataries",
+    "displayName": "Cultural_Board_Club_Secratary"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "club": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "program": {
+      "type": "text"
+    }
+  }
+}

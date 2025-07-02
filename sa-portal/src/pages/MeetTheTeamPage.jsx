@@ -15,11 +15,13 @@ import "./MeetTheTeam.css";
 import { useSearchParams } from "react-router-dom";
 import sendApiRequest from "../services/apiService";
 import ROUTES from "../constants/apiRoutes";
+import getStrapiMediaUrl from "../utils/strApiMediaUrl";
+import SWCTeamCard from "../Components/SWCTeamCard";
 
 const categoryToApiRouteMap = {
   "Student Affairs Functionaries": ROUTES.SA_TEAM,
-  "Hostel Affairs Board": ROUTES.HOSTEL_AFFAIRS_BOARD_TEAM,
-  "Students Gymkhana": ROUTES.STUDENTS_GYMKHANA_TEAM,
+  "Hostel Affairs Board": ROUTES.SA_HOSTEL_TEAM,
+  "Students Gymkhana": ROUTES.SGC_TEAM,
   "Gymkhana Office": ROUTES.GYMKHANA_OFFICE_TEAM,
   "Counselling Cell": ROUTES.COUNCELLING_CELL_TEAM,
   "New SAC": ROUTES.NEW_SAC_TEAM,
@@ -198,6 +200,7 @@ const MeetTheTeam = () => {
           </div>
           <img src={MeetTheTeamBanner} alt="banner" />
         </div>
+
         <ul className="category-selector">
           {groups.map((group, index) => (
             <li
@@ -212,35 +215,43 @@ const MeetTheTeam = () => {
             </li>
           ))}
         </ul>
+
         <div className="teams-container">
           {category === "Students Gymkhana" && (
             <>
-              <div className="lg:ml-[15vw] sm:ml-[10vw] mt-[60px] w-[273px] h-[60px] flex justify-between border-solid border-[2px] border-[rgba(0,0,0,0.2)]">
+              <div className="lg:ml-[15vw] sm:ml-[10vw] mt-[60px] w-[273px] h-[60px] flex justify-between items-center border border-[rgba(0,0,0,0.2)] rounded-md shadow-sm bg-white">
                 <p
                   id="select-year"
-                  className="my-auto ml-[20px] text-[rgba(0,0,0,0.6)]"
+                  className="ml-[20px] text-[rgba(0,0,0,0.6)] text-[16px]"
                 >
-                  Select Year
+                  {year}
                 </p>
                 <button
                   onClick={showYearList}
-                  className="h-100 w-[58px] bg-[#0A31A0]"
+                  className="w-[58px] h-full bg-[#0A31A0] rounded-r-md flex items-center justify-center"
                   type="button"
                 >
                   <img
-                    className="w-[30px] h-[30px] m-auto"
+                    className="w-[20px] h-[20px]"
                     src={down}
                     alt="down"
                   />
                 </button>
               </div>
-              <ul className="lg:ml-[15vw] sm:ml-[10vw] hidden absolute h-[300px] overflow-y-scroll w-[273px] [&::-webkit-scrollbar]:w-[10px] [&::-webkit-scrollbar-track]:bg-[#D0D3E6] [&::-webkit-scrollbar-thumb]:bg-[rgba(0,0,0,0.38)] [&::-webkit-scrollbar]:h-[0px]">
+
+              <ul
+                className="lg:ml-[15vw] sm:ml-[10vw] hidden absolute h-[max-content] max-h-[240px] overflow-y-auto w-[273px] z-10
+    bg-white shadow-lg border border-[rgba(0,0,0,0.2)]
+    [&::-webkit-scrollbar]:w-[6px]
+    [&::-webkit-scrollbar-track]:bg-transparent
+    [&::-webkit-scrollbar-thumb]:bg-[rgba(0,0,0,0.25)] [&::-webkit-scrollbar-thumb]:rounded-full
+    scroll-smooth rounded-md"
+              >
                 {years.map((each, index) => (
                   <li
                     onClick={selectedYear(each)}
-                    className="text-[20px] bg-[#E7ECFC] h-[58px] w-[273px] text-[#00000099] pl-[20px] flex items-center border border-solid border-[rgba(0,0,0,0.2)] cursor-pointer hover:underline"
                     key={index}
-                    value={each}
+                    className="text-[18px] bg-[#E7ECFC] h-[58px] w-full text-[#00000099] px-[20px] flex items-center border-b border-[rgba(0,0,0,0.1)] cursor-pointer hover:bg-[#d6ddf4]"
                   >
                     {each}
                   </li>
@@ -248,29 +259,56 @@ const MeetTheTeam = () => {
               </ul>
             </>
           )}
-          {(teams || []).map((team, index) => (
-            <div key={index} className="team-section">
-              <h1 className="team-heading">{team.heading}</h1>
+
+          {category === "Students Gymkhana" ? (
+            // Filter gymkhana teams by selected year, then show their members
+            (teams || [])
+              .filter((t) => String(t.year) === year)
+              .flatMap((t) => t.members)
+              .length > 0 ? (
               <div className="team-cards-scroll">
                 <div className="team-cards">
-                  {team.members.map((member, idx) => (
-                    // (category !== "Students Gymkhana" || member.year === year) && (
-                    <TeamCard
-                      key={idx}
-                      name={member.name}
-                      title={member.title}
-                      mail={member.mail}
-                      phone={member.phone}
-                      imageUrl={ member.imageUrl?.url}
-                      // imageUrl={process.env.REACT_APP_API_BASE_URL+member.imageUrl?.url}
-                      responsibility={member.responsibility}
-                    />
-                    // )
-                  ))}
+                  {(teams || [])
+                    .filter((t) => String(t.year) === year)
+                    .flatMap((t) => t.members)
+                    .map((member, idx) => (
+                      <SWCTeamCard
+                        key={idx}
+                        name={member.name}
+                        position={member.position}
+                        email={member.email}
+                        phone={member.phone}
+                        image={getStrapiMediaUrl(member.imageUrl?.url)}
+                        program={member.branch}
+                      />
+                    ))}
                 </div>
               </div>
-            </div>
-          ))}
+            ) : (
+              <p className="ml-[15vw] mt-6 text-gray-500">No members found for {year}.</p>
+            )
+          ) : (
+            (teams || []).map((team, index) => (
+              <div key={index} className="team-section">
+                <h1 className="team-heading">{team.heading}</h1>
+                <div className="team-cards-scroll">
+                  <div className="team-cards">
+                    {team.members.map((member, idx) => (
+                      <TeamCard
+                        key={idx}
+                        name={member.name}
+                        title={member.title}
+                        mail={member.mail}
+                        phone={member.phone}
+                        imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
+                        responsibility={member.responsibility}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </div>
