@@ -197,6 +197,22 @@ function SportsBoardPage() {
         </div>
       </div>
       <div className="boards-team">
+        <h1>Club Secretaries</h1>
+        <div className="team-container">
+          {clubSecretaries.map((each) => (
+            <SWCTeamCard
+              name={each.name}
+              position={each.position}
+              email={each.email}
+              phone={each.phone}
+              image={process.env.REACT_APP_API_BASE_URL + each.image?.url}
+              // image={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
+              program={each.program}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="boards-team">
         <h1>Rules</h1>
         <div>
           {rules.map((each, idx) => (

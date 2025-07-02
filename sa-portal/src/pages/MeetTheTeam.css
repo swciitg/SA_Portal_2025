@@ -22,52 +22,12 @@
     width:0;
     height:0;
 }
-
 .mtt-banner{
     position: relative;
-    background-color: #08267C;
-    height:431px;
-    padding-left:120px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    height:0;
+    width:100%;
 }
 
-.mtt-banner img{
-    position: absolute;
-    top:0;
-    right:0;
-    height:100%;
-}
-
-.mtt-banner div{
-    font-size: 76px;
-    height:fit-content;
-    font-weight: 900;
-    color:#ffffff;
-    z-index: 1;
-}
-
-.mtt-banner div span{
-    color:#5E82EB;
-}
-
-.mtt-banner div .mtt-banner-links{
-    font-size: 20px;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    gap:10px;
-}
-.mtt-banner div .mtt-banner-links a{
-    text-decoration: underline;
-    text-underline-offset: 4px;
-}
-.mtt-banner div .mtt-banner-links img{
-    height:24px;
-    width:24px;
-    position: relative;
-}
 
 .category-selector{
     position: sticky;
@@ -198,4 +158,18 @@
 
 .customCOlor {
     background-color: rgb(8, 38, 124);
+}
+
+@media screen and (max-width: 650px) {
+    .category-selector-scrolled p{
+        font-size: 12px;
+        padding: 5px 0 5px 0;
+    }
+    .category-selector-scrolled .category{
+        padding: 0 10px;
+    }
+    .category-selector-scrolled .category-active{
+        padding: 0 10px;
+    }
+
 }

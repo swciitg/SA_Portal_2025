@@ -14,10 +14,10 @@ function CulturalBoardPage() {
   const route = ["Students' Affairs Boards", "Cultural Board"];
 
   const [announcements, setAnnouncements] = useState([]);
+  const [clubSecretaries, setClubSecretaries] = useState([]);
   const [events, setEvents] = useState([]);
   const [clubs, setClubs] = useState([]);
   const [team, setTeam] = useState([]);
-  const [clubSecretaries, setClubSecretaries] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,12 +30,13 @@ function CulturalBoardPage() {
           sendApiRequest(ROUTES.CULTURAL_BOARD_CLUB_SECRETARIES),
         ])
 
-        console.log({ announcementsRes, eventsRes, clubsRes, teamRes, clubSecretariesRes });
-        setClubSecretaries(clubSecretariesRes?.data)
+        console.log({ announcementsRes, eventsRes, clubsRes, teamRes, clubSecretariesRes  });
+        console.log(clubsRes.data)
         setAnnouncements(announcementsRes?.data)
         setEvents(eventsRes?.data)
         setClubs(clubsRes?.data)
         setTeam(teamRes?.data)
+        setClubSecretaries(clubSecretariesRes?.data)
       } catch (error) {
         console.error("Error in fetching data:", error);
       }
