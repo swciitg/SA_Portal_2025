@@ -24,12 +24,12 @@ function SportsBoardPage() {
   const [team, setTeam] = useState([])
   const [rules, setRules] = useState([])
   const [forms, setForms] = useState([])
-  const [clubSecretaries, setClubSecretaries] = useState([])
+  // const [clubSecretaries, setClubSecretaries] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [coursesRes, facilitiesRes, eventsRes, clubsRes, teamRes, rulesRes, formsRes, clubSecretariesRes] = await Promise.all([
+        const [coursesRes, facilitiesRes, eventsRes, clubsRes, teamRes, rulesRes, formsRes] = await Promise.all([
           sendApiRequest(ROUTES.SPORTS_BOARD_COURSES),
           sendApiRequest(ROUTES.SPORTS_BOARD_FACILITIES),
           sendApiRequest(ROUTES.SPORTS_BOARD_EVENTS),
@@ -37,10 +37,10 @@ function SportsBoardPage() {
           sendApiRequest(ROUTES.SPORTS_BOARD_TEAM),
           sendApiRequest(ROUTES.SPORTS_BOARD_RULES),
           sendApiRequest(ROUTES.SPORTS_BOARD_FORMS),
-          sendApiRequest(ROUTES.SPORTS_BOARD_CLUB_SECRETARIES),
+          // sendApiRequest(ROUTES.SPORTS_BOARD_CLUB_SECRETARIES),
         ])
 
-        console.log({ coursesRes, facilitiesRes, eventsRes, clubsRes, teamRes, rulesRes, formsRes, clubSecretariesRes });
+        console.log({ coursesRes, facilitiesRes, eventsRes, clubsRes, teamRes, rulesRes, formsRes });
         console.log(facilitiesRes.data)
         setCourses(coursesRes?.data)
         setFacilities(facilitiesRes?.data)
@@ -49,7 +49,7 @@ function SportsBoardPage() {
         setTeam(teamRes?.data)
         setRules(rulesRes?.data)
         setForms(formsRes?.data)
-        setClubSecretaries(clubSecretariesRes?.data)
+        // setClubSecretaries(clubSecretariesRes?.data)
       } catch (error) {
         console.error("Error in fetching data:", error);
       }
@@ -179,24 +179,7 @@ function SportsBoardPage() {
           ))}
         </div>
       </div>
-      <div className="boards-team">
-        <h1>Club Secretaries</h1>
-        <div className="team-container">
-          {clubSecretaries.map((each) => (
-            <SWCTeamCard
-              name={each.club}
-              position={each.name}
-              email={each.email}
-              phone={each.phone}
-              image={getStrapiMediaUrl(each?.image?.url)}
-              // image={process.env.REACT_APP_API_BASE_URL + each.image?.url}
-              // image={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
-              program={each.program}
-            />
-          ))}
-        </div>
-      </div>
-      <div className="boards-team">
+      {/* <div className="boards-team">
         <h1>Club Secretaries</h1>
         <div className="team-container">
           {clubSecretaries.map((each) => (
@@ -211,7 +194,7 @@ function SportsBoardPage() {
             />
           ))}
         </div>
-      </div>
+      </div> */}
       <div className="boards-team">
         <h1>Rules</h1>
         <div>

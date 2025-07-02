@@ -6,7 +6,6 @@ import TeamCard from "../Components/TeamCard";
 import sendApiRequest from "../services/apiService";
 import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 import ROUTES from "../constants/apiRoutes";
-import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
 function StudentsGymkhanaCouncilPage() {
   const route = [
