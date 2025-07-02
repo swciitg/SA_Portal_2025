@@ -11,6 +11,7 @@ import sendApiRequest from "../services/apiService";
 import ROUTES from "../constants/apiRoutes";
 import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
+
 function WelfareBoardPage() {
   const route = ["Students' Affairs Boards", "Student's Welfare Board"];
 
