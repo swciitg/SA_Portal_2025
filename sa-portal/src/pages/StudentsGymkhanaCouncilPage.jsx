@@ -58,7 +58,7 @@ function StudentsGymkhanaCouncilPage() {
               <h1 className="team-heading">{section.heading}</h1>
               <div className="team-cards-scroll">
                 <div className="team-cards team-cards-hab">
-                  {section.members.map((member, idx) => (
+                  {section.members?.map((member, idx) => (
                     <TeamCard
                       key={idx}
                       name={member.name}
