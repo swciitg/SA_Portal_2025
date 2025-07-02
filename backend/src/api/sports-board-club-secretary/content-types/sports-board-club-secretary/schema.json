@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sports_board_club_secretaries",
+  "info": {
+    "singularName": "sports-board-club-secretary",
+    "pluralName": "sports-board-club-secretaries",
+    "displayName": "Sports_Board_Club_Secretary"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "club": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "program": {
+      "type": "text"
+    }
+  }
+}

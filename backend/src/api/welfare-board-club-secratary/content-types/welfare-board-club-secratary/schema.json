@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "welfare_board_club_secrataries",
+  "info": {
+    "singularName": "welfare-board-club-secratary",
+    "pluralName": "welfare-board-club-secrataries",
+    "displayName": "WelfareBoard_Club_Secratary"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "club": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "program": {
+      "type": "text"
+    }
+  }
+}

@@ -8,41 +8,31 @@ import ClubCard from "../Components/ClubCard";
 import SWCTeamCard from "../Components/SWCTeamCard";
 import sendApiRequest from "../services/apiService";
 import ROUTES from "../constants/apiRoutes";
+import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
 function TechnicalBoardPage() {
   const route = ["Students' Affairs Boards", "Technical Board"];
 
-  const [clubSecretaries, setClubSecretaries] = useState([]);
   const [announcements, setAnnouncements] = useState([]);
   const [events, setEvents] = useState([]);
   const [clubs, setClubs] = useState([]);
   const [team, setTeam] = useState([]);
+  const [clubSecretaries, setClubSecretaries] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [
-          announcementsRes,
-          eventsRes,
-          clubsRes,
-          teamRes,
-          clubSecretariesRes,
-        ] = await Promise.all([
-          sendApiRequest(ROUTES.TECHNICAL_BOARD_ANNOUNCEMENTS),
-          sendApiRequest(ROUTES.TECHNICAL_BOARD_EVENTS),
-          sendApiRequest(ROUTES.TECHNICAL_BOARD_CLUBS),
-          sendApiRequest(ROUTES.TECHNICAL_BOARD_TEAM),
-          sendApiRequest(ROUTES.SPORTS_BOARD_CLUB_SECRETARIES),
-        ]);
+        const [announcementsRes, eventsRes, clubsRes, teamRes, clubSecretariesRes] =
+          await Promise.all([
+            sendApiRequest(ROUTES.TECHNICAL_BOARD_ANNOUNCEMENTS),
+            sendApiRequest(ROUTES.TECHNICAL_BOARD_EVENTS),
+            sendApiRequest(ROUTES.TECHNICAL_BOARD_CLUBS),
+            sendApiRequest(ROUTES.TECHNICAL_BOARD_TEAM),
+            sendApiRequest(ROUTES.TECHNICAL_BOARD_CLUB_SECRETARIES),
+          ]);
 
-        console.log({
-          announcementsRes,
-          eventsRes,
-          clubsRes,
-          teamRes,
-          clubSecretariesRes,
-        });
-        console.log(clubsRes.data);
+        console.log({ announcementsRes, eventsRes, clubsRes, teamRes, clubSecretariesRes });
+        setClubSecretaries(clubSecretariesRes?.data);
         setAnnouncements(announcementsRes?.data);
         setEvents(eventsRes?.data);
         setClubs(clubsRes?.data);
@@ -88,9 +78,8 @@ function TechnicalBoardPage() {
           {clubs.map((each) => (
             <ClubCard
               clubName={each?.club.clubName}
-              imageUrl={
-                process.env.REACT_APP_API_BASE_URL + each?.club.imageUrl?.url
-              }
+              imageUrl={getStrapiMediaUrl(each?.club.imageUrl?.url)}
+              // imageUrl={process.env.REACT_APP_API_BASE_URL + each?.club.imageUrl?.url}
               // imageUrl={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
               link={each?.club.link}
             />
@@ -106,7 +95,25 @@ function TechnicalBoardPage() {
               position={each.position}
               email={each.email}
               phone={each.phone}
-              image={process.env.REACT_APP_API_BASE_URL + each.image?.url}
+              image={getStrapiMediaUrl(each.image?.url)}
+              // image={process.env.REACT_APP_API_BASE_URL + each.image?.url}
+              // image={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
+              program={each.program}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="boards-team">
+        <h1>Club Secretaries</h1>
+        <div className="team-container">
+          {clubSecretaries.map((each) => (
+            <SWCTeamCard
+              name={each.name}
+              position={each.club}
+              email={each.email}
+              phone={each.phone}
+              image={getStrapiMediaUrl(each.image?.url)}
+              // image={process.env.REACT_APP_API_BASE_URL + each.image?.url}
               // image={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
               program={each.program}
             />

@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "technical_board_club_secretaries",
+  "info": {
+    "singularName": "technical-board-club-secretary",
+    "pluralName": "technical-board-club-secretaries",
+    "displayName": "Technical_Board_Club_Secretary"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "club": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "program": {
+      "type": "text"
+    }
+  }
+}

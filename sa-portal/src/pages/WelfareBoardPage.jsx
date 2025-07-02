@@ -6,6 +6,7 @@ import BoardsEvents from "../Components/BoardsEvents";
 import LayeredCarousel from "../Components/LayeredCarousel";
 import ClubCard from "../Components/ClubCard";
 import TeamCard from "../Components/TeamCard";
+import SWCTeamCard from "../Components/SWCTeamCard";
 import sendApiRequest from "../services/apiService";
 import ROUTES from "../constants/apiRoutes";
 import getStrapiMediaUrl from "../utils/strApiMediaUrl";
@@ -15,13 +16,14 @@ function WelfareBoardPage() {
   const route = ["Students' Affairs Boards", "Student's Welfare Board"];
 
   const [announcements, setAnnouncements] = useState([]);
-  const [clubSecretaries, setClubSecretaries] = useState([]);
   const [events, setEvents] = useState([]);
   const [clubs, setClubs] = useState([]);
   const [team, setTeam] = useState([]);
+  const [clubSecretaries, setClubSecretaries] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log("Fetching data for Welfare Board Page");
       try {
         const [announcementsRes, eventsRes, clubsRes, teamRes, clubSecretariesRes] =
           await Promise.all([
@@ -34,6 +36,7 @@ function WelfareBoardPage() {
 
         console.log({ announcementsRes, eventsRes, clubsRes, teamRes, clubSecretariesRes });
 
+        setClubSecretaries(clubSecretariesRes?.data);
         setAnnouncements(announcementsRes?.data);
         setEvents(eventsRes?.data);
         setClubs(clubsRes?.data);
@@ -104,7 +107,8 @@ function WelfareBoardPage() {
                       title={member.title}
                       mail={member.mail}
                       phone={member.phone}
-                      imageUrl={member.imageUrl?.url}
+                      imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
+                      // imageUrl={member.imageUrl?.url}
                       description={member.description}
                     />
                   ))}
@@ -120,10 +124,11 @@ function WelfareBoardPage() {
           {clubSecretaries.map((each) => (
             <SWCTeamCard
               name={each.name}
-              position={each.position}
+              position={each.club}
               email={each.email}
               phone={each.phone}
-              image={process.env.REACT_APP_API_BASE_URL + each.image?.url}
+              image={getStrapiMediaUrl(each.image?.url)}
+              // image={process.env.REACT_APP_API_BASE_URL + each.image?.url}
               // image={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
               program={each.program}
             />

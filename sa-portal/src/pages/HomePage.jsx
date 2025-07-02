@@ -20,6 +20,7 @@ const HomePage = () => {
         ]);
 
         console.log({ announcementsRes, achievementsRes });
+        console.log(achievementsRes.data)
 
         setAnnouncements(announcementsRes?.data);
         setAchievements(achievementsRes?.data);

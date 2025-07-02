@@ -10,6 +10,7 @@ import sendApiRequest from "../services/apiService";
 import ROUTES from "../constants/apiRoutes";
 import next from "../assets/Images/next.png";
 import down from "../assets/Images/chevron-down.png";
+import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
 function HostelAffairsBoardPage() {
   const [hostel, setHostel] = useState("Barak");
@@ -33,7 +34,7 @@ function HostelAffairsBoardPage() {
           sendApiRequest(ROUTES.HOSTEL_AFFAIRS_BOARD_TEAM),
           sendApiRequest(ROUTES.HMC_MEMBERS),
         ]);
-
+        console.log(teamRes.data)
         setAnnouncements(announcementsRes?.data);
         setEvents(eventsRes?.data);
         setTeam(teamRes?.data);
@@ -85,10 +86,35 @@ function HostelAffairsBoardPage() {
       <div className="boards-team boards-team-hab">
         <h1>Meet The Team - HAB</h1>
         <div className="teams-container">
-          {team.map((section, index) => (
-            <div key={index} className="team-section">
-              <h1 className="team-heading">{section.heading}</h1>
-              <div className="team-cards-scroll">
+          {/* {team.map((section, index) => ( */}
+          {/* <div key={index} className="team-section"> */}
+          {/* <h1 className="team-heading">{section.heading}</h1> */}
+          <div className="team-cards-scroll">
+            <div className="team-cards team-cards-hab">
+              {team.map((member, idx) => (
+                // <TeamCard
+                //   key={idx}
+                //   name={member.name}
+                //   title={member.title}
+                //   mail={member.mail}
+                //   phone={member.phone}
+                //   imageUrl={process.env.REACT_APP_API_BASE_URL + member.imageUrl?.url}
+                //   description={member.description}
+                // />
+                <SWCTeamCard
+                  key={idx}
+                  name={member.name}
+                  position={member.position}
+                  email={member.email}
+                  phone={member.phone}
+                  image={getStrapiMediaUrl(member.imageUrl?.url)}
+                  program={member.branch}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* <div className="team-cards-scroll">
                 <div className="team-cards team-cards-hab">
                   {section.members.map((member, idx) => (
                     <TeamCard
@@ -102,9 +128,9 @@ function HostelAffairsBoardPage() {
                     />
                   ))}
                 </div>
-              </div>
-            </div>
-          ))}
+              </div> */}
+          {/* </div> */}
+
         </div>
       </div>
 
@@ -152,7 +178,8 @@ function HostelAffairsBoardPage() {
                   position={each.position}
                   email={each.mail}
                   phone={each.phone}
-                  image={process.env.REACT_APP_API_BASE_URL+ each.image?.url}
+                  image={getStrapiMediaUrl(each.image?.url)}
+                  // image={process.env.REACT_APP_API_BASE_URL + each.image?.url}
                 />
               </div>
             ))}

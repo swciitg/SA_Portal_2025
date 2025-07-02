@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "students_gymkhana_team_members",
+  "info": {
+    "singularName": "students-gymkhana-team-member",
+    "pluralName": "students-gymkhana-team-members",
+    "displayName": "Students_Gymkhana_Team_Member"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "imageUrl": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "branch": {
+      "type": "text"
+    }
+  }
+}
