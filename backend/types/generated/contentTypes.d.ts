@@ -556,40 +556,6 @@ export interface ApiCulturalBoardAnnouncementCulturalBoardAnnouncement
   };
 }
 
-export interface ApiCulturalBoardClubSecrataryCulturalBoardClubSecratary
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'cultural_board_club_secrataries';
-  info: {
-    displayName: 'Cultural_Board_Club_Secratary';
-    pluralName: 'cultural-board-club-secrataries';
-    singularName: 'cultural-board-club-secratary';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    club: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::cultural-board-club-secratary.cultural-board-club-secratary'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    phone: Schema.Attribute.String;
-    program: Schema.Attribute.Text;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiCulturalBoardClubCulturalBoardClub
   extends Struct.CollectionTypeSchema {
   collectionName: 'cultural_board_clubs';
@@ -1213,40 +1179,6 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiSportsBoardClubSecretarySportsBoardClubSecretary
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'sports_board_club_secretaries';
-  info: {
-    displayName: 'Sports_Board_Club_Secretary';
-    pluralName: 'sports-board-club-secretaries';
-    singularName: 'sports-board-club-secretary';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    club: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::sports-board-club-secretary.sports-board-club-secretary'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    phone: Schema.Attribute.String;
-    program: Schema.Attribute.Text;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiSportsBoardClubSportsBoardClub
   extends Struct.CollectionTypeSchema {
   collectionName: 'sports_board_clubs';
@@ -1657,40 +1589,6 @@ export interface ApiTechnicalBoardAnnouncementTechnicalBoardAnnouncement
   };
 }
 
-export interface ApiTechnicalBoardClubSecretaryTechnicalBoardClubSecretary
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'technical_board_club_secretaries';
-  info: {
-    displayName: 'Technical_Board_Club_Secretary';
-    pluralName: 'technical-board-club-secretaries';
-    singularName: 'technical-board-club-secretary';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    club: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::technical-board-club-secretary.technical-board-club-secretary'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    phone: Schema.Attribute.String;
-    program: Schema.Attribute.Text;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiTechnicalBoardClubTechnicalBoardClub
   extends Struct.CollectionTypeSchema {
   collectionName: 'technical_board_clubs';
@@ -1902,40 +1800,6 @@ export interface ApiWelfareBoardClubAnnouncementWelfareBoardClubAnnouncement
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     url: Schema.Attribute.String;
-  };
-}
-
-export interface ApiWelfareBoardClubSecrataryWelfareBoardClubSecratary
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'welfare_board_club_secrataries';
-  info: {
-    displayName: 'WelfareBoard_Club_Secratary';
-    pluralName: 'welfare-board-club-secrataries';
-    singularName: 'welfare-board-club-secratary';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    club: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::welfare-board-club-secratary.welfare-board-club-secratary'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    phone: Schema.Attribute.String;
-    program: Schema.Attribute.Text;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
   };
 }
 
@@ -2546,7 +2410,6 @@ declare module '@strapi/strapi' {
       'api::club.club': ApiClubClub;
       'api::counselling-cell-team.counselling-cell-team': ApiCounsellingCellTeamCounsellingCellTeam;
       'api::cultural-board-announcement.cultural-board-announcement': ApiCulturalBoardAnnouncementCulturalBoardAnnouncement;
-      'api::cultural-board-club-secratary.cultural-board-club-secratary': ApiCulturalBoardClubSecrataryCulturalBoardClubSecratary;
       'api::cultural-board-club.cultural-board-club': ApiCulturalBoardClubCulturalBoardClub;
       'api::cultural-board-event.cultural-board-event': ApiCulturalBoardEventCulturalBoardEvent;
       'api::cultural-board-team.cultural-board-team': ApiCulturalBoardTeamCulturalBoardTeam;
@@ -2567,7 +2430,6 @@ declare module '@strapi/strapi' {
       'api::scholarship.scholarship': ApiScholarshipScholarship;
       'api::service-type.service-type': ApiServiceTypeServiceType;
       'api::service.service': ApiServiceService;
-      'api::sports-board-club-secretary.sports-board-club-secretary': ApiSportsBoardClubSecretarySportsBoardClubSecretary;
       'api::sports-board-club.sports-board-club': ApiSportsBoardClubSportsBoardClub;
       'api::sports-board-course.sports-board-course': ApiSportsBoardCourseSportsBoardCourse;
       'api::sports-board-event.sports-board-event': ApiSportsBoardEventSportsBoardEvent;
@@ -2581,7 +2443,6 @@ declare module '@strapi/strapi' {
       'api::swc-team.swc-team': ApiSwcTeamSwcTeam;
       'api::team-member.team-member': ApiTeamMemberTeamMember;
       'api::technical-board-announcement.technical-board-announcement': ApiTechnicalBoardAnnouncementTechnicalBoardAnnouncement;
-      'api::technical-board-club-secretary.technical-board-club-secretary': ApiTechnicalBoardClubSecretaryTechnicalBoardClubSecretary;
       'api::technical-board-club.technical-board-club': ApiTechnicalBoardClubTechnicalBoardClub;
       'api::technical-board-event.technical-board-event': ApiTechnicalBoardEventTechnicalBoardEvent;
       'api::technical-board-team.technical-board-team': ApiTechnicalBoardTeamTechnicalBoardTeam;
@@ -2589,7 +2450,6 @@ declare module '@strapi/strapi' {
       'api::web-committee-event.web-committee-event': ApiWebCommitteeEventWebCommitteeEvent;
       'api::web-committee-service.web-committee-service': ApiWebCommitteeServiceWebCommitteeService;
       'api::welfare-board-club-announcement.welfare-board-club-announcement': ApiWelfareBoardClubAnnouncementWelfareBoardClubAnnouncement;
-      'api::welfare-board-club-secratary.welfare-board-club-secratary': ApiWelfareBoardClubSecrataryWelfareBoardClubSecratary;
       'api::welfare-board-club.welfare-board-club': ApiWelfareBoardClubWelfareBoardClub;
       'api::welfare-board-event.welfare-board-event': ApiWelfareBoardEventWelfareBoardEvent;
       'api::welfare-board-team.welfare-board-team': ApiWelfareBoardTeamWelfareBoardTeam;
