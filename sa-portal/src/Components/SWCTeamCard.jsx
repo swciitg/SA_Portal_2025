@@ -8,7 +8,7 @@ function SWCTeamCard({ name, position, email, phone, image, program = "" }) {
       <img
         src={image}
         alt={name}
-        className="size-36 sm:size-44 md:size-60 rounded-full"
+        className="size-36 sm:size-44 md:size-60 rounded-full object-cover"
       />
       <div className="h-full w-1/2 flex flex-col items-start justify-around">
         <div className="">
