@@ -99,7 +99,7 @@ const MeetTheTeam = () => {
   const [year, setYear] = useState("2023");
   const years = ["2023", "2022", "2021"];
   const images = [saf, hab, sg, go, cc, ns];
-  const route = ["Student Affairs","Team"];
+  const route = ["Student Affairs", "Team"];
   // const scrolled = () => {
   //   const categorySelector = document.querySelector(".category-selector");
   //   const categoryIcon = document.querySelectorAll(".category-icon");
@@ -116,22 +116,22 @@ const MeetTheTeam = () => {
   // };
 
   const scrolled = () => {
-    try{
+    try {
       const categorySelector = document.querySelector(".category-selector");
       const categoryIcon = document.querySelectorAll(".category-icon");
       const nav = document.querySelector("nav");
       const navHeight = nav ? nav.getBoundingClientRect().height : 0;
       const h = document.querySelector(".mtt-banner").getBoundingClientRect().bottom;
       // console.log("Scrolled height: ", h, "Nav height: ", navHeight);
-      if ( h <= navHeight) {
+      if (h <= navHeight) {
         categoryIcon.forEach((each) => each.classList.add("display-none"));
         categorySelector.classList.add("category-selector-scrolled");
         categorySelector.style.top = `${navHeight}px`;
-      } else if( h >= navHeight){
+      } else if (h >= navHeight) {
         categoryIcon.forEach((each) => each.classList.remove("display-none"));
         categorySelector.classList.remove("category-selector-scrolled");
       }
-    } catch(e){
+    } catch (e) {
       console.error("Error in scrolled function: ", e);
     }
   };
@@ -204,23 +204,23 @@ const MeetTheTeam = () => {
     <div className="meet-the-team-page">
       <div className="inner">{/* <Navbar /> */}</div>
       <div className="mtt-body">
-        <BannerTop route={[...route,category]} heading="Meet The " blueText="Team"/>
+        <BannerTop route={[...route, category]} heading="Meet The " blueText="Team" />
         <div className="mtt-banner"></div>
         <div className="scrollbox">
           <ul className="category-selector">
-          {groups.map((group, index) => (
-            <li
-              key={index}
-              className={group === category ? "category-active" : "category"}
-              onClick={() => handleCategoryChange(group)}
-            >
-              <div className="category-icon">
-                <img src={images[index]} alt={group} />
-              </div>
-              <p>{group}</p>
-            </li>
-          ))}
-        </ul>
+            {groups.map((group, index) => (
+              <li
+                key={index}
+                className={group === category ? "category-active" : "category"}
+                onClick={() => handleCategoryChange(group)}
+              >
+                <div className="category-icon">
+                  <img src={images[index]} alt={group} />
+                </div>
+                <p>{group}</p>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="teams-container">
@@ -270,22 +270,25 @@ const MeetTheTeam = () => {
           {category === "Students Gymkhana" ? (
             // Filter gymkhana teams by selected year, then show their members
             (teams || [])
-              .filter((t) => String(t.year) === year)
+              .filter((t) => String(t.Year) === "Year - " + String(year))
               .flatMap((t) => t.members)
               .length > 0 ? (
               <div className="team-cards-scroll">
                 <div className="team-cards">
-                  {team.members.map((member, idx) => (
-                    <TeamCard
-                      key={idx}
-                      name={member.name}
-                      title={member.title}
-                      mail={member.mail}
-                      phone={member.phone}
-                      imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
-                      responsibility={member.responsibility}
-                    />
-                  ))}
+                  {teams
+                    .filter((t) => String(t.Year) === `Year - ${year}`)
+                    .flatMap((t) => t.members)
+                    .map((member, idx) => (
+                      <TeamCard
+                        key={idx}
+                        name={member.name}
+                        title={member.title}
+                        mail={member.mail}
+                        phone={member.phone}
+                        imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
+                        responsibility={member.responsibility}
+                      />
+                    ))}
                 </div>
               </div>
             ) : (

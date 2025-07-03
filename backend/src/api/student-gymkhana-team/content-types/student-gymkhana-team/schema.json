@@ -11,8 +11,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "year": {
-      "type": "biginteger"
+    "Year": {
+      "type": "enumeration",
+      "enum": [
+        "Year - 2023",
+        "Year - 2022",
+        "Year - 2021"
+      ]
     },
     "members": {
       "type": "relation",

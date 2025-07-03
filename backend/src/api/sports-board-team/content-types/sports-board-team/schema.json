@@ -11,30 +11,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "heading": {
       "type": "string"
     },
-    "position": {
-      "type": "string"
-    },
-    "email": {
-      "type": "email"
-    },
-    "phone": {
-      "type": "string"
-    },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "program": {
-      "type": "string"
+    "members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::board-team-member.board-team-member"
     }
   }
 }

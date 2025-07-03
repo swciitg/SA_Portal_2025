@@ -163,22 +163,31 @@ function SportsBoardPage() {
         </div>
       </div>
       <div className="boards-team">
-        <h1>Meet The Team</h1>
-        <div className="team-container">
-          {team.map((each) => (
-            <SWCTeamCard
-              name={each.name}
-              position={each.position}
-              email={each.email}
-              phone={each.phone}
-              image={getStrapiMediaUrl(each?.image?.url)}
-              // image={process.env.REACT_APP_API_BASE_URL + each.image?.url}
-              // image={process.env.REACT_APP_API_BASE_URL + each.imageUrl?.url}
-              program={each.program}
-            />
+        <h1>Meet The Team - Sports Board</h1>
+        <div className="teams-container">
+          {team.map((section, index) => (
+            <div key={index} className="team-section">
+              <h1 className="team-heading">{section.heading}</h1>
+              <div className="team-cards-scroll">
+                <div className="team-cards">
+                  {section.members.map((member, idx) => (
+                    <SWCTeamCard
+                      key={idx}
+                      name={member.name}
+                      position={member.position}
+                      email={member.email}
+                      phone={member.phone}
+                      image={getStrapiMediaUrl(member.image?.url)}
+                      program={member.program}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
+
       {/* <div className="boards-team">
         <h1>Club Secretaries</h1>
         <div className="team-container">

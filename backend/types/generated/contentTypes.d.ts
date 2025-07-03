@@ -403,6 +403,40 @@ export interface ApiAchievementAchievement extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBoardTeamMemberBoardTeamMember
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'board_team_members';
+  info: {
+    displayName: 'Board_Team_Member';
+    pluralName: 'board-team-members';
+    singularName: 'board-team-member';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::board-team-member.board-team-member'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
+    position: Schema.Attribute.String;
+    program: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiBoardsEventBoardsEvent extends Struct.CollectionTypeSchema {
   collectionName: 'boards_events';
   info: {
@@ -630,18 +664,17 @@ export interface ApiCulturalBoardTeamCulturalBoardTeam
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    heading: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::cultural-board-team.cultural-board-team'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    phone: Schema.Attribute.BigInteger;
-    position: Schema.Attribute.String;
-    program: Schema.Attribute.String;
+    members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::board-team-member.board-team-member'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1408,18 +1441,17 @@ export interface ApiSportsBoardTeamSportsBoardTeam
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    heading: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::sports-board-team.sports-board-team'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    phone: Schema.Attribute.String;
-    position: Schema.Attribute.String;
-    program: Schema.Attribute.String;
+    members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::board-team-member.board-team-member'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1489,7 +1521,9 @@ export interface ApiStudentGymkhanaTeamStudentGymkhanaTeam
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    year: Schema.Attribute.BigInteger;
+    Year: Schema.Attribute.Enumeration<
+      ['Year - 2023', 'Year - 2022', 'Year - 2021']
+    >;
   };
 }
 
@@ -1731,18 +1765,17 @@ export interface ApiTechnicalBoardTeamTechnicalBoardTeam
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    heading: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::technical-board-team.technical-board-team'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    phone: Schema.Attribute.String;
-    position: Schema.Attribute.String;
-    program: Schema.Attribute.Text;
+    members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::board-team-member.board-team-member'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1989,7 +2022,7 @@ export interface ApiWelfareBoardTeamWelfareBoardTeam
       Schema.Attribute.Private;
     members: Schema.Attribute.Relation<
       'oneToMany',
-      'api::team-member.team-member'
+      'api::board-team-member.board-team-member'
     >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -2508,6 +2541,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::achievement.achievement': ApiAchievementAchievement;
+      'api::board-team-member.board-team-member': ApiBoardTeamMemberBoardTeamMember;
       'api::boards-event.boards-event': ApiBoardsEventBoardsEvent;
       'api::club.club': ApiClubClub;
       'api::counselling-cell-team.counselling-cell-team': ApiCounsellingCellTeamCounsellingCellTeam;

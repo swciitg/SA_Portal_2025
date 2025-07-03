@@ -17,7 +17,7 @@
     "members": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::team-member.team-member"
+      "target": "api::board-team-member.board-team-member"
     }
   }
 }
