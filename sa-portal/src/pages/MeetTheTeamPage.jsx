@@ -122,7 +122,7 @@ const MeetTheTeam = () => {
       const nav = document.querySelector("nav");
       const navHeight = nav ? nav.getBoundingClientRect().height : 0;
       const h = document.querySelector(".mtt-banner").getBoundingClientRect().bottom;
-      console.log("Scrolled height: ", h, "Nav height: ", navHeight);
+      // console.log("Scrolled height: ", h, "Nav height: ", navHeight);
       if ( h <= navHeight) {
         categoryIcon.forEach((each) => each.classList.add("display-none"));
         categorySelector.classList.add("category-selector-scrolled");
@@ -206,7 +206,8 @@ const MeetTheTeam = () => {
       <div className="mtt-body">
         <BannerTop route={[...route,category]} heading="Meet The " blueText="Team"/>
         <div className="mtt-banner"></div>
-        <ul className="category-selector">
+        <div className="scrollbox">
+          <ul className="category-selector">
           {groups.map((group, index) => (
             <li
               key={index}
@@ -220,6 +221,7 @@ const MeetTheTeam = () => {
             </li>
           ))}
         </ul>
+        </div>
 
         <div className="teams-container">
           {category === "Students Gymkhana" && (
