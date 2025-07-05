@@ -34,6 +34,15 @@ const BoardsEvents = ({ eventDetails }) => {
 
   const eventsLength = events.length;
 
+  let c = current;
+  if (current === eventsLength) {
+    c = current - 2;
+  } else if (current === 1) {
+    c = current;
+  } else {
+    c = current - 1;
+  }
+
   const nextButton = () => {
     if (current !== eventsLength) {
       setCurrent(current + 1);
@@ -45,15 +54,6 @@ const BoardsEvents = ({ eventDetails }) => {
       setCurrent(current - 1);
     }
   };
-
-  let c = current;
-  if (current === eventsLength) {
-    c = current - 2;
-  } else if (current === 1) {
-    c = current;
-  } else {
-    c = current - 1;
-  }
 
   useEffect(() => {
     const list = listRef.current;
@@ -87,13 +87,14 @@ const BoardsEvents = ({ eventDetails }) => {
             type="button"
             id="but1"
             className={
-              current === Math.max(current - 1, 1)
+              current === c
                 ? "achievements-index active-index"
                 : "achievements-index"
             }
             onClick={() => setCurrent(Math.max(current - 1, 1))}
           >
-            {Math.max(current - 1, 1)}
+            {/* {Math.max(current - 1, 1)} */}
+            {c}
           </button>
 
           {/* Button 2 (Math.max(Math.min(current, total - 1), 2)) */}
@@ -101,7 +102,7 @@ const BoardsEvents = ({ eventDetails }) => {
             type="button"
             id="but2"
             className={
-              current === Math.max(Math.min(current, eventsLength - 1), 2)
+              current === c+1
                 ? "achievements-index active-index"
                 : "achievements-index"
             }
@@ -109,7 +110,8 @@ const BoardsEvents = ({ eventDetails }) => {
               setCurrent(Math.max(Math.min(current, eventsLength - 1), 2))
             }
           >
-            {Math.max(Math.min(current, eventsLength - 1), 2)}
+            {/* {Math.max(Math.min(current, eventsLength - 1), 2)} */}
+            {c+1}
           </button>
 
           {/* Button 3 (Math.min(current + 1, total)) */}
@@ -117,13 +119,14 @@ const BoardsEvents = ({ eventDetails }) => {
             type="button"
             id="but3"
             className={
-              current === Math.min(current + 1, eventsLength)
+              current === c+2
                 ? "achievements-index active-index"
                 : "achievements-index"
             }
             onClick={() => setCurrent(Math.min(current + 1, eventsLength))}
           >
-            {Math.min(current + 1, eventsLength)}
+            {/* {Math.min(current + 1, eventsLength)} */}
+            {c+2}
           </button>
 
           <button type="button" className="achievements-index">

@@ -12,12 +12,7 @@
   "pluginOptions": {},
   "attributes": {
     "Year": {
-      "type": "enumeration",
-      "enum": [
-        "Year - 2023",
-        "Year - 2022",
-        "Year - 2021"
-      ]
+      "type": "biginteger"
     },
     "members": {
       "type": "relation",
