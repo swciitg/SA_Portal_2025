@@ -69,7 +69,8 @@ const Achievements = ({ achievements }) => {
             }
             onClick={() => setCurrent(Math.max(current - 1, 1))}
           >
-            {Math.max(current - 1, 1)}
+            {/* {Math.max(current - 1, 1)} */}
+            {c}
           </button>
 
           {/* Button 2 (Math.max(Math.min(current, total - 1), 2)) */}
@@ -85,7 +86,8 @@ const Achievements = ({ achievements }) => {
               setCurrent(Math.max(Math.min(current, achievementsLength - 1), 2))
             }
           >
-            {Math.max(Math.min(current, achievementsLength - 1), 2)}
+            {/* {Math.max(Math.min(current, achievementsLength - 1), 2)} */}
+            {c+1}
           </button>
 
           {/* Button 3 (Math.min(current + 1, total)) */}
@@ -101,7 +103,8 @@ const Achievements = ({ achievements }) => {
               setCurrent(Math.min(current + 1, achievementsLength))
             }
           >
-            {Math.min(current + 1, achievementsLength)}
+            {/* {Math.min(current + 1, achievementsLength)} */}
+            {c+2}
           </button>
 
           <button type="button" className="achievements-index">

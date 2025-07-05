@@ -97,7 +97,7 @@ const MeetTheTeam = () => {
   ];
 
   const [year, setYear] = useState("2023");
-  const years = ["2023", "2022", "2021"];
+  const [years,setYears] = useState(["2023", "2022", "2021"]);
   const images = [saf, hab, sg, go, cc, ns];
   const route = ["Student Affairs", "Team"];
   // const scrolled = () => {
@@ -168,6 +168,22 @@ const MeetTheTeam = () => {
       }
     } catch (error) {
       console.error(`Error fetching team data for ${group}:`, error);
+    }
+    if(category === "Students Gymkhana"){
+      try {
+        const yearList = [];
+        teams.forEach((team) => {
+          if (team.Year && !yearList.includes(team.Year)) {
+            yearList.push(team.Year);
+          }
+        });
+        yearList.sort();
+        yearList.reverse(); // Sort years in descending order
+        setYears(yearList);
+        console.log("Years for Students Gymkhana:", yearList);
+      } catch (error) {
+        console.error("Error fetching years for Students Gymkhana:", error);
+      }
     }
   };
 
@@ -270,13 +286,14 @@ const MeetTheTeam = () => {
           {category === "Students Gymkhana" ? (
             // Filter gymkhana teams by selected year, then show their members
             (teams || [])
-              .filter((t) => String(t.Year) === "Year - " + String(year))
+              .filter((t) => t.Year === year)
               .flatMap((t) => t.members)
               .length > 0 ? (
+              <div className="team-section">
               <div className="team-cards-scroll">
                 <div className="team-cards">
                   {teams
-                    .filter((t) => String(t.Year) === `Year - ${year}`)
+                    .filter((t) => t.Year === year)
                     .flatMap((t) => t.members)
                     .map((member, idx) => (
                       <TeamCard
@@ -290,6 +307,7 @@ const MeetTheTeam = () => {
                       />
                     ))}
                 </div>
+              </div>
               </div>
             ) : (
               <p className="ml-[15vw] mt-6 text-gray-500">No members found for {year}.</p>

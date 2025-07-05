@@ -1453,9 +1453,7 @@ export interface ApiStudentGymkhanaTeamStudentGymkhanaTeam
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Year: Schema.Attribute.Enumeration<
-      ['Year - 2023', 'Year - 2022', 'Year - 2021']
-    >;
+    Year: Schema.Attribute.BigInteger;
   };
 }
 
