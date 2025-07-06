@@ -12,7 +12,7 @@
   "pluginOptions": {},
   "attributes": {
     "Year": {
-      "type": "string"
+      "type": "biginteger"
     },
     "members": {
       "type": "relation",
