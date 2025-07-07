@@ -1,6 +1,7 @@
 import Carousel from "../Components/Carousel";
 import Announcements from "../Components/Announcements";
 import Achievements from "../Components/Achievements";
+import HomeAnnouncements from "../Components/HomeAnnouncements";
 import About from "../Components/About";
 import "./HomePage.css";
 import { useEffect, useState } from "react";
@@ -35,6 +36,7 @@ const HomePage = () => {
   return (
     <>
       <Carousel />
+      <HomeAnnouncements announcements={announcements} />
       <div className="min-h-screen bg-white text-gray-900 p-6 md:px-[50px] md:py-10">
         <div className="w-full">
           <div className="mx-auto grid md:grid-cols-3 gap-10">

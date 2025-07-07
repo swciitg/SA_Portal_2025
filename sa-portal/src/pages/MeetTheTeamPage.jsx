@@ -301,8 +301,8 @@ const MeetTheTeam = () => {
                       <TeamCard
                         key={idx}
                         name={member.name}
-                        title={member.title}
-                        mail={member.mail}
+                        title={member.position}
+                        mail={member.email}
                         phone={member.phone}
                         imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
                         responsibility={member.responsibility}
