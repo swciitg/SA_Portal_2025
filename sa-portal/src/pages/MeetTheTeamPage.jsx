@@ -164,26 +164,28 @@ const MeetTheTeam = () => {
       const res = await sendApiRequest(`${endpoint}`, "GET");
       if (res?.data) {
         console.log(res.data);
+        fetchYears(res.data);
         setTeams(res.data);
       }
     } catch (error) {
       console.error(`Error fetching team data for ${group}:`, error);
     }
-    if(category === "Students Gymkhana"){
-      try {
-        const yearList = [];
-        teams.forEach((team) => {
-          if (team.Year && !yearList.includes(team.Year)) {
-            yearList.push(team.Year);
-          }
-        });
-        yearList.sort();
-        yearList.reverse(); // Sort years in descending order
-        setYears(yearList);
-        console.log("Years for Students Gymkhana:", yearList);
-      } catch (error) {
-        console.error("Error fetching years for Students Gymkhana:", error);
-      }
+  };
+
+  const fetchYears = async (teamsData) => {
+    try {
+      const yearList = [];
+      teamsData.forEach((team) => {
+        if (team.Year && !yearList.includes(team.Year)) {
+          yearList.push(team.Year);
+        }
+      });
+      yearList.sort();
+      yearList.reverse(); // Sort years in descending order
+      setYears(yearList);
+      console.log("Years for Students Gymkhana:", yearList);
+    } catch (error) {
+      console.error("Error fetching years for Students Gymkhana:", error);
     }
   };
 
