@@ -13,7 +13,7 @@
 .slide {
   min-width: 100%;
   width: fit-content;
-  animation: slide-in 10s linear infinite;
+  animation: slide-in 15s linear infinite;
 }
 
 .slide:hover {
