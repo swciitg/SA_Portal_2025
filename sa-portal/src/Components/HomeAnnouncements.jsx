@@ -9,7 +9,7 @@ const HomeAnnouncements = ({ announcements = [] }) => {
         <img width="20" height="20" src={speakerIcon} alt="speaker"/>
         Announcements
       </div>
-      <div className="w-full h-[40px]">
+      <div className="w-full h-[40px] overflow-hidden">
         <div className="flex slide">
             {announcements.map((each) => (
                 <a key={each.id} href={each.url} className="flex w-fit h-[40px] mx-2">
