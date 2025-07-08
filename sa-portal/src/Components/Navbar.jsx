@@ -28,6 +28,11 @@ const Navbar = () => {
       hasDropdown: true,
       dropdownItems: [
         {
+          title: "Home",
+          href: "/",
+          type: "page",
+        },
+        {
           title: "Students' Affairs Team",
           href: "/meet-the-team?team=student-affairs-functionaries",
           type: "page",

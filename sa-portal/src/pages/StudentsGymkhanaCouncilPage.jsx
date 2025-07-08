@@ -6,6 +6,7 @@ import TeamCard from "../Components/TeamCard";
 import sendApiRequest from "../services/apiService";
 import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 import ROUTES from "../constants/apiRoutes";
+import HeadingSection from "../Components/HeadingSection";
 
 function StudentsGymkhanaCouncilPage() {
   const route = [
@@ -19,6 +20,9 @@ function StudentsGymkhanaCouncilPage() {
     const fetchData = async () => {
       try {
         const sgcTeamRes = await sendApiRequest(ROUTES.SGC_TEAM);
+
+        console.log({ sgcTeamRes });
+
         setSgcSections(sgcTeamRes?.data || []);
       } catch (error) {
         console.error("Error in fetching SGC team data:", error);
@@ -50,30 +54,37 @@ function StudentsGymkhanaCouncilPage() {
         </div>
       </div>
 
-      <div className="boards-team">
-        <h1>Meet The Team - Gymkhana Council</h1>
-        <div className="teams-container">
-          {sgcSections.map((section, index) => (
-            <div key={index} className="team-section">
-              <h1 className="team-heading">{section.heading}</h1>
-              <div className="team-cards-scroll">
-                <div className="team-cards team-cards-hab">
-                  {section.members?.map((member, idx) => (
-                    <TeamCard
-                      key={idx}
-                      name={member.name}
-                      title={member.title}
-                      mail={member.mail}
-                      phone={member.phone}
-                      imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
-                      description={member.description}
-                    />
-                  ))}
-                </div>
-              </div>
+      <div className="px-6 sm:px-20 md:px-32">
+        <HeadingSection
+          heading={"Meet The Team - Gymkhana Council"}
+          children={
+            <div className="teams-container">
+              {sgcSections.map((section, index) => (
+                <HeadingSection
+                  key={index}
+                  heading={section.heading}
+                  children={
+                    <div className="team-cards-scroll">
+                      <div className="team-cards team-cards-hab">
+                        {section.members?.map((member, idx) => (
+                          <TeamCard
+                            key={idx}
+                            name={member.name}
+                            title={member.title}
+                            mail={member.mail}
+                            phone={member.phone}
+                            imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
+                            description={member.description}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  }
+                />
+              ))}
             </div>
-          ))}
-        </div>
+          }
+        />
       </div>
     </>
   );

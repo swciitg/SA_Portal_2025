@@ -8,6 +8,7 @@ import ROUTES from "../constants/apiRoutes";
 import BoardsEvents from "../Components/BoardsEvents";
 import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 import getFormattedDate from "../utils/getDate";
+import HeadingSection from "../Components/HeadingSection";
 
 export default function WebCommitteePage() {
   const [announcements, setAnnouncements] = useState([]);
@@ -73,82 +74,73 @@ export default function WebCommitteePage() {
       </div>
 
       {/* Announcements Section */}
-      <Section
-        heading={"Announcements"}
-        children={
-          <div className="flex flex-col max-h-[500px] overflow-y-scroll overflow-x-hidden">
-            {announcements.map((announcement, idx) => (
-              <SWCAnnouncementCard
-                key={idx}
-                title={announcement.title}
-                date={getFormattedDate(announcement.createdAt)}
-                url={announcement.url}
-              />
-            ))}
-          </div>
-        }
-      />
-      {/* Events Section */}
-      <Section
-        heading={"Events"}
-        children={<BoardsEvents eventDetails={events} />}
-      />
-
-      {/* Our Services Section */}
-      <Section
-        heading={"Our Services"}
-        children={
-          <div className="flex flex-col md:flex-row items-start justify-between flex-wrap">
-            <div className="text-black/60 w-full md:w-80 flex-shrink-0">
-              We create products, and strive to continually improve them. Our
-              team has the zeal to make a product or service better, and
-              continually adopt to changing tech, delivering quality products.
-            </div>
-            <div className="mt-6 flex gap-3 sm:gap-6 overflow-clip flex-wrap items-center transition-transform duration-500 ease-in-out">
-              {services.map((service, idx) => (
-                <ServiceCard
+      <div className="px-6 sm:px-20 md:px-32">
+        <HeadingSection
+          heading={"Announcements"}
+          children={
+            <div className="flex flex-col max-h-[500px] overflow-y-scroll overflow-x-hidden">
+              {announcements.map((announcement, idx) => (
+                <SWCAnnouncementCard
                   key={idx}
-                  title={service.title}
-                  image={getStrapiMediaUrl(service.imageUrl?.url)}
-                  url={service.url}
+                  title={announcement.title}
+                  date={getFormattedDate(announcement.createdAt)}
+                  url={announcement.url}
                 />
               ))}
             </div>
-          </div>
-        }
-      />
+          }
+        />
+        {/* Events Section */}
+        <HeadingSection
+          heading={"Events"}
+          children={<BoardsEvents eventDetails={events} />}
+        />
 
-      {/* Meet the team Section */}
-      <Section
-        heading={"Meet The Team"}
-        children={
-          <div className="my-10 flex flex-wrap justify-around items-start gap-6">
-            {team.map((member, idx) => (
-              <SWCTeamCard
-                key={idx}
-                name={member.name}
-                position={member.position}
-                email={member.email}
-                phone={member.phone}
-                image={getStrapiMediaUrl(member.imageUrl?.url)}
-                program={member.branch}
-              />
-            ))}
-          </div>
-        }
-      />
+        {/* Our Services Section */}
+        <HeadingSection
+          heading={"Our Services"}
+          children={
+            <div className="flex flex-col md:flex-row items-start justify-between flex-wrap">
+              <div className="text-black/60 w-full md:w-80 flex-shrink-0">
+                We create products, and strive to continually improve them. Our
+                team has the zeal to make a product or service better, and
+                continually adopt to changing tech, delivering quality products.
+              </div>
+              <div className="mt-6 flex gap-3 sm:gap-6 overflow-clip flex-wrap items-center transition-transform duration-500 ease-in-out">
+                {services.map((service, idx) => (
+                  <ServiceCard
+                    key={idx}
+                    title={service.title}
+                    image={getStrapiMediaUrl(service.imageUrl?.url)}
+                    url={service.url}
+                  />
+                ))}
+              </div>
+            </div>
+          }
+        />
+
+        {/* Meet the team Section */}
+        <HeadingSection
+          heading={"Meet The Team"}
+          children={
+            <div className="my-10 flex flex-wrap justify-around items-start gap-6">
+              {team.map((member, idx) => (
+                <SWCTeamCard
+                  key={idx}
+                  name={member.name}
+                  position={member.position}
+                  email={member.email}
+                  phone={member.phone}
+                  image={getStrapiMediaUrl(member.imageUrl?.url)}
+                  program={member.branch}
+                />
+              ))}
+            </div>
+          }
+        />
+      </div>
     </>
-  );
-}
-
-function Section({ heading, children }) {
-  return (
-    <div className="border-t-2 px-6 sm:px-20 md:px-32 my-8 sm:my-10 md:my-20">
-      <h2 className="font-semibold text-3xl mb-10 pt-6 border-t-4 border-blue-500 inline-block px-4 text-center">
-        {heading}
-      </h2>
-      {children}
-    </div>
   );
 }
 

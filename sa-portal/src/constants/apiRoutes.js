@@ -10,7 +10,7 @@ const ROUTES = {
   FORMS: "/forms?populate=*", // DONE*
   SAC_MEMBERS: "/sac-members?populate[member][populate]=imageUrl", // DONE*
   SAC_MINUTES: "/sac-minutes?populate=*", // DONE*
-  SGC_TEAM: "/student-gymkhana-teams?populate[members][populate]=imageUrl",
+  SGC_TEAM: "/gymkhana-office-teams?populate[members][populate]=imageUrl",
   CULTURAL_BOARD_ANNOUNCEMENTS: "/cultural-board-announcements", // DONE
   CULTURAL_BOARD_EVENTS: "/cultural-board-events?populate=*", // DONE
   CULTURAL_BOARD_CLUBS: "/cultural-board-clubs?populate[club][populate]=*", // DONE
