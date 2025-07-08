@@ -18,7 +18,7 @@ const categoryToApiRouteMap = {
   "Student Affairs Functionaries": ROUTES.SA_TEAM,
   "Hostel Affairs Board": ROUTES.SA_HOSTEL_TEAM,
   "Students Gymkhana": ROUTES.SGC_GENSEC_TEAM,
-  "Gymkhana Office": ROUTES.SGC_GENSEC_TEAM,
+  "Gymkhana Office": ROUTES.GYMKHANA_OFFICE_TEAM,
   "Counselling Cell": ROUTES.COUNCELLING_CELL_TEAM,
   "New SAC": ROUTES.NEW_SAC_TEAM,
 };
@@ -163,43 +163,46 @@ const MeetTheTeam = () => {
       yearList.sort();
       yearList.reverse(); // Sort years in descending order
       setYears(yearList);
-      
+
       // Set the selected year to the most recent year if available
       if (yearList.length > 0) {
         setYear(yearList[0]);
       }
-      
+
       console.log("Years for Students Gymkhana:", yearList);
     } catch (error) {
       console.error("Error fetching years for Students Gymkhana:", error);
     }
   }, []);
 
-  const fetchTeamData = useCallback(async (group) => {
-    const endpoint = categoryToApiRouteMap[group];
-    if (!endpoint) return;
+  const fetchTeamData = useCallback(
+    async (group) => {
+      const endpoint = categoryToApiRouteMap[group];
+      if (!endpoint) return;
 
-    try {
-      const res = await sendApiRequest(`${endpoint}`, "GET");
-      if (res?.data) {
-        console.log(res.data);
-        fetchYears(res.data);
-        setTeams(res.data);
+      try {
+        const res = await sendApiRequest(`${endpoint}`, "GET");
+        if (res?.data) {
+          console.log(res.data);
+          fetchYears(res.data);
+          setTeams(res.data);
+        }
+      } catch (error) {
+        console.error(`Error fetching team data for ${group}:`, error);
       }
-    } catch (error) {
-      console.error(`Error fetching team data for ${group}:`, error);
-    }
-  }, [fetchYears]);
+    },
+    [fetchYears]
+  );
 
   const handleCategoryChange = async (group) => {
     setCategory(group);
-    
+
     // Reset year and years when switching categories
     if (group === "Students Gymkhana") {
       setYear(new Date().getFullYear());
       setYears([new Date().getFullYear()]);
     }
-    
+
     window.history.pushState(
       {},
       "",
@@ -299,36 +302,34 @@ const MeetTheTeam = () => {
               <p className="ml-[15vw] mt-6 text-gray-500">
                 No team data available for Students Gymkhana.
               </p>
-            ) : (
-              // Filter gymkhana teams by selected year, then show their members
-              (teams || [])
+            ) : // Filter gymkhana teams by selected year, then show their members
+            (teams || [])
                 .filter((t) => t.Year === year)
                 .flatMap((t) => t.members).length > 0 ? (
-                <div className="team-section">
-                  <div className="team-cards-scroll">
-                    <div className="team-cards">
-                      {teams
-                        .filter((t) => t.Year === year)
-                        .flatMap((t) => t.members)
-                        .map((member, idx) => (
-                          <TeamCard
-                            key={idx}
-                            name={member.name}
-                            title={member.position}
-                            mail={member.email}
-                            phone={member.phone}
-                            imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
-                            responsibility={member.responsibility}
-                          />
-                        ))}
-                    </div>
+              <div className="team-section">
+                <div className="team-cards-scroll">
+                  <div className="team-cards">
+                    {teams
+                      .filter((t) => t.Year === year)
+                      .flatMap((t) => t.members)
+                      .map((member, idx) => (
+                        <TeamCard
+                          key={idx}
+                          name={member.name}
+                          title={member.position}
+                          mail={member.email}
+                          phone={member.phone}
+                          imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
+                          responsibility={member.responsibility}
+                        />
+                      ))}
                   </div>
                 </div>
-              ) : (
-                <p className="ml-[15vw] mt-6 text-gray-500">
-                  No members found for {year}.
-                </p>
-              )
+              </div>
+            ) : (
+              <p className="ml-[15vw] mt-6 text-gray-500">
+                No members found for {year}.
+              </p>
             )
           ) : (
             (teams || []).map((team, index) => (
