@@ -18,7 +18,10 @@ function StudentsGymkhanaCouncilPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const sgcTeamRes = await sendApiRequest(ROUTES.SGC_TEAM);
+        const sgcTeamRes = await sendApiRequest(ROUTES.SGC_FULL_TEAM);
+
+        console.log({ sgcTeamRes });
+
         setSgcSections(sgcTeamRes?.data || []);
       } catch (error) {
         console.error("Error in fetching SGC team data:", error);
@@ -52,7 +55,7 @@ function StudentsGymkhanaCouncilPage() {
 
       <div className="boards-team">
         <h1>Meet The Team - Gymkhana Council</h1>
-        <div className="teams-container">
+        <div className="teams-container mt-10">
           {sgcSections.map((section, index) => (
             <div key={index} className="team-section">
               <h1 className="team-heading">{section.heading}</h1>
