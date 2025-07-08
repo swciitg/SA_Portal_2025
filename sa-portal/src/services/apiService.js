@@ -9,7 +9,6 @@ export default async function sendApiRequest(
   payload = null
 ) {
   try {
-    console.log(API_BASE_URL + path);
     const response = await axios.request({
       baseURL: API_BASE_URL,
       url: path,

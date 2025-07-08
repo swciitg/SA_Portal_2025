@@ -1,5 +1,6 @@
 const ROUTES = {
   HOMEPAGE_ANNOUNCEMENTS: "/home-page-announcements", // DONE*
+  HOMEPAGE_HIGHLIGHTS: "/home-page-highlights", // DONE*
   HOMEPAGE_ACHIEVEMENTS: "/achievements?populate=*", // DONE*
   SA_TEAM: "/student-affairs-teams?populate[members][populate]=imageUrl",
   SA_SERVICES: "/services?populate=*", // DONE*
@@ -39,12 +40,16 @@ const ROUTES = {
   WEB_COMMITTEE_TEAM: "/swc-teams?populate=*", // DONE*
   SA_HOSTEL_TEAM: "/sa-hostel-teams?populate[members][populate]=imageUrl",
   NEW_SAC_TEAM: "/new-sac-teams?populate[members][populate]=imageUrl",
-  GYMKHANA_OFFICE_TEAM: "/gymkhana-office-teams?populate[members][populate]=imageUrl",//hai//gymkhana-office-teams
-  COUNCELLING_CELL_TEAM: "/counselling-cell-teams?populate[members][populate]=imageUrl",//hai//counselling-cell-teams
-  TECHNICAL_BOARD_CLUB_SECRETARIES: "/technical-board-club-secretaries?populate=*",
-  CULTURAL_BOARD_CLUB_SECRETARIES: "/cultural-board-club-secrataries?populate=*",
+  GYMKHANA_OFFICE_TEAM:
+    "/gymkhana-office-teams?populate[members][populate]=imageUrl", //hai//gymkhana-office-teams
+  COUNCELLING_CELL_TEAM:
+    "/counselling-cell-teams?populate[members][populate]=imageUrl", //hai//counselling-cell-teams
+  TECHNICAL_BOARD_CLUB_SECRETARIES:
+    "/technical-board-club-secretaries?populate=*",
+  CULTURAL_BOARD_CLUB_SECRETARIES:
+    "/cultural-board-club-secrataries?populate=*",
   WELFARE_BOARD_CLUB_SECRETARIES: "/welfare-board-club-secrataries?populate=*",
-  SPORTS_BOARD_CLUB_SECRETARIES: "/sports-board-club-secretaries?populate=*"
+  SPORTS_BOARD_CLUB_SECRETARIES: "/sports-board-club-secretaries?populate=*",
 };
 
 export default ROUTES;
