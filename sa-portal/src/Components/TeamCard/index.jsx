@@ -1,4 +1,3 @@
-import React from "react";
 import "./TeamCard.css";
 import EmptyImage from "../../assets/Images/empty.png";
 import phoneIcon from "../../assets/icons/phone.png";
@@ -18,14 +17,14 @@ const ProfileCard = (props) => {
           <p className="prof-responsibility">{responsibility || ""}</p>
         </div>
         <div>
-          <div className="prof-contact">
+          <a href={`mailto:${mail}`} className="prof-contact">
             <img src={mailIcon} alt="mail-icon" />
             <p>{mail}</p>
-          </div>
-          <div className="prof-contact">
+          </a>
+          <a href={`tel:${phone}`} className="prof-contact">
             <img src={phoneIcon} alt="phone-icon" />
             <p>{phone}</p>
-          </div>
+          </a>
         </div>
       </div>
     </div>

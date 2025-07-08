@@ -1454,6 +1454,39 @@ export interface ApiStudentAffairsTeamStudentAffairsTeam
   };
 }
 
+export interface ApiStudentGymkhanaFullTeamStudentGymkhanaFullTeam
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'student_gymkhana_full_teams';
+  info: {
+    displayName: 'Student_Gymkhana_Full_Team';
+    pluralName: 'student-gymkhana-full-teams';
+    singularName: 'student-gymkhana-full-team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heading: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::student-gymkhana-full-team.student-gymkhana-full-team'
+    > &
+      Schema.Attribute.Private;
+    members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::students-gymkhana-team-member.students-gymkhana-team-member'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiStudentGymkhanaTeamStudentGymkhanaTeam
   extends Struct.CollectionTypeSchema {
   collectionName: 'student_gymkhana_teams';
@@ -2467,6 +2500,7 @@ declare module '@strapi/strapi' {
       'api::sports-board-rule.sports-board-rule': ApiSportsBoardRuleSportsBoardRule;
       'api::sports-board-team.sports-board-team': ApiSportsBoardTeamSportsBoardTeam;
       'api::student-affairs-team.student-affairs-team': ApiStudentAffairsTeamStudentAffairsTeam;
+      'api::student-gymkhana-full-team.student-gymkhana-full-team': ApiStudentGymkhanaFullTeamStudentGymkhanaFullTeam;
       'api::student-gymkhana-team.student-gymkhana-team': ApiStudentGymkhanaTeamStudentGymkhanaTeam;
       'api::students-gymkhana-team-member.students-gymkhana-team-member': ApiStudentsGymkhanaTeamMemberStudentsGymkhanaTeamMember;
       'api::swc-team.swc-team': ApiSwcTeamSwcTeam;

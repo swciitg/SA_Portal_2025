@@ -6,7 +6,6 @@ import TeamCard from "../Components/TeamCard";
 import sendApiRequest from "../services/apiService";
 import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 import ROUTES from "../constants/apiRoutes";
-import HeadingSection from "../Components/HeadingSection";
 
 function StudentsGymkhanaCouncilPage() {
   const route = [
@@ -19,7 +18,7 @@ function StudentsGymkhanaCouncilPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const sgcTeamRes = await sendApiRequest(ROUTES.SGC_TEAM);
+        const sgcTeamRes = await sendApiRequest(ROUTES.SGC_FULL_TEAM);
 
         console.log({ sgcTeamRes });
 
@@ -54,37 +53,30 @@ function StudentsGymkhanaCouncilPage() {
         </div>
       </div>
 
-      <div className="px-6 sm:px-20 md:px-32">
-        <HeadingSection
-          heading={"Meet The Team - Gymkhana Council"}
-          children={
-            <div className="teams-container">
-              {sgcSections.map((section, index) => (
-                <HeadingSection
-                  key={index}
-                  heading={section.heading}
-                  children={
-                    <div className="team-cards-scroll">
-                      <div className="team-cards team-cards-hab">
-                        {section.members?.map((member, idx) => (
-                          <TeamCard
-                            key={idx}
-                            name={member.name}
-                            title={member.title}
-                            mail={member.mail}
-                            phone={member.phone}
-                            imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
-                            description={member.description}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  }
-                />
-              ))}
+      <div className="boards-team">
+        <h1>Meet The Team - Gymkhana Council</h1>
+        <div className="teams-container mt-10">
+          {sgcSections.map((section, index) => (
+            <div key={index} className="team-section">
+              <h1 className="team-heading">{section.heading}</h1>
+              <div className="team-cards-scroll">
+                <div className="team-cards team-cards-hab">
+                  {section.members?.map((member, idx) => (
+                    <TeamCard
+                      key={idx}
+                      name={member.name}
+                      title={member.title}
+                      mail={member.mail}
+                      phone={member.phone}
+                      imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
+                      description={member.description}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
-          }
-        />
+          ))}
+        </div>
       </div>
     </>
   );

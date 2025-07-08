@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import down from "../assets/Images/chevron-down.png";
 import TeamCard from "../Components/TeamCard";
 import saf from "../assets/icons/Student-Affairs-Functionaries.svg";
@@ -17,8 +17,8 @@ import BannerTop from "../Components/BannerTop";
 const categoryToApiRouteMap = {
   "Student Affairs Functionaries": ROUTES.SA_TEAM,
   "Hostel Affairs Board": ROUTES.SA_HOSTEL_TEAM,
-  "Students Gymkhana": ROUTES.SGC_TEAM,
-  "Gymkhana Office": ROUTES.GYMKHANA_OFFICE_TEAM,
+  "Students Gymkhana": ROUTES.SGC_GENSEC_TEAM,
+  "Gymkhana Office": ROUTES.SGC_GENSEC_TEAM,
   "Counselling Cell": ROUTES.COUNCELLING_CELL_TEAM,
   "New SAC": ROUTES.NEW_SAC_TEAM,
 };
@@ -108,7 +108,6 @@ const MeetTheTeam = () => {
   //     categorySelector.classList.remove("category-selector-scrolled");
   //   }
   // };
-  console.log(teams);
 
   const scrolled = () => {
     try {
@@ -153,7 +152,30 @@ const MeetTheTeam = () => {
     }
   };
 
-  const fetchTeamData = async (group) => {
+  const fetchYears = useCallback((teamsData) => {
+    try {
+      const yearList = [];
+      teamsData.forEach((team) => {
+        if (team.Year && !yearList.includes(team.Year)) {
+          yearList.push(team.Year);
+        }
+      });
+      yearList.sort();
+      yearList.reverse(); // Sort years in descending order
+      setYears(yearList);
+      
+      // Set the selected year to the most recent year if available
+      if (yearList.length > 0) {
+        setYear(yearList[0]);
+      }
+      
+      console.log("Years for Students Gymkhana:", yearList);
+    } catch (error) {
+      console.error("Error fetching years for Students Gymkhana:", error);
+    }
+  }, []);
+
+  const fetchTeamData = useCallback(async (group) => {
     const endpoint = categoryToApiRouteMap[group];
     if (!endpoint) return;
 
@@ -167,27 +189,17 @@ const MeetTheTeam = () => {
     } catch (error) {
       console.error(`Error fetching team data for ${group}:`, error);
     }
-  };
-
-  const fetchYears = async (teamsData) => {
-    try {
-      const yearList = [];
-      teamsData.forEach((team) => {
-        if (team.Year && !yearList.includes(team.Year)) {
-          yearList.push(team.Year);
-        }
-      });
-      yearList.sort();
-      yearList.reverse(); // Sort years in descending order
-      setYears(yearList);
-      console.log("Years for Students Gymkhana:", yearList);
-    } catch (error) {
-      console.error("Error fetching years for Students Gymkhana:", error);
-    }
-  };
+  }, [fetchYears]);
 
   const handleCategoryChange = async (group) => {
     setCategory(group);
+    
+    // Reset year and years when switching categories
+    if (group === "Students Gymkhana") {
+      setYear(new Date().getFullYear());
+      setYears([new Date().getFullYear()]);
+    }
+    
     window.history.pushState(
       {},
       "",
@@ -213,7 +225,7 @@ const MeetTheTeam = () => {
     } else {
       fetchTeamData("Student Affairs Functionaries");
     }
-  }, []);
+  }, [team, fetchTeamData]);
 
   return (
     <div className="meet-the-team-page">
@@ -243,7 +255,7 @@ const MeetTheTeam = () => {
         </div>
 
         <div className="teams-container">
-          {category === "Students Gymkhana" && (
+          {category === "Students Gymkhana" && years.length > 0 && (
             <>
               <div className="lg:ml-[15vw] sm:ml-[10vw] mt-[60px] w-[273px] h-[60px] flex justify-between items-center border border-[rgba(0,0,0,0.2)] rounded-md shadow-sm bg-white">
                 <p
@@ -283,34 +295,40 @@ const MeetTheTeam = () => {
           )}
 
           {category === "Students Gymkhana" ? (
-            // Filter gymkhana teams by selected year, then show their members
-            (teams || [])
-              .filter((t) => t.Year === year)
-              .flatMap((t) => t.members).length > 0 ? (
-              <div className="team-section">
-                <div className="team-cards-scroll">
-                  <div className="team-cards">
-                    {teams
-                      .filter((t) => t.Year === year)
-                      .flatMap((t) => t.members)
-                      .map((member, idx) => (
-                        <TeamCard
-                          key={idx}
-                          name={member.name}
-                          title={member.position}
-                          mail={member.email}
-                          phone={member.phone}
-                          imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
-                          responsibility={member.responsibility}
-                        />
-                      ))}
+            years.length === 0 ? (
+              <p className="ml-[15vw] mt-6 text-gray-500">
+                No team data available for Students Gymkhana.
+              </p>
+            ) : (
+              // Filter gymkhana teams by selected year, then show their members
+              (teams || [])
+                .filter((t) => t.Year === year)
+                .flatMap((t) => t.members).length > 0 ? (
+                <div className="team-section">
+                  <div className="team-cards-scroll">
+                    <div className="team-cards">
+                      {teams
+                        .filter((t) => t.Year === year)
+                        .flatMap((t) => t.members)
+                        .map((member, idx) => (
+                          <TeamCard
+                            key={idx}
+                            name={member.name}
+                            title={member.position}
+                            mail={member.email}
+                            phone={member.phone}
+                            imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
+                            responsibility={member.responsibility}
+                          />
+                        ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ) : (
-              <p className="ml-[15vw] mt-6 text-gray-500">
-                No members found for {year}.
-              </p>
+              ) : (
+                <p className="ml-[15vw] mt-6 text-gray-500">
+                  No members found for {year}.
+                </p>
+              )
             )
           ) : (
             (teams || []).map((team, index) => (

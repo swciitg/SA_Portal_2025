@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "student_gymkhana_full_teams",
+  "info": {
+    "singularName": "student-gymkhana-full-team",
+    "pluralName": "student-gymkhana-full-teams",
+    "displayName": "Student_Gymkhana_Full_Team"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::students-gymkhana-team-member.students-gymkhana-team-member"
+    }
+  }
+}
