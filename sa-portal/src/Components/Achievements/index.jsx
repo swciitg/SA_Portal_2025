@@ -87,7 +87,7 @@ const Achievements = ({ achievements }) => {
             }
           >
             {/* {Math.max(Math.min(current, achievementsLength - 1), 2)} */}
-            {c+1}
+            {c + 1}
           </button>
 
           {/* Button 3 (Math.min(current + 1, total)) */}
@@ -104,7 +104,7 @@ const Achievements = ({ achievements }) => {
             }
           >
             {/* {Math.min(current + 1, achievementsLength)} */}
-            {c+2}
+            {c + 2}
           </button>
 
           <button type="button" className="achievements-index">
@@ -124,7 +124,6 @@ const Achievements = ({ achievements }) => {
       <div className="achievements-cards-wrapper">
         <div className="achievements-cards" ref={listRef}>
           {achievements.map((achievement, index) => {
-            console.log(getStrapiMediaUrl(achievement.imageUrl?.url));
             return (
               <AchievementsCard
                 key={index}

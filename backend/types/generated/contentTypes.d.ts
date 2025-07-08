@@ -773,6 +773,36 @@ export interface ApiHomePageAnnouncementHomePageAnnouncement
   };
 }
 
+export interface ApiHomePageHighlightHomePageHighlight
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'home_page_highlights';
+  info: {
+    displayName: 'HomePage_Highlight';
+    pluralName: 'home-page-highlights';
+    singularName: 'home-page-highlight';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-page-highlight.home-page-highlight'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    text: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String;
+  };
+}
+
 export interface ApiHostelAffairsBoardAnnouncementHostelAffairsBoardAnnouncement
   extends Struct.CollectionTypeSchema {
   collectionName: 'hostel_affairs_board_announcements';
@@ -2415,6 +2445,7 @@ declare module '@strapi/strapi' {
       'api::gymkhana-office-team.gymkhana-office-team': ApiGymkhanaOfficeTeamGymkhanaOfficeTeam;
       'api::hmc-member.hmc-member': ApiHmcMemberHmcMember;
       'api::home-page-announcement.home-page-announcement': ApiHomePageAnnouncementHomePageAnnouncement;
+      'api::home-page-highlight.home-page-highlight': ApiHomePageHighlightHomePageHighlight;
       'api::hostel-affairs-board-announcement.hostel-affairs-board-announcement': ApiHostelAffairsBoardAnnouncementHostelAffairsBoardAnnouncement;
       'api::hostel-affairs-board-event.hostel-affairs-board-event': ApiHostelAffairsBoardEventHostelAffairsBoardEvent;
       'api::hostel-affairs-team.hostel-affairs-team': ApiHostelAffairsTeamHostelAffairsTeam;

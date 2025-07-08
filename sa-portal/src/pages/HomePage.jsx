@@ -10,20 +10,23 @@ import ROUTES from "../constants/apiRoutes";
 
 const HomePage = () => {
   const [announcements, setAnnouncements] = useState([]);
+  const [highlights, setHighlights] = useState([]);
   const [achievements, setAchievements] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [announcementsRes, achievementsRes] = await Promise.all([
-          sendApiRequest(ROUTES.HOMEPAGE_ANNOUNCEMENTS),
-          sendApiRequest(ROUTES.HOMEPAGE_ACHIEVEMENTS),
-        ]);
+        const [announcementsRes, highlightsRes, achievementsRes] =
+          await Promise.all([
+            sendApiRequest(ROUTES.HOMEPAGE_ANNOUNCEMENTS),
+            sendApiRequest(ROUTES.HOMEPAGE_HIGHLIGHTS),
+            sendApiRequest(ROUTES.HOMEPAGE_ACHIEVEMENTS),
+          ]);
 
-        console.log({ announcementsRes, achievementsRes });
-        console.log(achievementsRes.data)
+        console.log({ announcementsRes, highlightsRes, achievementsRes });
 
         setAnnouncements(announcementsRes?.data);
+        setHighlights(highlightsRes?.data);
         setAchievements(achievementsRes?.data);
       } catch (error) {
         console.error("Error in fetching data:", error);
@@ -36,12 +39,16 @@ const HomePage = () => {
   return (
     <>
       <Carousel />
+      {/* Sliding Announcements */}
       <HomeAnnouncements announcements={announcements} />
+
       <div className="min-h-screen bg-white text-gray-900 p-6 md:px-[50px] md:py-10">
         <div className="w-full">
           <div className="mx-auto grid md:grid-cols-3 gap-10">
             <About />
-            <Announcements announcements={announcements} />
+
+            {/* Highlights */}
+            <Announcements announcements={highlights} />
           </div>
         </div>
 

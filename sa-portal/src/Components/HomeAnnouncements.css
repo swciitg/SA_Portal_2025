@@ -1,21 +1,21 @@
 @keyframes slide-in {
-    0% {
-        transform: translateX(100%);
-    }
-    50% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+  0% {
+    transform: translateX(100%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
-.slide{
-    min-width: 100%;
-    width: fit-content;
-    animation: slide-in 10s linear infinite;
+.slide {
+  min-width: 100%;
+  width: fit-content;
+  animation: slide-in 10s linear infinite;
 }
 
 .slide:hover {
-    animation-play-state: paused;
+  animation-play-state: paused;
 }

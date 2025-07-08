@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
-import Navbar from "../Components/Navbar";
 import down from "../assets/Images/chevron-down.png";
-import MeetTheTeamBanner from "../assets/Images/mtt-banner.png";
 import TeamCard from "../Components/TeamCard";
-import doubleArrow from "../assets/Images/chevron-right-double.png";
-import downArrow from "../assets/Images/chevron-down.png";
 import saf from "../assets/icons/Student-Affairs-Functionaries.svg";
 import hab from "../assets/icons/Hostel-Affairs-Board.svg";
 import sg from "../assets/icons/Students-Gymkhana.svg";
@@ -17,7 +13,6 @@ import sendApiRequest from "../services/apiService";
 import ROUTES from "../constants/apiRoutes";
 import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 import BannerTop from "../Components/BannerTop";
-import SWCTeamCard from "../Components/SWCTeamCard";
 
 const categoryToApiRouteMap = {
   "Student Affairs Functionaries": ROUTES.SA_TEAM,
@@ -31,7 +26,6 @@ const categoryToApiRouteMap = {
 const MeetTheTeam = () => {
   const [searchParams] = useSearchParams();
   const team = searchParams.get("team");
-  const [saTeam, setSaTeam] = useState([]);
 
   const [category, setCategory] = useState("Student Affairs Functionaries");
 
@@ -96,8 +90,8 @@ const MeetTheTeam = () => {
     "New SAC",
   ];
 
-  const [year, setYear] = useState("2023");
-  const [years,setYears] = useState(["2023", "2022", "2021"]);
+  const [year, setYear] = useState(new Date().getFullYear());
+  const [years, setYears] = useState([new Date().getFullYear()]);
   const images = [saf, hab, sg, go, cc, ns];
   const route = ["Student Affairs", "Team"];
   // const scrolled = () => {
@@ -114,6 +108,7 @@ const MeetTheTeam = () => {
   //     categorySelector.classList.remove("category-selector-scrolled");
   //   }
   // };
+  console.log(teams);
 
   const scrolled = () => {
     try {
@@ -121,7 +116,9 @@ const MeetTheTeam = () => {
       const categoryIcon = document.querySelectorAll(".category-icon");
       const nav = document.querySelector("nav");
       const navHeight = nav ? nav.getBoundingClientRect().height : 0;
-      const h = document.querySelector(".mtt-banner").getBoundingClientRect().bottom;
+      const h = document
+        .querySelector(".mtt-banner")
+        .getBoundingClientRect().bottom;
       // console.log("Scrolled height: ", h, "Nav height: ", navHeight);
       if (h <= navHeight) {
         categoryIcon.forEach((each) => each.classList.add("display-none"));
@@ -222,7 +219,11 @@ const MeetTheTeam = () => {
     <div className="meet-the-team-page">
       <div className="inner">{/* <Navbar /> */}</div>
       <div className="mtt-body">
-        <BannerTop route={[...route, category]} heading="Meet The " blueText="Team" />
+        <BannerTop
+          route={[...route, category]}
+          heading="Meet The "
+          blueText="Team"
+        />
         <div className="mtt-banner"></div>
         <div className="scrollbox">
           <ul className="category-selector">
@@ -256,11 +257,7 @@ const MeetTheTeam = () => {
                   className="w-[58px] h-full bg-[#0A31A0] rounded-r-md flex items-center justify-center"
                   type="button"
                 >
-                  <img
-                    className="w-[20px] h-[20px]"
-                    src={down}
-                    alt="down"
-                  />
+                  <img className="w-[20px] h-[20px]" src={down} alt="down" />
                 </button>
               </div>
 
@@ -289,30 +286,31 @@ const MeetTheTeam = () => {
             // Filter gymkhana teams by selected year, then show their members
             (teams || [])
               .filter((t) => t.Year === year)
-              .flatMap((t) => t.members)
-              .length > 0 ? (
+              .flatMap((t) => t.members).length > 0 ? (
               <div className="team-section">
-              <div className="team-cards-scroll">
-                <div className="team-cards">
-                  {teams
-                    .filter((t) => t.Year === year)
-                    .flatMap((t) => t.members)
-                    .map((member, idx) => (
-                      <TeamCard
-                        key={idx}
-                        name={member.name}
-                        title={member.position}
-                        mail={member.email}
-                        phone={member.phone}
-                        imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
-                        responsibility={member.responsibility}
-                      />
-                    ))}
+                <div className="team-cards-scroll">
+                  <div className="team-cards">
+                    {teams
+                      .filter((t) => t.Year === year)
+                      .flatMap((t) => t.members)
+                      .map((member, idx) => (
+                        <TeamCard
+                          key={idx}
+                          name={member.name}
+                          title={member.position}
+                          mail={member.email}
+                          phone={member.phone}
+                          imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
+                          responsibility={member.responsibility}
+                        />
+                      ))}
+                  </div>
                 </div>
               </div>
-              </div>
             ) : (
-              <p className="ml-[15vw] mt-6 text-gray-500">No members found for {year}.</p>
+              <p className="ml-[15vw] mt-6 text-gray-500">
+                No members found for {year}.
+              </p>
             )
           ) : (
             (teams || []).map((team, index) => (
