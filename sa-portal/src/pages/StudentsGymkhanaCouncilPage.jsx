@@ -66,7 +66,7 @@ function StudentsGymkhanaCouncilPage() {
                       key={idx}
                       name={member.name}
                       title={member.title}
-                      mail={member.mail}
+                      mail={member.email}
                       phone={member.phone}
                       imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
                       description={member.description}
