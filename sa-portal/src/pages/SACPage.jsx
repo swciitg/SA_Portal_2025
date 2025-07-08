@@ -8,7 +8,7 @@ import ROUTES from "../constants/apiRoutes";
 import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
 function SACPage() {
-  const route = ["Students' Affairs Boards", "About SAC"];
+  const route = ["Students' Affairs Council", "About SAC"];
 
   const [sacMembers, setSacMembers] = useState([]);
 
@@ -30,7 +30,7 @@ function SACPage() {
 
   return (
     <>
-      <BannerTop heading="About SAC" blueText="Board" route={route} />
+      <BannerTop heading="About" blueText="SAC" route={route} />
       <div className="boards-about">
         <div className="boards-about-text">
           <h1>About SAC</h1>
