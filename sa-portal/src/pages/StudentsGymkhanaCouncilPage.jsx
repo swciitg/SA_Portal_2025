@@ -45,8 +45,9 @@ function StudentsGymkhanaCouncilPage() {
             Students Gymkhana Council is the body that promotes the objectives
             of fostering extra-curricular, co-curricular activities, welfare of
             students, and their stay in the campus. It comprises of 5 boards:
-            Academic Board, Cultural Board, Sports Board, Technical Board, and
-            Students' Welfare Board.
+            Hostel Affairs Board, Cultural Board, Sports Board, Technical Board, and
+            Students' Welfare Board and 2 committee: Students' Web Committee and Student Alumni
+            Interaction Linkage.
           </p>
         </div>
         <div className="size-60 sm:size-80 md:size-96 mt-10 shrink-0">
