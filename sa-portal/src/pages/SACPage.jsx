@@ -35,12 +35,10 @@ function SACPage() {
         <div className="boards-about-text">
           <h1>About SAC</h1>
           <p>
-            The New SAC (Student Activity Centre) in IIT Guwahati is the central
-            social hub, a retreat for students offering air conditioning and
-            Wi-Fi. It houses club rooms and is a place for students to relax and
-            socialize after their studies. Access to club rooms requires
-            authorization from the respective secretaries, with the general
-            requirement being an expression of interest.
+            The SAC (Student Affairs Council) is the body responsible for 
+            formulating policies and rules for the institute. 
+            Any changes in the functioning of the institute must be implemented 
+            through SAC.
           </p>
         </div>
         <div className="size-60 sm:size-80 md:size-96 mt-10 shrink-0">
