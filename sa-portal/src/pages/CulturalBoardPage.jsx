@@ -30,8 +30,8 @@ function CulturalBoardPage() {
           // sendApiRequest(ROUTES.CULTURAL_BOARD_CLUB_SECRETARIES),
         ])
 
-        console.log({ announcementsRes, eventsRes, clubsRes, teamRes });
-        console.log(clubsRes.data)
+        // console.log({ announcementsRes, eventsRes, clubsRes, teamRes });
+        console.log(eventsRes.data)
         setAnnouncements(announcementsRes?.data)
         setEvents(eventsRes?.data)
         setClubs(clubsRes?.data)
@@ -59,7 +59,7 @@ function CulturalBoardPage() {
           </p>
         </div>
         <div className="size-60 sm:size-80 md:size-96 mt-10 shrink-0">
-          <LayeredCarousel />
+          <LayeredCarousel fetchUrl={ROUTES.CULTURAL_BOARD_CAROUSAL_IMG} />
         </div>
       </div>
       <div className="boards-announcements"><Announcements announcements={announcements} /></div>

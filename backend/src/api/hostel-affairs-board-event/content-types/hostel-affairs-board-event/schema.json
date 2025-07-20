@@ -21,7 +21,10 @@
         "audios"
       ]
     },
-    "name": {
+    "title": {
+      "type": "text"
+    },
+    "description": {
       "type": "text"
     }
   }

@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "technical_board_carousal_imgs",
+  "info": {
+    "singularName": "technical-board-carousal-img",
+    "pluralName": "technical-board-carousal-imgs",
+    "displayName": "Technical_Board_Carousal_Img"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

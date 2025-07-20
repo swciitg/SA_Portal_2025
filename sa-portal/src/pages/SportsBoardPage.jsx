@@ -41,7 +41,7 @@ function SportsBoardPage() {
         ])
 
         console.log({ coursesRes, facilitiesRes, eventsRes, clubsRes, teamRes, rulesRes, formsRes });
-        console.log(facilitiesRes.data)
+        console.log(coursesRes?.data)
         setCourses(coursesRes?.data)
         setFacilities(facilitiesRes?.data)
         setEvents(eventsRes?.data)
@@ -80,7 +80,7 @@ function SportsBoardPage() {
           </p>
         </div>
         <div className="size-60 sm:size-80 md:size-96 mt-10 shrink-0">
-          <LayeredCarousel />
+          <LayeredCarousel fetchUrl={ROUTES.SPORTS_BOARD_CAROUSAL_IMG}/>
         </div>
       </div>
       <div className="border-t border-solid border-[rgba(0,0,0,0.2)] lg:mx-[10vw] sm:mx-[5vw] mb-[60px]">

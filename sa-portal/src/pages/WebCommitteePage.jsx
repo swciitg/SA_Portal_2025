@@ -69,7 +69,7 @@ export default function WebCommitteePage() {
           </p>
         </div>
         <div className="size-60 sm:size-80 md:size-96 mt-10 shrink-0">
-          <LayeredCarousel />
+          <LayeredCarousel fetchUrl={ROUTES.WEB_COMMITTEE_CAROUSAL_IMG}/>
         </div>
       </div>
 

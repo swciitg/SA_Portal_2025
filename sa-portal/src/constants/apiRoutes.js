@@ -53,6 +53,14 @@ const ROUTES = {
     "/cultural-board-club-secrataries?populate=*",
   WELFARE_BOARD_CLUB_SECRETARIES: "/welfare-board-club-secrataries?populate=*",
   SPORTS_BOARD_CLUB_SECRETARIES: "/sports-board-club-secretaries?populate=*",
+
+CULTURAL_BOARD_CAROUSAL_IMG: "/cultural-board-carousal-img?populate=*",
+TECHNICAL_BOARD_CAROUSAL_IMG: "/technical-board-carousal-img?populate=*",
+SPORTS_BOARD_CAROUSAL_IMG: "/sports-board-carousal-img?populate=*",
+WELFARE_BOARD_CAROUSAL_IMG: "/welfare-board-carousal-img?populate=*",
+HOMEPAGE_CAROUSAL_IMG: "/home-page-carousal-img?populate=*",
+WEB_COMMITTEE_CAROUSAL_IMG:"/web-committee-carousal-img?populate=*",
+// SPORTS_BOARD_IMAGE:"/sports-board-courses-img?populate=*"
 };
 
 export default ROUTES;

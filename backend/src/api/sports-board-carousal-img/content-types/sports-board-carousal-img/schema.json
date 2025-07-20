@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "sports_board_carousal_imgs",
+  "info": {
+    "singularName": "sports-board-carousal-img",
+    "pluralName": "sports-board-carousal-imgs",
+    "displayName": "Sports_Board_Carousal_Img"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

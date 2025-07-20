@@ -556,6 +556,38 @@ export interface ApiCulturalBoardAnnouncementCulturalBoardAnnouncement
   };
 }
 
+export interface ApiCulturalBoardCarousalImgCulturalBoardCarousalImg
+  extends Struct.SingleTypeSchema {
+  collectionName: 'cultural_board_carousal_imgs';
+  info: {
+    displayName: 'Cultural_Board_Carousal_Img';
+    pluralName: 'cultural-board-carousal-imgs';
+    singularName: 'cultural-board-carousal-img';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::cultural-board-carousal-img.cultural-board-carousal-img'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCulturalBoardClubCulturalBoardClub
   extends Struct.CollectionTypeSchema {
   collectionName: 'cultural_board_clubs';
@@ -600,6 +632,7 @@ export interface ApiCulturalBoardEventCulturalBoardEvent
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
     imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -607,8 +640,8 @@ export interface ApiCulturalBoardEventCulturalBoardEvent
       'api::cultural-board-event.cultural-board-event'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -773,6 +806,38 @@ export interface ApiHomePageAnnouncementHomePageAnnouncement
   };
 }
 
+export interface ApiHomePageCarousalImgHomePageCarousalImg
+  extends Struct.SingleTypeSchema {
+  collectionName: 'home_page_carousal_imgs';
+  info: {
+    displayName: 'HomePage_Carousal_Img';
+    pluralName: 'home-page-carousal-imgs';
+    singularName: 'home-page-carousal-img';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-page-carousal-img.home-page-carousal-img'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHomePageHighlightHomePageHighlight
   extends Struct.CollectionTypeSchema {
   collectionName: 'home_page_highlights';
@@ -848,6 +913,7 @@ export interface ApiHostelAffairsBoardEventHostelAffairsBoardEvent
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
     imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -855,8 +921,8 @@ export interface ApiHostelAffairsBoardEventHostelAffairsBoardEvent
       'api::hostel-affairs-board-event.hostel-affairs-board-event'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1208,6 +1274,38 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiSportsBoardCarousalImgSportsBoardCarousalImg
+  extends Struct.SingleTypeSchema {
+  collectionName: 'sports_board_carousal_imgs';
+  info: {
+    displayName: 'Sports_Board_Carousal_Img';
+    pluralName: 'sports-board-carousal-imgs';
+    singularName: 'sports-board-carousal-img';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sports-board-carousal-img.sports-board-carousal-img'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSportsBoardClubSportsBoardClub
   extends Struct.CollectionTypeSchema {
   collectionName: 'sports_board_clubs';
@@ -1282,6 +1380,7 @@ export interface ApiSportsBoardEventSportsBoardEvent
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
     imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -1289,8 +1388,8 @@ export interface ApiSportsBoardEventSportsBoardEvent
       'api::sports-board-event.sports-board-event'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1649,6 +1748,38 @@ export interface ApiTechnicalBoardAnnouncementTechnicalBoardAnnouncement
   };
 }
 
+export interface ApiTechnicalBoardCarousalImgTechnicalBoardCarousalImg
+  extends Struct.SingleTypeSchema {
+  collectionName: 'technical_board_carousal_imgs';
+  info: {
+    displayName: 'Technical_Board_Carousal_Img';
+    pluralName: 'technical-board-carousal-imgs';
+    singularName: 'technical-board-carousal-img';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::technical-board-carousal-img.technical-board-carousal-img'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTechnicalBoardClubTechnicalBoardClub
   extends Struct.CollectionTypeSchema {
   collectionName: 'technical_board_clubs';
@@ -1693,6 +1824,7 @@ export interface ApiTechnicalBoardEventTechnicalBoardEvent
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
     imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -1771,6 +1903,38 @@ export interface ApiWebCommitteeAnnouncementWebCommitteeAnnouncement
   };
 }
 
+export interface ApiWebCommitteeCarousalImgWebCommitteeCarousalImg
+  extends Struct.SingleTypeSchema {
+  collectionName: 'web_committee_carousal_imgs';
+  info: {
+    displayName: 'WebCommittee_Carousal_Img';
+    pluralName: 'web-committee-carousal-imgs';
+    singularName: 'web-committee-carousal-img';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::web-committee-carousal-img.web-committee-carousal-img'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiWebCommitteeEventWebCommitteeEvent
   extends Struct.CollectionTypeSchema {
   collectionName: 'web_committee_events';
@@ -1830,6 +1994,38 @@ export interface ApiWebCommitteeServiceWebCommitteeService
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     url: Schema.Attribute.String;
+  };
+}
+
+export interface ApiWelfareBoardCarousalImgWelfareBoardCarousalImg
+  extends Struct.SingleTypeSchema {
+  collectionName: 'welfare_board_carousal_imgs';
+  info: {
+    displayName: 'Welfare_Board_Carousal_img';
+    pluralName: 'welfare-board-carousal-imgs';
+    singularName: 'welfare-board-carousal-img';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::welfare-board-carousal-img.welfare-board-carousal-img'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1907,6 +2103,7 @@ export interface ApiWelfareBoardEventWelfareBoardEvent
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
     imageUrl: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -1914,8 +2111,8 @@ export interface ApiWelfareBoardEventWelfareBoardEvent
       'api::welfare-board-event.welfare-board-event'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -2470,6 +2667,7 @@ declare module '@strapi/strapi' {
       'api::club.club': ApiClubClub;
       'api::counselling-cell-team.counselling-cell-team': ApiCounsellingCellTeamCounsellingCellTeam;
       'api::cultural-board-announcement.cultural-board-announcement': ApiCulturalBoardAnnouncementCulturalBoardAnnouncement;
+      'api::cultural-board-carousal-img.cultural-board-carousal-img': ApiCulturalBoardCarousalImgCulturalBoardCarousalImg;
       'api::cultural-board-club.cultural-board-club': ApiCulturalBoardClubCulturalBoardClub;
       'api::cultural-board-event.cultural-board-event': ApiCulturalBoardEventCulturalBoardEvent;
       'api::cultural-board-team.cultural-board-team': ApiCulturalBoardTeamCulturalBoardTeam;
@@ -2477,6 +2675,7 @@ declare module '@strapi/strapi' {
       'api::gymkhana-office-team.gymkhana-office-team': ApiGymkhanaOfficeTeamGymkhanaOfficeTeam;
       'api::hmc-member.hmc-member': ApiHmcMemberHmcMember;
       'api::home-page-announcement.home-page-announcement': ApiHomePageAnnouncementHomePageAnnouncement;
+      'api::home-page-carousal-img.home-page-carousal-img': ApiHomePageCarousalImgHomePageCarousalImg;
       'api::home-page-highlight.home-page-highlight': ApiHomePageHighlightHomePageHighlight;
       'api::hostel-affairs-board-announcement.hostel-affairs-board-announcement': ApiHostelAffairsBoardAnnouncementHostelAffairsBoardAnnouncement;
       'api::hostel-affairs-board-event.hostel-affairs-board-event': ApiHostelAffairsBoardEventHostelAffairsBoardEvent;
@@ -2491,6 +2690,7 @@ declare module '@strapi/strapi' {
       'api::scholarship.scholarship': ApiScholarshipScholarship;
       'api::service-type.service-type': ApiServiceTypeServiceType;
       'api::service.service': ApiServiceService;
+      'api::sports-board-carousal-img.sports-board-carousal-img': ApiSportsBoardCarousalImgSportsBoardCarousalImg;
       'api::sports-board-club.sports-board-club': ApiSportsBoardClubSportsBoardClub;
       'api::sports-board-course.sports-board-course': ApiSportsBoardCourseSportsBoardCourse;
       'api::sports-board-event.sports-board-event': ApiSportsBoardEventSportsBoardEvent;
@@ -2505,12 +2705,15 @@ declare module '@strapi/strapi' {
       'api::swc-team.swc-team': ApiSwcTeamSwcTeam;
       'api::team-member.team-member': ApiTeamMemberTeamMember;
       'api::technical-board-announcement.technical-board-announcement': ApiTechnicalBoardAnnouncementTechnicalBoardAnnouncement;
+      'api::technical-board-carousal-img.technical-board-carousal-img': ApiTechnicalBoardCarousalImgTechnicalBoardCarousalImg;
       'api::technical-board-club.technical-board-club': ApiTechnicalBoardClubTechnicalBoardClub;
       'api::technical-board-event.technical-board-event': ApiTechnicalBoardEventTechnicalBoardEvent;
       'api::technical-board-team.technical-board-team': ApiTechnicalBoardTeamTechnicalBoardTeam;
       'api::web-committee-announcement.web-committee-announcement': ApiWebCommitteeAnnouncementWebCommitteeAnnouncement;
+      'api::web-committee-carousal-img.web-committee-carousal-img': ApiWebCommitteeCarousalImgWebCommitteeCarousalImg;
       'api::web-committee-event.web-committee-event': ApiWebCommitteeEventWebCommitteeEvent;
       'api::web-committee-service.web-committee-service': ApiWebCommitteeServiceWebCommitteeService;
+      'api::welfare-board-carousal-img.welfare-board-carousal-img': ApiWelfareBoardCarousalImgWelfareBoardCarousalImg;
       'api::welfare-board-club-announcement.welfare-board-club-announcement': ApiWelfareBoardClubAnnouncementWelfareBoardClubAnnouncement;
       'api::welfare-board-club.welfare-board-club': ApiWelfareBoardClubWelfareBoardClub;
       'api::welfare-board-event.welfare-board-event': ApiWelfareBoardEventWelfareBoardEvent;

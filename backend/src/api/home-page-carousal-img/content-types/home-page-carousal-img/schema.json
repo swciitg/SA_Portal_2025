@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_page_carousal_imgs",
+  "info": {
+    "singularName": "home-page-carousal-img",
+    "pluralName": "home-page-carousal-imgs",
+    "displayName": "HomePage_Carousal_Img"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

@@ -1,161 +1,125 @@
-import "./Achievements/Achievements.css";
-import AchievementsCard from "./AchievementsCard";
-import emptyImage from "../assets/Images/empty.png";
-import next from "../assets/Images/next.png";
 import { useState, useEffect, useRef } from "react";
 import getStrapiMediaUrl from "../utils/strApiMediaUrl";
+import emptyImage from "../assets/Images/empty.png";
+import next from "../assets/Images/next.png";
 
 const BoardsEvents = ({ eventDetails }) => {
   const [current, setCurrent] = useState(1);
+  const [clickedEvent, setClicked] = useState(-1);
   const listRef = useRef(null);
 
   const events = eventDetails || [
-    {
-      imageUrl: "",
-      title: "Event 1",
-    },
-    {
-      imageUrl: "",
-      title: "Event 2",
-    },
-    {
-      imageUrl: "",
-      title: "Event 3",
-    },
-    {
-      imageUrl: "",
-      title: "Event 4",
-    },
-    {
-      imageUrl: "",
-      title: "Event 5",
-    },
+    { imageUrl: "", title: "Event 1", description: "Sample description for Event 1" },
+    { imageUrl: "", title: "Event 2", description: "Sample description for Event 2" },
+    { imageUrl: "", title: "Event 3", description: "Sample description for Event 3" },
+    { imageUrl: "", title: "Event 4", description: "Sample description for Event 4" },
+    { imageUrl: "", title: "Event 5", description: "Sample description for Event 5" },
   ];
 
   const eventsLength = events.length;
-
-  let c = current;
-  if (current === eventsLength) {
-    c = current - 2;
-  } else if (current === 1) {
-    c = current;
-  } else {
-    c = current - 1;
-  }
+  const showIndexStart = current === eventsLength ? current - 2 : current === 1 ? current : current - 1;
 
   const nextButton = () => {
-    if (current !== eventsLength) {
-      setCurrent(current + 1);
-    }
+    if (current < eventsLength) setCurrent(current + 1);
   };
 
   const previousButton = () => {
-    if (current !== 1) {
-      setCurrent(current - 1);
-    }
+    if (current > 1) setCurrent(current - 1);
   };
 
   useEffect(() => {
     const list = listRef.current;
     if (list) {
       list.style.transition = "transform 0.4s ease-in-out";
-      list.style.transform = `translateX(calc(${current - 1} * -500px))`;
+      list.style.transform = `translateX(calc(${current - 1} * -510px))`;
     }
   }, [current]);
 
   return (
-    <div className="achievements-container">
-      <div className="achievements-header">
-        <h1>Events</h1>
-        <div className="achievements-indexes">
-          <button
-            type="button"
-            onClick={previousButton}
-            className="achievements-button"
-          >
-            <img src={next} alt="previous-button" />
-          </button>
-          <button type="button" className="achievements-index">
-            ...
+    <div className="w-full mx-auto overflow-x-hidden flex flex-col gap-6 px-4 py-6">
+      {/* Header */}
+      <div className="flex justify-between items-center w-full">
+        <h1 className="text-[31px] font-medium text-black">Events</h1>
+
+        <div className="flex items-center gap-[3px]">
+          {/* Previous Button */}
+          <button onClick={previousButton} className="bg-gray-200 w-[34px] h-[34px] flex items-center justify-center">
+            <img src={next} alt="prev" className="w-[6px] h-[11px]" />
           </button>
 
-          {/* <button type='button' id='but1' className={c === current ? 'achievements-index active-index' : 'achievements-index'}>{c}</button>
-          <button type='button' id='but2' className={c + 1 === current ? 'achievements-index active-index' : 'achievements-index'}>{c + 1}</button>
-          <button type='button' id='but3' className={c + 2 === current ? 'achievements-index active-index' : 'achievements-index'}>{c + 2}</button> */}
-          {/* Button 1 (Math.max(current - 1, 1)) */}
-          <button
-            type="button"
-            id="but1"
-            className={
-              current === c
-                ? "achievements-index active-index"
-                : "achievements-index"
-            }
-            onClick={() => setCurrent(Math.max(current - 1, 1))}
-          >
-            {/* {Math.max(current - 1, 1)} */}
-            {c}
-          </button>
+          <span className="w-[34px] h-[34px] flex items-center justify-center text-[13px] text-gray-500 border border-gray-300">...</span>
 
-          {/* Button 2 (Math.max(Math.min(current, total - 1), 2)) */}
-          <button
-            type="button"
-            id="but2"
-            className={
-              current === c+1
-                ? "achievements-index active-index"
-                : "achievements-index"
-            }
-            onClick={() =>
-              setCurrent(Math.max(Math.min(current, eventsLength - 1), 2))
-            }
-          >
-            {/* {Math.max(Math.min(current, eventsLength - 1), 2)} */}
-            {c+1}
-          </button>
+          {[0, 1, 2].map((i) => {
+            const val = showIndexStart + i;
+            if (val > eventsLength) return null;
+            return (
+              <button
+                key={val}
+                onClick={() => setCurrent(val)}
+                className={`w-[34px] h-[34px] text-[13px] border border-gray-300 flex items-center justify-center ${
+                  current === val
+                    ? "bg-blue-700 text-white underline"
+                    : "text-gray-500"
+                }`}
+              >
+                {val}
+              </button>
+            );
+          })}
 
-          {/* Button 3 (Math.min(current + 1, total)) */}
-          <button
-            type="button"
-            id="but3"
-            className={
-              current === c+2
-                ? "achievements-index active-index"
-                : "achievements-index"
-            }
-            onClick={() => setCurrent(Math.min(current + 1, eventsLength))}
-          >
-            {/* {Math.min(current + 1, eventsLength)} */}
-            {c+2}
-          </button>
+          <span className="w-[34px] h-[34px] flex items-center justify-center text-[13px] text-gray-500 border border-gray-300">...</span>
 
-          <button type="button" className="achievements-index">
-            ...
-          </button>
-          <button
-            type="button"
-            onClick={nextButton}
-            className="achievements-button"
-          >
-            <img src={next} alt="next-button" className="next-image" />
+          {/* Next Button */}
+          <button onClick={nextButton} className="bg-gray-200 w-[34px] h-[34px] flex items-center justify-center rotate-180">
+            <img src={next} alt="next" className="w-[6px] h-[11px]" />
           </button>
         </div>
       </div>
 
-      {/* Wrapper for overflow hidden */}
-      <div className="achievements-cards-wrapper">
-        <div className="achievements-cards" ref={listRef}>
+      {/* Scrollable Cards */}
+      <div className="">
+        <div className="flex gap-6 pr-6 w-fit" ref={listRef}>
           {events.map((event, index) => (
-            <div className="event-card" key={index}>
+            <div
+              key={index}
+className={`w-[486px] ${
+  clickedEvent === index ? "min-h-[345px]" : "h-[345px]"
+} border-2 border-black/30 bg-white flex flex-col`}
+            >
               <img
                 src={getStrapiMediaUrl(event.imageUrl?.url) || emptyImage}
                 alt={event.title}
+                className="w-full h-[279px] object-cover"
               />
-              <div className="event-card-content">
-                <p>{event.title}</p>
-                <a href={event.url} target="_blank">
-                  Know More
-                </a>
+
+              {/* Card content */}
+              <div className="flex justify-between items-start px-4 py-2">
+                <div className="flex flex-col w-full">
+                  <p className="text-[20px] font-medium text-black">{event.title}</p>
+
+                  <p
+                    className={`text-[13px] text-gray-700 mt-1 ${
+                      clickedEvent === index ? "" : "line-clamp-1"
+                    }`}
+                  >
+                    {event.description}
+                  </p>
+                </div>
+
+                {event.description?.length > 100 && (
+                  <a
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setClicked(clickedEvent === index ? -1 : index);
+                    }}
+                    href={event.url || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[13px] text-blue-600 ml-2 whitespace-nowrap self-end"
+                  >
+                    {clickedEvent === index ? "Know less" : "Know more"}
+                  </a>
+                )}
               </div>
             </div>
           ))}

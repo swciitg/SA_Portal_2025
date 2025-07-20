@@ -11,7 +11,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "title": {
       "type": "string"
     },
     "imageUrl": {
@@ -23,6 +23,9 @@
         "videos",
         "audios"
       ]
+    },
+    "description": {
+      "type": "text"
     }
   }
 }

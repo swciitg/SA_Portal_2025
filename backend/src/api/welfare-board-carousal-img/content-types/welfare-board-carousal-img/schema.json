@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "welfare_board_carousal_imgs",
+  "info": {
+    "singularName": "welfare-board-carousal-img",
+    "pluralName": "welfare-board-carousal-imgs",
+    "displayName": "Welfare_Board_Carousal_img"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
