@@ -11,6 +11,7 @@ const Announcements = ({ announcements = [] }) => {
             key={index}
             text={each.text}
             url={each.url}
+            pdf={each.pdf}
             date={getFormattedDate(each.createdAt)}
           />
         ))}

@@ -47,7 +47,7 @@ function CulturalBoardPage() {
 
   return (
     <>
-      <BannerTop heading="Cultural Board" blueText="Board" route={route} />
+      <BannerTop heading="Cultural" blueText="Board" route={route} />
       <div className="boards-about">
         <div className="boards-about-text">
           <h1>

@@ -4,7 +4,7 @@ import mailIcon from "../assets/icons/mail.png";
 function SWCTeamCard({ name, position, email, phone, image, program = "" }) {
   console.log({ name, position, email, phone, image, program });
   return (
-    <div className="flex items-center space-x-1 sm:space-x-10 px-2 sm:py-6 border-2 border-blue-50">
+    <div className="w-[500px] flex items-center space-x-1 sm:space-x-10 px-2 sm:py-6 border-2 border-blue-50">
       <img
         src={image}
         alt={name}
@@ -12,23 +12,22 @@ function SWCTeamCard({ name, position, email, phone, image, program = "" }) {
       />
       <div className="h-full w-1/2 flex flex-col items-start justify-around">
         <div className="">
-          <h2 className="font-semibold text-xl md:text-3xl mb-1 sm:mb-4 text-black/85">
-            {name}
-          </h2>
+<h2 className="font-semibold text-xl md:text-3xl mb-1 sm:mb-4 text-black/85 truncate max-w-full">
+  {name}
+</h2>
+
           <hr className="border-b" />
           <div className="w-1/2 border-b-2 border-blue-500"></div>
-          <p className="sm:mt-1 text-base font-medium">
-            {position}
-          </p>
+          <p className="sm:mt-1 text-base font-medium">{position}</p>
         </div>
         <div>
           <img
             src={mailIcon}
             alt="mail icon"
-            className="inline-block" 
+            className="inline-block"
             height="24"
             width="24"
-            />
+          />
           <span className="text-black/60 text-sm sm:text-base ml-1">
             {email}
           </span>

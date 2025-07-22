@@ -1,6 +1,6 @@
 const ROUTES = {
   HOMEPAGE_ANNOUNCEMENTS: "/home-page-announcements", // DONE*
-  HOMEPAGE_HIGHLIGHTS: "/home-page-highlights", // DONE*
+  HOMEPAGE_HIGHLIGHTS: "/home-page-highlights?populate=*", // DONE*
   HOMEPAGE_ACHIEVEMENTS: "/achievements?populate=*", // DONE*
   SA_TEAM: "/student-affairs-teams?populate[members][populate]=imageUrl",
   SA_SERVICES: "/services?populate=*", // DONE*
@@ -60,6 +60,7 @@ SPORTS_BOARD_CAROUSAL_IMG: "/sports-board-carousal-img?populate=*",
 WELFARE_BOARD_CAROUSAL_IMG: "/welfare-board-carousal-img?populate=*",
 HOMEPAGE_CAROUSAL_IMG: "/home-page-carousal-img?populate=*",
 WEB_COMMITTEE_CAROUSAL_IMG:"/web-committee-carousal-img?populate=*",
+STUDENT_AFFAIRS_STATUTE:"/students-affairs-statute?populate=*"
 // SPORTS_BOARD_IMAGE:"/sports-board-courses-img?populate=*"
 };
 

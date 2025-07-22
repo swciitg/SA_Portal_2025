@@ -52,8 +52,8 @@ function WelfareBoardPage() {
   return (
     <>
       <BannerTop
-        heading="Student’s Welfare Board"
-        blueText="Welfare Board"
+        heading="Student’s Welfare "
+        blueText="Board"
         route={route}
       />
       <div className="boards-about">

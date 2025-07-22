@@ -859,6 +859,7 @@ export interface ApiHomePageHighlightHomePageHighlight
       'api::home-page-highlight.home-page-highlight'
     > &
       Schema.Attribute.Private;
+    pdf: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
     text: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -1350,6 +1351,8 @@ export interface ApiSportsBoardCourseSportsBoardCourse
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    img: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     link: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -1615,6 +1618,35 @@ export interface ApiStudentGymkhanaTeamStudentGymkhanaTeam
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Year: Schema.Attribute.BigInteger;
+  };
+}
+
+export interface ApiStudentsAffairsStatuteStudentsAffairsStatute
+  extends Struct.SingleTypeSchema {
+  collectionName: 'students_affairs_statutes';
+  info: {
+    displayName: 'Students_Affairs_Statute';
+    pluralName: 'students-affairs-statutes';
+    singularName: 'students-affairs-statute';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::students-affairs-statute.students-affairs-statute'
+    > &
+      Schema.Attribute.Private;
+    pdf: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -2701,6 +2733,7 @@ declare module '@strapi/strapi' {
       'api::student-affairs-team.student-affairs-team': ApiStudentAffairsTeamStudentAffairsTeam;
       'api::student-gymkhana-full-team.student-gymkhana-full-team': ApiStudentGymkhanaFullTeamStudentGymkhanaFullTeam;
       'api::student-gymkhana-team.student-gymkhana-team': ApiStudentGymkhanaTeamStudentGymkhanaTeam;
+      'api::students-affairs-statute.students-affairs-statute': ApiStudentsAffairsStatuteStudentsAffairsStatute;
       'api::students-gymkhana-team-member.students-gymkhana-team-member': ApiStudentsGymkhanaTeamMemberStudentsGymkhanaTeamMember;
       'api::swc-team.swc-team': ApiSwcTeamSwcTeam;
       'api::team-member.team-member': ApiTeamMemberTeamMember;

@@ -83,53 +83,42 @@ function SportsBoardPage() {
           <LayeredCarousel fetchUrl={ROUTES.SPORTS_BOARD_CAROUSAL_IMG}/>
         </div>
       </div>
-      <div className="border-t border-solid border-[rgba(0,0,0,0.2)] lg:mx-[10vw] sm:mx-[5vw] mb-[60px]">
-        <h1 className="inline-block p-2 border-t-[2px] border-solid border-[#0E45E1] text-[31px] font-medium ">
-          Courses
-        </h1>
-        <div className="flex justify-between flex-wrap gap-[20px]">
-          <div className="w-[384px]">
-            <img src={SAcourse} alt="SA Course" className="w-full h-auto" />
-            <div className="h-[300px] bg-[#F0F1F7] flex flex-col justify-between p-[30px]">
-              <hr className="min-h-[3px] bg-[rgba(0,0,0,0.3)]" />
-              <h2 className="text-[25px] font-medium text-[#000000DE]">SA</h2>
-              <p className="text-[16px] text-[#00000099]">
-                SA Courses are offered as a part of 2nd and 3rd semester of the
-                curriculum. It is designed to promote physical fitness,
-                teamwork, and overall student growth alongside academics.
-              </p>
-              <a className="text-blue">Learn more</a>
-            </div>
-          </div>
-          <div className="w-[384px]">
-            <img src={NSOcourse} alt="SA Course" className="w-full h-auto" />
-            <div className="min-h-[300px] bg-[#F0F1F7] flex flex-col justify-between p-[30px]">
-              <hr className="h-[3px] bg-[rgba(0,0,0,0.3)]" />
-              <h2 className="text-[25px] font-medium text-[#000000DE]">SA</h2>
-              <p className="text-[16px] text-[#00000099]">
-                In the 4th and 5th semesters, students at IIT Guwahati can
-                continue their involvement in physical activities through NSO
-                (National Sports Organization), allowing them to further develop
-                their skills and stay active as part of the academic curriculum.
-              </p>
-              <a className="text-blue">Learn more</a>
-            </div>
-          </div>
-          <div className="w-[384px]">
-            <img src={NCCcourse} alt="SA Course" className="w-full h-auto" />
-            <div className="min-h-[300px] bg-[#F0F1F7] flex flex-col justify-between p-[30px]">
-              <hr className="h-[3px] bg-[rgba(0,0,0,0.3)]" />
-              <h2 className="text-[25px] font-medium text-[#000000DE]">SA</h2>
-              <p className="text-[16px] text-[#00000099]">
-                NCC (National Cadet Corps) is a program focused on discipline,
-                leadership, and service, offering a unique blend of physical
-                training and national service experience.
-              </p>
-              <a className="text-blue">Learn more</a>
-            </div>
-          </div>
+<div className="border-t border-solid border-[rgba(0,0,0,0.2)] lg:mx-[10vw] sm:mx-[5vw] mb-[60px]">
+  <h1 className="inline-block p-2 border-t-[2px] border-solid border-[#0E45E1] text-[31px] font-medium">
+    Courses
+  </h1>
+  <div className="flex justify-between flex-wrap gap-[20px]">
+    {courses.map((course, idx) => (
+      <div className="w-[384px]" key={idx}>
+        <img
+          src={getStrapiMediaUrl(course.img?.url)}
+          alt={course.title || "Course Image"}
+          className="w-full h-auto"
+        />
+        <div className="min-h-[300px] bg-[#F0F1F7] flex flex-col justify-between p-[30px]">
+          <hr className="h-[3px] bg-[rgba(0,0,0,0.3)]" />
+          <h2 className="text-[25px] font-medium text-[#000000DE]">
+            {course.title}
+          </h2>
+          <p className="text-[16px] text-[#00000099]">
+            {course.description}
+          </p>
+          {course.link && (
+            <a
+              href={course.link}
+              className="text-blue"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Learn more
+            </a>
+          )}
         </div>
       </div>
+    ))}
+  </div>
+</div>
+
       <div className="boards-facilities">
         <h1>Our Facilities</h1>
         <div className="flex md:flex-col lg:flex-row items-center">

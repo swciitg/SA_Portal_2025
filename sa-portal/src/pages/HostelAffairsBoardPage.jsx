@@ -77,8 +77,8 @@ function HostelAffairsBoardPage() {
   return (
     <>
       <BannerTop
-        heading="Hostel's Affairs Board"
-        blueText="Affairs Board"
+        heading="Hostel's Affairs"
+        blueText=" Board"
         route={route}
       />
 

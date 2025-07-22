@@ -24,6 +24,8 @@ module.exports = ({ env }) => ({
 });
 
 
+//--------------- for local--------------------
+
 // module.exports = ({ env }) => ({
 //   // Localhost binding
 //   host: env("HOST", "127.0.0.1"), // 0.0.0.0 if you want LAN access

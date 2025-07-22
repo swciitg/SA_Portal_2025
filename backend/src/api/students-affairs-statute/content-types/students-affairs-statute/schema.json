@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "students_affairs_statutes",
+  "info": {
+    "singularName": "students-affairs-statute",
+    "pluralName": "students-affairs-statutes",
+    "displayName": "Students_Affairs_Statute"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pdf": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

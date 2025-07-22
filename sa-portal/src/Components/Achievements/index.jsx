@@ -6,6 +6,8 @@ import getStrapiMediaUrl from "../../utils/strApiMediaUrl";
 
 const Achievements = ({ achievements }) => {
   const [current, setCurrent] = useState(1);
+  const [expandedIndex, setExpandedIndex] = useState(null);
+
   const listRef = useRef(null);
 
   const achievementsLength = achievements.length;
@@ -121,18 +123,16 @@ const Achievements = ({ achievements }) => {
       </div>
 
       {/* Wrapper for overflow hidden */}
-      <div className="achievements-cards-wrapper">
-        <div className="achievements-cards" ref={listRef}>
-          {achievements.map((achievement, index) => {
-            return (
-              <AchievementsCard
-                key={index}
-                imageUrl={getStrapiMediaUrl(achievement.imageUrl?.url)}
-                title={achievement.title}
-                description={achievement.description}
-              />
-            );
-          })}
+      <div className="overflow-hidden">
+        <div className="flex gap-6 w-fit" ref={listRef}>
+          {achievements.map((achievement, index) => (
+            <AchievementsCard
+              key={index}
+              imageUrl={getStrapiMediaUrl(achievement.imageUrl?.url)}
+              title={achievement.title}
+              description={achievement.description}
+            />
+          ))}
         </div>
       </div>
     </div>

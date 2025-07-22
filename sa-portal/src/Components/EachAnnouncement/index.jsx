@@ -1,10 +1,18 @@
-import chevronRight from "../../assets/Images/chevron-right.png";
+const EachAnnouncement = ({ text, url, date, pdf }) => {
+  const handleClick = (e) => {
+    console.log(pdf)
+    e.preventDefault();
+    if (pdf?.url) {
+      window.open(`${process.env.REACT_APP_API_BASE_URL}${pdf.url}`, "_blank");
+    } else if (url) {
+      window.open(url, "_blank");
+    }
+  };
 
-const EachAnnouncement = ({ text, url, date }) => {
   return (
     <a
-      href={url}
-      target="_blank"
+      href="#"
+      onClick={handleClick}
       className="h-[92px] bg-neutral-100 my-1 flex justify-between p-4 items-center select-none"
     >
       <div className="space-y-2">
