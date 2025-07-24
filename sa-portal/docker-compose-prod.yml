@@ -3,15 +3,16 @@ version: "3.3"
 
 services:
  sa_portal_frontend:
-    image: sa_portal_frontend
-    container_name: sa_portal_frontend
+    image: sa_portal_frontend_2025
+    container_name: sa_portal_frontend_2025
     restart: always
     build:
       context: .
+      dockerfile: Dockerfile.prod
     ports:
-      - "1746:3000"
+      - "1747:3000"
     env_file:
-      - .env.prod
+      - .env
     command: sh -c "cd /app && serve -s build"
     networks:
       - frontend_default

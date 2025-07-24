@@ -8,6 +8,7 @@ services:
     restart: always
     build:
       context: .
+      dockerfile: Dockerfile.dev
     ports:
       - "1746:3000"
     env_file:
