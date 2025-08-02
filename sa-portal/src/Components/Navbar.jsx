@@ -242,12 +242,12 @@ const Navbar = () => {
         {
           title: "SA Calendar",
           href: "https://iitg.ac.in/acad/academic_calendar.php/",
-          type: "link",
+          type: "external",
         },
         {
           title: "SSO Portal",
           href: "https://academic.iitg.ac.in/sso/",
-          type: "link",
+          type: "external",
         },
         {
           title: "HAB Portal",
@@ -262,27 +262,27 @@ const Navbar = () => {
         {
           title: "Internal Complaints Committee",
           href: "https://www.iitg.ac.in/iitgicc/",
-          type: "link",
+          type: "external",
         },
         {
           title: "GoI Wellbeing Link",
           href: "https://mohfw.gov.in/",
-          type: "link",
+          type: "external",
         },
         {
           title: "Anti-Ragging Affidavits",
           href: "https://www.antiragging.in/affidavit_registration_disclaimer.html",
-          type: "link",
+          type: "external",
         },
         {
           title: "POSH Act",
           href: "https://www.indiacode.nic.in/handle/123456789/2104",
-          type: "link",
+          type: "external",
         },
         {
           title: "Narcotics Control Bureau",
           href: "https://narcoticsindia.nic.in/",
-          type: "link",
+          type: "external",
         },
       ],
     },

@@ -49,7 +49,9 @@ const NavLinkDropdown = ({ title, dropdownItems }) => {
                       "_blank"
                     );
                 } else {
-                  if (item.type === "link") {
+                  if(item.type=="external"){
+                    window.open(item.href)
+                  } else if (item.type === "link") {
                     window.open( process.env.REACT_APP_BASE_URL+ item.href, "_blank");
                   } else {
                     window.location.href = process.env.REACT_APP_BASE_URL+item.href;
