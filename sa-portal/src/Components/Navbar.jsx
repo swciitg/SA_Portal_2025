@@ -5,7 +5,7 @@ import NavLinkDropdown from "./NavLinkDropdown";
 import Hamburger from "./Hamburger.jsx";
 // PDF links from public/pdfs folder
 // const ordiScho = "/pdfs/Ordinance_and_Rules_on_Scholarship_6fbd5a3a76 (1).pdf";
-const ordiScho = "/pdfs/Ordinances.docx";
+const ordiScho = "/pdfs/Ordinances.pdf";
 const swf = "/pdfs/Students_Welfare_Fund_STAF_SCF_SCAF_fda7181688 (1).pdf";
 const sbf = "/pdfs/Students_Brotherhood_Fund_601e513b41 (1).pdf";
 const GuidelinesSpon = "/pdfs/Guidelines_on_Sponsorship_77ed6d24b2.pdf";
