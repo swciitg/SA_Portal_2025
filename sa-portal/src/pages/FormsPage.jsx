@@ -43,7 +43,7 @@ const handleSearchChange = (e) => {
     const fetchData = async () => {
       try {
         const formsRes = await sendApiRequest(ROUTES.FORMS);
-        console.log("Forms data:", formsRes?.data);
+        // console.log("Forms data:", formsRes?.data);
         setForms(formsRes?.data);
         setFormsShow(formsRes?.data);
       } catch (error) {
