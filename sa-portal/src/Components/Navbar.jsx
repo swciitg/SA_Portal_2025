@@ -4,7 +4,8 @@ import NavLink from "./NavLink";
 import NavLinkDropdown from "./NavLinkDropdown";
 import Hamburger from "./Hamburger.jsx";
 // PDF links from public/pdfs folder
-const ordiScho = "/pdfs/Ordinance_and_Rules_on_Scholarship_6fbd5a3a76 (1).pdf";
+// const ordiScho = "/pdfs/Ordinance_and_Rules_on_Scholarship_6fbd5a3a76 (1).pdf";
+const ordiScho = "/pdfs/Ordinances.docx";
 const swf = "/pdfs/Students_Welfare_Fund_STAF_SCF_SCAF_fda7181688 (1).pdf";
 const sbf = "/pdfs/Students_Brotherhood_Fund_601e513b41 (1).pdf";
 const GuidelinesSpon = "/pdfs/Guidelines_on_Sponsorship_77ed6d24b2.pdf";
@@ -246,13 +247,13 @@ const Navbar = () => {
         },
         {
           title: "SSO Portal",
-          href: "https://academic.iitg.ac.in/sso/",
+          href: "https://online.iitg.ac.in/sso",
           type: "external",
         },
         {
           title: "HAB Portal",
-          href: "#",
-          type: "link",
+          href: "https://online.iitg.ac.in/sa",
+          type: "external",
         },
         {
           title: "Guest House Booking",

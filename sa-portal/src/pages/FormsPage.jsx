@@ -7,12 +7,34 @@ import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
 function FormsPage() {
   const [currPage, setCurrPage] = useState(1);
-  const limitOnPage = 5; // limit per page
-
+  const limitOnPage = 5;
   const [forms, setForms] = useState([]);
+  const [formsShow,setFormsShow] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  // paginated forms to render
-  const paginatedForms = forms.slice(
+const handleSearchChange = (e) => {
+  const query = e.target.value;
+  setSearchQuery(query);
+
+  if (query.trim() === "") {
+    setFormsShow(forms); // show all if empty
+  } else {
+    const lowerQuery = query.toLowerCase();
+
+    const filtered = forms.filter((form) =>
+      form.title?.toLowerCase().includes(lowerQuery) ||
+      form.date?.toLowerCase().includes(lowerQuery)
+    );
+
+    setFormsShow(filtered);
+  }
+
+  // Optionally reset to first page
+  setCurrPage(1);
+};
+
+
+  const paginatedForms = formsShow.slice(
     (currPage - 1) * limitOnPage,
     currPage * limitOnPage
   );
@@ -21,10 +43,9 @@ function FormsPage() {
     const fetchData = async () => {
       try {
         const formsRes = await sendApiRequest(ROUTES.FORMS);
-
-        console.log({ formsRes });
-
+        console.log("Forms data:", formsRes?.data);
         setForms(formsRes?.data);
+        setFormsShow(formsRes?.data);
       } catch (error) {
         console.error("Error in fetching data:", error);
       }
@@ -40,17 +61,32 @@ function FormsPage() {
         route={["Student Affairs Council", "Forms"]}
       />
       <div className="px-4 py-4 sm:px-10 sm:py-8 md:px-28 md:py-20">
-        {/* Heading and Pagination menu */}
-        <div className="flex flex-col sm:flex-row items-center justify-between">
+        {/* Heading + Search + Pagination */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between space-y-3 sm:space-y-0">
+          {/* Title */}
           <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold">
             All Forms
           </h2>
-          <PaginationMenu
-            forms={forms}
-            limitOnPage={limitOnPage}
-            currPage={currPage}
-            setCurrPage={setCurrPage}
-          />
+
+          {/* Search + Pagination */}
+          <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
+            {/* Search Input */}
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              placeholder="Search forms..."
+              className="w-full sm:w-64 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+
+            {/* Pagination Menu */}
+            <PaginationMenu
+              forms={formsShow}
+              limitOnPage={limitOnPage}
+              currPage={currPage}
+              setCurrPage={setCurrPage}
+            />
+          </div>
         </div>
 
         {/* Forms */}
@@ -81,7 +117,6 @@ export default FormsPage;
 function PaginationMenu({ forms, limitOnPage, currPage, setCurrPage }) {
   const maxPage = Math.ceil(forms.length / limitOnPage);
 
-  // Calculate which 3 page numbers to show
   const visiblePages = useMemo(() => {
     if (maxPage <= 3) return Array.from({ length: maxPage }, (_, i) => i + 1);
     if (currPage === 1) return [1, 2, 3];
@@ -95,7 +130,6 @@ function PaginationMenu({ forms, limitOnPage, currPage, setCurrPage }) {
 
   return (
     <div className="flex space-x-0.5 sm:space-x-1 py-2 w-fit">
-      {/* Previous Page */}
       <div
         className="size-8 sm:size-10 flex items-center justify-center bg-neutral-100 hover:bg-blue-700 hover:text-white cursor-pointer"
         onClick={() => goToPage(currPage - 1)}
@@ -103,7 +137,6 @@ function PaginationMenu({ forms, limitOnPage, currPage, setCurrPage }) {
         <span className="h-full text-2xl mb-0.5 sm:mt-1">‹</span>
       </div>
 
-      {/* First Page */}
       <div
         className="size-8 sm:size-10 flex items-end pb-1 justify-center border-2 border-neutral-100 hover:border-none hover:bg-blue-700 hover:text-white text-neutral-500 cursor-pointer"
         onClick={() => goToPage(1)}
@@ -111,7 +144,6 @@ function PaginationMenu({ forms, limitOnPage, currPage, setCurrPage }) {
         <span className="text-xl">...</span>
       </div>
 
-      {/* Page Numbers */}
       {visiblePages.map((page) => (
         <div
           key={page}
@@ -126,7 +158,6 @@ function PaginationMenu({ forms, limitOnPage, currPage, setCurrPage }) {
         </div>
       ))}
 
-      {/* Last Page */}
       <div
         className="size-8 sm:size-10 flex items-end pb-1 justify-center border-2 border-neutral-100 hover:border-none hover:bg-blue-700 hover:text-white text-neutral-500 cursor-pointer"
         onClick={() => goToPage(maxPage)}
@@ -134,7 +165,6 @@ function PaginationMenu({ forms, limitOnPage, currPage, setCurrPage }) {
         <span className="text-xl">...</span>
       </div>
 
-      {/* Next Page */}
       <div
         className="size-8 sm:size-10 flex items-center justify-center bg-neutral-100 hover:bg-blue-700 hover:text-white cursor-pointer"
         onClick={() => goToPage(currPage + 1)}
