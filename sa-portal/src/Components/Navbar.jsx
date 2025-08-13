@@ -16,7 +16,7 @@ const GenRules = "/pdfs/General_Rules_for_Hostel_Residents_7c7a7c76c8.pdf";
 const HABCon = "/pdfs/HAB_Constitution_e299093392.pdf";
 const ordinacneOnCodeCon =
   "/pdfs/95_BOG_Ordinance_COC_19_12_2018_website_2_1347674f83.pdf";
-const InterIITSports = "/pdfs/Inter_IIT_Sports_Meet_66a17c869d.pdf";
+const InterIITSports = "/pdfs/SOP of IISSM for Published.pdf";
 const rulesForSwimming =
   "/pdfs/Rules_and_guidelines_for_swimming_pool_user_75f197a6d7.pdf";
 
