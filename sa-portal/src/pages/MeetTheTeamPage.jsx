@@ -321,6 +321,7 @@ const MeetTheTeam = () => {
                           phone={member.phone}
                           imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
                           responsibility={member.responsibility}
+                          description={member.description}
                         />
                       ))}
                   </div>
@@ -344,6 +345,7 @@ const MeetTheTeam = () => {
                         title={member.title}
                         mail={member.mail}
                         phone={member.phone}
+                        description={member.description}
                         imageUrl={getStrapiMediaUrl(member.imageUrl?.url)}
                         responsibility={member.responsibility}
                       />

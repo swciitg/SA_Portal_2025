@@ -4,7 +4,7 @@ import phoneIcon from "../../assets/icons/phone.png";
 import mailIcon from "../../assets/icons/mail.png";
 
 const ProfileCard = (props) => {
-  const { name, phone, mail, responsibility, title, imageUrl } = props;
+  const { name, phone, mail, description, responsibility, title, imageUrl } = props;
   const imgurl = imageUrl || EmptyImage;
 
   return (
@@ -16,6 +16,13 @@ const ProfileCard = (props) => {
           <p className="prof-title">{title}</p>
           <p className="prof-responsibility">{responsibility || ""}</p>
         </div>
+        {description && (
+          <div>
+            <p className="prof-description">
+              {description}
+            </p>
+          </div>
+        )}
         <div>
           <a href={`mailto:${mail}`} className="prof-contact">
             <img src={mailIcon} alt="mail-icon" />
