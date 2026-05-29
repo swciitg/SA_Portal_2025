@@ -7,7 +7,7 @@ import getStrapiMediaUrl from "../utils/strApiMediaUrl";
 
 function FormsPage() {
   const [currPage, setCurrPage] = useState(1);
-  const limitOnPage = 5;
+  const limitOnPage = 10;
   const [forms, setForms] = useState([]);
   const [formsShow,setFormsShow] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");

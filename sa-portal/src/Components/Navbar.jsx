@@ -16,9 +16,12 @@ const GenRules = "/pdfs/General_Rules_for_Hostel_Residents_7c7a7c76c8.pdf";
 const HABCon = "/pdfs/HAB_Constitution_e299093392.pdf";
 const ordinacneOnCodeCon =
   "/pdfs/95_BOG_Ordinance_COC_19_12_2018_website_2_1347674f83.pdf";
-const InterIITSports = "/pdfs/SOP of IISSM for Published.pdf";
+const InterIITSportsEmp = "/pdfs/SOP of IISSM for Published.pdf";
+const InterIITSportsStud = "/pdfs/SOP_of_IISM_for_Published-1.pdf";
 const rulesForSwimming =
   "/pdfs/Rules_and_guidelines_for_swimming_pool_user_75f197a6d7.pdf";
+const SOPforHostelAccommodation = "/pdfs/SOP_Hostel_accommodation_beyond_std_time.pdf";
+const SACStatues = "/pdfs/Statutes of Students Affairs Council.pdf";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -137,14 +140,24 @@ const Navbar = () => {
           type: "link",
         },
         {
-          title: "Rules for Inter IIT Sports Meet",
-          href: InterIITSports,
+          title: "Rules for Inter IIT Sports Meet (Employees)",
+          href: InterIITSportsEmp,
+          type: "link",
+        },
+        {
+          title: "Rules for Inter IIT Sports Meet (Students)",
+          href: InterIITSportsStud,
           type: "link",
         },
         {
           title: "Notices on Rules",
           href: "/notices-on-rules",
           type: "page",
+        },
+        {
+          title: "SOP for Hostel Accommodation",
+          href: "/notices-on-rules",
+          type: "link",
         },
       ],
     },
@@ -165,7 +178,7 @@ const Navbar = () => {
         },
         {
           title: "Statutes",
-          href: "#",
+          href: SACStatues,
           type: "link",
         },
         {

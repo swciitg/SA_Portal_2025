@@ -7,7 +7,7 @@ const ROUTES = {
   SCHOLARSHIPS: "/scholarships?populate=*", // DONE*
   SA_COURSES: "/sa-courses", // DONE*
   NOTICES_ON_RULES: "/notices-on-rules?populate=*", // DONE*
-  FORMS: "/forms?populate=*", // DONE*
+  FORMS: "/forms?populate=*&pagination[pageSize]=100", // DONE*
   SAC_MEMBERS: "/sac-members?populate[member][populate]=imageUrl", // DONE*
   SAC_MINUTES: "/sac-minutes?populate=*", // DONE*
   SGC_FULL_TEAM:

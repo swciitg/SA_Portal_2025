@@ -35,27 +35,18 @@ const NavLinkDropdown = ({ title, dropdownItems }) => {
             <div
               key={idx}
               className="block px-4 py-1.5 bg-white hover:bg-[#E9EAEC] transition duration-75 cursor-pointer"
-              onClick={async () => {
-                if (item.title === "Statutes") {
-                  const res = await fetch(
-                    `${process.env.REACT_APP_API_BASE_URL}/api/students-affairs-statute?populate=*`
-                  );
-                  const data = await res.json();
-                  const pdfUrl = data.data?.pdf?.url;
-                  console.log(pdfUrl)
-                  if (pdfUrl)
-                    window.open(
-                      `${process.env.REACT_APP_API_BASE_URL}${pdfUrl}`,
-                      "_blank"
-                    );
+              onClick={() => {
+                const isExternal = item.type === "external" || item.href?.startsWith("http");
+                const url = isExternal
+                  ? item.href
+                  : `${process.env.REACT_APP_BASE_URL}${item.href}`;
+
+                if (item.type === "external") {
+                  window.open(url, "_blank");
+                } else if (item.type === "link") {
+                  window.open(url, "_blank");
                 } else {
-                  if(item.type=="external"){
-                    window.open(item.href)
-                  } else if (item.type === "link") {
-                    window.open( process.env.REACT_APP_BASE_URL+ item.href, "_blank");
-                  } else {
-                    window.location.href = process.env.REACT_APP_BASE_URL+item.href;
-                  }
+                  window.location.href = url;
                 }
               }}
             >
