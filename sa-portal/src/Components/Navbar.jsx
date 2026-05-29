@@ -156,7 +156,7 @@ const Navbar = () => {
         },
         {
           title: "SOP for Hostel Accommodation",
-          href: "/notices-on-rules",
+          href: SOPforHostelAccommodation,
           type: "link",
         },
       ],
