@@ -161,16 +161,6 @@ const Navbar = () => {
           href: SOPforHostelAccommodation,
           type: "link",
         },
-        {
-          title: "SBF Rules",
-          href: SBFRules,
-          type: "link",
-        },
-        {
-          title: "STAF/SCF/SCAF Rules",
-          href: STAF_SCF_SCAF_Rules,
-          type: "link",
-        },
       ],
     },
     {
