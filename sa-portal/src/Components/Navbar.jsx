@@ -6,8 +6,8 @@ import Hamburger from "./Hamburger.jsx";
 // PDF links from public/pdfs folder
 // const ordiScho = "/pdfs/Ordinance_and_Rules_on_Scholarship_6fbd5a3a76 (1).pdf";
 const ordiScho = "/pdfs/Ordinances.pdf";
-const swf = "/pdfs/Students_Welfare_Fund_STAF_SCF_SCAF_fda7181688 (1).pdf";
-const sbf = "/pdfs/Students_Brotherhood_Fund_601e513b41 (1).pdf";
+//const swf = "/pdfs/Students_Welfare_Fund_STAF_SCF_SCAF_fda7181688 (1).pdf";
+//const sbf = "/pdfs/Students_Brotherhood_Fund_601e513b41 (1).pdf";
 const GuidelinesSpon = "/pdfs/Guidelines_on_Sponsorship_77ed6d24b2.pdf";
 const MoUSpon = "/pdfs/Mo_U_for_Sponsorship_7db7ec2d97.pdf";
 const SponsorshipCert = "/pdfs/Sponsorship_Certificate_12a4792e50.pdf";
@@ -22,8 +22,8 @@ const rulesForSwimming =
   "/pdfs/Rules_and_guidelines_for_swimming_pool_user_75f197a6d7.pdf";
 const SOPforHostelAccommodation = "/pdfs/SOP_Hostel_accommodation_beyond_std_time.pdf";
 const SACStatues = "/pdfs/Statutes of Students Affairs Council.pdf";
-const SBFRules = "/pdfs/SBF_Rules modified.pdf";
-const STAF_SCF_SCAF_Rules = "/pdfs/STAF_SCF_SCAF_Rules modified.pdf";
+const sbf = "/pdfs/SBF_Rules modified.pdf";
+const swf = "/pdfs/STAF_SCF_SCAF_Rules modified.pdf";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
