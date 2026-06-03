@@ -22,6 +22,8 @@ const rulesForSwimming =
   "/pdfs/Rules_and_guidelines_for_swimming_pool_user_75f197a6d7.pdf";
 const SOPforHostelAccommodation = "/pdfs/SOP_Hostel_accommodation_beyond_std_time.pdf";
 const SACStatues = "/pdfs/Statutes of Students Affairs Council.pdf";
+const SBFRules = "/pdfs/SBF_Rules modified.pdf";
+const STAF_SCF_SCAF_Rules = "/pdfs/STAF_SCF_SCAF_Rules modified.pdf";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -157,6 +159,16 @@ const Navbar = () => {
         {
           title: "SOP for Hostel Accommodation",
           href: SOPforHostelAccommodation,
+          type: "link",
+        },
+        {
+          title: "SBF Rules",
+          href: SBFRules,
+          type: "link",
+        },
+        {
+          title: "STAF/SCF/SCAF Rules",
+          href: STAF_SCF_SCAF_Rules,
           type: "link",
         },
       ],
