@@ -14,8 +14,8 @@ const SponsorshipCert = "/pdfs/Sponsorship_Certificate_12a4792e50.pdf";
 const HABPro = "/pdfs/HAB_Procedures_and_Resolutions_b513fcecda.pdf";
 const GenRules = "/pdfs/General_Rules_for_Hostel_Residents_7c7a7c76c8.pdf";
 const HABCon = "/pdfs/HAB_Constitution_e299093392.pdf";
-const ordinacneOnCodeCon =
-  "/pdfs/95_BOG_Ordinance_COC_19_12_2018_website_2_1347674f83.pdf";
+const ordinanceOnCodeCon =
+  "/pdfs/Ordinance_on_Code_and_Conduct_of_Students_04_11_2026.pdf";
 const InterIITSportsEmp = "/pdfs/SOP of IISSM for Published.pdf";
 const InterIITSportsStud = "/pdfs/SOP_of_IISM_for_Published-1.pdf";
 const rulesForSwimming =
@@ -118,7 +118,7 @@ const Navbar = () => {
       dropdownItems: [
         {
           title: "Ordinances on Code and Conducts",
-          href: ordinacneOnCodeCon,
+          href: ordinanceOnCodeCon,
           type: "link",
         },
         {
