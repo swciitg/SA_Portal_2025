@@ -19,8 +19,8 @@ jobs:
           script: |
             set -e
             cd /webapps/SA_Portal_2025/sa-portal
-            sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
-            sudo chmod g+rwx "$HOME/.docker" -R
+            sudo -n chown "$USER":"$USER" /home/"$USER"/.docker -R || true
+            sudo -n chmod g+rwx "$HOME/.docker" -R || true
             git checkout deploy
             git fetch origin
             # Log and back up any server-only commits/changes before syncing
