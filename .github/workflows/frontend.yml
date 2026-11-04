@@ -17,10 +17,17 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USERNAME }}
           script: |
+            set -e
             cd /webapps/SA_Portal_2025/sa-portal
             sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
             sudo chmod g+rwx "$HOME/.docker" -R
             git checkout deploy
-            git fetch        
-            git pull         
+            git fetch origin
+            # Log and back up any server-only commits/changes before syncing
+            git log --stat origin/deploy..HEAD
+            git diff
+            git diff > "$HOME/sa-portal-local-changes-$(date +%Y%m%d%H%M%S).patch"
+            git branch -f server-backup HEAD
+            git reset --hard origin/deploy
+            git log -1 --oneline
             docker compose -f docker-compose-prod.yml up -d --build
